@@ -10,7 +10,7 @@ extern "C" __declspec(dllexport) __stdcall double Pow(double a, int b)
 	{
 		 c *= a;
 	}
-    return c;
+	return c;
 }
 
 extern "C" __declspec(dllexport) __stdcall double Add(double a, double b)

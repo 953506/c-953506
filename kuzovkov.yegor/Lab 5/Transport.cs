@@ -1,86 +1,73 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 
 namespace Lab_5_Ind_1
 {
     abstract class Transport
     {
         //fields
-        protected static int _seriesNumber;
-        protected string _name;
-        protected string _color;
-        protected string _comfortLevel;
-        protected uint _yearMade;
+        protected static int seriesNumber;
+        protected static int[] registrationNumber;
+        protected string name;
+        protected string color;
+        protected string comfortLevel;
+        protected uint yearMade;
 
         //properties
         public string Name
         {
-            get => _name;
-            set => _name = value;
+            get => name;
+            set => name = value;
         }
 
         public string Color
         {
-            get => _color;
-            set => _color = value;
+            get => color;
+            set => color = value;
         }
 
         public string ComfortLevel
         {
-            get => _comfortLevel;
-            set => _comfortLevel = value;
+            get => comfortLevel;
+            set => comfortLevel = value;
         }
 
         public uint YearMade
         {
-            get => _yearMade;
+            get => yearMade;
             set
             {
                 if (value > 2020 || value < 1960)
                     return;
                 else
-                    _yearMade = value;
+                    yearMade = value;
             }
         }
 
         public static int Series
         {
-            get => _seriesNumber;
+            get => seriesNumber;
+        }
+		
+		
+		//indexer
+        public int this[int digit]
+        {
+            get => registrationNumber[digit];
         }
 
         //constructors
-        public Transport(string name, string color, string comfort, uint year)
-        {
-            _name = Name;
-            _color = Color;
-            _comfortLevel = comfort;
-            _yearMade = year;
-
-        }
-
         public Transport()
         {
-            _name = "NULL";
-            _color = "NULL";
-            _comfortLevel = "NULL";
-            _yearMade = 0;
+            registrationNumber = new int[4];
+            Random rnd = new Random();
+            foreach (int digit in registrationNumber)
+            {
+                registrationNumber[digit] = rnd.Next(0, 9);
+            }
+            seriesNumber = rnd.Next(1000, 10000);
         }
 
         //destructor
         ~Transport() { }
-
-        //methods
-        public static void Beep()
-        {
-            Console.WriteLine("Beep!\a");
-        }
-
-        public static void SetSeries()
-        {
-            Random rnd = new Random();
-            _seriesNumber = rnd.Next(1000, 10000);
-        }
     }
 }

@@ -16,10 +16,8 @@ namespace Lab4
         {
 
             IntPtr desktop = GetDC(IntPtr.Zero);
-            using (Graphics g = Graphics.FromHdc(desktop))
-            {
-                g.FillEllipse(Brushes.Blue, 0, 0, 1340, 850);
-            }
+            Graphics g = Graphics.FromHdc(desktop);
+            g.FillEllipse(Brushes.Blue, 0, 0, 1340, 850);
             ReleaseDC(IntPtr.Zero, desktop);
         }
     }

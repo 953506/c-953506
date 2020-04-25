@@ -80,10 +80,10 @@ sealed class Programmer : Worker
     public void WriteString()
     {
         Clear();
-        Write("Для вывода введите номер элемента\n 0 - выход\n 1 - имя\n 2 - фамилия\n 3 - возраст\n 4 - рост\n 5 - вес\n 6 - национальность\n" +
-              " 7 - день рождения\n 8 - пол\n 9 - имя отца\n 10 - имя матери\n 11 - оклад\n 12 - трудовой стаж\n 13 - стаж в руководящей должности\n" +
-              " 14 - множитель за другие заслуги\n 15 - кол-во дней больничного\n 16 - кол-во дней отпуска\n 17 - образование\n" +
-              " 18 - специализация\n 19 - должность\n ");
+        Write("Для вывода введите номер элемента\n 0 - выход\n 1 - имя\n 2 - фамилия\n 3 - возраст\n 4 - рост\n 5 - вес\n" + 
+              " 6 - национальность\n 7 - день рождения\n 8 - пол\n 9 - имя отца\n 10 - имя матери\n 11 - оклад\n 12 - трудовой стаж\n" +
+              " 13 - стаж в руководящей должности\n 14 - множитель за другие заслуги\n 15 - кол-во дней больничного\n" +
+              " 16 - кол-во дней отпуска\n 17 - образование\n18 - специализация\n 19 - должность\n ");
         int choose = int.Parse(ReadLine());
         switch(choose)
         {
@@ -115,10 +115,10 @@ sealed class Programmer : Worker
         try 
         { 
             Clear();
-            Write("Для ввода введите номер элемента\n 0 - выход\n 1 - имя\n 2 - фамилия\n 3 - возраст\n 4 - рост\n 5 - вес\n 6 - национальность\n" +
-                  " 7 - день рождения\n 8 - пол\n 9 - имя отца\n 10 - имя матери\n 11 - оклад\n 12 - трудовой стаж\n 13 - стаж в руководящей должности\n" +
-                  " 14 - множитель за другие заслуги\n 15 - кол-во дней больничного\n 16 - кол-во дней отпуска\n 17 - образование\n" +
-                  " 18 - специализация\n 19 - должность\n ");
+            Write("Для ввода введите номер элемента\n 0 - выход\n 1 - имя\n 2 - фамилия\n 3 - возраст\n 4 - рост\n 5 - вес\n" + 
+              " 6 - национальность\n 7 - день рождения\n 8 - пол\n 9 - имя отца\n 10 - имя матери\n 11 - оклад\n 12 - трудовой стаж\n" +
+              " 13 - стаж в руководящей должности\n 14 - множитель за другие заслуги\n 15 - кол-во дней больничного\n" +
+              " 16 - кол-во дней отпуска\n 17 - образование\n18 - специализация\n 19 - должность\n ");
             int choose = int.Parse(ReadLine());
             switch (choose)
             {
@@ -241,8 +241,8 @@ sealed class Programmer : Worker
                         || otherAllowances < 0 || daysOfSick < 0 || daysOfVacation < 0)
                 throw new Exception("Данные неверно введены (присутствуют отрицательные или невозможные числа) ");
             a = new Programmer(name, surname, age, high, weight, nationality, birthdate, parent0, parent1, sex, (uint)salary,
-                           (uint)employmentHistory, (uint)managerialExperience, (uint)otherAllowances, (uint)daysOfSick, (uint)daysOfVacation,
-                           education, specialization, job);
+                               (uint)employmentHistory, (uint)managerialExperience, (uint)otherAllowances, (uint)daysOfSick,
+                               (uint)daysOfVacation, education, specialization, job);
         }
         catch (FormatException e)
         {

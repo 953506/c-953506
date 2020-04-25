@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 using static System.Console;
 
-
 namespace ConsoleApp6
 {
     class Program

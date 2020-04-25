@@ -2,17 +2,14 @@
 
 namespace LAB5
 {
-
     class Program
     {
         static void Main()
         {
-
             Console.WriteLine(@"Choose 1 of 3 classes:
 1) DrugsAbilities
 2) Athletes
 3) SchoolKids");
-
             string dependency;
             string sporttype, country;
             string teachname, schoolname;
@@ -25,7 +22,6 @@ namespace LAB5
             switch(Swicther)
             {
                 case 1:
-
                     Console.WriteLine("Enter your Dependecy time(years):");
                     dependency = Console.ReadLine();
                     DrugsAddicts First = new DrugsAddicts(dependency, "0");
@@ -39,11 +35,8 @@ namespace LAB5
                     Console.WriteLine("Enter index(from 1 to 4) for indexator");
                     int index = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine($"Your choice: {First[index]}");
-
                     break;
-
                 case 2: 
-
                     Console.WriteLine("Enter country, sporttype end expirience(years)");
                     country = Console.ReadLine();
                     sporttype = Console.ReadLine();
@@ -57,11 +50,8 @@ namespace LAB5
                     if (temp == 4) Second.Set(Human.Temperament.Melancholy);
                     Second.ShowTemp();
                     Second.ShowInfo();
-
                     break;
-
                 case 3:
-
                     Console.WriteLine("Enter your teacher name and your school name:");
                     teachname = Console.ReadLine();
                     schoolname = Console.ReadLine();
@@ -72,9 +62,7 @@ namespace LAB5
                     math = Convert.ToBoolean(Console.ReadLine());
                     Third.SetClass(numclass, math, science);
                     Third.Show();
-
                     break;
-
                 default: 
                     Console.WriteLine("Error choose, program will be closed"); 
                     break;

@@ -5,9 +5,6 @@ using System.Windows.Forms;
 sealed class Programmer : Worker
 {
     private string[] _programLanguage = new string[1];
-    private string Education { get; set; }
-    private string Specialization { get; set; }
-    private string Job { get; set; } 
 
     public Programmer() : base()
     {
@@ -17,17 +14,42 @@ sealed class Programmer : Worker
         _programLanguage[0] = "";
     }
 
-    public Programmer(string name, string surname, int age, int high, float weight, string nationality, DateTime birthdate, string parent0, string parent1, string sex,
-        uint salary, uint employmenthistory, uint managerialexperience, uint otherallowances, uint daysofsick, uint daysofvacation, string educacion,
-        string specializacion, string job) : base(name, surname, age, high, weight, nationality, birthdate, parent0, parent1, sex, salary,
-        employmenthistory, managerialexperience, otherallowances, daysofsick, daysofvacation)
+    public Programmer(string name, string surname, int age, int high, float weight, string nationality,
+                      DateTime birthdate, string parent0, string parent1, string sex, uint salary, uint employmenthistory,
+                      uint managerialexperience, uint otherallowances, uint daysofsick, uint daysofvacation, string educacion,
+                      string specializacion, string job) : base(name, surname, age, high, weight, nationality, birthdate,
+                      parent0, parent1, sex, salary, employmenthistory, managerialexperience, otherallowances,
+                      daysofsick, daysofvacation)
     {
         Education = educacion;
         Specialization = specializacion;
         Job = job;
         _programLanguage[0] = "";
     }
-
+    
+    public string Education { get; set; }
+    public string Specialization { get; set; }
+    public string Job { get; set; } 
+    
+    public Programmer this[int index]
+    {
+        get
+        {
+            if(index<0||index>=_programLanguage.Length)
+            {
+               WriteLine("Номер введен неверно, возвращен первый элемент");
+               return _programLanguage[0];
+            }
+            return _programLanguage[index];
+        }
+        set
+        {
+            if(index<0||index>=_programLanguage.Length)
+               return;
+            programLanguage[i]=value;
+        }
+    }
+    
     public new void ImportantDates()
     {
         WriteLine(" {0} {1}, {2}, возраст: {3}, {4}, {5}", Name, SurName, Sex, Age, Nationality, Job);
@@ -79,10 +101,10 @@ sealed class Programmer : Worker
     public void WriteString()
     {
         Clear();
-        Write("Для вывода введите номер элемента\n 0 - выход\n 1 - имя\n 2 - фамилия\n 3 - возраст\n 4 - рост\n 5 - вес\n 6 - национальность\n" +
-              " 7 - день рождения\n 8 - пол\n 9 - имя отца\n 10 - имя матери\n 11 - оклад\n 12 - трудовой стаж\n 13 - стаж в руководящей должности\n" +
-              " 14 - множитель за другие заслуги\n 15 - кол-во дней больничного\n 16 - кол-во дней отпуска\n 17 - образование\n" +
-              " 18 - специализация\n 19 - должность\n ");
+        Write("Для вывода введите номер элемента\n 0 - выход\n 1 - имя\n 2 - фамилия\n 3 - возраст\n 4 - рост\n 5 - вес\n" + 
+              " 6 - национальность\n 7 - день рождения\n 8 - пол\n 9 - имя отца\n 10 - имя матери\n 11 - оклад\n 12 - трудовой стаж\n" +
+              " 13 - стаж в руководящей должности\n 14 - множитель за другие заслуги\n 15 - кол-во дней больничного\n" +
+              " 16 - кол-во дней отпуска\n 17 - образование\n18 - специализация\n 19 - должность\n ");
         int choose = int.Parse(ReadLine());
         switch(choose)
         {
@@ -114,10 +136,10 @@ sealed class Programmer : Worker
         try 
         { 
             Clear();
-            Write("Для ввода введите номер элемента\n 0 - выход\n 1 - имя\n 2 - фамилия\n 3 - возраст\n 4 - рост\n 5 - вес\n 6 - национальность\n" +
-                  " 7 - день рождения\n 8 - пол\n 9 - имя отца\n 10 - имя матери\n 11 - оклад\n 12 - трудовой стаж\n 13 - стаж в руководящей должности\n" +
-                  " 14 - множитель за другие заслуги\n 15 - кол-во дней больничного\n 16 - кол-во дней отпуска\n 17 - образование\n" +
-                  " 18 - специализация\n 19 - должность\n ");
+            Write("Для ввода введите номер элемента\n 0 - выход\n 1 - имя\n 2 - фамилия\n 3 - возраст\n 4 - рост\n 5 - вес\n" + 
+              " 6 - национальность\n 7 - день рождения\n 8 - пол\n 9 - имя отца\n 10 - имя матери\n 11 - оклад\n 12 - трудовой стаж\n" +
+              " 13 - стаж в руководящей должности\n 14 - множитель за другие заслуги\n 15 - кол-во дней больничного\n" +
+              " 16 - кол-во дней отпуска\n 17 - образование\n18 - специализация\n 19 - должность\n ");
             int choose = int.Parse(ReadLine());
             switch (choose)
             {
@@ -176,6 +198,13 @@ sealed class Programmer : Worker
             WriteLine(_penalty[i]);
     }
 
+    public static void Menu()
+    {
+        WriteLine(" 0 - выход\n 1 - пересоздать класс\n 2 - вывод общий\n 3 - вывести построчно\n 4 - ввести построчно\n" +
+                  " 5 - Важные данные\n 6 - Добавить уточняющую информацию\n 7 - Удалить уточняющую информацию\n" +
+                  " 8 - дополнительная информация\n 9 - уточняющая информация");
+    }
+    
     public void Creat(Programmer a)
     {
         try
@@ -240,8 +269,8 @@ sealed class Programmer : Worker
                         || otherAllowances < 0 || daysOfSick < 0 || daysOfVacation < 0)
                 throw new Exception("Данные неверно введены (присутствуют отрицательные или невозможные числа) ");
             a = new Programmer(name, surname, age, high, weight, nationality, birthdate, parent0, parent1, sex, (uint)salary,
-                           (uint)employmentHistory, (uint)managerialExperience, (uint)otherAllowances, (uint)daysOfSick, (uint)daysOfVacation,
-                           education, specialization, job);
+                               (uint)employmentHistory, (uint)managerialExperience, (uint)otherAllowances, (uint)daysOfSick,
+                               (uint)daysOfVacation, education, specialization, job);
         }
         catch (FormatException e)
         {

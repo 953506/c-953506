@@ -22,7 +22,8 @@ abstract class Human
         Sex = "";
     }
 
-    public Human(string name, string surname, int age, int high, float weight, string nationality, DateTime birthdate, string parent0, string parent1, string sex)
+    public Human(string name, string surname, int age, int high, float weight, string nationality,
+                 DateTime birthdate, string parent0, string parent1, string sex)
     {
         ID = _number + 1;
         ++_number;

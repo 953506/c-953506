@@ -37,11 +37,10 @@ namespace Laba3
                 chel[i].GetScore();
                 Console.Clear();
             }
-            chel[kolv] = new Human { };
-            chel[kolv].GetName(name);
+            chel[kolv] = new Human(name);
             do
             {
-                Console.WriteLine("1-вывод всех студентов\n2-повысить/понизить балл студента по предметам\n3-распределение студентов по убыванию среднего балла\n4-отчислить студента\n0-Exit");
+                Panel();
                 numer = Console.ReadKey().KeyChar;
 
                 switch (numer)
@@ -90,6 +89,15 @@ namespace Laba3
                         return;
                 }
             } while (true) ;
+        }
+
+        static void Panel()
+        {
+            Console.WriteLine("1-вывод всех студентов");
+            Console.WriteLine("2-повысить/понизить балл студента по предметам");
+            Console.WriteLine("3-распределение студентов по убыванию среднего балла");
+            Console.WriteLine("4-отчислить студента");
+            Console.WriteLine("0-Exit");
 
         }
     }

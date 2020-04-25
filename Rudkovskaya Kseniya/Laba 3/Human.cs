@@ -13,7 +13,6 @@ namespace Laba3
         public int math, rus, phys;
         public double score = 0;
 
-
         public string Name
         {
             get
@@ -21,6 +20,7 @@ namespace Laba3
             set
             { name = value; }
         }
+
         public string Surname
         {
             get
@@ -28,6 +28,7 @@ namespace Laba3
             set
             { surname = value; }
         }
+
         public int Age
         {
             get
@@ -35,6 +36,7 @@ namespace Laba3
             set
             { age = value; }
         }
+
         public string Status
         {
             get
@@ -42,6 +44,7 @@ namespace Laba3
             set
             { status = value; }
         }
+
         public Human()
         {
             name = "Иван";
@@ -53,6 +56,12 @@ namespace Laba3
             phys = 2;
             score = 2;
         }
+
+        public Human(string name)
+        {
+            this.name = name;
+        }
+
         public string GetName(string name)
         {
             this.name = name;
@@ -159,13 +168,17 @@ namespace Laba3
         }
 
     }
+
+
     class Gruppa : Human
     {
         Human[] items;
+
         public Gruppa(int kolv)
         {
             items = new Human[kolv + 1];
         }
+
         public Human this[int index]
         {
             get

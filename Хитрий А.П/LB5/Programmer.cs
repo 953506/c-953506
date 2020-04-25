@@ -5,9 +5,6 @@ using System.Windows.Forms;
 sealed class Programmer : Worker
 {
     private string[] _programLanguage = new string[1];
-    private string Education { get; set; }
-    private string Specialization { get; set; }
-    private string Job { get; set; } 
 
     public Programmer() : base()
     {
@@ -29,7 +26,30 @@ sealed class Programmer : Worker
         Job = job;
         _programLanguage[0] = "";
     }
-
+    
+    public string Education { get; set; }
+    public string Specialization { get; set; }
+    public string Job { get; set; } 
+    
+    public Programmer this[int index]
+    {
+        get
+        {
+            if(index<0||index>=_programLanguage.Length)
+            {
+               WriteLine("Номер введен неверно,возвращен первый элемент");
+               return _programLanguage[0];
+            }
+            return _programLanguage[index];
+        }
+        set
+        {
+            if(index<0||index>=_programLanguage.Length)
+               return;
+            programLanguage[i]=value;
+        }
+    }
+    
     public new void ImportantDates()
     {
         WriteLine(" {0} {1}, {2}, возраст: {3}, {4}, {5}", Name, SurName, Sex, Age, Nationality, Job);

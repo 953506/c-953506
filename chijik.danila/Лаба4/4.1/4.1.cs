@@ -14,7 +14,6 @@ namespace Lab4
 
         static void Main(string[] args)
         {
-
             IntPtr desktop = GetDC(IntPtr.Zero);
             Graphics g = Graphics.FromHdc(desktop);
             g.FillEllipse(Brushes.Blue, 0, 0, 1340, 850);

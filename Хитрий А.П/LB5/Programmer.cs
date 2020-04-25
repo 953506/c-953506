@@ -17,10 +17,11 @@ sealed class Programmer : Worker
         _programLanguage[0] = "";
     }
 
-    public Programmer(string name, string surname, int age, int high, float weight, string nationality, DateTime birthdate, string parent0, string parent1, string sex,
-        uint salary, uint employmenthistory, uint managerialexperience, uint otherallowances, uint daysofsick, uint daysofvacation, string educacion,
-        string specializacion, string job) : base(name, surname, age, high, weight, nationality, birthdate, parent0, parent1, sex, salary,
-        employmenthistory, managerialexperience, otherallowances, daysofsick, daysofvacation)
+    public Programmer(string name, string surname, int age, int high, float weight, string nationality,
+                      DateTime birthdate, string parent0, string parent1, string sex, uint salary, uint employmenthistory,
+                      uint managerialexperience, uint otherallowances, uint daysofsick, uint daysofvacation, string educacion,
+                      string specializacion, string job) : base(name, surname, age, high, weight, nationality, birthdate,
+                      parent0, parent1, sex, salary, employmenthistory, managerialexperience, otherallowances, daysofsick, daysofvacation)
     {
         Education = educacion;
         Specialization = specializacion;

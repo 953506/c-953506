@@ -38,7 +38,7 @@ namespace LAB5
                     First.ShowInfo();
                     Console.WriteLine("Enter index(from 1 to 4) for indexator");
                     int index = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine($"Your choice: {First[2]}");
+                    Console.WriteLine($"Your choice: {First[index]}");
 
                     break;
 

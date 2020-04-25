@@ -4,11 +4,6 @@ using System.Windows.Forms;
 
 class LB5
 {
-    static void Menu()
-    {
-        WriteLine(" 0 - выход\n 1 - пересоздать класс\n 2 - вывод общий\n 3 - вывести построчно\n 4 - ввести построчно\n 5 - Важные данные\n" +
-            " 6 - Добавить уточняющую информацию\n 7 - Удалить уточняющую информацию\n 8 - дополнительная информация\n 9 - уточняющая информация");
-    }
    static void Main()
     {
         ConsoleKeyInfo key;
@@ -16,7 +11,7 @@ class LB5
         while(true)
         {
             Clear();
-            Menu();
+            a.Menu();
             switch ((key = ReadKey(true)).Key)
             {
                 case ConsoleKey.D0: return;

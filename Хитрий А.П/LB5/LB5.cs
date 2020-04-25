@@ -1,6 +1,5 @@
 ﻿using System;
 using static System.Console;
-using System.Windows.Forms;
 
 class LB5
 {

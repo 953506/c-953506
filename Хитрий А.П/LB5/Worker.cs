@@ -21,9 +21,10 @@ class Worker : Human
         _languages[0] = "";
     }
 
-    public Worker(string name, string surname, int age, int high, float weight, string nationality, DateTime birthdate, string parent0, string parent1, string sex,
-        uint salary, uint employmenthistory, uint managerialexperience, uint otherallowances, uint daysofsick, uint daysofvacation) :
-        base(name, surname, age, high, weight, nationality, birthdate, parent0, parent1, sex)
+    public Worker(string name, string surname, int age, int high, float weight, string nationality, 
+                  DateTime birthdate, string parent0, string parent1, string sex, uint salary, 
+                  uint employmenthistory, uint managerialexperience, uint otherallowances, uint daysofsick, uint daysofvacation) :
+                  base(name, surname, age, high, weight, nationality, birthdate, parent0, parent1, sex)
     {
         Salary = salary;
         EmploymentHistory = employmenthistory;

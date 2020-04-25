@@ -37,7 +37,7 @@ sealed class Programmer : Worker
         {
             if(index<0||index>=_programLanguage.Length)
             {
-               WriteLine("Номер введен неверно,возвращен первый элемент");
+               WriteLine("Номер введен неверно, возвращен первый элемент");
                return _programLanguage[0];
             }
             return _programLanguage[index];

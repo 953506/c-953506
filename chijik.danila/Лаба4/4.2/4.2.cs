@@ -14,7 +14,6 @@ namespace ConsoleApp6
             Write("Write a = ");
             WriteLine("a^2 = {0}", Square(int.Parse(ReadLine())));
             ReadKey();
-
         }
     }
 }

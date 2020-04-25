@@ -109,7 +109,6 @@ namespace _3
         }
     }
 
-
     class Program
     {
         static void Main(string[] args)
@@ -132,9 +131,7 @@ namespace _3
                 }
             }
             while (exit == true);
-
             Read();
-
         }
     }
 }

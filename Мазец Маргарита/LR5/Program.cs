@@ -10,10 +10,10 @@ namespace ЛР5
             public string _surname;
         }
         
-        public NS _ns;
-        public string _university;
-        public static int _currentYear = 2020;
-        public int _birthYear;
+        prodected NS _ns;
+        prodected string _university;
+        prodected static int _currentYear = 2020;
+        prodected _birthYear;
 
         public UniversityPerson(string name, string surname,string univer, int birthYear)
         {

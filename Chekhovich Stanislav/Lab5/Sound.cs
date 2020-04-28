@@ -8,6 +8,7 @@ namespace Lab5
     {
         [DllImport("winmm.dll")]
         private static extern long mciSendString(string Cmd, StringBuilder StrReturn, int ReturnLength, IntPtr HwndCallback);
+        
         static public void PlaySound(string fileName)
         {
             mciSendString("open \"" + fileName + "\" type waveaudio alias zvuk", null, 0, IntPtr.Zero);

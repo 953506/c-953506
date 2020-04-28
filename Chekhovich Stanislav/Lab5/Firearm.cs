@@ -4,12 +4,15 @@ namespace Lab5
 {
     abstract class Firearm
     {
+        //----------------Перечисление
         protected enum TypesOfWeapon
         {
             SniperRifle,
             AssaultRifle,
             MachineGun
         }
+        
+        //----------------Автосвойства
         protected TypesOfWeapon TypeOfWeapon { get; set; }
         protected bool ModeSingle { get; set; } = true;
         protected bool ModeBirst { get; set; } = false;
@@ -20,6 +23,8 @@ namespace Lab5
         public string Caliber { get; set; }
         public bool IsSafetyOn { get; set; } = true;
         public bool IsReloaded { get; set; }
+        
+        //----------------Индексатор
         public virtual bool this[string mode]
         {
             get
@@ -67,6 +72,8 @@ namespace Lab5
                 }
             }
         }
+        
+        //----------------Конструктор
         public Firearm(string model, string caliber, uint maxAmmo, uint ammoInClip)
         {
             Model = model;
@@ -75,11 +82,14 @@ namespace Lab5
             AmmoInClip = maxAmmo < ammoInClip ? maxAmmo : ammoInClip;
             IsReloaded = AmmoInClip != 0;
         }
+        
+        //----------------Методы
         public void Reload(uint ammo)
         {
             AmmoInClip = ammo > MaxAmmo ? MaxAmmo : ammo;
             IsReloaded = true;
         }
+        
         public void Shoot()
         {
             if (!IsSafetyOn)
@@ -131,11 +141,13 @@ namespace Lab5
                 Console.WriteLine("Turn the safety off before shooting");
             }
         }
+        
         public static void GetGeneralInfo()
         {
             Console.WriteLine("A firearm is a gun designed to be readily carried and used by a single individual." +
                 "\nModern firearms can be described by their caliber, model and by the type of action employed.");
         }
+        
         public virtual void GetInfo()
         {
             Console.WriteLine($"Model of your weapon: {Model}" +
@@ -143,10 +155,13 @@ namespace Lab5
                 $"\nMax ammo in a clip: {MaxAmmo}" +
                 $"\nCurrent ammo in a clip: {AmmoInClip}");
         }
+        
         public abstract void GetInfoAboutType();
+        
         public virtual void AimedShot() { } // Универсальная способность SniperRifle (Прицельный выстрел)
+        
         public virtual void StockHit() { } // Универсальная способность AssaultRifle (Удар прикладом)
+        
         public virtual void MachineGunFire() { } // Универсальная способность MachineGun (Пулемётная очередь)
-        ~Firearm() { }
     }   
 }

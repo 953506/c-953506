@@ -20,8 +20,8 @@ namespace Lab5
         public override void GetInfoAboutType()
         {
             Console.WriteLine($"Your weapon is {TypeOfWeapon}" +
-                $"\nAn assault rifle is a selective-fire rifle that uses an " +
-                $"\nintermediate cartridge and a detachable magazine.");
+                "\nAn assault rifle is a selective-fire rifle that uses an " +
+                "\nintermediate cartridge and a detachable magazine.");
         }
     }
 }

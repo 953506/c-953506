@@ -4,11 +4,13 @@ namespace Lab5
 {
     class AssaultRifle : Firearm
     {
+        //----------------Конструктор
         public AssaultRifle(string model, string caliber, uint maxAmmo, uint ammoInClip) : base(model, caliber, maxAmmo, ammoInClip)
         {
             TypeOfWeapon = TypesOfWeapon.AssaultRifle;
         }
 
+        //----------------Методы
         public override void StockHit()
         {
             Console.WriteLine("PUSH!");

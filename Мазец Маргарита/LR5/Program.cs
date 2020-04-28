@@ -4,16 +4,16 @@ namespace ЛР5
 {
     abstract class UniversityPerson
     {
-        public struct NS
+        protected struct NS
         {
             public string _name;
             public string _surname;
         }
         
-        public NS _ns;
-        public string _university;
-        public static int _currentYear = 2020;
-        public int _birthYear;
+        protected NS _ns;
+        protected string _university;
+        protected static int _currentYear = 2020;
+        protected int _birthYear;
 
         public UniversityPerson(string name, string surname,string univer, int birthYear)
         {

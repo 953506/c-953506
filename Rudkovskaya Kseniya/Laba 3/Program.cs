@@ -2,191 +2,42 @@
 
 namespace Laba3
 {
-    class Human
-    {
-        public string name;
-        public string surname;
-        public int age;
-        public string status;
-        public int math, rus, phys;
-        public double srb = 0;
-        public Human()
-        {
-            name = "Иван";
-            surname = "Иванович";
-            age = 18;
-            status = "student";
-            math = 2;
-            rus = 2;
-            phys = 2;
-            srb = 2;
-        }
-
-        public string GetName()
-        {
-            Console.WriteLine($"Имя: ");
-            name = Console.ReadLine();
-            return name;
-        }
-
-        public string GetName(string name)
-        {
-            this.name = name;
-            return this.name;
-        }
-
-        public string GetSurname()
-        {
-            Console.WriteLine($"Фамилия: ");
-            surname = Console.ReadLine();
-            return surname;
-        }
-
-        public int GetAge()
-        {
-            Console.WriteLine($"Возраст: ");
-            int.TryParse(Console.ReadLine(), out age);
-            return age;
-        }
-
-        public int GetMath()
-        {
-            Console.WriteLine($"Математика: ");
-            int.TryParse(Console.ReadLine(), out math);
-            return math;
-
-        }
-
-        public int GetRus()
-        {
-            Console.WriteLine($"Русский: ");
-            int.TryParse(Console.ReadLine(), out rus);
-            return rus;
-        }
-
-        public int GetPhys()
-        {
-            Console.WriteLine($"Физика: ");
-            int.TryParse(Console.ReadLine(), out phys);
-            return phys;
-        }
-
-        public double GetSrb()
-        {
-            srb = (math + rus + phys) / 3.0;
-            Console.WriteLine($"\nОбщий средний балл: {srb}");
-            return srb;
-        }
-
-        public void GetInfo()
-        {
-            Console.WriteLine($"Имя:{name}\nФамилия:{surname}\nВозраст:{age} Статус:{status}\n");
-            Console.WriteLine($"Средние баллы:\nМатем:{math}  Рус:{rus}  Физика:{phys}\nОбщий ср.балл:{srb}\n");
-        }
-
-        public void GetIzmena()
-        {
-            char predmet;
-            int izmena = 0;
-            Console.WriteLine($"Выберите предмет\nМатематика-1  Русский-2  Физика-3");
-            predmet = Console.ReadKey().KeyChar;
-            Console.WriteLine($"На сколько изменить отметку   пример(2 / -4)");
-            int.TryParse(Console.ReadLine(), out izmena);
-            if (predmet == '1')
-            {
-                if (math + izmena > 10)
-                {
-                    Console.WriteLine($"Ошибка, повторите ввод снова");
-                }
-                else
-                {
-                    math += izmena;
-                }
-            }
-            if (predmet == '2')
-            {
-                if (rus + izmena > 10)
-                {
-                    Console.WriteLine($"Ошибка, повторите ввод снова");
-                }
-                else
-                {
-                    rus += izmena;
-                }
-            }
-            if (predmet == '3')
-            {
-                if (phys + izmena > 10)
-                {
-                    Console.WriteLine($"Ошибка, повторите ввод снова");
-                }
-                else
-                {
-                    phys += izmena;
-                }
-            }
-        }
-
-        public void GetOtchislenie()
-        {
-            status = "otchislen";
-            math = 0;
-            rus = 0;
-            phys = 0;
-            srb = 0;
-        }
-    }
-    class Gruppa : Human
-    {
-        Human[] data;
-        public Gruppa(int kolv)
-        {
-            data = new Human[kolv + 1];
-        }
-        public Human this[int index]
-        {
-            get
-            {
-                return data[index];
-            }
-            set
-            {
-                data[index] = value;
-            }
-        }
-    }
+    
     class Program
     {
         static void Main(string[] args)
         {
-            Human primer = new Human();
             int kolv, uchenik;
             char numer;
             string name = "Ксения";
             Console.WriteLine("Сколько студентов в группе? ");
             int.TryParse(Console.ReadLine(), out kolv);
             Gruppa chel = new Gruppa(kolv + 1);
-            Console.WriteLine("Пример ввода:\n");
-            primer.GetInfo();
             for (int i = 0; i < kolv; i++)
             {
                 
                 Console.WriteLine($"\nНомер студента: {i+1}");
                 chel[i] = new Human { };
-                chel[i].name = chel.GetName();
-                chel[i].surname = chel.GetSurname();
-                chel[i].age = chel.GetAge();
-                chel[i].math = chel.GetMath();
-                chel[i].rus = chel.GetRus();
-                chel[i].phys = chel.GetPhys();
-                chel[i].srb = chel.GetSrb();
+                Console.WriteLine("Имя: ");
+                name = Console.ReadLine();
+                chel[i].Name = name;
+                Console.WriteLine("Фамилия: ");
+                string surname = Console.ReadLine();
+                chel[i].Surname = surname;
+                Console.WriteLine("Возраст: ");
+                string age1 = Console.ReadLine();
+                int age = int.Parse(age1);               
+                chel[i].Age = age;
+                chel[i].Math = 1;
+                chel[i].Rus = 1;
+                chel[i].Phys = 1;
+                chel[i].SetScore();
                 Console.Clear();
             }
-            chel[kolv] = new Human { };
-            chel[kolv].GetName(name);
+            chel[kolv] = new Human(name);
             do
             {
-                Console.WriteLine("1-вывод всех студентов\n2-повысить/понизить балл студента по предметам\n3-распределение студентов по убыванию среднего балла\n4-отчислить студента\n0-Exit");
+                Panel();
                 numer = Console.ReadKey().KeyChar;
 
                 switch (numer)
@@ -195,7 +46,7 @@ namespace Laba3
                         Console.Clear();
                         for (int i = 0; i < kolv; i++)
                         {
-                            chel[i].GetInfo();
+                            chel[i].ShowInfo();
                             Console.WriteLine("\n");
                         }
                         break;
@@ -203,11 +54,12 @@ namespace Laba3
                         Console.Clear();
                         Console.WriteLine($"Выберите номер ученика ");
                         int.TryParse(Console.ReadLine(), out uchenik);
-                        chel[uchenik - 1].GetIzmena();
-                        if (chel[uchenik - 1].math <= 0 || chel[uchenik - 1].rus <= 0 || chel[uchenik - 1].math <= 0)
+                        chel[uchenik - 1].AcscessСhange();
+                        if (chel[uchenik - 1].Math <= 0 || chel[uchenik - 1].Rus <= 0 || chel[uchenik - 1].Phys <= 0)
                         {
-                            chel[uchenik - 1].GetOtchislenie();
+                            chel[uchenik - 1].Expulsion();
                         }
+                        chel[uchenik - 1].SetScore();
                         break;
                     case '3':
                         Console.Clear();
@@ -215,7 +67,7 @@ namespace Laba3
                         {
                             for (int y = 0; y < kolv - 1; y++)
                             {
-                                if (chel[y].srb < chel[y + 1].srb)
+                                if (chel[y].score < chel[y + 1].score)
                                 {
                                     chel[kolv + 1] = chel[y];
                                     chel[y] = chel[y + 1];
@@ -228,12 +80,21 @@ namespace Laba3
                         Console.Clear();
                         Console.WriteLine($"Выберите номер ученика ");
                         int.TryParse(Console.ReadLine(), out uchenik);
-                        chel[uchenik - 1].GetOtchislenie();
+                        chel[uchenik - 1].Expulsion();
                         break;
                     case '0':
                         return;
                 }
             } while (true) ;
+        }
+
+        public static void Panel()
+        {
+            Console.WriteLine("1-вывод всех студентов");
+            Console.WriteLine("2-повысить/понизить балл студента по предметам");
+            Console.WriteLine("3-распределение студентов по убыванию среднего балла");
+            Console.WriteLine("4-отчислить студента");
+            Console.WriteLine("0-Exit");
 
         }
     }

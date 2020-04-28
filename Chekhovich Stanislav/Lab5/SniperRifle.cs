@@ -5,10 +5,13 @@ namespace Lab5
 {
     class SniperRifle : Firearm
     {
+        //----------------Конструктор
         public SniperRifle(string model, string caliber, uint maxAmmo, uint ammoInClip) : base(model, caliber, maxAmmo, ammoInClip)
         {
             TypeOfWeapon = TypesOfWeapon.SniperRifle;
         }
+        
+        //----------------Методы
         public override void AimedShot()
         {
             if (AmmoInClip > 0)
@@ -29,6 +32,7 @@ namespace Lab5
                 Console.WriteLine("Oops! Not enough ammo! You should reload a rifle before shooting");
             }
         }
+        
         public override void GetInfoAboutType()
         {
             Console.WriteLine($"Your weapon is {TypeOfWeapon}" +
@@ -37,6 +41,7 @@ namespace Lab5
                 $"\nweapon system with a choice between bolt-action or semi-automatic action");
         }
 
+        //----------------Индексатор
         public override bool this[string mode]
         {
             get

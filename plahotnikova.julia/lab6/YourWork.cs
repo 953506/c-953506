@@ -22,3 +22,4 @@ namespace Lab3
             Salary = Convert.ToInt32(Console.ReadLine());
         }
     }
+}

@@ -5,6 +5,7 @@ namespace Lab5
 {
     class MachineGun : Firearm
     {
+        //----------------Конструктор
         public MachineGun(string model, string caliber, uint maxAmmo, uint ammoInClip) : base(model, caliber, maxAmmo, ammoInClip)
         {
             TypeOfWeapon = TypesOfWeapon.MachineGun;
@@ -12,6 +13,7 @@ namespace Lab5
             ModeSingle = ModeBirst = false;
         }
 
+        //----------------Методы
         public override void MachineGunFire()
         {
             if (AmmoInClip > 0)
@@ -37,6 +39,7 @@ namespace Lab5
                 $"\n ammunition belt or magazine.");
         }
 
+        //----------------Индексатор
         public override bool this[string mode]
         {
             get

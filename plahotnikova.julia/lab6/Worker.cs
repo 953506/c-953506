@@ -94,3 +94,4 @@ namespace Lab3
                 $"Dresscode: {_dresscode}";
         }
     }
+}

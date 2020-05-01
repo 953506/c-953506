@@ -2,11 +2,6 @@
 
 namespace lab6
 {
-    interface ICariere
-    { 
-
-    }
-
     interface IFoo
     {
         void GetInfo();

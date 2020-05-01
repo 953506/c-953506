@@ -80,7 +80,7 @@ namespace Lab3
                     {
                         var worker = new Worker(firstname, lastname, birthdate, sex, heigth, weigth,
                             info.GetFullYears());
-                        IMoney rise = worker;
+                        IPayable rise = worker;
                         worker.InstitutionType();
                         worker.InformationAboutJob();
                         worker.Vacation();

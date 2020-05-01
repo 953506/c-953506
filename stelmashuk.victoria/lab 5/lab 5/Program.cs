@@ -348,9 +348,9 @@ namespace lab5
                         {
                             Disabled disabled = new Disabled(name, surname, age, height, weight);
                             Console.WriteLine("Норма калорий: ");
-                            disabled.Сaloric(height, weight, sex, age);
+                            disabled.Сaloric(height, weight, sex, age);//вызов переопределенного метода базового класса 
                             Console.WriteLine("Норма воды: ");
-                            disabled.Water(weight, sex);
+                            disabled.Water(weight, sex);//вызов переопределенного метода базового класса 
                             Console.WriteLine("Показатель состояния вашего тела по ИМТ: ");
                             person.IMT(weight, height);
                             break;
@@ -359,9 +359,9 @@ namespace lab5
                         {
                             Sedentary sedentary = new Sedentary(name, surname, age, height, weight);
                             Console.WriteLine("Норма калорий: ");
-                            sedentary.Сaloric(height, weight, sex, age);
+                            sedentary.Сaloric(height, weight, sex, age);//вызов переопределенного метода базового класса 
                             Console.WriteLine("Норма воды: ");
-                            sedentary.Water(weight, sex);
+                            sedentary.Water(weight, sex);//вызов переопределенного метода базового класса 
                             Console.WriteLine("Показатель состояния вашего тела по ИМТ: ");
                             person.IMT(weight, height);
                             break;
@@ -370,9 +370,9 @@ namespace lab5
                         {
                             Healthy healthy = new Healthy(name, surname, age, height, weight);
                             Console.WriteLine("Норма калорий: ");
-                            healthy.Сaloric(height, weight, sex, age);
+                            healthy.Сaloric(height, weight, sex, age);//вызов переопределенного метода базового класса 
                             Console.WriteLine("Норма воды: ");
-                            healthy.Water(weight, sex);
+                            healthy.Water(weight, sex);//вызов переопределенного метода базового класса 
                             Console.WriteLine("Показатель состояния вашего тела по ИМТ: ");
                             person.IMT(weight, height);
                             break;
@@ -381,9 +381,9 @@ namespace lab5
                         {
                             Sports sports = new Sports(name, surname, age, height, weight);
                             Console.WriteLine("Ваша норма калорий: ");
-                            sports.Сaloric(height, weight, sex, age);
+                            sports.Сaloric(height, weight, sex, age);//вызов переопределенного метода базового класса 
                             Console.WriteLine("Ваша норма воды: ");
-                            sports.Water(weight, sex);
+                            sports.Water(weight, sex);//вызов переопределенного метода базового класса 
                             Console.WriteLine("Показатель состояния вашего тела по ИМТ: ");
                             person.IMT(weight, height);
                             break;
@@ -391,9 +391,9 @@ namespace lab5
                     default:
                         {
                             Console.WriteLine("Ваша норма калорий без учета физической активности: ");
-                            person.Сaloric(height, weight, sex, age);
+                            person.Сaloric(height, weight, sex, age);//вызов метода базового класса 
                             Console.WriteLine("Ваша норма воды без учета физической активности: ");
-                            person.Water(weight, sex);
+                            person.Water(weight, sex);//вызов метода базового класса 
                             Console.WriteLine("Показатель состояния вашего тела по ИМТ: ");
                             person.IMT(weight, height);
                             break;

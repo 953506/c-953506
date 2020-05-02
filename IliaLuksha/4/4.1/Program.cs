@@ -18,36 +18,20 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            int num = 0, num1 = 0;
             while (true)
             {
+                //true
                 int Key = Convert.ToInt32(Console.ReadKey(true).Key);
                 Class1 example1 = new Class1();
-                num = example1.IfNumPad(Key,num);
-                num1 = example1.IfCaps(Key,num1);
-                if (num == 0)//NumPad
-                {
+
                     if((GetKeyState(16) == 65408 || GetKeyState(16) == 65409)) // Shift
                     {
                         example1.Shift(Key);    
                     }
                     else
                     {
-                        if (num1 != 0)
-                        {
-                            example1.Caps(Key);
-                        }
-                        else
-                        {
-                            example1.Ifer(Key);
-                        }
-                    }
-                }
-                else
-                {
-                    example1.NumPad(Key);
-                }
-                
+                        example1.Ifer(Key);
+                    }               
             } 
         }
     }

@@ -2,7 +2,7 @@
 
 namespace Lab3
 {
-    class Human : Personality, IHuman
+    class Human : Personality, IHuman, IEquatable<Human>
     {
         protected int criminalRecord;
         protected string familyCondition;
@@ -83,6 +83,16 @@ namespace Lab3
         }
 
         public virtual void InstitutionType() { }
+        
+        public bool Equals(Human other)
+        {
+            return this.firstname == other.firstname
+                && this.lastname == other.lastname
+                && this.birthdate == other.birthdate
+                && this.sex == other.sex
+                && this.height == other.height
+                && this.weight == other.weight;
+        }
     }
 }
 

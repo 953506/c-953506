@@ -6,6 +6,12 @@ namespace Lab3
     {
         static void Main(string[] args)
         {
+            var kid1 = new Schoolkid("James", "Hope", new DateTime(2000, 8, 12), Sex.Male, 167, 45, "6 A", "summer");
+            var kid2 = new Schoolkid("Molly", "Blame", new DateTime(2010, 8, 12), Sex.Male, 167, 45, "6 A", "summer");
+            Console.WriteLine(kid1.Equals(kid2));
+            var kid3 = new Schoolkid("James", "Hope", new DateTime(2000, 8, 12), Sex.Male, 167, 45, "6 A", "summer");
+            Console.WriteLine(kid1.Equals(kid3));
+            
             Console.WriteLine("Enter firstname:");
             var firstname = Console.ReadLine();
 
@@ -80,7 +86,7 @@ namespace Lab3
                     {
                         var worker = new Worker(firstname, lastname, birthdate, sex, heigth, weigth,
                             info.GetFullYears());
-                        IMoney rise = worker;
+                        IPayable rise = worker;
                         worker.InstitutionType();
                         worker.InformationAboutJob();
                         worker.Vacation();

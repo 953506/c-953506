@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab3
 {
-    public interface IMoney
+    public interface IPayable
     {
         int Money { get; }
         void Rise(int money);

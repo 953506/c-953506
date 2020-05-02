@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace laba_5
+namespace laba_5_edit
 {
     abstract class Transport
     {

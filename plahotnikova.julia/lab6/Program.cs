@@ -57,8 +57,6 @@ namespace Lab3
                         var holidays = Console.ReadLine();
                         var schoolkid = new Schoolkid(firstname, lastname, birthdate, sex, heigth, weigth,
                             info.GetFullYears(), grade, holidays);
-                        var schoolkid = new Schoolkid(firstname, lastname, birthdate, sex, heigth, weigth, 
-                                                      info.GetFullYears(), grade, holidays);
                         human = new Schoolkid(firstname, lastname, birthdate, sex, heigth, weigth,
                                               info.GetFullYears(), grade, holidays);
                         human.InstitutionType();

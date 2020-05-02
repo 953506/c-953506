@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace z1
 {
-    abstract class Firearm : IComparable, IFirearm
+    class Firearm : IComparable, IFirearm
     {
         protected struct Name
         {
@@ -42,9 +42,9 @@ namespace z1
             _sobran = true;
             _fuse = true;
         }
-        public abstract void Shot();
-        public abstract void Charac();
-        public abstract void Menu();
+        public virtual void Shot() { }
+        public virtual void Charac() { }
+        public virtual void Menu() { }
         public virtual void Razbor() { }
         public virtual void Zaryad() { }
         public virtual void Zatvor() { }

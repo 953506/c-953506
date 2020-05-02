@@ -10,13 +10,12 @@ class Program
     }
     static void Main()
     {
-        ConsoleKeyInfo key;
         Programmer a = new Programmer();
         while(true)
         {
             Clear();
             Menu();
-            switch ((key = ReadKey(true)).Key)
+            switch (ReadKey(true).Key)
             {
                 case ConsoleKey.D0: return;
                 case ConsoleKey.D1: a.Creat(a);WriteLine("Нажмите любую клавишу, чтобы продолжить...");  ReadKey(true); break;

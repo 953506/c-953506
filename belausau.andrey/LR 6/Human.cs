@@ -31,6 +31,7 @@ namespace Pudge
         public bool IsDead { get; protected set; }
 
         public bool IsIll { get; protected set; }
+        
         public int Age { get; }
 
         //Методы

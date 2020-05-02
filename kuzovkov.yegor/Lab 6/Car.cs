@@ -1,8 +1,9 @@
 ﻿using System;
+using Lab_6_Ind_1;
 
 namespace Lab_5_Ind_1
 {
-    class Car : Transport
+    class Car : Transport, IComparable
     {
         //fields
         protected uint price = 0;
@@ -87,14 +88,23 @@ namespace Lab_5_Ind_1
         //methods
         public virtual void Beep() {Console.WriteLine("BEEP!\a");}
        
-
         public void Calculate()
         {
             price = numberOfSeats * 2000 + trunkSize * 2;
-            if (ComfortLevel == "high")
+            if (comfortLevel == "high")
                 price *= 3;
-            else if (ComfortLevel == "medium")
+            else if (comfortLevel == "medium")
                 price *= 2;
         }
+		
+		//IComparable implementation
+		public int CompareTo(object o)
+		{
+			Car c = o as Car;
+			if(c != null)
+				return this.Price.CompareTo(c.Price);
+			else
+				throw new Exception("Error. Unable to compare these objects.");
+		}
     }
 }

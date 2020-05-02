@@ -1,10 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
+using Lab_5_Ind_1;
 
-namespace Lab_5_Ind_1
+namespace Lab_6_Ind_1
 {
-    class Mercedes : Car
+    class Mercedes : Car, IMovable, Models
     {
         //fields
         public enum Model
@@ -16,9 +15,6 @@ namespace Lab_5_Ind_1
             Gelandewagen
         }
 
-        private Model _currentModel;
-        private CarType _currentType;
-
         //constructors
         public Mercedes(string Name, string Color, string ComfortLevel, uint YearMade, uint NumberOfSeats, uint TrunkSize, Model NeededModel, CarType NeededType)
         {
@@ -28,25 +24,29 @@ namespace Lab_5_Ind_1
             yearMade = YearMade;
             numberOfSeats = NumberOfSeats;
             trunkSize = TrunkSize;
-            _currentModel = NeededModel;
-            _currentType = NeededType;
+            CurrentModel = NeededModel;
+            CurrentType = NeededType;
         }
 
         //properties
-        public Model CurrentModel
-        {
-            get => _currentModel;
-        }
+        public Model CurrentModel { get; }
 
-        public CarType CurrentType
-        {
-            get => _currentType;
-        }
+        public CarType CurrentType { get; }
 
         //methods
         public override void Beep()
         {
             Console.WriteLine("Get low, get low, get looow!");
         }
+		
+        public void ShowModels()
+        {
+            Console.WriteLine("The models of Mercedes are: ");
+            for (Model toShow = Model.W123; toShow <= Model.Gelandewagen; toShow++)
+            {
+                Console.WriteLine(toShow);
+            }
+            Console.WriteLine();
+        }		
     }
 }

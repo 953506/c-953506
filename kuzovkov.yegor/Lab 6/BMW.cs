@@ -1,21 +1,23 @@
 using System;
+using Lab_5_Ind_1;
 
-namespace Lab_5_Ind_1
+namespace Lab_6_Ind_1
 {
-    class BMW : Car
+    class BMW : Car, IMovable, IModels
     {
         //fields
         public enum Model
         {
-           Z8,
-           I8,  
-           M5,
-           M3,
-           X5
+            Z8,
+            I8,
+            M5,
+            M3,
+            X5
         }
 
         private Model _currentModel;
         private CarType _currentType;
+        private bool _available = true;
 
         //constructor
         public BMW(string Name, string Color, string ComfortLevel, uint YearMade, uint NumberOfSeats, uint TrunkSize, Model NeededModel, CarType NeededType)
@@ -31,7 +33,7 @@ namespace Lab_5_Ind_1
         }
 
         //destructor
-        ~BMW() {Console.WriteLine("LUL");}
+        ~BMW() { Console.WriteLine("LUL"); }
 
         //properties
         public Model CurrentModel
@@ -44,10 +46,22 @@ namespace Lab_5_Ind_1
             get => _currentType;
         }
 
+        public bool Available { get; set; }
+
         //methods
         public override void Beep()
         {
             Console.WriteLine("E-RON-DON-DON!!!\a\n");
-        }
+        } 
+        
+        public void ShowModels()
+        {
+            Console.WriteLine("The models of BMW are: ");
+            for (Model toShow = Model.Z8; toShow <= Model.X5; toShow++)
+            {
+                Console.WriteLine(toShow);
+            }
+            Console.WriteLine();
+        }		
     }
 }

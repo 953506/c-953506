@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections;
 
-namespace Lab_5_Ind_1
+namespace Lab_6_Ind_1
 {
-    abstract class Transport
+    abstract class Transport : IEnumerable
     {
         //fields
         protected static int seriesNumber;
@@ -47,9 +48,9 @@ namespace Lab_5_Ind_1
         {
             get => seriesNumber;
         }
-		
-		
-		//indexer
+
+
+        //indexer
         public int this[int digit]
         {
             get => registrationNumber[digit];
@@ -69,5 +70,11 @@ namespace Lab_5_Ind_1
 
         //destructor
         ~Transport() { }
+
+        //IEnumebrable implementation
+        public IEnumerator GetEnumerator()
+        {
+            return registrationNumber.GetEnumerator();
+        }
     }
 }

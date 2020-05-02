@@ -12,24 +12,20 @@ namespace ЛабораторнаяСШ3
         double srb = 0;
         public string Name
         {
-            get { return name; }
             set { }
         }
         public string SName
         {
-            get { return sname; }
             set { }
         }
         public int Age
         {
-            get { return age; }
             set { if (value < 0) age = 0;
                 if (value > 0) age = value;
             }
         }
         public int Course
         {
-            get { return course; }
             set
             {
                 if (value < 1) course = 1;

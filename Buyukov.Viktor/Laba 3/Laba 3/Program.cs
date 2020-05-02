@@ -4,9 +4,9 @@ namespace Laba_3
 {
     class Car 
     {
-        private int Cost;
-        private string Name;
-        private string Number;
+        private int Cost {get; set;};
+        private string Name {get; set;};
+        private string Number {get; set;};
 
         static public int Check(string stroka)
         {
@@ -32,8 +32,7 @@ namespace Laba_3
                     {
                         Console.Write("\nEnter information again = ");
                         stroka = Console.ReadLine();
-                    }
-                
+                    }                
             }
             return chislo;
         }

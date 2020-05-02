@@ -31,6 +31,21 @@ namespace Lab_5_Ind_1
             Console.WriteLine($"1. Number of seats: {friendsCar.Seats}\n2. Engine volume: {friendsEngine.Volume}\n3. Engine cylinders number: {friendsEngine.Cylinders}");
             Console.WriteLine($"4. Engine power: {friendsEngine.Power}\n5. Engine ecology class: {friendsEngine.EcoClass}\n");
             Console.WriteLine($"The price is {friendsCar.Price}\n\n");
+			
+			//My interfaces used in action. IModels goest first
+            Console.WriteLine("Additional functions: ");
+            Console.WriteLine("The program will show all models available:");
+            myCar.ShowModels();
+            friendsCar.ShowModels();
+            
+            IModels testCar = new BMW("Auto", "Green", "low", 2010, 4, 65,  BMW.Model.X5, Car.CarType.SUV);
+            testCar.Restore(testCar.Available);
+            testCar.Buy(testCar.Available);
+            Console.WriteLine(testCar.Available);
+            
+            IMovable anotherCar = new Mercedes("Auto", "Silver", "medium", 2012, 4, 400, Mercedes.Model.W140, Car.CarType.Sedan);
+            anotherCar.MaxSpeed = int.Parse(Console.ReadLine());
+            Console.WriteLine("The time it takes the vehicle to get to destination point is: {0}", anotherCar.GetTime(250, anotherCar.MaxSpeed));
         }
     }
 }

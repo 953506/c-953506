@@ -70,6 +70,11 @@ namespace lab5
         public Provero4ka provero4ka;
         public string _name, _surname;
 
+        public virtual void Inf()
+        {
+            Console.WriteLine("Т.к вы человек, у вас есть желательная норма калорий и норма воды в день");
+        }
+
         public virtual void Сaloric(int height, int weight, Gender gender, int age)//полиморфный метод класса
         {
             if (gender == Gender.Male)
@@ -146,6 +151,11 @@ namespace lab5
             provero4ka.Weight = weight;
         }
 
+        public virtual void Inf(string name)
+        {
+            Console.WriteLine("{0},т.к вы человек c ограниченными возможностями, у вас есть желательная норма калорий и норма воды в день", name);
+        }
+
         public override void Сaloric(int height, int weight, Gender gender, int age)//переопределение виртуального метода базового класса Person
         {
             if (gender == Gender.Male)
@@ -186,6 +196,11 @@ namespace lab5
             provero4ka.Age = age;
             provero4ka.Height = height;
             provero4ka.Weight = weight;
+        }
+
+        public virtual void Inf(string name)
+        {
+            Console.WriteLine("{0},т.к вы человек c сидячем образом жизни, у вас есть желательная норма калорий и норма воды в день", name);
         }
 
         public override void Сaloric(int height, int weight, Gender gender, int age)//переопределение виртуального метода базового класса Person
@@ -231,6 +246,11 @@ namespace lab5
             provero4ka.Weight = weight;
         }
 
+        public virtual void Inf(string name)
+        {
+            Console.WriteLine("{0},т.к вы человек cо здоровым образом жизни, у вас есть желательная норма калорий и норма воды в день", name);
+        }
+
         public override void Сaloric(int height, int weight, Gender gender, int age)//переопределение виртуального метода базового класса Person
         {
             if (gender == Gender.Male)
@@ -271,6 +291,11 @@ namespace lab5
             provero4ka.Age = age;
             provero4ka.Height = height;
             provero4ka.Weight = weight;
+        }
+
+        public virtual void Inf(string name)
+        {
+            Console.WriteLine("{0},т.к вы спортсмен, у вас есть желательная норма калорий и норма воды в день", name);
         }
 
         public override void Сaloric(int height, int weight, Gender gender, int age)//переопределение виртуального метода базового класса Person
@@ -347,10 +372,12 @@ namespace lab5
                     case 1:
                         {
                             Disabled disabled = new Disabled(name, surname, age, height, weight);
+                            person.Inf();
+                            disabled.Inf(name);
                             Console.WriteLine("Норма калорий: ");
-                            disabled.Сaloric(height, weight, sex, age);//вызов переопределенного метода базового класса 
+                            disabled.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Норма воды: ");
-                            disabled.Water(weight, sex);//вызов переопределенного метода базового класса 
+                            disabled.Water(weight, sex);
                             Console.WriteLine("Показатель состояния вашего тела по ИМТ: ");
                             person.IMT(weight, height);
                             break;
@@ -358,10 +385,12 @@ namespace lab5
                     case 2:
                         {
                             Sedentary sedentary = new Sedentary(name, surname, age, height, weight);
+                            person.Inf();
+                            sedentary.Inf(name);
                             Console.WriteLine("Норма калорий: ");
-                            sedentary.Сaloric(height, weight, sex, age);//вызов переопределенного метода базового класса 
+                            sedentary.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Норма воды: ");
-                            sedentary.Water(weight, sex);//вызов переопределенного метода базового класса 
+                            sedentary.Water(weight, sex);
                             Console.WriteLine("Показатель состояния вашего тела по ИМТ: ");
                             person.IMT(weight, height);
                             break;
@@ -369,10 +398,12 @@ namespace lab5
                     case 3:
                         {
                             Healthy healthy = new Healthy(name, surname, age, height, weight);
+                            person.Inf();
+                            healthy.Inf(name);
                             Console.WriteLine("Норма калорий: ");
-                            healthy.Сaloric(height, weight, sex, age);//вызов переопределенного метода базового класса 
+                            healthy.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Норма воды: ");
-                            healthy.Water(weight, sex);//вызов переопределенного метода базового класса 
+                            healthy.Water(weight, sex);
                             Console.WriteLine("Показатель состояния вашего тела по ИМТ: ");
                             person.IMT(weight, height);
                             break;
@@ -380,10 +411,12 @@ namespace lab5
                     case 4:
                         {
                             Sports sports = new Sports(name, surname, age, height, weight);
+                            person.Inf();
+                            sports.Inf(name);
                             Console.WriteLine("Ваша норма калорий: ");
-                            sports.Сaloric(height, weight, sex, age);//вызов переопределенного метода базового класса 
+                            sports.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Ваша норма воды: ");
-                            sports.Water(weight, sex);//вызов переопределенного метода базового класса 
+                            sports.Water(weight, sex);
                             Console.WriteLine("Показатель состояния вашего тела по ИМТ: ");
                             person.IMT(weight, height);
                             break;
@@ -391,9 +424,9 @@ namespace lab5
                     default:
                         {
                             Console.WriteLine("Ваша норма калорий без учета физической активности: ");
-                            person.Сaloric(height, weight, sex, age);//вызов метода базового класса 
+                            person.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Ваша норма воды без учета физической активности: ");
-                            person.Water(weight, sex);//вызов метода базового класса 
+                            person.Water(weight, sex);
                             Console.WriteLine("Показатель состояния вашего тела по ИМТ: ");
                             person.IMT(weight, height);
                             break;

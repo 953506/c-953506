@@ -101,10 +101,7 @@ abstract class Human
         WriteLine("Мама: {0}",_parent[1]);
     }
 
-    public int CalculateAge()
-    {
-            return DateTime.Now.Year - Birthdate.Year;
-    }
+    public int CalculateAge() => (DateTime.Now.Year - Birthdate.Year);
 
     public abstract void ImportantDates();
 

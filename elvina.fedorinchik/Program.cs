@@ -1,0 +1,293 @@
+﻿using System;
+
+namespace laba_6
+{
+    interface IComparer<T>
+    {
+        void Compare(T o1, T o2);
+    }
+    interface IRider
+    {
+        void Ride();
+    }
+    abstract class Transport
+    {
+        protected static int ID = 0;
+    }
+    public struct TechnicalProperties
+    {
+        private int _maxSpeed;
+        public int MaxSpeed
+        {
+            get { return _maxSpeed; }
+            set
+            {
+                if (value < 0 || value > 453)
+                {
+                    Console.WriteLine("Wrong data");
+                    Environment.Exit(-1);
+                }
+                else
+                {
+                    _maxSpeed = value;
+                }
+            }
+        }
+        private float _enginCapacity;
+        public float EngineCapacity
+        {
+            get => _enginCapacity;
+            set
+            {
+                if (value < 0)
+                {
+                    Console.WriteLine("Wrong data");
+                    Environment.Exit(-1);
+                }
+                _enginCapacity = value;
+            }
+        }
+        public void ShowTechinicalProp(Marks mark)
+        {
+            if (mark != Marks.tesla)
+            {
+                Console.WriteLine($"Engine capacity: {EngineCapacity}");
+                Console.WriteLine($"Max speed: {MaxSpeed}");
+            }
+        }
+    }
+
+
+    class CarComparer : IComparer<Car>
+    {
+        public void Compare(Car o1, Car o2)
+        {
+            if (o1.technicalProperties.MaxSpeed > o2.technicalProperties.MaxSpeed)
+            {
+                Console.WriteLine($"{o1.Name_of_model} is faster than {o2.Name_of_model}");
+            }
+            else
+            {
+                if (o2.technicalProperties.MaxSpeed > o1.technicalProperties.MaxSpeed)
+                    Console.WriteLine($"{o2.Name_of_model} is faster than {o1.Name_of_model}");
+                else
+                {
+                    Console.WriteLine($"{o1.Name_of_model}'s speed equals {o2.Name_of_model}");
+                }
+            }
+        }
+    }
+
+    abstract class Car : Transport, IRider
+    {
+        public Car(Marks mark)
+        {
+            this.Mark = mark;
+        }
+        public TechnicalProperties technicalProperties;
+        private Marks mark;
+        public abstract void Ride();
+        public string Name_of_model { get; protected set; }
+        public string Type_of_engine { get; protected set; }
+        public int Price { get; protected set; }
+        public Marks Mark { get { return mark; } protected set { mark = value; } }
+    }
+    class Tesla : Car
+    {
+        public Tesla(string name_of_model, int maxspeed, int price, string type_of_engine, Marks mark)
+            : base(mark)
+        {
+            Console.WriteLine("Elon says hello to you");
+            Name_of_model = name_of_model;
+            technicalProperties.MaxSpeed = maxspeed;
+            Price = price;
+            if (type_of_engine != "electrical")
+                Console.WriteLine("Wrong type of engine. It will be seted to electrical");
+            Type_of_engine = "electrical";
+        }
+        public override void Ride()
+        {
+            Console.WriteLine(". . .");
+        }
+    }
+
+    class Mercedez_Benz : Car
+    {
+        public Mercedez_Benz(string name_of_model, int maxspeed, int price, string type_of_engine, float engineCapacity, Marks mark)
+            : base(mark)
+        {
+            technicalProperties.EngineCapacity = engineCapacity;
+            Console.WriteLine("Creative technilogy");
+            Name_of_model = name_of_model;
+            technicalProperties.MaxSpeed = maxspeed;
+            Price = price;
+            Type_of_engine = type_of_engine;
+        }
+        public override void Ride()
+        {
+            Console.WriteLine("r r r");
+        }
+    }
+
+    class Bugatti : Car
+    {
+        public Bugatti(string name_of_model, int maxspeed, int price, string type_of_engine, float engineCapacity, Marks mark)
+            : base(mark)
+        {
+            technicalProperties.EngineCapacity = engineCapacity;
+            Console.WriteLine("One of the fastest cars in the world");
+            Name_of_model = name_of_model;
+            technicalProperties.MaxSpeed = maxspeed;
+            Price = price;
+            if (type_of_engine != "combsution")
+            {
+                Console.WriteLine("Type of engine of Bugatti can be only combustion");
+            }
+            Type_of_engine = "combsution";
+        }
+        public override void Ride()
+        {
+            Console.WriteLine("RRRRRRRRRRRRRRRRRRRRRRR");
+        }
+    }
+
+    class Collection
+    {
+        Car[] cars;
+        private int _quantity;
+        public Collection(int count)
+        {
+            cars = new Car[count];
+            Quantity = count;
+        }
+        public Car this[int index]
+        {
+            get
+            {
+                return cars[index];
+            }
+            set
+            {
+                cars[index] = value;
+            }
+        }
+
+        public int Quantity { get => _quantity; private set => _quantity = value; }
+
+        public void showInfo()
+        {
+            Console.WriteLine("\nGeneral info\n");
+            for (int i = 0; i < Quantity; i++)
+            {
+                Console.WriteLine($"Car #{i + 1}");
+                switch (cars[i].Mark)
+                {
+                    case Marks.bugatti:
+                        Console.Write("Bugatti ");
+                        break;
+                    case Marks.mercedez:
+                        Console.Write("Mercedez-Benz ");
+                        break;
+                    case Marks.tesla:
+                        Console.Write("Tesla ");
+                        break;
+                }
+                Console.WriteLine($"{cars[i].Name_of_model}");
+                Console.WriteLine($"Type of engine is {cars[i].Type_of_engine}");
+                cars[i].technicalProperties.ShowTechinicalProp(cars[i].Mark);
+                Console.WriteLine($"Price: {cars[i].Price}\n");
+
+            }
+        }
+    }
+
+    public enum Marks
+    {
+        mercedez,
+        bugatti,
+        tesla
+    }
+
+    class Program
+    {
+        public static void RideOnACar(Car car)
+        {
+            IRider rider = car;
+            rider.Ride();
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Create a cars collection");
+            Console.WriteLine("How much cars do you want to collect? Enter a number");
+            int _quantity = Convert.ToInt32(Console.ReadLine());
+            Collection collection = new Collection(_quantity);
+            for (int i = 0; i < _quantity; i++)
+            {
+                Console.WriteLine($"Choose a mark of the car #{i + 1}");
+                Console.WriteLine("\n1 - Mercedez\n2 - Bugatti\n3 - Tesla\n");
+                int choice = Convert.ToInt32(Console.ReadLine());
+                if (choice > 3 || choice < 1)
+                {
+                    Console.WriteLine("Wrong data");
+                    Environment.Exit(-1);
+                }
+                Console.WriteLine("Enter the name of model");
+                string name_of_model = Console.ReadLine();
+                Console.WriteLine("Enter the max speed of your car");
+                int maxSpeed = Convert.ToInt32((Console.ReadLine()));
+                Console.WriteLine("Enter the price of your car");
+                int price = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the type of engine");
+                string type_of_engine = Console.ReadLine();
+                float engineCapacity = 0;
+                if (choice != 3)
+                {
+                    Console.WriteLine("Enter the engine capacity");
+                    engineCapacity = (float)Convert.ToDouble(Console.ReadLine());
+                }
+                switch (choice)
+                {
+                    case 1:
+                        collection[i] = new Mercedez_Benz(name_of_model, maxSpeed, price, type_of_engine, engineCapacity, Marks.mercedez);
+                        break;
+                    case 2:
+                        collection[i] = new Bugatti(name_of_model, maxSpeed, price, type_of_engine, engineCapacity, Marks.bugatti);
+                        break;
+                    case 3:
+                        collection[i] = new Tesla(name_of_model, maxSpeed, price, type_of_engine, Marks.tesla);
+                        break;
+                }
+            }
+            collection.showInfo();
+            Console.WriteLine("Press any key . . . \n");
+            Console.ReadKey();
+            Console.WriteLine("Choose a car which you wanna ride (enter the number)");
+            int c = Convert.ToInt32(Console.ReadLine());
+            if (c < 1 || c > collection.Quantity)
+            {
+                Environment.Exit(-1);
+            }
+            else
+            {
+                RideOnACar(collection[c - 1]);
+            }
+            if (collection.Quantity >= 2)
+            {
+                Console.WriteLine("Enter 2 cars which you want to compare");
+                c = Convert.ToInt32(Console.ReadLine());
+                int c1 = Convert.ToInt32(Console.ReadLine());
+                if (c < 1 || c > collection.Quantity || c1 < 1 || c1 > collection.Quantity)
+                {
+                    Environment.Exit(-1);
+                }
+                else
+                {
+                    CarComparer carComparer = new CarComparer();
+                    carComparer.Compare(collection[c - 1], collection[c1 - 1]);
+                }
+            }
+            Console.ReadKey();
+        }
+
+    }
+}

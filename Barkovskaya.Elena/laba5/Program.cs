@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace laba3
 {
     abstract class Car
@@ -43,6 +42,7 @@ namespace laba3
                 _mark = value;
             }
         }
+        
         public string Model
         {
             get
@@ -54,6 +54,7 @@ namespace laba3
                 _model = value;
             }
         }
+        
         public int Age
         {
             get
@@ -211,8 +212,7 @@ namespace laba3
                 choice = Console.ReadLine();
                 Console.WriteLine($"your average earnings per month can be about {Convert.ToInt32(choice) * 15} BYN");
             }
-        }
-        
+        }    
     }
 
     class Autotruck : MarkCar

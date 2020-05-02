@@ -92,6 +92,7 @@ class Worker : Human
             case 1: AddReSize(ref _award); break;
             case 2: AddReSize(ref _penalty); break;
             case 3: AddReSize(ref _languages); break;
+            default: return;
         }
     }
 

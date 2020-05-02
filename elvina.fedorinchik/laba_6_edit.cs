@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace laba_6
+namespace laba_6_edit
 {
     interface IComparer<T>
     {

@@ -1,5 +1,6 @@
 ﻿using System;
 using static System.Console;
+
 class Programmer : IProgrammer
 {
     public static int _number;

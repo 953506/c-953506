@@ -16,7 +16,6 @@ public interface IProgrammer : IWorker
     public void Cout()
     {
         Clear();
-        HCout();
         WCout();
         WriteLine("Образование: {0}",Education);
         WriteLine("Специализация: {0}", Specialization);

@@ -336,7 +336,7 @@ namespace _3
             }
         }
 
-        public override void CreateMe()
+        public override void I()
         {
             Console.WriteLine("I'm a workMan");
         }

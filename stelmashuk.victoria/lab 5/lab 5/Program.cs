@@ -70,11 +70,6 @@ namespace lab5
         public Provero4ka provero4ka;
         public string _name, _surname;
 
-        public virtual void Inf(string name)
-        {
-            Console.WriteLine("Т.к вы человек, у вас есть желательная норма калорий и норма воды в день");
-        }
-
         public virtual void Сaloric(int height, int weight, Gender gender, int age)//полиморфный метод класса
         {
             if (gender == Gender.Male)
@@ -151,11 +146,6 @@ namespace lab5
             provero4ka.Weight = weight;
         }
 
-        public override void Inf(string name)
-        {
-            Console.WriteLine("{0},т.к вы человек c ограниченными возможностями, у вас есть желательная норма калорий и норма воды в день", name);
-        }
-
         public override void Сaloric(int height, int weight, Gender gender, int age)//переопределение виртуального метода базового класса Person
         {
             if (gender == Gender.Male)
@@ -196,11 +186,6 @@ namespace lab5
             provero4ka.Age = age;
             provero4ka.Height = height;
             provero4ka.Weight = weight;
-        }
-
-        public override void Inf(string name)
-        {
-            Console.WriteLine("{0},т.к вы человек c сидячем образом жизни, у вас есть желательная норма калорий и норма воды в день", name);
         }
 
         public override void Сaloric(int height, int weight, Gender gender, int age)//переопределение виртуального метода базового класса Person
@@ -246,11 +231,6 @@ namespace lab5
             provero4ka.Weight = weight;
         }
 
-        public override void Inf(string name)
-        {
-            Console.WriteLine("{0},т.к вы человек cо здоровым образом жизни, у вас есть желательная норма калорий и норма воды в день", name);
-        }
-
         public override void Сaloric(int height, int weight, Gender gender, int age)//переопределение виртуального метода базового класса Person
         {
             if (gender == Gender.Male)
@@ -291,11 +271,6 @@ namespace lab5
             provero4ka.Age = age;
             provero4ka.Height = height;
             provero4ka.Weight = weight;
-        }
-
-        public override void Inf(string name)
-        {
-            Console.WriteLine("{0},т.к вы спортсмен, у вас есть желательная норма калорий и норма воды в день", name);
         }
 
         public override void Сaloric(int height, int weight, Gender gender, int age)//переопределение виртуального метода базового класса Person
@@ -371,9 +346,7 @@ namespace lab5
                 {
                     case 1:
                         {
-                            Disabled disabled = new Disabled(name, surname, age, height, weight);
-                            person.Inf(name);
-                            disabled.Inf(name);
+                            Person disabled = new Disabled(name, surname, age, height, weight);
                             Console.WriteLine("Норма калорий: ");
                             disabled.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Норма воды: ");
@@ -384,9 +357,7 @@ namespace lab5
                         }
                     case 2:
                         {
-                            Sedentary sedentary = new Sedentary(name, surname, age, height, weight);
-                            person.Inf(name);
-                            sedentary.Inf(name);
+                            Person sedentary = new Sedentary(name, surname, age, height, weight);
                             Console.WriteLine("Норма калорий: ");
                             sedentary.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Норма воды: ");
@@ -397,9 +368,7 @@ namespace lab5
                         }
                     case 3:
                         {
-                            Healthy healthy = new Healthy(name, surname, age, height, weight);
-                            person.Inf(name);
-                            healthy.Inf(name);
+                            Person healthy = new Healthy(name, surname, age, height, weight);
                             Console.WriteLine("Норма калорий: ");
                             healthy.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Норма воды: ");
@@ -410,9 +379,7 @@ namespace lab5
                         }
                     case 4:
                         {
-                            Sports sports = new Sports(name, surname, age, height, weight);
-                            person.Inf(name);
-                            sports.Inf(name);
+                            Person sports = new Sports(name, surname, age, height, weight);
                             Console.WriteLine("Ваша норма калорий: ");
                             sports.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Ваша норма воды: ");
@@ -423,7 +390,6 @@ namespace lab5
                         }
                     default:
                         {
-                            person.Inf(name);
                             Console.WriteLine("Ваша норма калорий без учета физической активности: ");
                             person.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Ваша норма воды без учета физической активности: ");

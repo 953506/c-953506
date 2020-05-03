@@ -29,7 +29,7 @@ namespace Pudge
             {
                 do
                 {
-                    Console.WriteLine("Enter first fraction\nExample - 1/2");
+                    Console.WriteLine("Enter first fraction\nExamples: 1/2; -0,5; 54");
                     flag = Fraction.TryParse(Console.ReadLine(), out num1);
                 } while (!flag);
 

@@ -22,10 +22,10 @@ namespace Pudge
         //Методы
         public static bool TryParse(string str, out Fraction fraction)
         {
-            string pattern = @"^-?[0-9]{1,9}/?|,?[0-9]{1,9}$";
+            Regex pattern = new Regex(@"^-?[0-9]{1,9}/|,[0-9]{1,9}$");
             fraction = null;
-            
-            if (Regex.IsMatch(str,pattern))
+
+            if (pattern.IsMatch(str))
             {
                 string[] numParts = str.Split('/');
 

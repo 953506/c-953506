@@ -79,6 +79,12 @@ namespace Lab3
                 _status = "Wiseacre";
             }
         }
+        
+        public bool Equals(Schoolkid other)
+        {
+            return this.ToString() == other.ToString();
+        }
+        
         public override string ToString()
         {
             return $"Name: {firstname}, {lastname};" + Environment.NewLine +

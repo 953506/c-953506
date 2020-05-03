@@ -28,6 +28,7 @@ namespace Pudge
         public int AverageMark { get; set; }
 
         public bool IsInArmy { get; set; }
+        
         public bool IsKicked { get; set; }
 
         public string University { get; set; }

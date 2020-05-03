@@ -6,6 +6,12 @@ namespace Lab3
     {
         static void Main(string[] args)
         {
+            var kid1 = new Schoolkid("James", "Hope", new DateTime(2000, 8, 12), Sex.Male, 167, 45, "6 A", "summer");
+            var kid2 = new Schoolkid("Molly", "Blame", new DateTime(2010, 8, 12), Sex.Male, 167, 45, "6 A", "summer");
+            Console.WriteLine(kid1.Equals(kid2));
+            var kid3 = new Schoolkid("James", "Hope", new DateTime(2000, 8, 12), Sex.Male, 167, 45, "6 A", "summer");
+            Console.WriteLine(kid1.Equals(kid3));
+            
             Console.WriteLine("Enter firstname:");
             var firstname = Console.ReadLine();
 
@@ -39,6 +45,7 @@ namespace Lab3
 
             Console.WriteLine("You are:\n1.Schoolkid\n2.Student\n3.Worker\n");
             int choice = Convert.ToInt32(Console.ReadLine());
+            р
 
             switch (choice)
             {
@@ -50,7 +57,9 @@ namespace Lab3
                         var holidays = Console.ReadLine();
                         var schoolkid = new Schoolkid(firstname, lastname, birthdate, sex, heigth, weigth,
                             info.GetFullYears(), grade, holidays);
-                        schoolkid.InstitutionType();
+                        human = new Schoolkid(firstname, lastname, birthdate, sex, heigth, weigth,
+                                              info.GetFullYears(), grade, holidays);
+                        human.InstitutionType();
                         schoolkid.YourStatus();
                         Console.WriteLine(schoolkid.ToString());
                         break;
@@ -69,7 +78,9 @@ namespace Lab3
 
                         var student = new Student(firstname, lastname, birthdate, sex, heigth, weigth,
                             info.GetFullYears(), speciality, year, groupnum, university);
-                        student.InstitutionType();
+                        human = new Student(firstname, lastname, birthdate, sex, heigth, weigth,
+                            info.GetFullYears(), speciality, year, groupnum, university);
+                        human.InstitutionType();
                         student.Dormitory();
                         Console.WriteLine(student.ToString());
                         student.EnterAnotherUniversity();
@@ -80,8 +91,10 @@ namespace Lab3
                     {
                         var worker = new Worker(firstname, lastname, birthdate, sex, heigth, weigth,
                             info.GetFullYears());
-                        IMoney rise = worker;
-                        worker.InstitutionType();
+                        IPayable rise = worker;
+                        human = new Worker(firstname, lastname, birthdate, sex, heigth, weigth,
+                            info.GetFullYears());
+                        human.InstitutionType();
                         worker.InformationAboutJob();
                         worker.Vacation();
                         Console.WriteLine(worker.ToString());

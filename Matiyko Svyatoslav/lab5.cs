@@ -23,11 +23,19 @@ namespace _3
             this.age = age;
         }
 
-         public override void CreateMe()
+        public override void CreateMe()
         {
             Console.WriteLine("Создаём личность............");
             Thread.Sleep(5000);
         }
+
+        public void GetSomeInfo(Human x)
+        {
+            x.PlaceOfLiving();
+            x.I();
+        }
+
+        public virtual void I() {}
 
         public virtual void PlaceOfLiving(){}
 
@@ -175,6 +183,11 @@ namespace _3
             }
         }
 
+        public override void I()
+        {
+            Console.WriteLine("I'm a school boy");
+        }
+
         public void Grade()
         {
             Console.Write("\nВ каком классе вы учитесь:");
@@ -233,6 +246,11 @@ namespace _3
                 break;
             }
         }
+
+        public override void CreateMe()
+        {
+            Console.WriteLine("I'm a student");
+        } 
 
         public void Course()
         {
@@ -318,6 +336,11 @@ namespace _3
             }
         }
 
+        public override void I()
+        {
+            Console.WriteLine("I'm a workMan");
+        }
+
         public void SetInfoAboutWorkMan()
         {   
             Console.WriteLine("\nв чем исчисляется ваша зп:\n1.USD\n2.BYN");
@@ -382,6 +405,7 @@ namespace _3
                     schoolBoy.YourAverageMark();
                     schoolBoy.YourSocialStatus();
                     schoolBoy.GetInfoAboutSchoolBoy();
+                    schoolBoy.GetSomeInfo(schoolBoy);                    
                     break;
 
                 case 2:
@@ -393,6 +417,7 @@ namespace _3
                     student.WorkStatus();
                     student.YourSocialStatus();
                     student.InforamationAboutStudent();
+                    student.GetSomeInfo(student);
                     break;
 
                 case 3:
@@ -403,6 +428,7 @@ namespace _3
                     workMan.SetInfoAboutWorkMan();
                     workMan.YourSocialStatus();
                     workMan.GetInfoAboutWorkMan();
+                    workMan.GetSomeInfo(workMan);
                     break;
             }
             Console.ReadLine();

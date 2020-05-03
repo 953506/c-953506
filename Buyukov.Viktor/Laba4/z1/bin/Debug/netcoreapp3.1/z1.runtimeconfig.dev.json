@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\vitya\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\vitya\\.nuget\\packages"
+    ]
+  }
+}

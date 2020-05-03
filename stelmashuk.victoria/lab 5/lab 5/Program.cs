@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace lab5
 {
@@ -15,7 +15,7 @@ namespace lab5
                 if (value == 0 || value > 120)
                 {
                     Console.WriteLine("Такого человека не существует");
-                    Environment.Exit(-1);
+                    Environment.Exit(0);
                 }
                 else
                 {
@@ -32,7 +32,7 @@ namespace lab5
                 if (value <= 20 || value > 250)
                 {
                     Console.WriteLine("Такого человека не существует");
-                    Environment.Exit(-1);
+                    Environment.Exit(0);
                 }
                 else
                 {
@@ -49,7 +49,7 @@ namespace lab5
                 if (value <= 0 || value > 250)
                 {
                     Console.WriteLine("Такого человека не существует");
-                    Environment.Exit(-1);
+                    Environment.Exit(0);
                 }
                 else
                 {
@@ -65,13 +65,12 @@ namespace lab5
         {
             Male = 0,
             Female = 1,
-            Unknown = 2
         }
 
         public Provero4ka provero4ka;
         public string _name, _surname;
 
-        public virtual void Сaloric(int height, int weight, Gender gender, int age) 
+        public virtual void Сaloric(int height, int weight, Gender gender, int age)//полиморфный метод класса
         {
             if (gender == Gender.Male)
             {
@@ -83,9 +82,10 @@ namespace lab5
                 double norma = 447.6 + 9.2 * weight + 3.1 * height - 4.3 * age;
                 Console.WriteLine(norma);
             }
+            else { Console.WriteLine("Вы неправильно ввели значение, поэтому не возможно правильно посчитать вашу норму."); }
         }
 
-        public virtual void Water(int weight, Gender gender) 
+        public virtual void Water(int weight, Gender gender)//полиморфный метод класса
         {
             if (gender == Gender.Male)
             {
@@ -97,6 +97,7 @@ namespace lab5
                 double norma = 30 * weight;
                 Console.WriteLine(norma);
             }
+            else { Console.WriteLine("Вы неправильно ввели значение, поэтому не возможно правильно посчитать вашу норму."); }
         }
 
         public void IMT(int weight, double height)
@@ -131,7 +132,7 @@ namespace lab5
             {
                 Console.WriteLine("Ожирение третьей степени");
             }
-        } 
+        }
     }
 
     class Disabled : Person
@@ -145,7 +146,7 @@ namespace lab5
             provero4ka.Weight = weight;
         }
 
-        public override void Сaloric(int height, int weight, Gender gender, int age)
+        public override void Сaloric(int height, int weight, Gender gender, int age)//переопределение виртуального метода базового класса Person
         {
             if (gender == Gender.Male)
             {
@@ -157,9 +158,10 @@ namespace lab5
                 double norma = 447.6 + 9.2 * weight + 3.1 * height - 4.3 * age;
                 Console.WriteLine(norma);
             }
+            else { Console.WriteLine("Вы неправильно ввели значение, поэтому не возможно правильно посчитать вашу норму."); }
         }
 
-        public override void Water(int weight, Gender gender)
+        public override void Water(int weight, Gender gender)//переопределение виртуального метода базового класса Person
         {
             if (gender == Gender.Male)
             {
@@ -171,6 +173,7 @@ namespace lab5
                 double norma = 30 * weight;
                 Console.WriteLine(norma);
             }
+            else { Console.WriteLine("Вы неправильно ввели значение, поэтому не возможно правильно посчитать вашу норму."); }
         }
     }
 
@@ -185,7 +188,7 @@ namespace lab5
             provero4ka.Weight = weight;
         }
 
-        public override void Сaloric(int height, int weight, Gender gender, int age)
+        public override void Сaloric(int height, int weight, Gender gender, int age)//переопределение виртуального метода базового класса Person
         {
             if (gender == Gender.Male)
             {
@@ -198,9 +201,10 @@ namespace lab5
                 double norma = (447.6 + 9.2 * weight + 3.1 * height - 4.3 * age) * 1.2;
                 Console.WriteLine(norma);
             }
+            else { Console.WriteLine("Вы неправильно ввели значение, поэтому не возможно правильно посчитать вашу норму."); }
         }
 
-        public override void Water(int weight, Gender gender)
+        public override void Water(int weight, Gender gender)//переопределение виртуального метода базового класса Person
         {
             if (gender == Gender.Male)
             {
@@ -212,6 +216,7 @@ namespace lab5
                 double norma = 30 * weight;
                 Console.WriteLine(norma);
             }
+            else { Console.WriteLine("Вы неправильно ввели значение, поэтому не возможно правильно посчитать вашу норму."); }
         }
     }
 
@@ -226,7 +231,7 @@ namespace lab5
             provero4ka.Weight = weight;
         }
 
-        public override void Сaloric(int height, int weight, Gender gender, int age)
+        public override void Сaloric(int height, int weight, Gender gender, int age)//переопределение виртуального метода базового класса Person
         {
             if (gender == Gender.Male)
             {
@@ -238,9 +243,10 @@ namespace lab5
                 double norma = (447.6 + 9.2 * weight + 3.1 * height - 4.3 * age) * 1.5;
                 Console.WriteLine(norma);
             }
+            else { Console.WriteLine("Вы неправильно ввели значение, поэтому не возможно правильно посчитать вашу норму."); }
         }
 
-        public override void Water(int weight, Gender gender)
+        public override void Water(int weight, Gender gender)//переопределение виртуального метода базового класса Person
         {
             if (gender == Gender.Male)
             {
@@ -252,6 +258,7 @@ namespace lab5
                 double norma = 30 * weight + 400;
                 Console.WriteLine(norma);
             }
+            else { Console.WriteLine("Вы неправильно ввели значение, поэтому не возможно правильно посчитать вашу норму."); }
         }
     }
 
@@ -266,7 +273,7 @@ namespace lab5
             provero4ka.Weight = weight;
         }
 
-        public override void Сaloric(int height, int weight, Gender gender, int age)
+        public override void Сaloric(int height, int weight, Gender gender, int age)//переопределение виртуального метода базового класса Person
         {
             if (gender == Gender.Male)
             {
@@ -279,9 +286,10 @@ namespace lab5
                 double norma = (447.6 + 9.2 * weight + 3.1 * height - 4.3 * age) * 1.8;
                 Console.WriteLine(norma);
             }
+            else { Console.WriteLine("Вы неправильно ввели значение, поэтому не возможно правильно посчитать вашу норму."); }
         }
 
-        public override void Water(int weight, Gender gender)
+        public override void Water(int weight, Gender gender)//переопределение виртуального метода базового класса Person
         {
             if (gender == Gender.Male)
             {
@@ -293,6 +301,7 @@ namespace lab5
                 double norma = 30 * weight + 800;
                 Console.WriteLine(norma);
             }
+            else { Console.WriteLine("Вы неправильно ввели значение, поэтому не возможно правильно посчитать вашу норму."); }
         }
     }
 
@@ -301,7 +310,7 @@ namespace lab5
         static void Main(string[] args)
         {
             string otvet2;
-            Console.WriteLine("Здравствуйте введите ваши данные: ");
+            Console.WriteLine("Здравствуйте введите нужные данные о человеке: ");
             do
             {
                 Person person = new Person();
@@ -313,15 +322,13 @@ namespace lab5
                 string surname = Console.ReadLine();
                 Console.Clear();
                 Console.WriteLine("Пол(введите 0, если мужской, а 1 если женский): ");
-                int gender = Convert.ToInt32(Console.ReadLine());
-                if (gender == 0 || gender == 1)
+                string gender1 = Console.ReadLine();
+                int gender;
+                if (!Int32.TryParse(gender1, out gender))
                 {
-                    sex = (Person.Gender)gender;
+                    Console.WriteLine("Ошибка ввода");
                 }
-                else
-                {
-                    sex = (Person.Gender)gender;
-                }
+                sex = (Person.Gender)gender;
                 Console.Clear();
                 Console.WriteLine("Возраст: ");
                 int age = Convert.ToInt32(Console.ReadLine());
@@ -339,7 +346,7 @@ namespace lab5
                 {
                     case 1:
                         {
-                            Disabled disabled = new Disabled(name, surname, age, height, weight);
+                            Person disabled = new Disabled(name, surname, age, height, weight);
                             Console.WriteLine("Норма калорий: ");
                             disabled.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Норма воды: ");
@@ -350,7 +357,7 @@ namespace lab5
                         }
                     case 2:
                         {
-                            Sedentary sedentary = new Sedentary(name, surname, age, height, weight);
+                            Person sedentary = new Sedentary(name, surname, age, height, weight);
                             Console.WriteLine("Норма калорий: ");
                             sedentary.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Норма воды: ");
@@ -361,7 +368,7 @@ namespace lab5
                         }
                     case 3:
                         {
-                            Healthy healthy = new Healthy(name, surname, age, height, weight);
+                            Person healthy = new Healthy(name, surname, age, height, weight);
                             Console.WriteLine("Норма калорий: ");
                             healthy.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Норма воды: ");
@@ -372,7 +379,7 @@ namespace lab5
                         }
                     case 4:
                         {
-                            Sports sports = new Sports(name, surname, age, height, weight);
+                            Person sports = new Sports(name, surname, age, height, weight);
                             Console.WriteLine("Ваша норма калорий: ");
                             sports.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Ваша норма воды: ");

@@ -1,0 +1,24 @@
+D:\Учёба. Семестр 2\ИСП\ЛР4\z1\bin\Debug\netcoreapp3.1\z1.exe
+D:\Учёба. Семестр 2\ИСП\ЛР4\z1\bin\Debug\netcoreapp3.1\z1.deps.json
+D:\Учёба. Семестр 2\ИСП\ЛР4\z1\bin\Debug\netcoreapp3.1\z1.runtimeconfig.json
+D:\Учёба. Семестр 2\ИСП\ЛР4\z1\bin\Debug\netcoreapp3.1\z1.runtimeconfig.dev.json
+D:\Учёба. Семестр 2\ИСП\ЛР4\z1\bin\Debug\netcoreapp3.1\z1.dll
+D:\Учёба. Семестр 2\ИСП\ЛР4\z1\bin\Debug\netcoreapp3.1\z1.pdb
+D:\Учёба. Семестр 2\ИСП\ЛР4\z1\obj\Debug\netcoreapp3.1\z1.csprojAssemblyReference.cache
+D:\Учёба. Семестр 2\ИСП\ЛР4\z1\obj\Debug\netcoreapp3.1\z1.AssemblyInfoInputs.cache
+D:\Учёба. Семестр 2\ИСП\ЛР4\z1\obj\Debug\netcoreapp3.1\z1.AssemblyInfo.cs
+D:\Учёба. Семестр 2\ИСП\ЛР4\z1\obj\Debug\netcoreapp3.1\z1.dll
+D:\Учёба. Семестр 2\ИСП\ЛР4\z1\obj\Debug\netcoreapp3.1\z1.pdb
+C:\Users\vitya\OneDrive\Desktop\Laba\C#\lab4\z1\bin\Debug\netcoreapp3.1\z1.exe
+C:\Users\vitya\OneDrive\Desktop\Laba\C#\lab4\z1\bin\Debug\netcoreapp3.1\z1.deps.json
+C:\Users\vitya\OneDrive\Desktop\Laba\C#\lab4\z1\bin\Debug\netcoreapp3.1\z1.runtimeconfig.json
+C:\Users\vitya\OneDrive\Desktop\Laba\C#\lab4\z1\bin\Debug\netcoreapp3.1\z1.runtimeconfig.dev.json
+C:\Users\vitya\OneDrive\Desktop\Laba\C#\lab4\z1\bin\Debug\netcoreapp3.1\z1.dll
+C:\Users\vitya\OneDrive\Desktop\Laba\C#\lab4\z1\bin\Debug\netcoreapp3.1\z1.pdb
+C:\Users\vitya\OneDrive\Desktop\Laba\C#\lab4\z1\obj\Debug\netcoreapp3.1\z1.csprojAssemblyReference.cache
+C:\Users\vitya\OneDrive\Desktop\Laba\C#\lab4\z1\obj\Debug\netcoreapp3.1\z1.csproj.CoreCompileInputs.cache
+C:\Users\vitya\OneDrive\Desktop\Laba\C#\lab4\z1\obj\Debug\netcoreapp3.1\z1.AssemblyInfoInputs.cache
+C:\Users\vitya\OneDrive\Desktop\Laba\C#\lab4\z1\obj\Debug\netcoreapp3.1\z1.AssemblyInfo.cs
+C:\Users\vitya\OneDrive\Desktop\Laba\C#\lab4\z1\obj\Debug\netcoreapp3.1\z1.dll
+C:\Users\vitya\OneDrive\Desktop\Laba\C#\lab4\z1\obj\Debug\netcoreapp3.1\z1.pdb
+C:\Users\vitya\OneDrive\Desktop\Laba\C#\lab4\z1\obj\Debug\netcoreapp3.1\z1.genruntimeconfig.cache

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace ЛР5
 {
@@ -9,65 +9,67 @@ namespace ЛР5
             public string _name;
             public string _surname;
         }
-        
+
         protected NS _ns;
         protected string _university;
         protected static int _currentYear = 2020;
         protected int _birthYear;
 
-        public UniversityPerson(string name, string surname,string univer, int birthYear)
+        public UniversityPerson(string name, string surname, string univer, int birthYear)
         {
             _ns._name = name;
             _ns._surname = surname;
             _university = univer;
             _birthYear = birthYear;
         }
-        
+
         public abstract void WriteCommonInformatoin();
         public abstract void WriteUniversityInformation();
+        public abstract void EnterImportantInformation();
+        public abstract void WriteImportantInformation();
     };
-    
+
     class Employee : UniversityPerson
     {
-        private string  _importantInformation;
-        
+        private string _importantInformation;
+
         public Employee(string name, string surname, string univer, int birthYear)
                    : base(name, surname, univer, birthYear) { }
-                   
+
         public override void WriteCommonInformatoin()
         {
             Console.WriteLine($"Имя:{_ns._name}");
             Console.WriteLine($"Фамилия:{_ns._surname}");
             Console.WriteLine($"Возраст:{_currentYear - _birthYear}");
         }
-        
+
         public override void WriteUniversityInformation()
         {
             Console.WriteLine($"Университет:{_university}");
         }
 
-        public virtual void EnterImportantInformation()
+        public override void EnterImportantInformation()
         {
             _importantInformation = Console.ReadLine();
         }
-        
-        public virtual void WriteImportantInformation()
+
+        public override void WriteImportantInformation()
         {
             Console.WriteLine($"Важная информация: {_importantInformation}");
         }
     };
-    
+
     class Teacher : Employee
     {
         private string _classes, _academicRanc, _importantScientificInformation, __importantPersonalInformation;
-        
-        public Teacher(string name, string surname, string univer, int birthYear,string classes,string aсademicRanc)
+
+        public Teacher(string name, string surname, string univer, int birthYear, string classes, string aсademicRanc)
                 : base(name, surname, univer, birthYear)
         {
             _classes = classes;
             _academicRanc = aсademicRanc;
         }
-        
+
         public override void WriteUniversityInformation()
         {
             Console.WriteLine($"Университет:{_university}");
@@ -78,11 +80,11 @@ namespace ЛР5
         public override void EnterImportantInformation()
         {
             Console.WriteLine("Введите важную информацию о научной деятельности преподавателя");
-            _importantScientificInformation  = Console.ReadLine();
+            _importantScientificInformation = Console.ReadLine();
             Console.WriteLine("Помоги другим студентам. Проинформируй о характере и фишках ");
             __importantPersonalInformation = Console.ReadLine();
         }
-        
+
         public override void WriteImportantInformation()
         {
             Console.WriteLine($"Информация о научной деятельности преподавателя: {_importantScientificInformation}");
@@ -90,54 +92,60 @@ namespace ЛР5
 
         }
     };
-    
-    class ImportantPerson : Employee 
+
+    class ImportantPerson : Employee
     {
         private string _status;
-        
+
         public ImportantPerson(string name, string surname, string univer, int birthYear, string status)
                 : base(name, surname, univer, birthYear)
         {
             _status = status;
         }
-       
+
         public override void WriteUniversityInformation()
         {
             Console.WriteLine($"Университет:{_university}");
             Console.WriteLine($"Звание:{_status}");
         }
     };
-    
+
     class Student : UniversityPerson
     {
         private string _specialty;
         private int _course;
         private double _scholarship;
-        
-        public Student(string name, string surname, string university, int birthYear,string specialty,int course) 
-            : base(name, surname,university,birthYear)
+
+        public Student(string name, string surname, string university, int birthYear, string specialty, int course)
+            : base(name, surname, university, birthYear)
         {
             _specialty = specialty;
             _course = course;
         }
-        
+
         public double MiddleMark { get; set; }
-        
+
         public override void WriteCommonInformatoin()
         {
             Console.WriteLine($"Имя:{_ns._name}");
             Console.WriteLine($"Фамилия:{_ns._surname}");
             Console.WriteLine($"Возраст:{_currentYear - _birthYear}");
         }
-        
+
         public override void WriteUniversityInformation()
         {
             Console.WriteLine($"Университет:{_university}");
             Console.WriteLine($"Специальность:{_specialty}");
             Console.WriteLine($"Курс:{_course}");
         }
-       
-        public void WriteRaitingsAndScholarship()
+
+        public override void EnterImportantInformation()
+        {
+            Console.WriteLine("Введите средний балл:");
+            MiddleMark = Convert.ToDouble(Console.ReadLine());
+        }
+
+        public override void WriteImportantInformation()
         {
             Console.WriteLine($"Средний балл:{MiddleMark}");
             if (MiddleMark <= 4.0)
@@ -159,9 +167,9 @@ namespace ЛР5
         static void Main(string[] args)
         {
             int menu;
-            Student student = new Student("Влад", "Демьянов", "БГУИР", 2001, "ИиТП", 1);
-            Teacher teacher = new Teacher("Иван", "Прокопьев", "БГУИР", 1982, "Программирование", "Доцент");
-            ImportantPerson  rector = new ImportantPerson("Валерий", "Денько", "БГУИР", 1978, "ректор");        
+            UniversityPerson student = new Student("Влад", "Демьянов", "БГУИР", 2001, "ИиТП", 1);
+            UniversityPerson teacher = new Teacher("Иван", "Прокопьев", "БГУИР", 1982, "Программирование", "Доцент");
+            UniversityPerson rector = new ImportantPerson("Валерий", "Денько", "БГУИР", 1978, "ректор");
             while (true)
             {
                 Console.WriteLine("Меню:");
@@ -180,20 +188,19 @@ namespace ЛР5
                             Console.Clear();
                             student.WriteCommonInformatoin();
                             student.WriteUniversityInformation();
-                            student.WriteRaitingsAndScholarship();
+                            student.WriteImportantInformation();
                             break;
                         }
                     case 2:
                         {
                             Console.Clear();
-                            Console.WriteLine("Введите средний балл:");
-                            student.MiddleMark = Convert.ToDouble(Console.ReadLine());
+                            student.EnterImportantInformation();
                             break;
                         }
                     case 3:
                         {
                             Console.Clear();
-                            teacher.WriteCommonInformatoin ();
+                            teacher.WriteCommonInformatoin();
                             teacher.WriteUniversityInformation();
                             teacher.WriteImportantInformation();
                             break;
@@ -215,14 +222,13 @@ namespace ЛР5
                     case 6:
                         {
                             Console.Clear();
-                            rector.EnterImportantInformation ();
+                            rector.EnterImportantInformation();
                             break;
                         }
                     case 7: return;
-                    default:return;   
+                    default: return;
                 }
             }
         }
     }
 }
-

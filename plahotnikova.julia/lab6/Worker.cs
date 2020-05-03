@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab3
 {
-    class Worker : Human, IMoney
+    class Worker : Human, IPayable
     {
         private int _workTime;
         private string _workExperience;

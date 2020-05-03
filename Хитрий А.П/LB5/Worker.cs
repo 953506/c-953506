@@ -21,10 +21,9 @@ class Worker : Human
         _languages[0] = "";
     }
 
-    public Worker(string name, string surname, int age, int high, float weight, string nationality, 
-                  DateTime birthdate, string parent0, string parent1, string sex, uint salary, 
-                  uint employmenthistory, uint managerialexperience, uint otherallowances, uint daysofsick, uint daysofvacation) :
-                  base(name, surname, age, high, weight, nationality, birthdate, parent0, parent1, sex)
+    public Worker(string name, string surname, int age, int high, float weight, string nationality, DateTime birthdate, string parent0, string parent1, string sex,
+        uint salary, uint employmenthistory, uint managerialexperience, uint otherallowances, uint daysofsick, uint daysofvacation) :
+        base(name, surname, age, high, weight, nationality, birthdate, parent0, parent1, sex)
     {
         Salary = salary;
         EmploymentHistory = employmenthistory;
@@ -93,6 +92,7 @@ class Worker : Human
             case 1: AddReSize(ref _award); break;
             case 2: AddReSize(ref _penalty); break;
             case 3: AddReSize(ref _languages); break;
+            default: return;
         }
     }
 
@@ -131,7 +131,7 @@ class Worker : Human
 
     public override void ImportantDates()
     {
-        WriteLine("{0} {1}, {2}, возраст: {3}, {4}",Name,SurName,Sex, Age, Nationality);
+        WriteLine("{0} {1}, {2}, возраст: {3}, {4}", _Name.Name, _Name.Surname, Sex, Age, Nationality);
     }
 
     public void Creat(Worker a)
@@ -158,7 +158,7 @@ class Worker : Human
             WriteLine("Введите день рождения(год)");
             int year = int.Parse(ReadLine());
             DateTime birthdate = new DateTime(year, month, day);
-            WriteLine();
+            WriteLine("Введите: 1 - Мужской пол, 2 - Женский, 3 - Ввести другой пол");
             string sex = ReadLine();
             WriteLine("Введите имя папы");
             string parent0 = ReadLine();

@@ -1,11 +1,14 @@
-﻿using System;
+using System;
 
 namespace lab6
 {
+    interface IPerson
+    {
+        void IMT(int weight, double height);
+    }
     interface IFoo
     {
         void GetInfo();
-        void IMT(int weight, double height);
     }
 
     interface IComparer<T>
@@ -127,10 +130,15 @@ namespace lab6
         }
     }
 
-    class Person : IFoo
+    class Person : IFoo, IPerson
     {
+        public string _name;
+        public Provero4ka provero4ka;
+
         public void IMT(int weight, double height)
         {
+            weight = provero4ka.Weight;
+            height = provero4ka.Height;
             double index;
             index = weight / ((height / 100) * (height / 100));
             if (index < 16)
@@ -161,15 +169,16 @@ namespace lab6
             {
                 Console.WriteLine("Ожирение третьей степени");
             }
+            else
+            {
+                Console.WriteLine("Невозможно посчитать ИМТ из-за неправильно введенных данных"); 
+            }
         }
 
         public void GetInfo()
         {
             Console.WriteLine($"Имя: {_name} \nВозраст: {provero4ka.Age} \nВес: {provero4ka.Weight} \nРост:{provero4ka.Height}");
         }
-
-        public Provero4ka provero4ka;
-        public string _name;
 
         public Person(string name, int age, int height, int weight)
         {
@@ -197,7 +206,7 @@ namespace lab6
             Console.WriteLine("Вес: ");
             int weight1 = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
-            Person person1 = new Person(name1, age1, height1, weight1);   
+            Person person1 = new Person(name1, age1, height1, weight1);
             Console.WriteLine("Введите нужные данные о втором человеке: ");
             Console.WriteLine("Имя: ");
             string name2 = Console.ReadLine();

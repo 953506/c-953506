@@ -4,12 +4,15 @@ namespace Lab6
 {
     class Firearm : IComparable , IFirearm
     {
+        //----------------Перечисление
         protected enum TypesOfWeapon
         {
             SniperRifle,
             AssaultRifle,
             MachineGun
         }
+        
+        //----------------Автосвойства
         protected TypesOfWeapon TypeOfWeapon { get; set; }
         protected bool ModeSingle { get; set; } = true;
         protected bool ModeBirst { get; set; } = false;
@@ -20,6 +23,8 @@ namespace Lab6
         public string Caliber { get; set; }
         public bool IsSafetyOn { get; set; } = true;
         public bool IsReloaded { get; set; }
+        
+        //----------------Индексатор
         public virtual bool this[string mode]
         {
             get
@@ -67,6 +72,8 @@ namespace Lab6
                 }
             }
         }
+        
+        //----------------Конструктор
         public Firearm(string model, string caliber, uint maxAmmo, uint ammoInClip)
         {
             Model = model;
@@ -75,7 +82,8 @@ namespace Lab6
             AmmoInClip = maxAmmo < ammoInClip ? maxAmmo : ammoInClip;
             IsReloaded = AmmoInClip != 0;
         }
-
+        
+        //----------------Методы
         public int CompareTo(object obj)
         {
             Firearm weapon = obj as Firearm;

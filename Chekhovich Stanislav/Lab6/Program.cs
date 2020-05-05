@@ -15,6 +15,7 @@ namespace Lab6
                 i++;
             }
         }
+        
         static void Main(string[] args)
         {
             uint a, ammo, K = 1, k;

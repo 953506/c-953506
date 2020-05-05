@@ -9,6 +9,7 @@ namespace Lab6
         {
             TypeOfWeapon = TypesOfWeapon.SniperRifle;
         }
+        
         public void UltimateAbility()
         {
             if (AmmoInClip > 0)
@@ -29,6 +30,7 @@ namespace Lab6
                 Console.WriteLine("Oops! Not enough ammo! You should reload a rifle before shooting");
             }
         }
+        
         public void GetInfoAboutType()
         {
             Console.WriteLine($"Your weapon is {TypeOfWeapon}" +

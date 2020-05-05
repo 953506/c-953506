@@ -164,6 +164,5 @@ namespace Lab5
                 } while (choice != 4);
             }
         }
-
     }
 }

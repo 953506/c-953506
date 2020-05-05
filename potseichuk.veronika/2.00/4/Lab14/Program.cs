@@ -12,12 +12,12 @@ namespace Lib14
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter radius:");
-            double radius = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Circumference:");
-            Console.WriteLine(Circumference(radius));            
-			Console.WriteLine("CircleArea:");
-            Console.WriteLine(CircleArea(radius));
+            	Console.WriteLine("Enter radius:");
+            	double radius = Convert.ToDouble(Console.ReadLine());
+            	Console.WriteLine("Circumference:");
+            	Console.WriteLine(Circumference(radius));
+		Console.WriteLine("CircleArea:");
+            	Console.WriteLine(CircleArea(radius));
         }
     }
 }

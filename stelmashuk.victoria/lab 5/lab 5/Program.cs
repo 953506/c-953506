@@ -7,6 +7,7 @@ namespace lab5
         private int _age;
         private int _height;
         private int _weight;
+
         public int Age
         {
             get { return _age; }
@@ -346,44 +347,44 @@ namespace lab5
                 {
                     case 1:
                         {
-                            Person disabled = new Disabled(name, surname, age, height, weight);
+                            person = new Disabled(name, surname, age, height, weight);
                             Console.WriteLine("Норма калорий: ");
-                            disabled.Сaloric(height, weight, sex, age);
+                            person.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Норма воды: ");
-                            disabled.Water(weight, sex);
+                            person.Water(weight, sex);
                             Console.WriteLine("Показатель состояния вашего тела по ИМТ: ");
                             person.IMT(weight, height);
                             break;
                         }
                     case 2:
                         {
-                            Person sedentary = new Sedentary(name, surname, age, height, weight);
+                            person = new Sedentary(name, surname, age, height, weight);
                             Console.WriteLine("Норма калорий: ");
-                            sedentary.Сaloric(height, weight, sex, age);
+                            person.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Норма воды: ");
-                            sedentary.Water(weight, sex);
+                            person.Water(weight, sex);
                             Console.WriteLine("Показатель состояния вашего тела по ИМТ: ");
                             person.IMT(weight, height);
                             break;
                         }
                     case 3:
                         {
-                            Person healthy = new Healthy(name, surname, age, height, weight);
+                            person = new Healthy(name, surname, age, height, weight);
                             Console.WriteLine("Норма калорий: ");
-                            healthy.Сaloric(height, weight, sex, age);
+                            person.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Норма воды: ");
-                            healthy.Water(weight, sex);
+                            person.Water(weight, sex);
                             Console.WriteLine("Показатель состояния вашего тела по ИМТ: ");
                             person.IMT(weight, height);
                             break;
                         }
                     case 4:
                         {
-                            Person sports = new Sports(name, surname, age, height, weight);
+                            person = new Sports(name, surname, age, height, weight);
                             Console.WriteLine("Ваша норма калорий: ");
-                            sports.Сaloric(height, weight, sex, age);
+                            person.Сaloric(height, weight, sex, age);
                             Console.WriteLine("Ваша норма воды: ");
-                            sports.Water(weight, sex);
+                            person.Water(weight, sex);
                             Console.WriteLine("Показатель состояния вашего тела по ИМТ: ");
                             person.IMT(weight, height);
                             break;

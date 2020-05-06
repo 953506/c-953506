@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using static System.Console;
 class Programmer : IProgrammer
 {
@@ -177,6 +177,5 @@ class Programmer : IProgrammer
             WriteLine("{0}", ex.Message);
             Creat(a);
         }
-        return;
     }
 }

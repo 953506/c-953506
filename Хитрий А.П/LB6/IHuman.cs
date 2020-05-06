@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using static System.Console;
 
     public interface IHuman
@@ -29,7 +29,7 @@ using static System.Console;
         public string Sex { get; set; }
         public float IMT { get => Weight * 100 / High * 100 / High; }
 
-        public void CalculateAge() => WriteLine("{0}",DateTime.Now.Year - Birthdate.Year);
+        public void CalculateAge() => WriteLine(DateTime.Now.Year - Birthdate.Year);
 
         public void ImportantDates() { }
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using static System.Console;
-
 class Program
 {
     static void Menu()
@@ -10,15 +9,15 @@ class Program
             " Q - сравнить класс и шаблонный класс на похожесть данных Только о человеке(не о работе) \n W - обнулить рабочие строки \n" +
             " E - обнулить строки о программировании");
     }
-    
     static void Main()
     {
+        ConsoleKeyInfo key;
         Programmer a = new Programmer();
         while (true)
         {
             Clear();
             Menu();
-            switch (ReadKey(true).Key)
+            switch ((key = ReadKey(true)).Key)
             {
                 case ConsoleKey.D0: return;
                 case ConsoleKey.D1: a.Creat(a); WriteLine("Нажмите любую клавишу, чтобы продолжить..."); ReadKey(true); break;

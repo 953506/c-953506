@@ -30,7 +30,7 @@
                     Lastname = Console.ReadLine();
                     Console.Write("Возраст (лет): ");
                     Age = Convert.ToInt32(Console.ReadLine());
-                    if (Age > 35) Age = 23;
+                    if (Age > 35) Age = 35;
                     else if (Age < 16) Age = 17;
                     Console.Write("Курс: ");
                     Stage = Convert.ToInt32(Console.ReadLine());

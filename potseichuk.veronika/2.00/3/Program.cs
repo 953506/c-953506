@@ -31,7 +31,7 @@
                     Console.Write("Возраст (лет): ");
                     Age = Convert.ToInt32(Console.ReadLine());
                     if (Age > 35) Age = 35;
-                    else if (Age < 16) Age = 17;
+                    else if (Age < 17) Age = 17;
                     Console.Write("Курс: ");
                     Stage = Convert.ToInt32(Console.ReadLine());
                     if (Stage < 1) Stage = 1;

@@ -1,4 +1,4 @@
-﻿using System;
+﻿uusing System;
 using static System.Console;
 
 class Program
@@ -8,7 +8,7 @@ class Program
         WriteLine(" 0 - выход\n 1 - пересоздать класс\n 2 - вывод общий\n 3 - вывести построчно\n 4 - ввести построчно\n 5 - Важные данные\n" +
             " 6 - Добавить уточняющую информацию\n 7 - Удалить уточняющую информацию\n 8 - дополнительная информация\n 9 - уточняющая информация");
     }
-    static void Main()
+   static void Main()
     {
         Programmer a = new Programmer();
         while(true)

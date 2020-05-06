@@ -25,7 +25,6 @@ namespace laba_1
         }
 
 
-
         static void Main(string[] args)
         {
             bool play = true;  
@@ -60,9 +59,9 @@ namespace laba_1
                 string answer = "";
                 Console.WriteLine(" — So now we can start!");
                 Console.WriteLine("Cartier mixed a deck of cards and gave you the first two: "+ card[counterCard] + "\n" + card[1]);
-
                 counterPlayer += Program.CardCost(card[0]);
                 couterRival += Program.CardCost(card[3]);
+                
                 do
                 {
                     counterPlayer += Program.CardCost(card[++counterCard]);
@@ -73,7 +72,6 @@ namespace laba_1
                     if (counterPlayer == 21) { Console.WriteLine("Congratulation! You have 21 points. This is victory!\a"); break; }
                     if (couterRival == 21) { Console.WriteLine("Sorry, but your opponent has 21 points. You lost this game!\a"); break; }
                     if (counterPlayer > 21 && couterRival > 21) { Console.WriteLine("You have too much, your opponent has too. This is a draw.\a"); break; }
-
                     if (counterPlayer > 21)
                     {
                         Console.WriteLine("You have too much. You lost this game!");

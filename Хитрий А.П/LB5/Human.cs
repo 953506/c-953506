@@ -22,8 +22,8 @@ abstract class Human
 {
     protected static int _number = 1_000_001;
     protected string[] _parent = new string[2];
-    public Names _Name;
-    public Genders _Gender;
+    protected Names _Name;
+    protected Genders _Gender;
 
     public Human()
     {

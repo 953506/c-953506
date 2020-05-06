@@ -14,8 +14,8 @@
             class Student 
             {
                 public float rating;
-                protected Exams[] examsNotes;
-                protected int numexams;
+                public Exams[] examsNotes;
+                public int numexams;
 
                 public string Name { get; set; }
                 public string Lastname { get; set; }

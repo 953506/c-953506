@@ -2,12 +2,12 @@
 using static System.Console;
 using System.Windows.Forms;
 
-sealed class Programmer : Worker
+class Programmer : Worker
 {
-    private string[] _programLanguage = new string[1];
-    private string Education { get; set; }
-    private string Specialization { get; set; }
-    private string Job { get; set; } 
+    protected string[] _programLanguage = new string[1];
+    public string Education { get; set; }
+    public string Specialization { get; set; }
+    public string Job { get; set; } 
 
     public Programmer() : base()
     {
@@ -129,7 +129,7 @@ sealed class Programmer : Worker
                 case 5:  Weight = int.Parse(ReadLine()); break;
                 case 6:  Nationality = ReadLine(); break;
                 case 7:  Date(); break;
-                case 8:  WriteLine("Введите: 1 - Мужской пол, 2 - Женский, 3 - Ввести другой пол"); Sex = ReadLine(); break;
+                case 8: WriteLine("Введите: 1 - Мужской пол, 2 - Женский, 3 - Ввести другой пол"); Sex = ReadLine(); break;
                 case 9:  _parent[0] = ReadLine(); break;
                 case 10: _parent[1] = ReadLine(); break;
                 case 11: Salary = uint.Parse(ReadLine()); break;
@@ -176,7 +176,7 @@ sealed class Programmer : Worker
             WriteLine(_penalty[i]);
     }
 
-    public void Creat(Programmer a)
+    public virtual void Creat(Programmer a)
     {
         try
         {

@@ -175,7 +175,6 @@ namespace Lab7
 
         public string ToStringFormat2()
         {
-            ReduceWithGCD();
             return $"{_numerator / (double)_denominator}";
         }
 

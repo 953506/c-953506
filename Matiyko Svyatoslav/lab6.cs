@@ -88,7 +88,6 @@ namespace _6
         }
     }
 
-
     class Dog : IFormattable, IDoggy, IAnimal, IWalker, ISwimmer
     {
         IAction walkAction;

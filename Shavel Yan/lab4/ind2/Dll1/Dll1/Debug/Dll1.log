@@ -1,0 +1,5 @@
+﻿  pch.cpp
+  dllmain.cpp
+C:\Users\TommyWiseau\Desktop\Dll1\Dll1\dllmain.cpp(25,27): warning C4804:  /: небезопасное использование типа "bool" в операции
+     ╤ючфрхЄё  сшсышюЄхър C:\Users\TommyWiseau\Desktop\Dll1\Debug\Dll1.lib ш юс·хъЄ C:\Users\TommyWiseau\Desktop\Dll1\Debug\Dll1.exp
+  Dll1.vcxproj -> C:\Users\TommyWiseau\Desktop\Dll1\Debug\Dll1.dll

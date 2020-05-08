@@ -1,0 +1,9 @@
+C:\Users\TommyWiseau\Desktop\Shavel Yan\Lab4_ind1(TEST)\Lab4_ind1test(KL)\Lab4_ind1test(KL)\bin\Debug\Lab4_ind1test(KL).exe.config
+C:\Users\TommyWiseau\Desktop\Shavel Yan\Lab4_ind1(TEST)\Lab4_ind1test(KL)\Lab4_ind1test(KL)\bin\Debug\Lab4_ind1test(KL).exe
+C:\Users\TommyWiseau\Desktop\Shavel Yan\Lab4_ind1(TEST)\Lab4_ind1test(KL)\Lab4_ind1test(KL)\bin\Debug\Lab4_ind1test(KL).pdb
+C:\Users\TommyWiseau\Desktop\Shavel Yan\Lab4_ind1(TEST)\Lab4_ind1test(KL)\Lab4_ind1test(KL)\obj\Debug\Lab4_ind1test(KL).csprojAssemblyReference.cache
+C:\Users\TommyWiseau\Desktop\Shavel Yan\Lab4_ind1(TEST)\Lab4_ind1test(KL)\Lab4_ind1test(KL)\obj\Debug\Lab4_ind1test_KL_.Properties.Resources.resources
+C:\Users\TommyWiseau\Desktop\Shavel Yan\Lab4_ind1(TEST)\Lab4_ind1test(KL)\Lab4_ind1test(KL)\obj\Debug\Lab4_ind1test(KL).csproj.GenerateResource.cache
+C:\Users\TommyWiseau\Desktop\Shavel Yan\Lab4_ind1(TEST)\Lab4_ind1test(KL)\Lab4_ind1test(KL)\obj\Debug\Lab4_ind1test(KL).csproj.CoreCompileInputs.cache
+C:\Users\TommyWiseau\Desktop\Shavel Yan\Lab4_ind1(TEST)\Lab4_ind1test(KL)\Lab4_ind1test(KL)\obj\Debug\Lab4_ind1test(KL).exe
+C:\Users\TommyWiseau\Desktop\Shavel Yan\Lab4_ind1(TEST)\Lab4_ind1test(KL)\Lab4_ind1test(KL)\obj\Debug\Lab4_ind1test(KL).pdb

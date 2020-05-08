@@ -102,12 +102,12 @@ namespace z1
             else
                 return Equals(num);
         }
-        public static implicit operator double(RationalNumber a)
+        public static explicit operator double(RationalNumber a)
         {
             return (double)a._numerator / a._denominator;
         }
 
-        public static explicit operator int(RationalNumber a)
+        public static implicit operator int(RationalNumber a)
         {
             return a._numerator / a._denominator;
         }

@@ -17,9 +17,9 @@ namespace lab6
         void GetInfo();
     }
 
-    interface IComparer<T> //Определяет метод, реализуемый типом для сравнения двух объектов
+    interface IComparer<T> 
     {
-        void Compare(T o1, T o2); //Сравнение двух объектов и возврат значения, указывающего, является ли один объект меньшим, равным или большим другого.
+        void Compare(T o1, T o2); 
     }
 
     public struct Provero4ka

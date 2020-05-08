@@ -21,7 +21,7 @@ namespace Lab6
             uint a, ammo, K = 1, k;
             bool exit = false, first = true;
             ArrayList weapons = new ArrayList();
-            IGun Gun = new SniperRifle("SVD", "7,62", 10, 8);
+            IGun Gun2, Gun = new SniperRifle("SVD", "7,62", 10, 8);
             while (true)
             {
                 if (!first)
@@ -78,19 +78,37 @@ namespace Lab6
                             {
                                 case 1:
                                     {
+                                        Gun2 = (IGun)Gun.Clone();
                                         Gun = new SniperRifle(model, caliber, maxAmmo, ammoInClip);
+                                        if(Gun.Equals(Gun2))
+                                        {
+                                            Console.WriteLine("This weapon is the same as your previous one." +
+                                                "\nMaybe it's time to try something new?");
+                                        }
                                         weapons.Add(Gun);
                                         break;
                                     }
                                 case 2:
                                     {
+                                        Gun2 = (IGun)Gun.Clone();
                                         Gun = new AssaultRifle(model, caliber, maxAmmo, ammoInClip);
+                                        if(Gun.Equals(Gun2))
+                                        {
+                                            Console.WriteLine("This weapon is the same as your previous one." +
+                                                "\nMaybe it's time to try something new?");
+                                        }
                                         weapons.Add(Gun);
                                         break;
                                     }
                                 case 3:
                                     {
+                                        Gun2 = (IGun)Gun.Clone();
                                         Gun = new MachineGun(model, caliber, maxAmmo, ammoInClip);
+                                        if(Gun.Equals(Gun2))
+                                        {
+                                            Console.WriteLine("This weapon is the same as your previous one." +
+                                                "\nMaybe it's time to try something new?");
+                                        }
                                         weapons.Add(Gun);
                                         break;
                                     }

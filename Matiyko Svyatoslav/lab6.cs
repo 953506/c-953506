@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Globalization;
 
@@ -28,11 +28,8 @@ namespace _6
 
     interface IDoggy
     {
-        string Name
-        {
-            get;
-            set;        
-        }
+        void WriteName();
+        void WriteSpeed();
     }
     
     class SwimAction : IAction
@@ -59,6 +56,39 @@ namespace _6
         }
     }
 
+    class Human
+    {
+        public Human(string Name, int Age)
+        {
+            this.Name = Name;
+            this.Age = Age;
+        }
+
+        public string Name { get; set; }
+        public int Age { get; set; }
+
+        public static string Info<T>(T obj)
+        {
+            return obj.ToString();
+        }
+    }
+
+    class ZooDirector : Human
+    {
+        public ZooDirector(string Name, int Age, string ZooName) : base(Name, Age)
+        {
+            this.ZooName = ZooName;
+        }
+
+        public string ZooName { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format($"Информация о директоре зоопарка\nИмя: {Name}\nВозраст: {Age}\nназвание зоопарка: {ZooName}");
+        }
+    }
+
+
     class Dog : IFormattable, IDoggy, IAnimal, IWalker, ISwimmer
     {
         IAction walkAction;
@@ -74,6 +104,16 @@ namespace _6
             _speed = speed;
             _name = name;
         }   
+
+        void IDoggy.WriteName()
+        {
+            Console.WriteLine($"имя: {_name}");
+        }
+
+        void IDoggy.WriteSpeed()
+        {
+            Console.WriteLine($"скорость собаки:");
+        }
 
         public void Walk()
         {
@@ -181,7 +221,6 @@ namespace _6
         }   
     }
 
-
     class Swan : IAnimal, IWalker,ISwimmer, IFly
     {
         IAction walkAction;
@@ -215,15 +254,19 @@ namespace _6
     {
         static void Main(string[] args)
         {
-            ArrayList elephants = new ArrayList();
-            Random rand = new Random();
-            Console.Clear();
+            ZooDirector director = new ZooDirector(Name: "John", Age: 53, ZooName: "some zoo");
+            string info = Human.Info<ZooDirector>(director);
+            Console.WriteLine(info);
+            Console.WriteLine(new string('*',30));
 
             var elephant = new Elephant();
             Console.Write("\nElephant can : ");
             elephant.Walk();
             Console.WriteLine("\nхарактеристика слонов до сортировки :");
             Console.WriteLine("age height weight");
+
+            ArrayList elephants = new ArrayList();
+            Random rand = new Random();
 
             for(int i = 0; i < 5; i++)
             { 
@@ -239,11 +282,12 @@ namespace _6
             {
                 Console.WriteLine(eleph.age + "    " + eleph.height + "    " + eleph.weight);
             }
-            Console.WriteLine(new string('-',20));
-
+            Console.WriteLine(new string('*',30));
 
             var dog = new Dog("Rex",10);
-            Console.Write($"Dog:\nhis name: {dog.Name} \nhis speed:\n");
+            IDoggy link = (IDoggy)dog;
+            link.WriteName();
+            link.WriteSpeed();
             Console.WriteLine("Speed [default] = {0}", dog);
             Console.WriteLine("Speed [mph] = {0}", dog.ToString("K",CultureInfo.CreateSpecificCulture("en-US")));
             Console.WriteLine("Speed [k/h] =  {0}", dog.ToString("F",CultureInfo.CreateSpecificCulture("ru-RU")));
@@ -252,7 +296,7 @@ namespace _6
             dog.Walk();
             dog.Swim();
             Console.Write("\n");
-            Console.WriteLine(new string('-',20));
+            Console.WriteLine(new string('*',30));
 
             var swan = new Swan();
             Console.Write("\nSwan can : ");

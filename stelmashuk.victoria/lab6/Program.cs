@@ -2,18 +2,24 @@ using System;
 
 namespace lab6
 {
+    //интерфейсы
     interface IPerson
     {
         void IMT(int weight, double height);
     }
+    
     interface IFoo
     {
+        static void Welcome() //определение реализации по умолчанию статического метода
+        {
+            Console.WriteLine("Здравствуйте!");
+        }
         void GetInfo();
     }
 
-    interface IComparer<T>
+    interface IComparer<T> //Определяет метод, реализуемый типом для сравнения двух объектов
     {
-        void Compare(T o1, T o2);
+        void Compare(T o1, T o2); //Сравнение двух объектов и возврат значения, указывающего, является ли один объект меньшим, равным или большим другого.
     }
 
     public struct Provero4ka
@@ -114,13 +120,13 @@ namespace lab6
         {
             if (o1.provero4ka.Weight > o2.provero4ka.Weight)
             {
-                Console.WriteLine($"у {o1._name} вес больше, чем {o2._name}");
+                Console.WriteLine($"у {o1._name} вес больше, чем у {o2._name}");
             }
             else
             {
                 if (o2.provero4ka.Weight > o1.provero4ka.Weight)
                 {
-                    Console.WriteLine($"у {o2._name} вес больше, чем {o1._name}");
+                    Console.WriteLine($"у {o2._name} вес больше, чем у {o1._name}");
                 }
                 else
                 {
@@ -130,12 +136,12 @@ namespace lab6
         }
     }
 
-    class Person : IFoo, IPerson
+    class Person : IFoo, IPerson //реализация нескольких интерфейсов
     {
         public string _name;
         public Provero4ka provero4ka;
 
-        public void IMT(int weight, double height)
+        public void IMT(int weight, double height)//неявная реализация
         {
             weight = provero4ka.Weight;
             height = provero4ka.Height;
@@ -171,11 +177,11 @@ namespace lab6
             }
             else
             {
-                Console.WriteLine("Невозможно посчитать ИМТ из-за неправильно введенных данных"); 
+                Console.WriteLine("Невозможно посчитать ИМТ из-за неправильно введенных данных");
             }
         }
 
-        public void GetInfo()
+        void IFoo.GetInfo()//явная реализация
         {
             Console.WriteLine($"Имя: {_name} \nВозраст: {provero4ka.Age} \nВес: {provero4ka.Weight} \nРост:{provero4ka.Height}");
         }
@@ -193,7 +199,8 @@ namespace lab6
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Здравствуйте, введите нужные данные о первом человеке: ");
+            IFoo.Welcome();//вызов статического метода интерфейса
+            Console.WriteLine("Введите нужные данные о первом человеке: ");
             Console.WriteLine("Имя: ");
             string name1 = Console.ReadLine();
             Console.Clear();
@@ -228,13 +235,15 @@ namespace lab6
             {
                 case 1:
                     {
-                        person1.GetInfo();
+                        IFoo foo = person1;// переменная интерфейса
+                        foo.GetInfo();//получили доступ к элементу интерфейса
                         person1.IMT(weight1, height1);
                         break;
                     }
                 case 2:
                     {
-                        person2.GetInfo();
+                        IFoo foo = person2;// переменная интерфейса
+                        foo.GetInfo();//получили доступ к элементу интерфейса
                         person1.IMT(weight2, height2);
                         break;
                     }

@@ -2,7 +2,7 @@
 
 namespace Lab6
 {
-    class Firearm : IComparable , IFirearm
+    class Firearm : IComparable , IEquatable<Firearm>, IFirearm
     {
         //----------------Перечисление
         protected enum TypesOfWeapon
@@ -95,6 +95,32 @@ namespace Lab6
             {
                 throw new ArgumentException("Object is not a weapon");
             }
+        }
+        
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            Firearm objAsFirearm = obj as Firearm;
+            if (objAsFirearm == null)
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(objAsFirearm);
+            }
+        }
+
+        public bool Equals(Firearm other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            return Model == other.Model;
         }
 
         public void Reload(uint ammo)

@@ -1,6 +1,5 @@
-using System;
+﻿using System;
 using static System.Console;
-
 class Program
 {
     static void Menu()
@@ -10,10 +9,8 @@ class Program
             " Q - сравнить класс и шаблонный класс на похожесть данных Только о человеке(не о работе) \n W - обнулить рабочие строки \n" +
             " E - обнулить строки о программировании");
     }
-    
     static void Main()
     {
-        ConsoleKeyInfo key;
         Programmer a = new Programmer();
         while (true)
         {

@@ -19,21 +19,18 @@ namespace Lab7
         public static RationalNumber operator + (RationalNumber r1, RationalNumber r2)
         {
             RationalNumber result = new RationalNumber((r1._numerator * r2._denominator) + (r2._numerator * r1._denominator) , r1._denominator * r2._denominator);
-            result.ReduceWithGCD();
             return result;
         }
 
         public static RationalNumber operator - (RationalNumber r1, RationalNumber r2)
         {
             RationalNumber result = new RationalNumber((r1._numerator * r2._denominator) - (r2._numerator * r1._denominator), r1._denominator * r2._denominator);
-            result.ReduceWithGCD();
             return result;
         }
 
         public static RationalNumber operator * (RationalNumber r1, RationalNumber r2)
         {
             RationalNumber result = new RationalNumber(r1._numerator * r2._numerator , r1._denominator * r2._denominator);
-            result.ReduceWithGCD();
             return result;
         }
 
@@ -42,7 +39,6 @@ namespace Lab7
             int numerator = r2._numerator < 0 ? -r1._numerator * r2._denominator : r1._numerator * r2._denominator;
             int denominator = r2._numerator < 0 ? -r1._denominator * r2._numerator : r1._denominator * r2._numerator;
             RationalNumber result = new RationalNumber(numerator, denominator);
-            result.ReduceWithGCD();
             return result;
         }
 
@@ -173,11 +169,13 @@ namespace Lab7
 
         public string ToStringFormat1()
         {
+            ReduceWithGCD();
             return $"{_numerator}/{_denominator}"; 
         }
 
         public string ToStringFormat2()
         {
+            ReduceWithGCD();
             return $"{_numerator / (double)_denominator}";
         }
 

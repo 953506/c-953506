@@ -97,6 +97,11 @@ namespace Lab6
             }
         }
         
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+        
         public override bool Equals(object obj)
         {
             if (obj == null)

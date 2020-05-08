@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using static System.Console;
 
 public interface IProgrammer : IWorker
@@ -27,7 +27,7 @@ public interface IProgrammer : IWorker
 
     public new void AddComment()
     {
-         try
+        try
         { 
             Clear();
             Write("Введите номер уточняющей информации.\n 0 - выход\n 1 - награды\n 2 - взыскания\n 3 - языки\n 4 - языки программирования\n ");
@@ -117,16 +117,16 @@ public interface IProgrammer : IWorker
             int choose = int.Parse(ReadLine());
             switch (choose)
             {
-                case 0:  return;
-                case 1:  WriteLine(Name); break;
-                case 2:  WriteLine(SurName); break;
-                case 3:  WriteLine(Age); break;
-                case 4:  WriteLine(High); break;
-                case 5:  WriteLine(Weight); break;
-                case 6:  WriteLine(Nationality); break;
-                case 7:  WriteLine(Birthdate.ToString("D")); break;
-                case 8:  WriteLine(Sex); break;
-                case 9:  WriteLine(Parent[0]); break;
+                case 0: return;
+                case 1: WriteLine(Name); break;
+                case 2: WriteLine(SurName); break;
+                case 3: WriteLine(Age); break;
+                case 4: WriteLine(High); break;
+                case 5: WriteLine(Weight); break;
+                case 6: WriteLine(Nationality); break;
+                case 7: WriteLine(Birthdate.ToString("D")); break;
+                case 8: WriteLine(Sex); break;
+                case 9: WriteLine(Parent[0]); break;
                 case 10: WriteLine(Parent[1]); break;
                 case 11: WriteLine(Salary); break;
                 case 12: WriteLine(EmploymentHistory); break;
@@ -159,7 +159,7 @@ public interface IProgrammer : IWorker
             switch (choose)
             {
                 case 0:  return;
-                case 1:  Name = ReadLine(); break;
+                case 1:  Name=ReadLine(); break;
                 case 2:  SurName = ReadLine(); break;
                 case 3:  Age = int.Parse(ReadLine()); break;
                 case 4:  High = int.Parse(ReadLine()); break;

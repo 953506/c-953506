@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lab6
 {
-    interface IFirearm
+    interface IFirearm : ICloneable
     {
         public string Model { get; set; }
         public uint AmmoInClip { get; set; }

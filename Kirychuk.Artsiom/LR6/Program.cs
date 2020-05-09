@@ -104,8 +104,11 @@ namespace laba6
             if (menu == 1)
             {
                Console.Clear();
-               Kindergarten Garten1 = kinder;
-               Garten1.KnowHealth();
+                if(kinder is Kindergarten)
+                {
+                    Kindergarten Garten1 = kinder;
+                    Garten1.KnowHealth();
+                }   
             }           
             if (menu == 2)
             {

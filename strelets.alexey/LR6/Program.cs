@@ -10,13 +10,11 @@ namespace LAB5
             bool cycle_check = true;
             int switcher, temp, age, type;
             string name = " ", surname = " ", time, country, teacher, school;
-
             Human Man = new Human(null, null);
             DrugsAddicts NNMan = new DrugsAddicts(null, null);
             Athletes Olympic = new Athletes(null, null, 1);
             Schoolkids Normpoc = new Schoolkids(null, null);
             Human[] Peoples = new Human[] { Man, NNMan, Normpoc, Olympic };
-
             do
             {
                 Console.Clear();
@@ -30,15 +28,12 @@ namespace LAB5
                     "\nAny other key - exit from program");//menu
 
                 switcher = Convert.ToInt32(Console.ReadLine());
-
                 if (switcher < 5 && switcher >= 1)
                 {
                     Console.WriteLine("Enter your Full name");
                     name = Console.ReadLine();
                     surname = Console.ReadLine();
                 }
-
-
                 switch (switcher)
                 {
                     case 1: Man = new Human(name,surname);
@@ -106,13 +101,11 @@ namespace LAB5
                 } 
                 Console.WriteLine("Do you want ot change some information? (1 = yes, any other symbol = no)");
                 switcher = Convert.ToInt32(Console.ReadLine());
-
                 switch(switcher)
                 {
                     case 1: Console.WriteLine("Restart this program, a have no time to add this ability in this cycle"); break;
                     default: Console.WriteLine("OK"); break;
-                }
-                
+                }  
             }
             while (cycle_check);
         }

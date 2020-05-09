@@ -13,6 +13,7 @@ static class Program
         }
         return null;
     }
+    
     static void Change(ref RatNumber num1, ref RatNumber num2, RatNumber num)
     {
         WriteLine("Нажмите:\n 1 - присв. первому эл.\n 2 - присв. второму эл.\n 3 - вывод значения");

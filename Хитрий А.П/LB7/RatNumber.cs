@@ -73,7 +73,7 @@ class RatNumber
                     continue;
                 else
                 {
-                    WriteLine();
+                    WriteLine("Неверный ввод");
                     return;
                 }
             }
@@ -161,7 +161,7 @@ class RatNumber
             return new RatNumber((int)d, 1);
         string hot = d.ToString();
         char[] aaa = hot.ToCharArray();
-        for (int g = 0; g < 5; ++g)
+        for (int g = 0; g < 25; ++g)
         {
             if (aaa[g] == ',')
                 break;

@@ -11,6 +11,7 @@ namespace LAB5
             public string _Country;
             public string _Sporttype;
         }
+
         Charackters ForAll;
         public string _Country { get; set; }
         protected string _Sporttype { get; set; }
@@ -25,8 +26,8 @@ namespace LAB5
         public void ShowInfo()
         {
             Console.WriteLine($@"Country: {ForAll._Country} 
-	         Type Of Sport: {ForAll._Sporttype}
-            Expirience: {_expir}");
+Type Of Sport: {ForAll._Sporttype}
+Expirience: {_expir}");
         }
     }
 }

@@ -37,14 +37,20 @@ namespace LAB5
             }
         }
 
-        public void Set(Temperament temp)
+        public Human(int temp, int age)
         {
-            _temp = temp;
+            _age = age;
+            switch (temp)
+            {
+                case 1: _temp = Temperament.Choleric; break;
+                case 2: _temp = Temperament.Sanguine; break;
+                case 3: _temp = Temperament.Phlegmatic; break;
+                case 4: _temp = Temperament.Melancholy; break;
+            }
         }
 
         protected Temperament _temp;
         private readonly Physique _phys;
-
         public int _weight { get; set; }
         public string _name { get; set; }
         public string _surName { get; set; }
@@ -56,28 +62,12 @@ namespace LAB5
 
         public void ShowTemp()
         {
-            int Converting = Convert.ToInt32(_temp);
-
-            switch (Converting)
-            {
-                case 1: Console.WriteLine("Temperament: Choleric"); break;
-                case 2: Console.WriteLine("Temperament: Sanguine"); break;
-                case 3: Console.WriteLine("Temperament: Phlegmatic"); break;
-                case 4: Console.WriteLine("Temperament: Melancholy"); break;
-            }
+            Console.WriteLine($"Temperament: {_temp}");
         }
 
         public void ShowPhys()
         {
-            int Converting = Convert.ToInt32(_phys);
-
-            switch (Converting)
-            {
-                case 1: Console.WriteLine("Temperament: Choleric"); break;
-                case 2: Console.WriteLine("Temperament: Sanguine"); break;
-                case 3: Console.WriteLine("Temperament: Phlegmatic"); break;
-                case 4: Console.WriteLine("Temperament: Melancholy"); break;
-            }
+            Console.WriteLine($"Physique {_phys}");
         }
 
         public void BodyBuilder(int Age, int Weight)

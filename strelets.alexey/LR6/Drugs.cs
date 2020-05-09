@@ -10,6 +10,7 @@ namespace LAB5
         {
             _expir = Convert.ToInt32(time);
         }
+
         public enum Drugs
         {
             Opium = 1,
@@ -17,44 +18,30 @@ namespace LAB5
             Amphetamine,
             Ecstasy,
         }
+
         public struct Characteristics
         {
             public Drugs _BeginType;
             public Drugs _TodayType;
         }
 
+        public Characteristics Everyone;
+
         public void SetType(Drugs value, Drugs value2)
         {
             Everyone._BeginType = value;
             Everyone._TodayType = value2;
         }
-        public Characteristics Everyone;
 
         public void ShowInfo()
         {
-            int converting = Convert.ToInt32(Everyone._BeginType);
-            switch (converting)
-            {
-                case 1: Console.WriteLine("Begin Drug type: opium"); break;
-                case 2: Console.WriteLine("Begin Drug type: cannabis"); break;
-                case 3: Console.WriteLine("Begin Drug type: amphetamine"); break;
-                case 4: Console.WriteLine("Begin Drug type: ecstasy"); break;
-            }
-
-            converting = Convert.ToInt32(Everyone._TodayType);
-            switch (converting)
-            {
-                case 1: Console.WriteLine("Drug type: opium"); break;
-                case 2: Console.WriteLine("Drug type: cannabis"); break;
-                case 3: Console.WriteLine("Drug type: amphetamine"); break;
-                case 4: Console.WriteLine("Drug type: ecstasy"); break;
-            }
-
-            Console.WriteLine($"Expirience: {_expir}");
+            Console.WriteLine($"Expirience: {_expir}" +
+            $"Today type: {Everyone._TodayType}" +
+            $"Begin type: {Everyone._BeginType}");
         }
 
-       	public Drugs this[int index]
-            {
+        public Drugs this[int index]
+        {
                 get
                 {
                     switch (index)
@@ -76,7 +63,7 @@ namespace LAB5
                     case 4: Everyone._BeginType = value; break;
                     }
                 }
-            }
+        }
 
     }
 }

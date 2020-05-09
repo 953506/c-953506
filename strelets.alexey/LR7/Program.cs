@@ -4,6 +4,7 @@ namespace Lab7
 {
     class Program
     {
+        
         public static void Menu()
         {
             Console.WriteLine("1- Choose operator '+'" +
@@ -14,9 +15,9 @@ namespace Lab7
             "\n6- Choose operator '>'" +
             "\n7- Show Sort" +
             "\n8- Using Equals" +
-            "\n9- exit");
+            "\n9- Convert to double" +
+            "\n10- exit");
         }
-
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to program called Converter!" +
@@ -52,7 +53,8 @@ namespace Lab7
                     Console.WriteLine($"{i}");
                 break;
                 case 8: Console.WriteLine($"Equals: {firstnum.Equals(secondnum)}"); break;
-                case 9: return;
+                case 9: double one = (double)firstnum; Console.WriteLine($"{one} : {firstnum}"); break;
+                case 10: return;
             }
 
         }

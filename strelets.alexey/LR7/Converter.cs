@@ -107,5 +107,10 @@ namespace Lab7
             return _num * other._denom == other._num* _denom;
         }
 
+        public static explicit operator double(Converter value)
+        {
+            return value._num / (double)value._denom;
+        }
+
     }
 }

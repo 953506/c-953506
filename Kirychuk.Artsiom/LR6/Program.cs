@@ -104,7 +104,7 @@ namespace laba6
             if (menu == 1)
             {
                Console.Clear();
-               Kindergarten Garten1 = new Child("Никита", "Зарецкий", 27, Toy.Constructor, 4);
+               Kindergarten Garten1 = kinder;
                Garten1.KnowHealth();
             }           
             if (menu == 2)

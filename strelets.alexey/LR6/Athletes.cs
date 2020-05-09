@@ -26,8 +26,8 @@ namespace LAB5
         public void ShowInfo()
         {
             Console.WriteLine($@"Country: {ForAll._Country} 
-Type Of Sport: {ForAll._Sporttype}
-Expirience: {_expir}");
+            Type Of Sport: {ForAll._Sporttype}
+            Expirience: {_expir}");
         }
     }
 }

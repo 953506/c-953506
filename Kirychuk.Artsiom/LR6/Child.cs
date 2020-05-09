@@ -12,7 +12,8 @@ namespace laba6
         Car,
         Fairy,
         Constructor,
-    }
+    } 
+    
     class Child : Kindergarten
     {
         private Toy _bauble; 

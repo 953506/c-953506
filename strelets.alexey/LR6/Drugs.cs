@@ -53,7 +53,7 @@ namespace LAB5
             Console.WriteLine($"Expirience: {_expir}");
         }
 
-            public Drugs this[int index]
+       	public Drugs this[int index]
             {
                 get
                 {

@@ -117,16 +117,16 @@ public interface IProgrammer : IWorker
             int choose = int.Parse(ReadLine());
             switch (choose)
             {
-                case 0: return;
-                case 1: WriteLine(Name); break;
-                case 2: WriteLine(SurName); break;
-                case 3: WriteLine(Age); break;
-                case 4: WriteLine(High); break;
-                case 5: WriteLine(Weight); break;
-                case 6: WriteLine(Nationality); break;
-                case 7: WriteLine(Birthdate.ToString("D")); break;
-                case 8: WriteLine(Sex); break;
-                case 9: WriteLine(Parent[0]); break;
+                case 0:  return;
+                case 1:  WriteLine(Name); break;
+                case 2:  WriteLine(SurName); break;
+                case 3:  WriteLine(Age); break;
+                case 4:  WriteLine(High); break;
+                case 5:  WriteLine(Weight); break;
+                case 6:  WriteLine(Nationality); break;
+                case 7:  WriteLine(Birthdate.ToString("D")); break;
+                case 8:  WriteLine(Sex); break;
+                case 9:  WriteLine(Parent[0]); break;
                 case 10: WriteLine(Parent[1]); break;
                 case 11: WriteLine(Salary); break;
                 case 12: WriteLine(EmploymentHistory); break;
@@ -139,6 +139,7 @@ public interface IProgrammer : IWorker
                 case 19: WriteLine(Job); break;
             }
         }
+        
         catch (Exception e)
         {
             WriteLine("{0}", e.Message);

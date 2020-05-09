@@ -317,6 +317,5 @@ namespace laba_6_edit
             }
             Console.ReadKey();
         }
-
     }
 }

@@ -4,6 +4,7 @@ using System.Text;
 
 namespace laba6
 {
+    
     class Worker: Kindergarten
     {
         private int _skill;

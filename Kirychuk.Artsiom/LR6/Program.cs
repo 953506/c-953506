@@ -1,7 +1,8 @@
 ﻿using System;
 
 namespace laba6
-{
+{ 
+    
     class Program
     {
         static Child kinder = new Child("Артём", "Киричук", 5, Toy.Bear, 4);

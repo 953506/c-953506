@@ -4,7 +4,6 @@ namespace Laba5
 {
     class Program
     {
-
         static void Main(string[] args)
         {
             bool changes = false, ch=true;

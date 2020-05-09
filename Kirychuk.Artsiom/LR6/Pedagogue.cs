@@ -11,6 +11,7 @@ enum Groups
 }
 namespace laba6
 {
+    
     class Pedagogue : Kindergarten
     {
         private Groups _group;

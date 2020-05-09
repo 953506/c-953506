@@ -18,7 +18,8 @@ namespace laba6
         Normal,
         SoSo,
         Bad,
-    }
+    } 
+    
     class Kindergarten : IKindergarten
     {
         //------------ Поля

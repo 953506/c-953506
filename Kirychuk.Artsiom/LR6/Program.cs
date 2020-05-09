@@ -103,8 +103,9 @@ namespace laba6
                 Console.WriteLine("Выберите снова");
             if (menu == 1)
             {
-                Console.Clear();
-                worker.KnowHealth();
+               Console.Clear();
+               Kindergarten Garten1 = kinder;
+               Garten1.KnowHealth();
             }           
             if (menu == 2)
             {

@@ -1,0 +1,9 @@
+D:\C#\laba4\task2\task2\task2\bin\Debug\task2.exe.config
+D:\C#\laba4\task2\task2\task2\bin\Debug\task2.exe
+D:\C#\laba4\task2\task2\task2\bin\Debug\task2.pdb
+D:\C#\laba4\task2\task2\task2\obj\Debug\task2.csprojAssemblyReference.cache
+D:\C#\laba4\task2\task2\task2\obj\Debug\task2.exe
+D:\C#\laba4\task2\task2\task2\obj\Debug\task2.pdb
+D:\C#\laba4\task2\task2\task2\obj\Debug\task2.exe.config
+D:\C#\laba4\task2\task2\task2\bin\Debug\System.Buffers.dll
+D:\C#\laba4\task2\task2\task2\obj\Debug\task2.csproj.CopyComplete

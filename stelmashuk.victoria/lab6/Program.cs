@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace lab6
 {
@@ -14,9 +15,13 @@ namespace lab6
         void GetInfo();
     }
 
-    interface IMYComparer<T>
+    interface IComparison<T>
     {
-        void Compare(T o1, T o2);
+        void AgeComparison(T o1, T o2);
+
+        void HeightComparison(T o1, T o2);
+
+        void WeightComparison(T o1, T o2);
     }
 
     public struct Provero4ka
@@ -74,9 +79,9 @@ namespace lab6
         }
     }
 
-    class PersonComparer : IMYComparer<Person>
+    class PersonCompare : IComparison<Person>
     {
-        public void Compare(Person o1, Person o2)
+        public void AgeComparison(Person o1, Person o2)//неявная реализация метода
         {
             if (o1.provero4ka.Age > o2.provero4ka.Age)
             {
@@ -95,7 +100,7 @@ namespace lab6
             }
         }
 
-        public void Compare2(Person o1, Person o2)
+        public void HeightComparison(Person o1, Person o2)//неявная реализация метода
         {
             if (o1.provero4ka.Height > o2.provero4ka.Height)
             {
@@ -114,7 +119,7 @@ namespace lab6
             }
         }
 
-        public void Compare3(Person o1, Person o2)
+        public void WeightComparison(Person o1, Person o2)//неявная реализация метода
         {
             if (o1.provero4ka.Weight > o2.provero4ka.Weight)
             {
@@ -136,6 +141,7 @@ namespace lab6
 
     class Person : IFoo, IComparable
     {
+
         public string _name;
         public Provero4ka provero4ka;
 
@@ -154,11 +160,12 @@ namespace lab6
 
         public int CompareTo(object obj)
         {
-            Person p = obj as Person;
-            if (p != null)
-                return this.provero4ka.Age.CompareTo(p.provero4ka.Age);
+            if (obj == null) return 1;
+            Person otherPerson = obj as Person;
+            if (otherPerson != null)
+                return this.provero4ka.Age.CompareTo(otherPerson.provero4ka.Age);
             else
-                throw new Exception("Невозможно сравнить два объекта");
+                throw new ArgumentException("Невозможно сравнить два объекта");
         }
     }
 
@@ -193,20 +200,20 @@ namespace lab6
                     }
                 case 2:
                     {
-                        PersonComparer personComparer = new PersonComparer();
-                        Console.WriteLine("Сравнение параметров");
-                        personComparer.Compare(person1, person2);
-                        personComparer.Compare2(person1, person2);
-                        personComparer.Compare3(person1, person2);
+                        PersonCompare personComparer = new PersonCompare();
+                        Console.WriteLine("Сравнение параметров мужчин: ");
+                        personComparer.AgeComparison(person1, person2);
+                        personComparer.HeightComparison(person1, person2);
+                        personComparer.WeightComparison(person1, person2);
                         break;
                     }
                 case 3:
                     {
-                        PersonComparer personComparer = new PersonComparer();
-                        Console.WriteLine("Сравнение параметров");
-                        personComparer.Compare(person3, person4);
-                        personComparer.Compare2(person3, person4);
-                        personComparer.Compare3(person3, person4);
+                        PersonCompare personComparer = new PersonCompare();
+                        Console.WriteLine("Сравнение параметров женщин: ");
+                        personComparer.AgeComparison(person3, person4);
+                        personComparer.HeightComparison(person3, person4);
+                        personComparer.WeightComparison(person3, person4);
                         break;
                     }
                 case 4:
@@ -215,7 +222,7 @@ namespace lab6
                         Array.Sort(people);
                         foreach (Person p in people)
                         {
-                            Console.WriteLine(p._name + "-" + p.provero4ka.Age);
+                            Console.WriteLine(p._name + "(" + p.provero4ka.Age + ")");
                         }
                         break;
                     }

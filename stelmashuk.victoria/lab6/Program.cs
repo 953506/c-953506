@@ -157,7 +157,7 @@ namespace lab6
             provero4ka.Height = height;
             provero4ka.Weight = weight;
         }
-
+        //реализация интерфейса IComparable
         public int CompareTo(object obj)
         {
             if (obj == null) return 1;

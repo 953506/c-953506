@@ -11,7 +11,7 @@ namespace Lab7
 
         public Converter(int _num, int _denom)
         {
-            int devide = GreatDivisor(_num, _denom);
+            int devide = GreatDivisor( _num, _denom);
             this._denom = _denom / devide;
             this._num = _num / devide;
         }
@@ -56,7 +56,6 @@ namespace Lab7
             Converter result = new Converter(num, denom);
             return result;
         }
-
         public static bool operator <(Converter num1, Converter num2)
         {
             num1._num *= num2._denom;
@@ -108,9 +107,54 @@ namespace Lab7
             return _num * other._denom == other._num* _denom;
         }
 
+        public static bool ToConverter(string conv, out Converter obj)
+        {
+
+            int part1;
+            int part2;
+            obj = null;
+            string[] parts = conv.Split('/');
+            if (parts.Length == 2 && Int32.TryParse(parts[0], out part1) && Int32.TryParse(parts[1], out part2) && part1 != 0 && part2 > 0)
+            {
+                obj = new Converter(Convert.ToInt32(parts[0]), Convert.ToInt32(parts[1]));
+                return true;
+            }
+                else if (parts.Length == 1)
+                {
+                    parts = conv.Split(',');
+                    if (parts.Length == 2 && Int32.TryParse(parts[0], out part1))
+                    {
+                        for (int i = 0; i < parts[1].Length; i++)
+                        {
+                            if (parts[0][0] == '-')
+                            {
+                                part1 = part1 * 10 - (int)Char.GetNumericValue(parts[1][i]);
+                            }
+                            else
+                            {
+                                part1 = part1 * 10 + (int)Char.GetNumericValue(parts[1][i]);
+                            }
+                        }
+                        obj = new Converter(part1, (int)Math.Pow(10, parts[1].Length));
+                        return true;
+                    }
+                    else if (parts.Length == 1 && Int32.TryParse(parts[0], out part1))
+                    {
+                        obj = new Converter(part1, 1);
+                        return true;
+                    }
+                }
+            return false;
+        }
+        
         public static explicit operator double(Converter value)
         {
             return value._num / (double)value._denom;
+        }
+
+        public static implicit operator int(Converter value)
+        {
+            return value._num / value._denom;
         }
 
     }

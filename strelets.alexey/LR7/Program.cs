@@ -18,7 +18,6 @@ namespace Lab7
             "\n9- Convert to double" +
             "\n10- exit");
         }
-
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to program called Converter!" +
@@ -27,15 +26,10 @@ namespace Lab7
             string number = Console.ReadLine();
             Console.WriteLine("Now enter another number with the same syntax");
             string number2 = Console.ReadLine();
-            string[] converter = number.Split('/');
-            int[] numbers = new int[2];
-            for (int i = 0; i < 2; i++)
-                numbers[i] = Convert.ToInt32(converter[i]);
-            Converter firstnum = new Converter(numbers[0], numbers[1]);
-            converter = number2.Split('/');
-            for (int i = 0; i < 2; i++)
-                numbers[i] = Convert.ToInt32(converter[i]);
-            Converter secondnum = new Converter(numbers[0],numbers[1]);
+            Converter firstnum;
+            Converter secondnum;
+            Converter.ToConverter(number, out firstnum);
+            Converter.ToConverter(number2, out secondnum);
             Converter forcase1 = new Converter(2,3);
             Converter forcase2 = new Converter(3, 4);
             Converter[] mass = new Converter[] { firstnum, secondnum, forcase1, forcase2 };
@@ -54,7 +48,8 @@ namespace Lab7
                     Console.WriteLine($"{i}");
                 break;
                 case 8: Console.WriteLine($"Equals: {firstnum.Equals(secondnum)}"); break;
-                case 9: double one = (double)firstnum; Console.WriteLine($"{one} : {firstnum}"); break;
+                case 9: double one = (double)firstnum; Console.WriteLine($"{one} : {firstnum}");
+                double two = secondnum; Console.WriteLine($"{two} : {secondnum}"); break;
                 case 10: return;
             }
 

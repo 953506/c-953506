@@ -82,7 +82,6 @@ namespace lab_3
             this["lastname"] = lastname;
             this.Age = age;
             this.Stage = stage;
-            //numexams = 4;
             examsNotes[0].Subject = "Foreigh language";
             examsNotes[1].Subject = "Highet Math";
             examsNotes[2].Subject = "Physical Culture";
@@ -94,10 +93,10 @@ namespace lab_3
 
         public void Display()
         {
-            Console.WriteLine("{0} {1} (возраст {2} лет), студент {3} курса", this["lastname"], this["name"], Age, Stage);
+            Console.WriteLine("{0} {1} (age {2} years), student {3} course", this["lastname"], this["name"], Age, Stage);
             ShowNotes();
-            Console.WriteLine("\nСтудент {0}", this["lastname"]);
-            Console.WriteLine("Рейтинг (в %): {0}", Rating);
+            Console.WriteLine("\Student {0}", this["lastname"]);
+            Console.WriteLine("Rating (в %): {0}", Rating);
         }
         public void SetRating()
         {

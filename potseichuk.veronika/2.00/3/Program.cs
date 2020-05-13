@@ -38,8 +38,6 @@ namespace lab_3
         static void AddSt()
         {
             Console.Clear();
-            /*BSUIRst[numst] = new Student();
-            numst++;*/
             string name;
             string lastname;
             int age;

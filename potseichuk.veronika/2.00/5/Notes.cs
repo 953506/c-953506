@@ -12,11 +12,10 @@ namespace Lab5
             this["lastname"] = lastname;
             this.Age = age;
             this.Stage = stage;
-            //numexams = 4;
-            examsNotes[0].Subject = "Иностранный язык";
-            examsNotes[1].Subject = "ВышМат";
-            examsNotes[2].Subject = "Физкультура";
-            examsNotes[3].Subject = "Математическая логика";
+            examsNotes[0].Subject = "Foreigh language";
+            examsNotes[1].Subject = "Highet Math";
+            examsNotes[2].Subject = "Physical Culture";
+            examsNotes[3].Subject = "Math Logic";
 
             SetNotes();
             SetRating();
@@ -25,8 +24,8 @@ namespace Lab5
         {
             base.Display();
             ShowNotes();
-            Console.WriteLine("\nСтудент {0}", this["lastname"]);
-            Console.WriteLine("Рейтинг (в %): {0}", Rating);
+            Console.WriteLine("\nStudent {0}", this["lastname"]);
+            Console.WriteLine("Rating (в %): {0}", Rating);
         }
     }
 }

@@ -18,6 +18,7 @@ namespace Lab7
             "\n9- Convert to double" +
             "\n10- exit");
         }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to program called Converter!" +

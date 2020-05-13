@@ -56,6 +56,7 @@ namespace Lab7
             Converter result = new Converter(num, denom);
             return result;
         }
+
         public static bool operator <(Converter num1, Converter num2)
         {
             num1._num *= num2._denom;

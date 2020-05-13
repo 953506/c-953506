@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Text;
 
-namespace Пробный_3
+namespace lab_3
 {
     class Student
     {

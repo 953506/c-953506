@@ -34,6 +34,7 @@ namespace Lab5
                 }
             } while (choice != 4);
         }
+        
         static void AddSt()
         {
             Console.Clear();
@@ -88,9 +89,5 @@ namespace Lab5
             }
             Console.ReadKey();
         }
-
-
     }
-
-
 }

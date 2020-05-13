@@ -5,7 +5,7 @@ namespace laba3
     class Human
     {
         
-        public enum Gender 
+        public enum _Gender 
         { 
             male,
             female,
@@ -21,7 +21,7 @@ namespace laba3
         private String _surname;
         private string _nationality;
         private int _id;
-        private Gender _gender;
+        private _Gender _gender;
         private bool _isLife;
         private static int id = 0;
 
@@ -38,10 +38,10 @@ namespace laba3
             _id = id;
             id++;
             _dateOfDeath = new DateTime();
-            _gender = Gender.indefined;
+            _gender = _Gender.indefined;
         }
 
-        public Human(string name, string surname, int height, int weight, string nationality, Gender gender, int day, int month, int year, int dayOfDeath, int monthOfDeath, int yearOfDeath) 
+        public Human(string name, string surname, int height, int weight, string nationality, _Gender gender, int day, int month, int year, int dayOfDeath, int monthOfDeath, int yearOfDeath) 
         {
             _name = name;
             _surname = surname; 
@@ -60,7 +60,7 @@ namespace laba3
             id++;
         }
 
-        public Human(string name, string surname, int height, int weight, string nationality, Gender gender, int day, int month, int year)
+        public Human(string name, string surname, int height, int weight, string nationality, _Gender gender, int day, int month, int year)
         {
             _name = name;
             _surname = surname;
@@ -92,10 +92,10 @@ namespace laba3
             _weight = 0;
             _id = id;
             id++;
-            _gender = Gender.indefined;
+            _gender = _Gender.indefined;
         }
 
-        public Human(string name, string surname, string nationality, Gender gender, int day, int month, int year)
+        public Human(string name, string surname, string nationality, _Gender gender, int day, int month, int year)
         {
             _name = name;
             _surname = surname;
@@ -220,7 +220,7 @@ namespace laba3
             }
         }
 
-        public Gender GenderOfMan
+        public _Gender Gender
         {
             get
             {
@@ -285,7 +285,7 @@ namespace laba3
             _isLife = false;
         }
 
-        public void setInfo(string name, string surname, int height, int weight, string nationality, Gender gender, int day, int month, int year)
+        public void setInfo(string name, string surname, int height, int weight, string nationality, _Gender gender, int day, int month, int year)
         {
             _dateOfBirth = new DateTime(year, month, day);
             _height = height;
@@ -326,7 +326,7 @@ namespace laba3
             _age.AddYears(-_dateOfBirth.Year+1);
             _height = 182;
             _weight = 79;
-            _gender = Gender.male;
+            _gender = _Gender.male;
         }
 
         public string this[int index] 

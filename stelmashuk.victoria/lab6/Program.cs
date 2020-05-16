@@ -141,7 +141,6 @@ namespace lab6
 
     class Person : IFoo, IComparable
     {
-
         public string _name;
         public Provero4ka provero4ka;
 

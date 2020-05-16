@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 
 namespace _7
 {
     class Program
     {
-        class RationalNumber //: IEquatable<RationalNumber>
+        class RationalNumber : IEquatable<RationalNumber>
         {
             double _n;
             double _m;
@@ -201,9 +201,9 @@ namespace _7
            
             Console.WriteLine("Введите первое рациональное число в виде n/m :");
             Console.Write("где n = ");
-            firstNumber.N = Convert.ToInt64(Console.ReadLine());
+            firstNumber.N = float.Parse(Console.ReadLine());
             Console.Write("где m = ");
-            firstNumber.M = Convert.ToInt64(Console.ReadLine());
+            firstNumber.M = float.Parse(Console.ReadLine());
 
             Console.WriteLine("Введите второе рациональное число в виде n/m:");
             Console.Write("где n = ");
@@ -229,7 +229,7 @@ namespace _7
             RationalNumber.CalculationOutput(result, ":", firstNumber, secondNumber);
 
             firstNumber.FirstRationalNumber = result.FirstRationalNumber;
-            secondNumber.FirstRationalNumber = result.SecondRationalNumber;
+            secondNumber.FirstRationalNumber = result.FirstRationalNumber;
             secondNumber.SecondRationalNumber = result.SecondRationalNumber;
 
             Console.WriteLine("Сравнение:");

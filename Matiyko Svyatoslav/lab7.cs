@@ -167,6 +167,11 @@ namespace _7
             {
                 return (int) (obj._n/obj._m);
             } 
+            
+            public override string ToString()
+            {
+                return ($"{_N}/{_M}");
+            }
 
             public static void CalculationOutput(RationalNumber obj, string sign, RationalNumber obj1, RationalNumber obj2)
             {
@@ -210,22 +215,26 @@ namespace _7
             secondNumber.N = float.Parse(Console.ReadLine());
             Console.Write("где m = ");
             secondNumber.M = float.Parse(Console.ReadLine());
-
             Console.Clear();
+            
             Console.WriteLine("Сумма:");
             result = firstNumber + secondNumber;
+            Console.WriteLine("Результат:{0}",(firstNumber + secondNumber).ToString());
             RationalNumber.CalculationOutput(result, "+", firstNumber, secondNumber);
 
             Console.WriteLine("Разность:");
             result = firstNumber - secondNumber;
+            Console.WriteLine("Результат:{0}",(firstNumber - secondNumber).ToString());
             RationalNumber.CalculationOutput(result, "-", firstNumber, secondNumber);
             
             Console.WriteLine("Произведение:");
             result = firstNumber * secondNumber;
+            Console.WriteLine("Результат:{0}",(firstNumber * secondNumber).ToString());
             RationalNumber.CalculationOutput(result, "*", firstNumber, secondNumber);
 
             Console.WriteLine("Деление:");
             result = firstNumber / secondNumber;
+            Console.WriteLine("Результат:{0}",(firstNumber / secondNumber).ToString());    
             RationalNumber.CalculationOutput(result, ":", firstNumber, secondNumber);
 
             firstNumber.FirstRationalNumber = result.FirstRationalNumber;

@@ -9,7 +9,8 @@ namespace programming_paradigms
         public enum AllocationASOI 
         {
             Интеграл,
-            Тестировщик
+            Тестировщик,
+            Жд
         }
 
         public ASOIStudent() : base()

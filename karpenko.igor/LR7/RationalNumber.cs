@@ -37,7 +37,6 @@ namespace z1
             res = new RationalNumber(a._numerator * b._denominator, a._denominator * b._numerator);
             return res;
         }
-
         public static bool operator <(RationalNumber a, RationalNumber b)
         {
             if (a.CompareTo(b) == -1)
@@ -84,7 +83,6 @@ namespace z1
             else
                 throw new Exception("Невозможно сравнить два объекта");
         }
-
         public bool Equals(RationalNumber a) 
         {
             if (a is null)
@@ -106,7 +104,6 @@ namespace z1
         {
             return (double)a._numerator / a._denominator;
         }
-
         public static implicit operator int(RationalNumber a)
         {
             return a._numerator / a._denominator;

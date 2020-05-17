@@ -17,7 +17,6 @@ namespace z1
         {
             int numerator;
             int denominator;
-
             char[] numer = new char[25];
             char[] denom = new char[25];
             int i = 0;

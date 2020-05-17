@@ -13,6 +13,34 @@ namespace z1
             _numerator = numerator;
             _denominator = denominator;
         }
+        public RationalNumber(string num)
+        {
+            int numerator;
+            int denominator;
+
+            char[] numer = new char[25];
+            char[] denom = new char[25];
+            int i = 0;
+            for(int j = 0; i < num.Length; i++, j++)
+            {
+                if (num[i] == '/') 
+                {
+                    numer[j] = '\0';
+                    i++;
+                    break;
+                }
+                numer[j] = num[i];
+            }
+            for (int j = 0; i < num.Length; i++, j++)
+            {
+                   denom[j] = num[i];
+            }
+            string str1 = new string(numer);
+            string str2 = new string(denom);
+
+            _numerator = Convert.ToInt32(str1);
+            _denominator = Convert.ToInt32(str2);
+        }
         public static RationalNumber operator +(RationalNumber a, RationalNumber b) 
         {
             RationalNumber res;

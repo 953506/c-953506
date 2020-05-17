@@ -15,8 +15,6 @@ namespace z1
         }
         public RationalNumber(string num)
         {
-            int numerator;
-            int denominator;
             char[] numer = new char[25];
             char[] denom = new char[25];
             int i = 0;
@@ -36,7 +34,6 @@ namespace z1
             }
             string str1 = new string(numer);
             string str2 = new string(denom);
-
             _numerator = Convert.ToInt32(str1);
             _denominator = Convert.ToInt32(str2);
         }

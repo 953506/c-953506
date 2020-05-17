@@ -197,25 +197,45 @@ namespace _7
 
         static void Main(string[] args)
         {   
-            string[] numberOne = new string[3];
-            string[] numberTwo = new string[3];
-
             RationalNumber firstNumber = new RationalNumber();
             RationalNumber secondNumber = new RationalNumber();
             RationalNumber result = new RationalNumber();
-           
-            Console.WriteLine("Введите первое рациональное число в виде n/m :");
-            Console.Write("где n = ");
-            firstNumber.N = float.Parse(Console.ReadLine());
-            Console.Write("где m = ");
-            firstNumber.M = float.Parse(Console.ReadLine());
 
-            Console.WriteLine("Введите второе рациональное число в виде n/m:");
-            Console.Write("где n = ");
-            secondNumber.N = float.Parse(Console.ReadLine());
-            Console.Write("где m = ");
-            secondNumber.M = float.Parse(Console.ReadLine());
-            Console.Clear();
+            Console.WriteLine("Выберите способ  ввода рационального числа");
+            Console.WriteLine("1.ввести отдельно знаменатель и числитель\n2.ввести полностью рациональное число");
+            int choice = int.Parse(Console.ReadLine());
+
+            switch(choice)
+            {
+                case 1: 
+                    Console.WriteLine("Введите числитель первого числа n = ");
+                    firstNumber.N = float.Parse(Console.ReadLine());
+                    Console.Write("знаменатель m = ");
+                    firstNumber.M = float.Parse(Console.ReadLine());
+        
+                    Console.WriteLine("Введите числитель второго числа n = ");
+                    secondNumber.N = float.Parse(Console.ReadLine());
+                    Console.Write("знаменатель m = ");
+                    secondNumber.M = float.Parse(Console.ReadLine());                    
+                    break;
+
+                case 2:
+                    string expression;
+                    string[] numbers;
+                    
+                    Console.WriteLine("Введите первое число в форммате n/m");
+                    expression = Console.ReadLine();
+                    numbers = expression.Split(new char[] {'/'});
+                    firstNumber.N = float.Parse(numbers[0]);
+                    firstNumber.M = float.Parse(numbers[1]);
+
+                    Console.WriteLine("Введите второе число n/m :");
+                    expression = Console.ReadLine();
+                    numbers = expression.Split(new char[] {'/'});
+                    secondNumber.N = float.Parse(numbers[0]);
+                    secondNumber.M = float.Parse(numbers[1]);
+                    break;
+            }
             
             Console.WriteLine("Сумма:");
             result = firstNumber + secondNumber;

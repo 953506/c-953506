@@ -4,18 +4,6 @@ using static System.Console;
     public interface IHuman
     {
         public static int _number = 1_000_001;
-        
-        public string[] Parent { get; set; }
-        public int ID { get; }
-        public string Name { get; set; }
-        public string SurName { get; set; }
-        public int Age { get; set; }
-        public int High { get; set; }
-        public float Weight { get; set; }
-        public string Nationality { get; set; }
-        public DateTime Birthdate { get; set; }
-        public string Sex { get; set; }
-        public float IMT { get => Weight * 100 / High * 100 / High; }
 
         public void HCout()
         {
@@ -29,10 +17,22 @@ using static System.Console;
             WriteLine("Пол: {0}", Sex);
         }
 
-        public void CalculateAge() => WriteLine("{0}",DateTime.Now.Year - Birthdate.Year);
+        public string[] Parent { get; set; }
+        public int ID { get; }
+        public string Name { get; set; }
+        public string SurName { get; set; }
+        public int Age { get; set; }
+        public int High { get; set; }
+        public float Weight { get; set; }
+        public string Nationality { get; set; }
+        public DateTime Birthdate { get; set; }
+        public string Sex { get; set; }
+        public float IMT { get => Weight * 100 / High * 100 / High; }
+
+        public void CalculateAge() => WriteLine(DateTime.Now.Year - Birthdate.Year);
 
         public void ImportantDates() { }
-        
+
         public void Date()
         {
             try

@@ -17,7 +17,6 @@ namespace ConsoleApp1
             _course = 1;
             _group = 2;
     }
-
         public new int Group
         {
             get
@@ -90,7 +89,6 @@ namespace ConsoleApp1
             }
 
         }
-
         public new void Cout()
                 {
                     Console.WriteLine("Information about Student");

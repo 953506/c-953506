@@ -46,7 +46,6 @@ namespace ConsoleApp1
         //структура
         protected struct Marks
         {
-
             //поля
             public int Math;
             public int Phisiks;
@@ -70,7 +69,11 @@ namespace ConsoleApp1
                 Phisiks = phisiks;
                 Russian = russian;
             }
-
+            public void CoutMarks()
+            {
+                Console.WriteLine("Marks:");
+                Console.WriteLine($"Math: {Math}, Phisiks: {Phisiks}, Russian: {Russian}");
+            }
         }
         //перечисления
         enum Numbers
@@ -81,9 +84,11 @@ namespace ConsoleApp1
 
         };
         //свойство
-        public override int IfAge { 
-            
+        //2
+        public override int IfAge 
+        {           
             get => base.IfAge;
+
             set
             {
                 if (value > 0 && value < 22)
@@ -191,7 +196,6 @@ namespace ConsoleApp1
                 
             }
         }
-
         public string Faculty
         {
             get
@@ -220,7 +224,6 @@ namespace ConsoleApp1
                 }
             }
         }
-
         public string Specialty
         {
             get
@@ -380,7 +383,6 @@ namespace ConsoleApp1
                 }
             }
         }
-
         //метод
         public new void  Cout()
         {
@@ -418,7 +420,6 @@ namespace ConsoleApp1
             Console.WriteLine($"Faculty:{_faculty}, Specialty:{_specialty}");
             Console.WriteLine($"Group:{group}, Course:{course}, serial number: the{_number} ");
         }
-
         public void Option(string _number)
         {
             int option = 0;
@@ -463,7 +464,7 @@ namespace ConsoleApp1
                         break;
                     }
             }
-            option = option % 15;
+            option %= 15;
             Console.WriteLine($"Task option in the lab is {option}");
         }
     }

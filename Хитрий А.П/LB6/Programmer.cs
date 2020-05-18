@@ -1,6 +1,5 @@
 ﻿using System;
 using static System.Console;
-
 class Programmer : IProgrammer
 {
     public static int _number;
@@ -178,6 +177,5 @@ class Programmer : IProgrammer
             WriteLine("{0}", ex.Message);
             Creat(a);
         }
-        return;
     }
 }

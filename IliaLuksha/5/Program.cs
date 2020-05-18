@@ -24,13 +24,30 @@ namespace ConsoleApp1
                         return 0;
                     }                    
             }
+
+        }
+        static int Exist()
+        {
+            Console.WriteLine("Do you want to exist: ");
+            Console.WriteLine("(1)Yes   (2)No: ");
+            char Key = Console.ReadKey().KeyChar;
+            switch (Key)
+            {
+                case '1': Environment.Exit(0); return 1;
+                case '2':  return 2;
+                default:
+                    {
+                        Console.WriteLine("You can Enter only 1 or 2");
+                        Environment.Exit(0);
+                        return 0;
+                    }
+            }
         }
         static void Main(string[] args)
         {
             char Key;
-            int ifer = 0;
-            
-       
+            int ifer = 0, num = 2;
+            Student example1 = new Student();
             Console.WriteLine("Human::Student::StudentIITP::StudentIITP1");
             Console.WriteLine("Choose one of the classes :");
             Console.WriteLine("(1)Student   (2)StudentIITP  (3)StudentIITP1:");
@@ -39,196 +56,354 @@ namespace ConsoleApp1
             {
                 case '1': 
                     {
-                        Student example1 = new Student();
                         Console.WriteLine("Class Student: ");
-                        Console.WriteLine("Menu: ");
-                        Console.WriteLine("(1)Change    (2)output   (3)Task option in the lab ");
-                        Key = Console.ReadKey().KeyChar;
-                        switch (Key)
-                        {
-                            case '1':
+                        
+                           while(num == 2)
+                           {
+                                num = Exist();
+                                Console.WriteLine("Menu: ");
+                                Console.WriteLine("(1)Change    (2)output   (3)Task option in the lab");
+                                Key = Console.ReadKey().KeyChar;
+                                switch (Key)
                                 {
-                                    Key = Console.ReadKey().KeyChar;
-                                    ifer = Ifer();
-                                    if (ifer == 1)
-                                    {
-                                        Console.WriteLine("What do you want to change?: ");
-                                        Console.WriteLine("(1)age   (2)group   (3)course   (4)faculty   (5)specialty   (6)number");
-                                        Key = Console.ReadKey().KeyChar;
-                                        switch (Key)
+                                    case '1':
                                         {
-                                            case '1':
-                                                {
-                                                    example1.IfAge = Convert.ToInt32(Console.ReadLine());
-                                                    break;
-                                                }
-                                            case '2':
-                                                {
-                                                    example1.Group = Convert.ToInt32(Console.ReadLine());
-                                                    break;
-                                                }
-                                            case '3':
-                                                {
-                                                    example1.Сourse = Convert.ToInt32(Console.ReadLine());
-                                                    break;
-                                                }
-                                            case '4':
-                                                {
-                                                    example1.Faculty = Console.ReadLine();
-                                                    break;
-                                                }
-                                            case '5':
-                                                {
-                                                    example1.Specialty = Console.ReadLine();
-                                                    break;
-                                                }
-                                            case '6':
-                                                {
-                                                    example1.Number = Console.ReadLine();
-                                                    break;
-                                                }
-                                            default:
-                                                {
-                                                    Console.WriteLine("You can Enter only  numbers from 1 to 6");
-                                                    Environment.Exit(0);
-                                                    break;
-                                                }
-                                        }                                       
-                                    }
-                                    break;
-                                }
-                            case '2':
-                                {
-                                    Console.WriteLine("Do you want to see result?");
-                                    Console.WriteLine("(1)Yes   (2)No: ");
-                                    Key = Console.ReadKey().KeyChar;
-                                    switch (Key)
-                                    {
-                                        case '1':
+                                            Key = Console.ReadKey().KeyChar;
+                                            ifer = Ifer();
+                                            if (ifer == 1)
                                             {
-                                                example1.Cout();
-                                                break;
+                                                Console.WriteLine("What do you want to change?: ");
+                                                Console.WriteLine("(1)age   (2)group   (3)course   (4)faculty   (5)specialty   (6)number    (7)name");
+                                                Key = Console.ReadKey().KeyChar;
+                                                switch (Key)
+                                                {
+                                                    case '1':
+                                                        {
+                                                            Console.WriteLine("Enter the Age ");
+                                                        //реализация полиморфзма(1)
+                                                            example1.IfAge = Convert.ToInt32(Console.ReadLine());
+                                                            break;
+                                                        }
+                                                    case '2':
+                                                        {
+                                                            Console.WriteLine("Enter the Group ");
+                                                            example1.Group = Convert.ToInt32(Console.ReadLine());
+                                                            break;
+                                                        }
+                                                    case '3':
+                                                        {
+                                                            Console.WriteLine("Enter the Сourse ");
+                                                            example1.Сourse = Convert.ToInt32(Console.ReadLine());
+                                                            break;
+                                                        }
+                                                    case '4':
+                                                        {
+                                                            Console.WriteLine("Enter the Faculty ");
+                                                            example1.Faculty = Console.ReadLine();
+                                                            break;
+                                                        }
+                                                    case '5':
+                                                        {
+                                                            Console.WriteLine("Enter the Specialty ");
+                                                            example1.Specialty = Console.ReadLine();
+                                                            break;
+                                                        }
+                                                    case '6':
+                                                        {
+                                                            Console.WriteLine("Enter the Number ");
+                                                            example1.Number = Console.ReadLine();
+                                                            break;
+                                                        }
+                                                    case '7':
+                                                        {
+                                                        //реализация наследования(2)
+                                                        Console.WriteLine("Enter the Name ");
+                                                            example1.Name = Console.ReadLine();
+                                                            break;
+                                                        }
+                                                default:
+                                                        {
+                                                            Console.WriteLine("You can Enter only  numbers from 1 to 7");
+                                                            Environment.Exit(0);
+                                                            break;
+                                                        }
+                                                }
                                             }
-                                        case '2': break;
-                                        default:
+
+                                            break;
+                                        }
+                                    case '2':
+                                        {
+                                            Console.WriteLine("Do you want to see result?");
+                                            Console.WriteLine("(1)Yes   (2)No: ");
+                                            Key = Console.ReadKey().KeyChar;
+                                            switch (Key)
                                             {
-                                                Console.WriteLine("You can Enter only 1 or 2");
-                                                Environment.Exit(0);
-                                                break;
+                                                case '1':
+                                                    {
+                                                        example1.Cout();
+                                                        break;
+                                                    }
+                                                case '2': break;
+                                                default:
+                                                    {
+                                                        Console.WriteLine("You can Enter only 1 or 2");
+                                                        Environment.Exit(0);
+                                                        break;
+                                                    }
                                             }
-                                    }
-                                    break;
+                                            break;
+                                        }
+                                    case '3':
+                                        {
+                                            example1.Option("Second");
+                                            break;
+                                        }
+                                    default:
+                                        {
+                                            Console.WriteLine("You can Enter only 1 2 or 3");
+                                            Environment.Exit(0);
+                                            break;
+                                        }
                                 }
-                            case '3':
-                                {
-                                    example1.Option("Second");
-                                    break;
-                                }
-                            default:
-                                {
-                                    Console.WriteLine("You can Enter only 1 2 or 3");
-                                    Environment.Exit(0);
-                                    break;
-                                }
-                        }
+                           }                       
+                           
                         break;
                     } 
                 case '2':
                     {
                         StudentIITP example2 = new StudentIITP();
                         Console.WriteLine("Class StudentIITP: ");
-                        Console.WriteLine("Menu: ");
-                        Console.WriteLine("(1)Change    (2)output");
-                        Key = Console.ReadKey().KeyChar;
-                        switch (Key)
+                        while (num == 2)
                         {
-                            case '1':
-                                {
-                                    Key = Console.ReadKey().KeyChar;
-                                    ifer = Ifer();
-                                    if (ifer == 1)
+                            num = Exist();
+                            Console.WriteLine("Menu: ");
+                            Console.WriteLine("(1)Change    (2)output   (3)Task option in the lab");
+                            Key = Console.ReadKey().KeyChar;
+                            switch (Key)
+                            {
+                                case '1':
                                     {
-                                        Console.WriteLine("What do you want to change?: ");
-                                        Console.WriteLine("(1)age   (2)group   (3)course   (4)faculty   (5)specialty   (6)number");
+                                        Key = Console.ReadKey().KeyChar;
+                                        ifer = Ifer();
+                                        if (ifer == 1)
+                                        {
+                                            Console.WriteLine("What do you want to change?: ");
+                                            Console.WriteLine("(1)age   (2)group   (3)course   (4)faculty   (5)specialty   (6)number     (7)name");
+                                            Key = Console.ReadKey().KeyChar;
+                                            switch (Key)
+                                            {
+                                                case '1':
+                                                    {
+                                                        Console.WriteLine("Enter the Age ");
+                                                        example2.IfAge = Convert.ToInt32(Console.ReadLine());
+                                                        break;
+                                                    }
+                                                case '2':
+                                                    {
+                                                        Console.WriteLine("Enter the Group ");
+                                                        example2.Group = Convert.ToInt32(Console.ReadLine());
+                                                        break;
+                                                    }
+                                                case '3':
+                                                    {
+                                                        Console.WriteLine("Enter the Сourse ");
+                                                        example2.Сourse = Convert.ToInt32(Console.ReadLine());
+                                                        break;
+                                                    }
+                                                case '4':
+                                                    {
+                                                        Console.WriteLine("Enter the Faculty ");
+                                                        example2.Faculty = Console.ReadLine();
+                                                        break;
+                                                    }
+                                                case '5':
+                                                    {
+                                                        Console.WriteLine("Enter the Specialty ");
+                                                        example2.Specialty = Console.ReadLine();
+                                                        break;
+                                                    }
+                                                case '6':
+                                                    {
+                                                        Console.WriteLine("Enter the Number ");
+                                                        example2.Number = Console.ReadLine();
+                                                        break;
+                                                    }
+                                                case '7':
+                                                    {
+                                                        Console.WriteLine("Enter the Name ");
+                                                        example1.Name = Console.ReadLine();
+                                                        break;
+                                                    }
+                                                default:
+                                                    {
+                                                        Console.WriteLine("You can Enter only  numbers from 1 to 7");
+                                                        Environment.Exit(0);
+                                                        break;
+                                                    }
+                                            }
+                                        }
+                                        break;
+                                    }
+                                case '2':
+                                    {
+                                        Console.WriteLine("Do you want to see result?");
+                                        Console.WriteLine("(1)Yes   (2)No: ");
                                         Key = Console.ReadKey().KeyChar;
                                         switch (Key)
                                         {
                                             case '1':
                                                 {
-                                                    example2.IfAge = Convert.ToInt32(Console.ReadLine());
+                                                    example2.Cout();
                                                     break;
                                                 }
-                                            case '2':
-                                                {
-                                                    example2.Group = Convert.ToInt32(Console.ReadLine());
-                                                    break;
-                                                }
-                                            case '3':
-                                                {
-                                                    example2.Сourse = Convert.ToInt32(Console.ReadLine());
-                                                    break;
-                                                }
-                                            case '4':
-                                                {
-                                                    example2.Faculty = Console.ReadLine();
-                                                    break;
-                                                }
-                                            case '5':
-                                                {
-                                                    example2.Specialty = Console.ReadLine();
-                                                    break;
-                                                }
-                                            case '6':
-                                                {
-                                                    example2.Number = Console.ReadLine();
-                                                    break;
-                                                }
+                                            case '2': break;
                                             default:
                                                 {
-                                                    Console.WriteLine("You can Enter only  numbers from 1 to 6");
+                                                    Console.WriteLine("You can Enter only 1 or 2");
                                                     Environment.Exit(0);
                                                     break;
                                                 }
                                         }
+                                        break;
                                     }
-                                    break;
-                                }
-                            case '2':
-                                {
-                                    Console.WriteLine("Do you want to see result?");
-                                    Console.WriteLine("(1)Yes   (2)No: ");
-                                    Key = Console.ReadKey().KeyChar;
-                                    switch (Key)
+                                case '3':
                                     {
-                                        case '1':
-                                            {
-                                                example2.Cout();
-                                                break;
-                                            }
-                                        case '2': break;
-                                        default:
-                                            {
-                                                Console.WriteLine("You can Enter only 1 or 2");
-                                                Environment.Exit(0);
-                                                break;
-                                            }
+                                        Console.WriteLine("Enter number of the student: ");
+                                        string a;
+                                        a = Console.ReadLine();
+                                        example2.Option(a);
+                                        break;
                                     }
-                                    break;
-                                }
-                            default:
-                                {
-                                    Console.WriteLine("You can Enter only 1 or 2");
-                                    Environment.Exit(0);
-                                    break;
-                                }
+                                default:
+                                    {
+                                        Console.WriteLine("You can Enter only 1, 2 or 3");
+                                        Environment.Exit(0);
+                                        break;
+                                    }
+                            }
                         }
+                       
                         break;
                     }
                 case '3': 
                     {
                         StudentIITP1 example3 = new StudentIITP1();
                         Console.WriteLine("Class StudentIITP1: ");
-                        example3.Cout();
+                        while (num == 2)
+                        {
+                            num = Exist();
+                            Console.WriteLine("Menu: ");
+                            Console.WriteLine("(1)Change    (2)output   (3)Task option in the lab   (4)Enter Marks");
+                            Key = Console.ReadKey().KeyChar;
+                            switch (Key)
+                            {
+                                case '1':
+                                    {
+                                        Key = Console.ReadKey().KeyChar;
+                                        ifer = Ifer();
+                                        if (ifer == 1)
+                                        {
+                                            Console.WriteLine("What do you want to change?: ");
+                                            Console.WriteLine("(1)age   (2)group   (3)course   (4)faculty   (5)specialty   (6)number     (7)name");
+                                            Key = Console.ReadKey().KeyChar;
+                                            switch (Key)
+                                            {
+                                                case '1':
+                                                    {
+                                                        Console.WriteLine("Enter the Age ");
+                                                        example3.IfAge = Convert.ToInt32(Console.ReadLine());
+                                                        break;
+                                                    }
+                                                case '2':
+                                                    {
+                                                        Console.WriteLine("Enter the Group ");
+                                                        example3.Group = Convert.ToInt32(Console.ReadLine());
+                                                        break;
+                                                    }
+                                                case '3':
+                                                    {
+                                                        Console.WriteLine("Enter the Сourse ");
+                                                        example3.Сourse = Convert.ToInt32(Console.ReadLine());
+                                                        break;
+                                                    }
+                                                case '4':
+                                                    {
+                                                        Console.WriteLine("Enter the Faculty ");
+                                                        example3.Faculty = Console.ReadLine();
+                                                        break;
+                                                    }
+                                                case '5':
+                                                    {
+                                                        Console.WriteLine("Enter the Specialty ");
+                                                        example3.Specialty = Console.ReadLine();
+                                                        break;
+                                                    }
+                                                case '6':
+                                                    {
+                                                        Console.WriteLine("Enter the Number ");
+                                                        example3.Number = Console.ReadLine();
+                                                        break;
+                                                    }
+                                                case '7':
+                                                    {
+                                                        Console.WriteLine("Enter the Name ");
+                                                        example1.Name = Console.ReadLine();
+                                                        break;
+                                                    }
+                                                default:
+                                                    {
+                                                        Console.WriteLine("You can Enter only  numbers from 1 to 7");
+                                                        Environment.Exit(0);
+                                                        break;
+                                                    }
+                                            }
+                                        }
+                                        break;
+                                    }
+                                case '2':
+                                    {
+                                        Console.WriteLine("Do you want to see result?");
+                                        Console.WriteLine("(1)Yes   (2)No: ");
+                                        Key = Console.ReadKey().KeyChar;
+                                        switch (Key)
+                                        {
+                                            case '1':
+                                                {
+                                                    example3.Cout();
+                                                    break;
+                                                }
+                                            case '2': break;
+                                            default:
+                                                {
+                                                    Console.WriteLine("You can Enter only 1 or 2");
+                                                    Environment.Exit(0);
+                                                    break;
+                                                }
+                                        }
+                                        break;
+                                    }
+                                case '3':
+                                    {
+                                        Console.WriteLine("Enter number of the student: ");
+                                        string a;
+                                        a = Console.ReadLine();
+                                        example3.Option(a);
+                                        break;
+                                    }
+                                case '4':
+                                    {
+                                        example3.CoutMarks();
+                                        break;
+                                    }
+                                default:
+                                    {
+                                        Console.WriteLine("You can Enter only 1, 2 or 3");
+                                        Environment.Exit(0);
+                                        break;
+                                    }
+                            }
+                        }  
                         break;
                     }
                 default:
@@ -238,7 +413,6 @@ namespace ConsoleApp1
                         break;
                     }
             }
-
         }
     }
 }

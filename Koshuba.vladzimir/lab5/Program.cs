@@ -7,7 +7,9 @@ namespace _5._1
         protected string Title;
         protected string Adress;
         
-        public void Fill(string Title, string Adress, uint AverageMark, uint NeedMark)    // полное заполнение 
+        public override void Nice() { Console.WriteLine("Nice!\a"); }
+
+        public void Fill(string Title, string Adress, int AverageMark, uint NeedMark)    // полное заполнение 
         {
             this.Title = Title;
             this.Adress = Adress;
@@ -24,8 +26,20 @@ namespace _5._1
 
     class Сertificate : Person
     {
-        protected uint AverageMark = 0;
+        public int AverageMark = 0;
         protected uint NeedMark = 0;
+        private string _number;
+
+        public string Number
+        {
+            get { return _number; }
+            set { _number = value; }
+        }
+
+        public virtual void Display()
+        {
+            Console.WriteLine(Number);
+        }
 
         public enum Subjects
         {
@@ -87,7 +101,7 @@ namespace _5._1
             else { Console.WriteLine("False"); }
         }
 
-        public void Filling(string name, int age, uint AverageMark, uint NeedMark)
+        public void Filling(string name, int age, int AverageMark, uint NeedMark)
         {
             this.name = name;
             this.age = age;
@@ -213,19 +227,17 @@ namespace _5._1
             student3.Info();
             Console.WriteLine();
             
-            Console.WriteLine("Всего работников: {0}", Student.Counter.ToString());
-
-            University univ1 = new University();
-            univ1.Fill("BSUIR", "st. Petrusya Brovka 6",6,7);
-            univ1.Inf();
-            univ1.AvMark();
-            Console.WriteLine();
-
-            Сertificate cert1 = new Сertificate();
+            Console.WriteLine("Всего работников: {0}", Student.Counter.ToString());                                            
+            
+            Сertificate cert1 = new Сertificate { Number = "12" };
+            cert1.Display();
+            cert1 = new University { Number = "120" };
+            cert1.Display();
+            Сertificate univ1 = (University) cert1;
+            cert1.Nice();
             cert1.Filling("YA",15,7,6);
             cert1.Inf();
-
-
+                        
             Console.WriteLine();
             Console.ReadKey();
         }

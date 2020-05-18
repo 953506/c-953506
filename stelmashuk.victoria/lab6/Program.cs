@@ -1,19 +1,27 @@
 using System;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace lab6
 {
-    interface IPerson
-    {
-        void IMT(int weight, double height);
-    }
+    //интерфейсы
     interface IFoo
     {
+        static void Welcome() //определение реализации по умолчанию
+        {
+            Console.WriteLine("Здравствуйте!");
+        }
+
         void GetInfo();
     }
 
-    interface IComparer<T>
+    interface IComparison<T>
     {
-        void Compare(T o1, T o2);
+        void AgeComparison(T o1, T o2);
+
+        void HeightComparison(T o1, T o2);
+
+        void WeightComparison(T o1, T o2);
     }
 
     public struct Provero4ka
@@ -21,6 +29,7 @@ namespace lab6
         private int _age;
         private int _height;
         private int _weight;
+
         public int Age
         {
             get { return _age; }
@@ -70,9 +79,9 @@ namespace lab6
         }
     }
 
-    class PersonComparer : IComparer<Person>
+    class PersonComparison : IComparison<Person>
     {
-        public void Compare(Person o1, Person o2)
+        public void AgeComparison(Person o1, Person o2)//неявная реализация метода
         {
             if (o1.provero4ka.Age > o2.provero4ka.Age)
             {
@@ -91,7 +100,7 @@ namespace lab6
             }
         }
 
-        public void Compare2(Person o1, Person o2)
+        public void HeightComparison(Person o1, Person o2)//неявная реализация метода
         {
             if (o1.provero4ka.Height > o2.provero4ka.Height)
             {
@@ -110,17 +119,17 @@ namespace lab6
             }
         }
 
-        public void Compare3(Person o1, Person o2)
+        public void WeightComparison(Person o1, Person o2)//неявная реализация метода
         {
             if (o1.provero4ka.Weight > o2.provero4ka.Weight)
             {
-                Console.WriteLine($"у {o1._name} вес больше, чем {o2._name}");
+                Console.WriteLine($"у {o1._name} вес больше, чем у {o2._name}");
             }
             else
             {
                 if (o2.provero4ka.Weight > o1.provero4ka.Weight)
                 {
-                    Console.WriteLine($"у {o2._name} вес больше, чем {o1._name}");
+                    Console.WriteLine($"у {o2._name} вес больше, чем у {o1._name}");
                 }
                 else
                 {
@@ -130,52 +139,12 @@ namespace lab6
         }
     }
 
-    class Person : IFoo, IPerson
+    class Person : IFoo, IComparable
     {
         public string _name;
         public Provero4ka provero4ka;
 
-        public void IMT(int weight, double height)
-        {
-            weight = provero4ka.Weight;
-            height = provero4ka.Height;
-            double index;
-            index = weight / ((height / 100) * (height / 100));
-            if (index < 16)
-            {
-                Console.WriteLine("Ярко выраженный дефицит массы тела");
-            }
-            else if (index > 16 && index < 18.5)
-            {
-                Console.WriteLine("Дефицит массы тела");
-            }
-            else if (index > 18.5 && index < 25)
-            {
-                Console.WriteLine("Норма");
-            }
-            else if (index > 25 && index < 30)
-            {
-                Console.WriteLine("Предожирение");
-            }
-            else if (index > 30 && index < 35)
-            {
-                Console.WriteLine("Ожирение первой степени");
-            }
-            else if (index > 35 && index < 40)
-            {
-                Console.WriteLine("Ожирение второй степени");
-            }
-            else if (index > 40)
-            {
-                Console.WriteLine("Ожирение третьей степени");
-            }
-            else
-            {
-                Console.WriteLine("Невозможно посчитать ИМТ из-за неправильно введенных данных"); 
-            }
-        }
-
-        public void GetInfo()
+        void IFoo.GetInfo()//явная реализация
         {
             Console.WriteLine($"Имя: {_name} \nВозраст: {provero4ka.Age} \nВес: {provero4ka.Weight} \nРост:{provero4ka.Height}");
         }
@@ -187,64 +156,73 @@ namespace lab6
             provero4ka.Height = height;
             provero4ka.Weight = weight;
         }
+        //реализация интерфейса IComparable
+        public int CompareTo(object obj)
+        {
+            if (obj == null) return 1;
+            Person otherPerson = obj as Person;
+            if (otherPerson != null)
+                return this.provero4ka.Age.CompareTo(otherPerson.provero4ka.Age);
+            else
+                throw new ArgumentException("Невозможно сравнить два объекта");
+        }
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Здравствуйте, введите нужные данные о первом человеке: ");
-            Console.WriteLine("Имя: ");
-            string name1 = Console.ReadLine();
-            Console.Clear();
-            Console.WriteLine("Возраст: ");
-            int age1 = Convert.ToInt32(Console.ReadLine());
-            Console.Clear();
-            Console.WriteLine("Рост: ");
-            int height1 = Convert.ToInt32(Console.ReadLine());
-            Console.Clear();
-            Console.WriteLine("Вес: ");
-            int weight1 = Convert.ToInt32(Console.ReadLine());
-            Console.Clear();
-            Person person1 = new Person(name1, age1, height1, weight1);
-            Console.WriteLine("Введите нужные данные о втором человеке: ");
-            Console.WriteLine("Имя: ");
-            string name2 = Console.ReadLine();
-            Console.Clear();
-            Console.WriteLine("Возраст: ");
-            int age2 = Convert.ToInt32(Console.ReadLine());
-            Console.Clear();
-            Console.WriteLine("Рост: ");
-            int height2 = Convert.ToInt32(Console.ReadLine());
-            Console.Clear();
-            Console.WriteLine("Вес: ");
-            int weight2 = Convert.ToInt32(Console.ReadLine());
-            Console.Clear();
-            Person person2 = new Person(name2, age2, height2, weight2);
-            Console.WriteLine("Введите 1, если хотите просмотреть информацию о первом человеке; введите 2, есди хотите просмотреть информацию о втором человеке; введите 3, если хотите сравнить их параметры");
+            IFoo.Welcome();
+            Person person1 = new Person("григорий", 37, 179, 67);
+            Person person2 = new Person("алексей", 21, 175, 70);
+            Person person3 = new Person("иоанна", 56, 165, 60);
+            Person person4 = new Person("фиона", 24, 180, 58);
+            Console.WriteLine("Введите 1, если хотите просмотреть информацию о людях\n" + 
+                "введите 2, если хотите сравнить параметры мужчин\n" + 
+                "введите 3, если хотите сравнить параметры женщин\n" + 
+                "введите 4, если хотите остсортировать данных людей по возросту");
             int otvet2 = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
             switch (otvet2)
             {
                 case 1:
                     {
-                        person1.GetInfo();
-                        person1.IMT(weight1, height1);
+                        IFoo foo = person1;// переменная интерфейса
+                        foo.GetInfo();//получили доступ к элементам интерфейса
+                        IFoo foo2 = person2;
+                        foo2.GetInfo();
+                        IFoo foo3 = person3;
+                        foo3.GetInfo();
+                        IFoo foo4 = person4;
+                        foo4.GetInfo();
                         break;
                     }
                 case 2:
                     {
-                        person2.GetInfo();
-                        person1.IMT(weight2, height2);
+                        PersonComparison personComparison = new PersonComparison();
+                        Console.WriteLine("Сравнение параметров мужчин: ");
+                        personComparison.AgeComparison(person1, person2);
+                        personComparison.HeightComparison(person1, person2);
+                        personComparison.WeightComparison(person1, person2);
                         break;
                     }
                 case 3:
                     {
-                        PersonComparer personComparer = new PersonComparer();
-                        Console.WriteLine("Сравнение параметров {0} c {1} :", name1, name2);
-                        personComparer.Compare(person1, person2);
-                        personComparer.Compare2(person1, person2);
-                        personComparer.Compare3(person1, person2);
+                        PersonComparison personComparison = new PersonComparison();
+                        Console.WriteLine("Сравнение параметров женщин: ");
+                        personComparison.AgeComparison(person3, person4);
+                        personComparison.HeightComparison(person3, person4);
+                        personComparison.WeightComparison(person3, person4);
+                        break;
+                    }
+                case 4:
+                    {
+                        Person[] people = new Person[] { person1, person2, person3, person4 };
+                        Array.Sort(people);
+                        foreach (Person p in people)
+                        {
+                            Console.WriteLine(p._name + "(" + p.provero4ka.Age + ")");
+                        }
                         break;
                     }
             }

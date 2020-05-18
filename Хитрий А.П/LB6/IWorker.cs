@@ -42,59 +42,75 @@ public interface IWorker : IHuman
 
     public void AddComment()
     {
-        Write("Введите номер уточняющей информации.\n 1 - награды\n 2 - взыскания\n 3 - языки\n ");
-        int a = int.Parse(ReadLine());
-        string[] str = Award;
-        switch (a)
+        try
         {
-            case 1: str = Award; break;
-            case 2: str = Penalty; break;
-            case 3: str = Languages; break;
+            Write("Введите номер уточняющей информации.\n 1 - награды\n 2 - взыскания\n 3 - языки\n ");
+            int a = int.Parse(ReadLine());
+            string[] str = Award;
+            switch (a)
+            {
+                case 1: str = Award; break;
+                case 2: str = Penalty; break;
+                case 3: str = Languages; break;
+            }
+            for (int i = 0; i < str.Length; ++i)
+            {
+                if (str[i] == "")
+                {
+                    Write("Введите уточн. информацию\n ");
+                    str[i] = ReadLine();
+                    return;
+                }
+                if (i == str.Length - 1)
+                {
+                    Array.Resize(ref str, str.Length + 1);
+                    str[^1] = "";
+                }
+            }
         }
-        for (int i = 0; i < str.Length; ++i)
+        catch (Exception e)
         {
-            if (str[i] == "")
-            {
-                Write("Введите уточн. информацию\n ");
-                str[i] = ReadLine();
-                return;
-            }
-            if (i == str.Length - 1)
-            {
-                Array.Resize(ref str, str.Length + 1);
-                str[^1] = "";
-            }
+            WriteLine("{0}", e.Message);
+            Clear();
         }
     }
 
     public void DeletComment()
     {
-        WriteLine("Введите номер уточняющей информации.\n 1 - награды\n 2 - взыскания\n 3 - языки");
-        int choose = int.Parse(ReadLine());
-        string[] a;
-        _ = Award;
-        switch (choose)
+        try
         {
-            case 1: a = Award; break;
-            case 2: a = Penalty; break;
-            case 3: a = Languages; break;
-            default: return;
+            WriteLine("Введите номер уточняющей информации.\n 1 - награды\n 2 - взыскания\n 3 - языки");
+            int choose = int.Parse(ReadLine());
+            string[] a;
+            _ = Award;
+            switch (choose)
+            {
+                case 1: a = Award; break;
+                case 2: a = Penalty; break;
+                case 3: a = Languages; break;
+                default: return;
+            }
+            Write("Введите номер элемента, который вы хотите удалить\n ");
+            choose = int.Parse(ReadLine());
+            if (choose == 0 && a.Length == 1)
+            {
+                a[0] = "";
+                return;
+            }
+            if (choose < 0 || choose >= a.Length)
+            {
+                WriteLine("Неверный ввод");
+                return;
+            }
+            for (int i = choose; i < a.Length - 1; ++i)
+                a[i] = a[i + 1];
+            Array.Resize(ref a, a.Length - 1);
+            WriteLine("Элемент удален");
         }
-        Write("Введите номер элемента, который вы хотите удалить\n ");
-        choose = int.Parse(ReadLine());
-        if (choose == 0 && a.Length == 1)
+        catch (Exception e)
         {
-            a[0] = "";
-            return;
+            WriteLine("{0}", e.Message);
+            Clear();
         }
-        if (choose < 0 || choose >= a.Length)
-        {
-            WriteLine("Неверный ввод");
-            return;
-        }
-        for (int i = choose; i < a.Length - 1; ++i)
-            a[i] = a[i + 1];
-        Array.Resize(ref a, a.Length - 1);
-        WriteLine("Элемент удален");
     }
 }

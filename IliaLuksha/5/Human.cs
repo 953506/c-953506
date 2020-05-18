@@ -64,6 +64,18 @@ namespace ConsoleApp1
                 return _age;
             }
         }
+        //1
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                    _name = value;
+            }
+        }
         // индексатор
         public int this[int i]
         {

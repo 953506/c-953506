@@ -8,6 +8,7 @@ namespace ConsoleApp1
 {
     class StudentIITP1: StudentIITP
     {
+        Marks student = new Marks(8);
         public StudentIITP1()
         {
             _faculty = "ФКСиС";
@@ -16,7 +17,9 @@ namespace ConsoleApp1
             _group = 953506;
             Marks Student = new Marks(9);
         }
-        
-
+        public void CoutMarks()
+        {
+            student.CoutMarks();
+        }
     }
 }

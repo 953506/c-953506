@@ -80,6 +80,8 @@ namespace laba_5_edit
             } 
         }
     }
+    
+    
     class Tesla : Car
     {
         public Tesla(string nameofmodel, int maxspeed, int price, string typeofengine, Marks mark)

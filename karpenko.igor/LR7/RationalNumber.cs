@@ -20,7 +20,7 @@ namespace z1
             int i = 0;
             for(int j = 0; i < num.Length; i++, j++)
             {
-                if (num[i] == '/') 
+                if (num[i] == '/'||num[i] == ':') 
                 {
                     numer[j] = '\0';
                     i++;
@@ -117,7 +117,6 @@ namespace z1
         {
             if (obj == null)
                 return false;
-
             RationalNumber num = obj as RationalNumber;
             if (num == null)
                 return false;

@@ -5,6 +5,7 @@ class Program
 {
     public delegate void NullTest();
     public static event NullTest NullResult;
+    
     static void Menu()
     {
         WriteLine(" 0 - выход\n 1 - создать класс\n 2 - вывод общий\n 3 - вывести построчно\n 4 - ввести построчно\n 5 - Важные данные\n" +

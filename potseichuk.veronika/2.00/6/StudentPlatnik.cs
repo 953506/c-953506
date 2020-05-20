@@ -28,13 +28,13 @@ namespace Lab6
         public override void Display()
         {
             base.Display();
-            Console.WriteLine("Оплата за семестр составляет {0} рублей.", Cost);
+            Console.WriteLine("Payment for the semester is {0} rubles.", Cost);
         }
 
         public override void Complain()
         {
             base.Complain();
-            Console.WriteLine("Платить много((");
+            Console.WriteLine("Pay a lot((");
         }
     }
 }

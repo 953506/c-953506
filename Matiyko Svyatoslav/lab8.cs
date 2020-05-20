@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Globalization;
 
-namespace _6
+namespace _8
 {   
     interface IAnimal {}
 
@@ -58,10 +58,11 @@ namespace _6
 
     class Human
     {
-        public Human(string Name, int Age)
+
+        public Human(string name, int age)
         {
-            this.Name = Name;
-            this.Age = Age;
+            Name = name;
+            Age = age;
         }
 
         public string Name { get; set; }
@@ -75,40 +76,38 @@ namespace _6
 
     class ZooDirector : Human
     {
-        public ZooDirector(string Name, int Age, string ZooName) : base(Name, Age)
+        public ZooDirector(string name, int age, string zooName) : base(name, age)
         {
-            this.ZooName = ZooName;
+            ZooName = zooName;
         }
 
         public string ZooName { get; set; }
 
         public override string ToString()
         {
-            return String.Format($"Информация о директоре зоопарка\nИмя: {Name}\nВозраст: {Age}\nназвание зоопарка: {ZooName}");
+            return String.Format($"\nИнформация о директоре зоопарка:\nИмя: {Name}\nВозраст: {Age}\nназвание зоопарка: {ZooName}");
         }
     }
 
     class Feed
     {
-        public int FeedAmount{ get; private set; }
-
-        public event EventHandler FeedEnd;
+        public delegate void EventHandler(string message);
+        public static event EventHandler NotifyFeed;
+        
+        public static int FeedAmount{ get; private set; }
 
         public Feed()
         {
             FeedAmount = 100;
         }
 
-        public void Worker()
+        public static void Worker()
         {
             for(int i = FeedAmount; i >= 0; i--)
             {
                 if(FeedAmount == 0)
                 {
-                    if(FeedEnd != nul)
-                    {
-                        FeedEnd(this, new EventArgs());
-                    }
+                    NotifyFeed?.Invoke("Alert: Закончился корм");
                 }
 
                 FeedAmount--;
@@ -117,10 +116,6 @@ namespace _6
 
     }
 
-    class Water
-    {
-
-    }
     class Dog : IFormattable, IDoggy, IAnimal, IWalker, ISwimmer
     {
         IAction walkAction;
@@ -132,7 +127,8 @@ namespace _6
         public Dog(string name, decimal speed)
         {
             walkAction = new WalkAction();
-            swimAction = new SwimAction();   
+            swimAction = new SwimAction();  
+
             _speed = speed;
             _name = name;
         }   
@@ -145,7 +141,7 @@ namespace _6
         void IDoggy.WriteSpeed()
         {
             Console.WriteLine($"скорость собаки:");
-        }
+        } 
 
         public void Walk()
         {
@@ -210,6 +206,9 @@ namespace _6
 
     class Elephant : IComparable, IAnimal, IWalker
     {
+        public delegate void Eleph(string message);
+        public event Eleph Notify;
+
         public int age;
         public double height;
         public int weight;
@@ -231,8 +230,26 @@ namespace _6
         public void Walk()
         {
             walkAction.DoAction();
+            Notify?.Invoke("\nAlert: В зоопарк прибыли слоны");
+        }
+
+        public delegate void Abilities();
+
+        public static void CanFly()
+        {
+            Console.WriteLine("Создатель наделил слонов возможностью летать");
+        }  
+
+        public static void CanSwim()
+        {
+            Console.WriteLine("Cоздатель дал слонам способость плавать");
         }
         
+        public static void GiveAction(Abilities mes)
+        {
+            mes?.Invoke();
+        }
+
         public int CompareTo(object obj)
         {
             Elephant e = obj as Elephant;
@@ -286,16 +303,49 @@ namespace _6
     {
         static void Main(string[] args)
         {
-            ZooDirector director = new ZooDirector(Name: "John", Age: 53, ZooName: "some zoo");
+            Console.Clear();
+            Console.WriteLine(new string('*',30));
+
+            string name = "";
+            int age = 0;
+
+            try
+            {
+                Console.Write("Введите имя директора: ");
+                name = Console.ReadLine();
+                Console.Write("Введите возраст директора: ");
+                age = int.Parse(Console.ReadLine());
+            }
+            catch(FormatException)
+            {
+                Console.WriteLine("\nОШИБКА: В поле \"возраст\" вы не указали число");
+            }
+
+            ZooDirector director = new ZooDirector(name, age, "some zoo");
             string info = Human.Info<ZooDirector>(director);
             Console.WriteLine(info);
             Console.WriteLine(new string('*',30));
 
             var elephant = new Elephant();
+        
+            elephant.Notify += delegate (string message)
+            {
+                Console.WriteLine(message);
+            };
+
             Console.Write("\nElephant can : ");
             elephant.Walk();
-            Console.WriteLine("\nхарактеристика слонов до сортировки :");
-            Console.WriteLine("age height weight");
+            Random rnd = new Random();
+            int value = rnd.Next(1,3);
+
+            if(value == 1)
+            {
+                Elephant.GiveAction(Elephant.CanFly);
+            }
+            else
+            {
+                Elephant.GiveAction(Elephant.CanSwim);
+            }
 
             ArrayList elephants = new ArrayList();
             Random rand = new Random();
@@ -304,11 +354,11 @@ namespace _6
             { 
                 Elephant eleph = new Elephant(rand.Next(1,65), rand.Next(1,3), rand.Next(120,6000));
                 elephants.Add(eleph);
-                Console.WriteLine(eleph.age + "    " + eleph.height + "    " + eleph.weight);
             }
 
             elephants.Sort();  //сортируем возраст 
             Console.WriteLine("\nзначения после сортировки :");
+            Console.WriteLine("age height weight");
 
             foreach(Elephant eleph in elephants)
             {
@@ -323,19 +373,21 @@ namespace _6
             Console.WriteLine("Speed [default] = {0}", dog);
             Console.WriteLine("Speed [mph] = {0}", dog.ToString("K",CultureInfo.CreateSpecificCulture("en-US")));
             Console.WriteLine("Speed [k/h] =  {0}", dog.ToString("F",CultureInfo.CreateSpecificCulture("ru-RU")));
-            
             Console.Write("\nDog can : ");
             dog.Walk();
             dog.Swim();
             Console.Write("\n");
             Console.WriteLine(new string('*',30));
+            
+            Feed.NotifyFeed += mes => Console.WriteLine(mes);
+            Feed.Worker();
 
             var swan = new Swan();
             Console.Write("\nSwan can : ");
             swan.Walk();
             swan.Fly();
             swan.Swim();
-            Console.ReadLine();
+            Console.ReadLine();           
         }
     }
 }

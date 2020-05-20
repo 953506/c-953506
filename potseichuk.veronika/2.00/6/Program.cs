@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Cache;
+using System.Runtime.Serialization.Formatters;
+using System.Text;
 
-
-namespace Lab5
+namespace Lab6
 {
     class Program
     {
@@ -34,6 +34,7 @@ namespace Lab5
                 }
             } while (choice != 4);
         }
+
         static void AddSt()
         {
             Console.Clear();
@@ -54,12 +55,12 @@ namespace Lab5
             Console.WriteLine("Студент учится на бюджетной основе? (y/n)");
             budjet = Console.ReadLine();
 
-            if(budjet == "y")
+            if (budjet == "y")
             {
                 StudentBudjet student_b = new StudentBudjet(name, lastname, age, stage);
                 BSUIRst.Add(student_b);
             }
-            else if (budjet=="n")
+            else if (budjet == "n")
             {
                 StudentPlatnik student_p = new StudentPlatnik(name, lastname, age, stage);
                 BSUIRst.Add(student_p);
@@ -81,6 +82,8 @@ namespace Lab5
                     {
                         IsSuccess = true;
                         S.Display();
+                        Console.WriteLine("О чём думает?");
+                        S.Complain();
                     }
                 }
             } while (IsSuccess == false);
@@ -90,15 +93,43 @@ namespace Lab5
         static void NumberSt()
         {
             Console.Clear();
-            int count = 1;
             Console.WriteLine("Количество введенных студентов: {0}", BSUIRst.Count);
-            foreach (Student S in BSUIRst)
+                foreach (Student S in BSUIRst)
+                {
+                    Console.WriteLine("{0}.", BSUIRst.IndexOf(S)+1);
+                    S.Display();
+                    Console.WriteLine("\n");
+                }
+
+            Console.WriteLine("Sravnit studentov? (y/n)");
+            if (Console.ReadLine() == "y") CompareSt();
+            Console.ReadKey();
+        }
+
+
+        static void CompareSt()
+        {
+                int choice1, choice2, result;
+            Console.WriteLine("Vvedite index...");
+            choice1 = Convert.ToInt32(Console.ReadLine());
+            choice2 = Convert.ToInt32(Console.ReadLine());
+
+            result = BSUIRst[choice1-1].CompareTo(BSUIRst[choice2-1]);
+            switch(result)
             {
-                Console.WriteLine("{0}.", count);
-                S.Display();
-                count++;
+                case (-1): 
+                    Console.WriteLine("Рейтинг студента {0} ниже рейтинга студента {1}. ", choice1, choice2); 
+                    break;
+                case (0): 
+                    Console.WriteLine("Рейтинг студента {0} равен рейтингу студента {1}. ", choice1, choice2); 
+                    break;
+                case (1): 
+                    Console.WriteLine("Рейтинг студента {0} выше рейтинга студента {1}. ", choice1, choice2); 
+                    break;
             }
+
             Console.ReadKey();
         }
     }
 }
+

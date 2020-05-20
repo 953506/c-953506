@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Lab5
+namespace Lab6
 {
-    abstract class Human
+    abstract class Human: IComplainable
     {
         string _name;
         string _lastname;
@@ -56,7 +56,12 @@ namespace Lab5
 
         public virtual void Display()
         {
-            Console.WriteLine("{0} {1} (age {2} years)", this["lastname"], this["name"], Age);
+            Console.WriteLine("{0} {1} (возраст {2} лет)", this["lastname"], this["name"], Age);
+        }
+
+        public virtual void Complain()
+        {
+            Console.WriteLine("Опять дождь!");
         }
     }
 }

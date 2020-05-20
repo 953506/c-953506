@@ -9,10 +9,12 @@ namespace ConsoleApp8
         void Info();   //получить инфу 
         string Use();  //использовать(каким-л образом)
     }
+    
     interface IAnimal
     {
         void Voice(); //голос
-    }    
+    }  
+    
     class Pig<T> : IFarmer, IAnimal  //класс Свинья
     {
         public T Meat { get; set; } //у свиньи мясо
@@ -34,6 +36,7 @@ namespace ConsoleApp8
             Console.WriteLine("Pig says \"Yiii!\" ");
         }
     }
+    
     class Cow<T> : IFarmer, IAnimal //класс Корова
     {
         public T Milk { get; set; } //у коровы молоко
@@ -55,6 +58,7 @@ namespace ConsoleApp8
             Console.WriteLine("Cow says \"Mooow!\" ");
         }
     }
+    
     class Sheep<T> : IFarmer, IAnimal //класс Овечка
     {
         public T Wool { get; set; } //у овечки шерсть

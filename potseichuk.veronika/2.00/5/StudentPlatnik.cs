@@ -28,9 +28,7 @@ namespace Lab5
         public override void Display()
         {
             base.Display();
-            Console.WriteLine("Оплата за семестр составляет {0} рублей.", Cost);
+            Console.WriteLine("Payment for the semester is {0} rubles.", Cost);
         }
-
-
     }
 }

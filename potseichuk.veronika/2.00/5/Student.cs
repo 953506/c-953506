@@ -6,12 +6,54 @@ namespace Lab5
 {
     class Student:Human
     {
-        public void Display()
+        private const int numexams = 4;
+        public Exams[] examsNotes = new Exams[numexams];
+        private int _stage;
+        private float _rating;
+
+        public float Rating
         {
-            Console.WriteLine("{0} {1} (возраст {2} лет), студент {3} курса", this["lastname"], this["name"], Age, Stage);
+            get
+            {
+                return _rating;
+            }
+            set
+            {
+                _rating = value;
+            }
+        }
+
+        public int Stage
+        {
+            get
+            { return _stage; }
+            set
+            {
+                if (value < 1) _stage = 1;
+                else if (value > 5) _stage = 5;
+                else _stage = value;
+            }
+        }
+
+        public Student(string name, string lastname, int age, int stage) : base( name,  lastname,  age)
+        {
+            this.Stage = stage;
+
+            examsNotes[0].Subject = "Foreign language";
+            examsNotes[1].Subject = "Higher math";
+            examsNotes[2].Subject = "Physical culture";
+            examsNotes[3].Subject = "Математическая логикаMath logic";
+
+            SetNotes();
+            SetRating();
+        }
+
+        public override void Display()
+        {
+            base.Display();
+            Console.WriteLine("Student {0} stage",  Stage);
             ShowNotes();
-            Console.WriteLine("\nСтудент {0}", this["lastname"]);
-            Console.WriteLine("Рейтинг (в %): {0}", Rating);
+            Console.WriteLine("Rating (в %): {0}", Rating);
         }
         public void SetRating()
         {
@@ -37,6 +79,32 @@ namespace Lab5
                 Console.WriteLine("{0}: {1};", examsNotes[i].Subject, examsNotes[i].Note);
             }
         }
-
+    }
+    struct Exams
+    {
+        string subject;
+        int note;
+        public string Subject
+        {
+            get
+            {
+                return subject;
+            }
+            set
+            {
+                subject = value;
+            }
+        }
+        public int Note
+        {
+            get
+            { return note; }
+            set
+            {
+                if (value < 1) note = 1;
+                else if (value > 10) note = 10;
+                else note = value;
+            }
+        }
     }
 }

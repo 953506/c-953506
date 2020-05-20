@@ -12,6 +12,7 @@ namespace programming_paradigms
             graduate,
             unknown
         }
+
         public enum BsuirFaculty
         {
             FKP,
@@ -23,10 +24,12 @@ namespace programming_paradigms
             WF,
             unknown
         }
+
         public struct CentralizeTesting
         {
             public ushort language, mathematic, physics, sertificate;
         }
+
         public BsuirFaculty Faculty { get; set; }
         public string Specialty { get; set; }
         public StudentStatus Status { get; set; }
@@ -39,13 +42,15 @@ namespace programming_paradigms
         public bool IsSetteled { get; set; }
         public bool IsBuget { get; set; }
         public string Allocation { get; set; }
-
         private List<DateTime> _dateExpelled;
         private List<DateTime> _dateReturn;
         private List<List<sbyte>> _sessionResult;
+        
         public StudentBSUIR() : base() { }
+        
         public StudentBSUIR(string name, string surname, string nationality, Gender gender, int day, int month, int year) :
             base(name, surname, nationality, gender, day, month, year) { }
+        
         public StudentBSUIR(string name, string surname, string nationality, Gender gender, int day, int month, int year,
             BsuirFaculty faculty, string specialty, StudentStatus status, string curator, string groupNumber, string studentNumber,
             ushort language, ushort mathematic, ushort physics, ushort sertificate, ushort yearOfEntering, ushort grade,
@@ -76,6 +81,7 @@ namespace programming_paradigms
             IsSetteled = isSetteled;
             IsWinnerOlympiad = isWinnerOlympiad;
         }
+
         public ushort YearOfEntering
         {
             get
@@ -91,6 +97,7 @@ namespace programming_paradigms
                     Console.WriteLine("Неверное значение");
             }
         }
+
         public ushort Grade
         {
             get
@@ -159,7 +166,7 @@ namespace programming_paradigms
             }
         }
 
-        public void SetExpelled()
+        public virtual void SetExpelled()
         {
             Console.WriteLine("Введите количиство отчислений у студента");
             sbyte value = Convert.ToSByte(Console.ReadLine());
@@ -216,6 +223,7 @@ namespace programming_paradigms
             foreach (DateTime i in _dateExpelled)
                 Console.WriteLine(i.ToString());
         }
+
         public void SetReturn()
         {
             Console.WriteLine("Введите количиство восстановлений у студента");
@@ -267,6 +275,7 @@ namespace programming_paradigms
             }
             _dateReturn.Sort();
         }
+
         public void GetReturn()
         {
             foreach (DateTime i in _dateReturn)
@@ -317,7 +326,7 @@ namespace programming_paradigms
             _dateExpelled.Add(_dateOfDeath);
         }
 
-        public override sealed string this[int index]
+        public sealed override string this[int index]
         { 
             get
             {

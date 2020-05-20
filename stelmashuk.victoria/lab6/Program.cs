@@ -79,7 +79,7 @@ namespace lab6
         }
     }
 
-    class PersonCompare : IComparison<Person>
+    class PersonComparison : IComparison<Person>
     {
         public void AgeComparison(Person o1, Person o2)//неявная реализация метода
         {
@@ -141,7 +141,6 @@ namespace lab6
 
     class Person : IFoo, IComparable
     {
-
         public string _name;
         public Provero4ka provero4ka;
 
@@ -200,20 +199,20 @@ namespace lab6
                     }
                 case 2:
                     {
-                        PersonCompare personComparer = new PersonCompare();
+                        PersonComparison personComparison = new PersonComparison();
                         Console.WriteLine("Сравнение параметров мужчин: ");
-                        personComparer.AgeComparison(person1, person2);
-                        personComparer.HeightComparison(person1, person2);
-                        personComparer.WeightComparison(person1, person2);
+                        personComparison.AgeComparison(person1, person2);
+                        personComparison.HeightComparison(person1, person2);
+                        personComparison.WeightComparison(person1, person2);
                         break;
                     }
                 case 3:
                     {
-                        PersonCompare personComparer = new PersonCompare();
+                        PersonComparison personComparison = new PersonComparison();
                         Console.WriteLine("Сравнение параметров женщин: ");
-                        personComparer.AgeComparison(person3, person4);
-                        personComparer.HeightComparison(person3, person4);
-                        personComparer.WeightComparison(person3, person4);
+                        personComparison.AgeComparison(person3, person4);
+                        personComparison.HeightComparison(person3, person4);
+                        personComparison.WeightComparison(person3, person4);
                         break;
                     }
                 case 4:

@@ -6,25 +6,9 @@ namespace Lab5
 {
     abstract class Human
     {
-        public const int numexams = 4;
-        protected Exams[] examsNotes = new Exams[numexams];
         string _name;
         string _lastname;
         int _age;
-        int _stage;
-        float _rating;
-
-        public float Rating
-        {
-            get
-            {
-                return _rating;
-            }
-            set
-            {
-                _rating = value;
-            }
-        }
 
         public int Age
         {
@@ -37,18 +21,6 @@ namespace Lab5
                 else _age = value;
             }
         }
-        public int Stage
-        {
-            get
-            { return _stage; }
-            set
-            {
-                if (value < 1) _stage = 1;
-                else if (value > 5) _stage = 5;
-                else _stage = value;
-            }
-        }
-
 
         public string this[string propname]
         {
@@ -72,38 +44,20 @@ namespace Lab5
                         _lastname = value;
                         break;
                 }
-
             }
         }
 
-    }
-    struct Exams
-    {
-        string subject;
-        int note;
-        public string Subject
+        public Human(string name, string lastname, int age)
         {
-            get
-            {
-                return subject;
-            }
-            set
-            {
-                subject = value;
-            }
-        }
-        public int Note
-        {
-            get
-            { return note; }
-            set
-            {
-                if (value < 1) note = 1;
-                else if (value > 10) note = 10;
-                else note = value;
-            }
+            this.Age = age;
+            this["name"] = name;
+            this["lastname"] = lastname;
         }
 
+        public virtual void Display()
+        {
+            Console.WriteLine("{0} {1} (age {2} years)", this["lastname"], this["name"], Age);
+        }
     }
 }
 

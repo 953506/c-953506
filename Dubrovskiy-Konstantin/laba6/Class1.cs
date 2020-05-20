@@ -74,7 +74,7 @@ namespace ConsoleApp8
             Console.WriteLine("You cut the sheep and get " + Wool + "g of wool");
             return ((IConvertible)Wool).ToString(); //Реализация стандартного интерфейса для преобразования объектов (IConvertible)
         }
-        public void Voice()  // неявная реализация 
+        public void Voice()  // неявная реализация
         {
             Console.WriteLine("Sheep says \"Beee!\" ");
         }

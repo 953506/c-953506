@@ -128,7 +128,7 @@ namespace programming_paradigms
             _isLife = false;
         }
 
-        public virtual void SetInfo(string name, string surname, string nationality, Gender gender, int day, int month, int year)
+        public void SetInfo(string name, string surname, string nationality, Gender gender, int day, int month, int year)
         {
             _dateOfBirth = new DateTime(year, month, day);
             Name = name;

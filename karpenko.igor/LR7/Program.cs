@@ -26,11 +26,9 @@ namespace z1
             Console.WriteLine("Введите знаменатель первой дроби");
             denominator = Convert.ToInt32(Console.ReadLine());
             a = new RationalNumber(numerator, denominator);
-            Console.WriteLine("Введите числитель второй дроби");
-            numerator = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите знаменатель второй дроби");
-            denominator = Convert.ToInt32(Console.ReadLine());
-            b = new RationalNumber(numerator, denominator);
+            Console.WriteLine("Введите число в формате a/b");
+            string form = Console.ReadLine();
+            b = new RationalNumber(form);
             int ch;
             bool exit = false;
             do

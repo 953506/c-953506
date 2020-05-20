@@ -23,6 +23,16 @@ namespace ConsoleApp8
 
             cow_farmer = pig2_farmer; //можно присвоить друг другу элементы одинаковых интерфейсов (IFarmer)
             Console.WriteLine(cow_farmer.Use()); //вызовется метод из Pig
+
+            var x = new Cow<int>(7);
+            var y = new Cow<int>(9);
+            if (x.Milk.CompareTo(y.Milk) > 0) //Сравнение при помощи IComperable
+                Console.WriteLine("x > y");
+            else
+                if (x.Milk.CompareTo(y.Milk) < 0)
+                    Console.WriteLine("x < y");
+                else
+                    Console.WriteLine("x = y");
         }
     }
 }

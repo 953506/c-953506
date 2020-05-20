@@ -35,14 +35,9 @@ namespace lab_3
             } while (choice != 4);
         }
 
-
-        //static readonly Student[] BSUIRst = new Student[10];
-
         static void AddSt()
         {
             Console.Clear();
-            /*BSUIRst[numst] = new Student();
-            numst++;*/
             string name;
             string lastname;
             int age;
@@ -68,16 +63,7 @@ namespace lab_3
             {
                 Console.Clear();
                 Console.Write("Enter the lastname of the student whose information you want to receive: ");
-                string choice = Console.ReadLine();
-                /*for (int i = 0; i < numst && success == false; i++)
-                {
-                    if (choice == BSUIRst[i]["lastname"]) 
-                    { 
-                        success = true;
-                        Console.Clear();
-                        BSUIRst[i].Display();
-                    }
-                }*/
+                string choice = Console.ReadLine();            
                 foreach (Student S in BSUIRst)
                 {
                     if (choice == S["lastname"])
@@ -103,8 +89,6 @@ namespace lab_3
             }
             Console.ReadKey();
         }
-
-
     }
 }
     

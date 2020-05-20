@@ -25,12 +25,11 @@ namespace Pudge
 
         public override void Shout()
         {
+            if(isKicked)
+            {
+                throw new Exception("kicked students can't shout");
+            }
             Console.WriteLine("IITP student's shout");
-        }
-
-        public void SayIITP()
-        {
-            Console.WriteLine("IITP TOP");
         }
     }
 }

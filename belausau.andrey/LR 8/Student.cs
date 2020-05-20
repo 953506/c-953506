@@ -21,10 +21,10 @@ namespace Pudge
         {
             averageMark = 0;
             
-            if (Age > 17)
+            if (age > 17)
             {
-                this.course = this.age - 17;
-                this.socialStatus = "Student";
+                course = age - 17;
+                socialStatus = "Student";
             }
         }
 
@@ -100,18 +100,17 @@ namespace Pudge
         }
 
         public delegate void GoToArmyHandler(string message);
-        public event GoToArmyHandler Notify;
+        public event GoToArmyHandler ArmyNotify;
 
         public void GoToArmy()
         {
-            Notify?.Invoke("+1 recruit");
+            ArmyNotify?.Invoke("+1 recruit");
             socialStatus = "recruit";
             isInArmy = true;
         }
 
         public void Expel()
         {
-            Notify?.Invoke("+1 kicked from university");
             faculty = university = "none";
             socialStatus = "Kicked from university";
             isKicked = true;

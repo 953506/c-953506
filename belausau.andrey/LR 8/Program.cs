@@ -1,19 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Pudge
 {
     class Program
     {
-        delegate bool Condition(int x);
-
-        delegate void FillList();
-
         static void Main()
         {
+            GroupOfStudents students = new GroupOfStudents(7);
             Student st = new Student("Stas", 9);
-            st.Notify += ShowMessage;
 
+            Student.GoToArmyHandler goToArmyHandler1 = delegate (string msg)
+            {
+                Console.WriteLine(msg);
+            };
+
+            Student.GoToArmyHandler goToArmyHandler2 = (msg) => Console.WriteLine(msg);
+
+            st.ArmyNotify += ShowMessage;
+            st.ArmyNotify += goToArmyHandler1;
+            st.ArmyNotify += goToArmyHandler2;
+
+            st.ArmyNotify -= ShowMessage;
+            st.ArmyNotify -= goToArmyHandler1;
+
+            st.GoToArmy();
+            
             try
             {
                 Human hum = new Human();
@@ -24,39 +35,13 @@ namespace Pudge
                 Console.WriteLine(ex.Message);
             }
 
-            st.GoToArmy();
-
-            List<Student> students = new List<Student>();
-
-            FillList fill = delegate
-            {
-                students.Add(new Student("Stas", 9));
-                students.Add(new Student("Lesha", 5));
-                students.Add(new Student("Misha", 7));
-                students.Add(new Student("Vanya", 8));
-                students.Add(new Student("Polina", 10));
-            };
-
-            fill();
+            students.FillRandomStudents();
 
             Console.WriteLine("\nAll students: ");
-            ShowStudents(students, x => x > 0);
-            Console.WriteLine();
+            students.ShowStudents();
 
-            Console.WriteLine("Students with an average mark > 7:");
-            ShowStudents(students, x => x > 7);
-            Console.WriteLine();
-        }
-
-        static void ShowStudents(List<Student> students, Condition condition)
-        {
-            foreach(Student st in students)
-            {
-                if(condition(st.AverageMark))
-                {
-                    Console.WriteLine(st.Name + " - " + st.AverageMark);
-                }
-            }
+            Console.WriteLine("\nStudents with an average mark > 4:");
+            students.ShowStudents(x => x > 4);
         }
 
         static void ShowMessage(string message)

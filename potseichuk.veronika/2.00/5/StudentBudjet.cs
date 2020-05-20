@@ -29,9 +29,7 @@ namespace Lab5
         public override void Display()
         {
             base.Display();
-            Console.WriteLine("Степендия составляет {0} рублей.", Stepuha);
+            Console.WriteLine("Scholarship is {0} rubles.", Stepuha);
         }
-
     }
-
 }

@@ -5,9 +5,92 @@ namespace lr6
     class Program
     {
         delegate void MessageHandler(string message);
-        
+        static void Main(string[] args)
+        {
+            try
+            {
+                MessageHandler handler = delegate (string mes)
+                {
+                    Console.WriteLine(mes);
+                };
+                #region data
+                Students student = new Students();
+                student[0] = new Student("Елена", "Барковская", "БГУИР", 2001, "Информатика и технологии программирования", 2019);
+                student[1] = new Student("Виктория", "Стельмашук", "БГУИР", 2002, "Информатика и технологии программирования", 2019);
+                student[2] = new Student("Маргарита", "Мазец", "БГУИР", 2002, "Информатика и технологии программирования", 2019);
+                student[3] = new Student("Артём", "Киричук", "БГУИР", 2002, "Информатика и технологии программирования", 2019);
+                student[4] = new Student("Данила", "Чижик", "БГУИР", 2002, "Информатика и технологии программирования", 2019);
+                student[5] = new Student("Руслан", "Гришан", "БГУИР", 2001, "Информатика и технологии программирования", 2019);
+                student[6] = new Student("Владимир", "Кошуба", "БГУИР", 2002, "Информатика и технологии программирования", 2019);
+                student[7] = new Student("Илья", "Лукша", "БГУИР", 2002, "Информатика и технологии программирования", 2019);
+                student[8] = new Student("Андрей", "Белоусов", "БГУИР", 2002, "Информатика и технологии программирования", 2019);
+                student[9] = new Student("Ксения", "Рудковская", "БГУИР", 2002, "Информатика и технологии программирования", 2019);
 
-    static public void StudentsMenu(Students student, Teachers teacher, Rector rector)
+                Teachers teacher = new Teachers();
+                teacher[0] = new Teacher("Наталья", "Егорова", "БГУИР", 1980, "преподаватель", "МЛ", "доцент");
+                teacher[1] = new Teacher("Владимир", "Анисимов", "БГУИР", 1950, "преподаватель", "ММА", "доцент");
+                teacher[2] = new Teacher("Мария", "Дисько-Шуман", "БГУИР", 1980, "преподаватель", "Логика", "доцент");
+
+                Rector rector = new Rector("Вадим", "Богуш", "БГУИР", 1975, "ректор");
+                #endregion
+
+                #region обработчики событий
+                for (int i = 0; i < teacher.Count; i++)
+                {
+                    teacher[i].Notify += delegate (string mes)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine(mes);
+                        Console.ResetColor();
+                    };
+                }
+
+                for (int i = 0; i < student.Count; i++)
+                {
+                    student[i].Notify += mes => Console.WriteLine(mes);
+                }
+                #endregion
+
+                int number;
+                while (true)
+                {
+                    Console.Clear();
+                    handler("Кем вы являетесь?");
+                    handler("1-студент");
+                    handler("2-преподаватель");
+                    handler("3-ректор");
+                    handler("4-завершить программу");
+                    number = Convert.ToInt32(Console.ReadLine());
+                    switch (number)
+                    {
+                        case 1:
+                            StudentsMenu(student, teacher, rector);
+                            break;
+                        case 2:
+                            TeachersMenu(student, teacher);
+                            break;
+                        case 3:
+                            RectorsMenu(student, teacher, rector);
+                            break;
+                        case 4:
+                            return;
+                        default:
+                            handler("Введен неверный номер");
+                            break;
+                    }
+                }
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        static public void StudentsMenu(Students student, Teachers teacher, Rector rector)
         {
             Console.Clear();
             Console.WriteLine("Введите своё имя:");
@@ -187,90 +270,6 @@ namespace lr6
             }
         }
 
-        static void Main(string[] args)
-        {
-            try
-            {
-                MessageHandler handler = delegate (string mes)
-                {
-                    Console.WriteLine(mes);
-                };
-                #region data
-                Students student = new Students();
-                student[0] = new Student("Елена", "Барковская", "БГУИР", 2001, "Информатика и технологии программирования", 2019);
-                student[1] = new Student("Виктория", "Стельмашук", "БГУИР", 2002, "Информатика и технологии программирования", 2019);
-                student[2] = new Student("Маргарита", "Мазец", "БГУИР", 2002, "Информатика и технологии программирования", 2019);
-                student[3] = new Student("Артём", "Киричук", "БГУИР", 2002, "Информатика и технологии программирования", 2019);
-                student[4] = new Student("Данила", "Чижик", "БГУИР", 2002, "Информатика и технологии программирования", 2019);
-                student[5] = new Student("Руслан", "Гришан", "БГУИР", 2001, "Информатика и технологии программирования", 2019);
-                student[6] = new Student("Владимир", "Кошуба", "БГУИР", 2002, "Информатика и технологии программирования", 2019);
-                student[7] = new Student("Илья", "Лукша", "БГУИР", 2002, "Информатика и технологии программирования", 2019);
-                student[8] = new Student("Андрей", "Белоусов", "БГУИР", 2002, "Информатика и технологии программирования", 2019);
-                student[9] = new Student("Ксения", "Рудковская", "БГУИР", 2002, "Информатика и технологии программирования", 2019);
-
-                Teachers teacher = new Teachers();
-                teacher[0] = new Teacher("Наталья", "Егорова", "БГУИР", 1980, "преподаватель", "МЛ", "доцент");
-                teacher[1] = new Teacher("Владимир", "Анисимов", "БГУИР", 1950, "преподаватель", "ММА", "доцент");
-                teacher[2] = new Teacher("Мария", "Дисько-Шуман", "БГУИР", 1980, "преподаватель", "Логика", "доцент");
-
-                Rector rector = new Rector("Вадим", "Богуш", "БГУИР", 1975, "ректор");
-                #endregion
-
-                #region обработчики событий
-                for (int i = 0; i < teacher.Count; i++)
-                {
-                    teacher[i].Notify += delegate (string mes)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine(mes);
-                        Console.ResetColor();
-                    };
-                }
-
-                for (int i = 0; i < student.Count; i++)
-                {
-                    student[i].Notify += mes => Console.WriteLine(mes);
-                }
-                #endregion
-
-                int number;
-                while (true)
-                {
-                    Console.Clear();
-                    handler("Кем вы являетесь?");
-                    handler("1-студент");
-                    handler("2-преподаватель");
-                    handler("3-ректор");
-                    handler("4-завершить программу");
-                    number = Convert.ToInt32(Console.ReadLine());
-                    switch (number)
-                    {
-                        case 1:
-                            StudentsMenu(student, teacher, rector);
-                            break;
-                        case 2:
-                            TeachersMenu(student, teacher);
-                            break;
-                        case 3:
-                            RectorsMenu(student, teacher, rector);
-                            break;
-                        case 4:
-                            return;
-                        default:
-                            handler("Введен неверный номер");
-                            break;
-                    }
-                }
-            }
-            catch (IndexOutOfRangeException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-        
+       
     }
 }

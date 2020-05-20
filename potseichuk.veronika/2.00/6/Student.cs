@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Lab5
+namespace Lab6
 {
-    class Student:Human
+    class Student : Human, IComparable<Student>
     {
         private const int numexams = 4;
         public Exams[] examsNotes = new Exams[numexams];
@@ -35,14 +35,15 @@ namespace Lab5
             }
         }
 
-        public Student(string name, string lastname, int age, int stage) : base( name,  lastname,  age)
+
+        public Student(string name, string lastname, int age, int stage) : base(name, lastname, age)
         {
             this.Stage = stage;
 
-            examsNotes[0].Subject = "Foreign language";
-            examsNotes[1].Subject = "Higher math";
-            examsNotes[2].Subject = "Physical culture";
-            examsNotes[3].Subject = "Математическая логикаMath logic";
+            examsNotes[0].Subject = "Иностранный язык";
+            examsNotes[1].Subject = "ВышМат";
+            examsNotes[2].Subject = "Физкультура";
+            examsNotes[3].Subject = "Математическая логика";
 
             SetNotes();
             SetRating();
@@ -51,9 +52,9 @@ namespace Lab5
         public override void Display()
         {
             base.Display();
-            Console.WriteLine("Student {0} stage",  Stage);
+            Console.WriteLine("Cтудент {0} курса", Stage);
             ShowNotes();
-            Console.WriteLine("Rating (в %): {0}", Rating);
+            Console.WriteLine("Рейтинг (в %): {0}", Rating);
         }
         public void SetRating()
         {
@@ -79,7 +80,18 @@ namespace Lab5
                 Console.WriteLine("{0}: {1};", examsNotes[i].Subject, examsNotes[i].Note);
             }
         }
+        public int CompareTo(Student two)
+        {
+            return this.Rating.CompareTo(two.Rating);
+        }
+
+        public override void Complain()
+        {
+            base.Complain();
+            Console.WriteLine("Скоро сессия(");
+        }
     }
+
     struct Exams
     {
         string subject;
@@ -107,4 +119,5 @@ namespace Lab5
             }
         }
     }
+
 }

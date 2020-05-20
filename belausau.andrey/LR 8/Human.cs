@@ -29,12 +29,14 @@ namespace Pudge
         //Свойства
         public string Name 
         { 
-            get => name; 
+            get => name;
+            set => name = value;
         }
 
         public string SurName 
         { 
-            get => surname; 
+            get => surname;
+            set => surname = value;
         }
 
         public string Gender
@@ -70,17 +72,24 @@ namespace Pudge
             Console.WriteLine($"Surname - {surname}");
             Console.WriteLine($"Gender - {gender}");
             Console.Write("Dead status - ");
-            Console.WriteLine((isDead) ? "dead" : "alive");
+            Console.WriteLine(isDead ? "dead" : "alive");
             Console.WriteLine($"Illness - {disease}");
             Console.WriteLine($"Age - {age}");
         }
+
+        public delegate void DeadHandler(string message);
+        public event DeadHandler NotifyDeadStatus;
+
         public void Die()
         {
+            NotifyDeadStatus?.Invoke($"{name} died");
             isDead = true;
         }
 
         public void Resurrect()
         {
+            if(NotifyDeadStatus != null)
+                NotifyDeadStatus($"{name} resurrected");
             isDead = isIll = false;
         }
 

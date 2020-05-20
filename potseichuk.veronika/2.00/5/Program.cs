@@ -15,10 +15,10 @@ namespace Lab5
             do
             {
                 Console.Clear();
-                Console.WriteLine("1. Добавить студента");
-                Console.WriteLine("2. Вывести информацию о студенте");
-                Console.WriteLine("3. Список введённых студентов");
-                Console.WriteLine("4. Выход");
+                Console.WriteLine("1. Add student");
+                Console.WriteLine("2. Display student information");
+                Console.WriteLine("3. List of entered student");
+                Console.WriteLine("4. Exit..");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -43,15 +43,15 @@ namespace Lab5
             int stage;
             string budjet;
 
-            Console.Write("Введите имя студента: ");
+            Console.Write("Enter student name: ");
             name = Console.ReadLine();
-            Console.Write("Введите фамилию студента: ");
+            Console.Write("Enter student lastname: ");
             lastname = Console.ReadLine();
-            Console.Write("Введите возраст студента: ");
+            Console.Write("Enter student age: ");
             age = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Введите курс студента: ");
+            Console.Write("Enter student stage: ");
             stage = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Студент учится на бюджетной основе? (y/n)");
+            Console.WriteLine("Does the student study a budgetary basic? (y/n)");
             budjet = Console.ReadLine();
 
             if(budjet == "y")
@@ -73,7 +73,7 @@ namespace Lab5
             do
             {
                 Console.Clear();
-                Console.Write("Введите фамилию студента, информацию о котором, хотите получить: ");
+                Console.Write("Enter the lastname of the student whose information you want to receive: ");
                 string choice = Console.ReadLine();
                 foreach (Student S in BSUIRst)
                 {
@@ -91,7 +91,7 @@ namespace Lab5
         {
             Console.Clear();
             int count = 1;
-            Console.WriteLine("Количество введенных студентов: {0}", BSUIRst.Count);
+            Console.WriteLine("Number of the student entered: {0}", BSUIRst.Count);
             foreach (Student S in BSUIRst)
             {
                 Console.WriteLine("{0}.", count);

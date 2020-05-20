@@ -35,15 +35,14 @@ namespace Lab5
             }
         }
 
-
         public Student(string name, string lastname, int age, int stage) : base( name,  lastname,  age)
         {
             this.Stage = stage;
 
-            examsNotes[0].Subject = "Иностранный язык";
-            examsNotes[1].Subject = "ВышМат";
-            examsNotes[2].Subject = "Физкультура";
-            examsNotes[3].Subject = "Математическая логика";
+            examsNotes[0].Subject = "Foreign language";
+            examsNotes[1].Subject = "Higher math";
+            examsNotes[2].Subject = "Physical culture";
+            examsNotes[3].Subject = "Математическая логикаMath logic";
 
             SetNotes();
             SetRating();
@@ -52,9 +51,9 @@ namespace Lab5
         public override void Display()
         {
             base.Display();
-            Console.WriteLine("Cтудент {0} курса",  Stage);
+            Console.WriteLine("Student {0} stage",  Stage);
             ShowNotes();
-            Console.WriteLine("Рейтинг (в %): {0}", Rating);
+            Console.WriteLine("Rating (в %): {0}", Rating);
         }
         public void SetRating()
         {
@@ -80,7 +79,6 @@ namespace Lab5
                 Console.WriteLine("{0}: {1};", examsNotes[i].Subject, examsNotes[i].Note);
             }
         }
-
     }
     struct Exams
     {
@@ -109,5 +107,4 @@ namespace Lab5
             }
         }
     }
-
 }

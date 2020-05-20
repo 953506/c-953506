@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text.RegularExpressions;
 
 namespace laba_7
@@ -11,11 +11,11 @@ namespace laba_7
             M = m;
             fusion();
         }
-        int _n;
-        uint _m;
+        int nn;
+        uint mm;
 
-        public int N { get => _n; set => _n = value; }
-        public uint M { get => _m; set => _m = value; }
+        public int N { get => nn; set => nn = value; }
+        public uint M { get => mm; set => mm = value; }
 
         public static RationalNumber operator +(RationalNumber a, RationalNumber b)
         {

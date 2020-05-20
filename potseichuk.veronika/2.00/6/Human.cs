@@ -56,12 +56,12 @@ namespace Lab6
 
         public virtual void Display()
         {
-            Console.WriteLine("{0} {1} (возраст {2} лет)", this["lastname"], this["name"], Age);
+            Console.WriteLine("{0} {1} (age {2} years)", this["lastname"], this["name"], Age);
         }
 
         public virtual void Complain()
         {
-            Console.WriteLine("Опять дождь!");
+            Console.WriteLine("Again the rain!");
         }
     }
 }

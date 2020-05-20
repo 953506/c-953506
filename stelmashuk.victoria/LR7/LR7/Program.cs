@@ -15,7 +15,30 @@ namespace lab7
             _denominator = denominator;
         }
 
-        ~RationalNumber() { }
+        public RationalNumber(string form) //реализация перевода из строкового значения 
+        {
+            char[] numerator = new char[25];
+            char[] denominator = new char[25];
+            int i = 0;
+            for (int j = 0; i < form.Length; i++, j++)
+            {
+                if (form[i] == '/')
+                {
+                    numerator[j] = '\0';
+                    i++;
+                    break;
+                }
+                numerator[j] = form[i];
+            }
+            for (int j = 0; i < form.Length; i++, j++)
+            {
+                denominator[j] = form[i];
+            }
+            string str1 = new string(numerator);
+            string str2 = new string(denominator);
+            _numerator = Convert.ToInt32(str1);
+            _denominator = Convert.ToInt32(str2);
+        }
 
         //Реализация интерфейса
         public bool Equals(RationalNumber another)
@@ -115,20 +138,17 @@ namespace lab7
     {
         static void Main(string[] args)
         {
-            int numerator1, numerator2, denominator1, denominator2;
+            RationalNumber number1, number2;
+            int numerator1, denominator1;
             Console.WriteLine("Здравствуйте!");
             Console.WriteLine("Введите числитель первой рациональной дроби:");
             numerator1 = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Введите знаменатель первой рациональной дроби:");
             denominator1 = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите числитель второй рациональной дроби:");
-            numerator2 = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите знаменатель второй рациональной дроби:");
-            denominator2 = Convert.ToInt32(Console.ReadLine());
-            Console.Clear();
-            Console.WriteLine("Ваши числа: {0}/{1} и {2}/{3} ", numerator1, denominator1, numerator2, denominator2);
-            RationalNumber number1 = new RationalNumber(numerator1, denominator1);
-            RationalNumber number2 = new RationalNumber(numerator2, denominator2);
+            number1 = new RationalNumber(numerator1, denominator1);
+            Console.WriteLine("Введите второе число в формате a/b");
+            string form = Console.ReadLine();
+            number2 = new RationalNumber(form);
             while (true)
             {
                 Console.WriteLine();

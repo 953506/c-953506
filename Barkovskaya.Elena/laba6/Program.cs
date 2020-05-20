@@ -11,7 +11,6 @@ namespace laba6
         public int FuelConsumption { get; set; }
     }
 
-
     abstract class Car
     {
         private int _age;
@@ -121,7 +120,6 @@ namespace laba6
         ~Car() { }
     }
 
-
     class MarkCar : Car
     {
         enum Manufactured_countres
@@ -194,7 +192,6 @@ namespace laba6
         }
     }
 
-
     class PassengerCar : MarkCar
     {
         string choice;
@@ -220,7 +217,6 @@ namespace laba6
 
     }
 
-
     class Autotruck : MarkCar
     {
         string choice;
@@ -241,7 +237,6 @@ namespace laba6
             }
         }
     }
-
 
     class Bus : MarkCar, ICarInfo
     {
@@ -287,7 +282,6 @@ namespace laba6
         }
     }
 
-
     class BusComparer : IComparer<Bus>
     {
         public int Compare(Bus a, Bus b)
@@ -299,7 +293,6 @@ namespace laba6
             else return 0;
         }
     }
-
 
     class Program
     {

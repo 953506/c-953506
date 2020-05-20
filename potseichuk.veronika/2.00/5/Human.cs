@@ -10,7 +10,6 @@ namespace Lab5
         string _lastname;
         int _age;
 
-
         public int Age
         {
             get
@@ -45,7 +44,6 @@ namespace Lab5
                         _lastname = value;
                         break;
                 }
-
             }
         }
 
@@ -58,10 +56,8 @@ namespace Lab5
 
         public virtual void Display()
         {
-            Console.WriteLine("{0} {1} (возраст {2} лет)", this["lastname"], this["name"], Age);
+            Console.WriteLine("{0} {1} (age {2} years)", this["lastname"], this["name"], Age);
         }
-
-
     }
 }
 

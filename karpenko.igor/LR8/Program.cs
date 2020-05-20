@@ -8,14 +8,13 @@ namespace z1
 {
     class Program
     {
-        delegate void MessageHandler(string message);
         static void Main(string[] args)
         {
             char ch;
             int i;
             bool pist = true;
-            MessageHandler handler1 = delegate (string mes) { Console.WriteLine($"{mes}"); };
-            MessageHandler handler2 = mes => Console.WriteLine($"{mes}");
+            Firearm.InfoHandler handler1 = delegate (string mes) { Console.WriteLine($"{mes}"); };
+            Firearm.InfoHandler handler2 = mes => Console.WriteLine($"{mes}");
             Firearm[] fa = new Firearm[3];            
             fa[0] = new Glock17();
             fa[1] = new Colt();
@@ -47,7 +46,7 @@ namespace z1
                     Console.ReadKey();
                     continue;
                 }
-                pist = true;
+                pist = true;                
                 do
                 {
                     fa[i].Info();
@@ -73,19 +72,18 @@ namespace z1
                                 break;
                             case 't':
                                 fa[i].Act -= PrintMessage;
-                                fa[i].Act += delegate (string mes)
-                                {
-                                    Console.WriteLine(mes);
-                                };
+                                fa[i].Act += handler2;       
                                 fa[i].Fuse();
+                                fa[i].Act -= handler2;
                                 break;
                             case 'g':
                                 fa[i].Perezaryad();
                                 break;
                             case 'h':
                                 fa[i].Act -= PrintMessage;
-                                fa[i].Act += mes => Console.WriteLine($"{mes}");
+                                fa[i].Act += handler1;
                                 fa[i].Pricel();
+                                fa[i].Act -= handler1;
                                 break;
                             case 'y':
                                 fa[i].Shot();

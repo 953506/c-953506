@@ -85,7 +85,7 @@ namespace LAB5
             if (temp > 4 || temp < 1)
                 throw new Exception("Wrong enter");
             _temp = (Temperament)temp;
-
+            Notify += _name => Console.ForegroundColor = ConsoleColor.Red; 
         }
 
         protected Temperament _temp;

@@ -1,5 +1,6 @@
 ﻿using System;
 using static System.Console;
+
 class Programmer : IProgrammer
 {
     public static int _number;
@@ -31,6 +32,7 @@ class Programmer : IProgrammer
 
     public delegate void FullInfo();
     public static event FullInfo Infor;
+    
     public Programmer()
     {
         ID = _number++ + 1;

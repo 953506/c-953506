@@ -7,6 +7,7 @@ namespace Lab8
     interface IGun : IFirearm, IComparable
     {
         public event ArgumentExceptionHandler Notify;
+        
         void UltimateAbility();
         void GetInfoAboutType();
     }

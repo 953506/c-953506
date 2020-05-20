@@ -6,10 +6,20 @@ namespace LAB5
     class Program
     {
         delegate void MessageHandler(string message);
+        delegate void ForShow();
 
         private static void Show_Message(String message)
         {
             Console.WriteLine(message);
+        }
+
+        private static void Show()
+        {
+            Console.WriteLine("This will add first");
+        }
+        private static void AddSecond()
+        {
+            Console.WriteLine("This will came after");
         }
 
         static void Main()
@@ -23,6 +33,8 @@ namespace LAB5
             Schoolkids Normpoc = new Schoolkids(null, null);
             Human[] Peoples = new Human[] { Man, NNMan, Normpoc, Olympic };
             MessageHandler handler = delegate (string message) { Console.WriteLine(message); };
+            ForShow show = Show;
+            show += AddSecond;
             do
             {
                 Console.Clear();
@@ -34,6 +46,8 @@ namespace LAB5
                     "\n5 - Sort" +
                     "\n6 - Show Student Info" +
                     "\nAny other key - exit from program");//menu
+
+                show();
                 switcher = Convert.ToInt32(Console.ReadLine());
                 if (switcher < 5 && switcher >= 1)
                 {

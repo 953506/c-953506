@@ -327,7 +327,7 @@ namespace LR8
                     }
                 case 5:
                     {
-                        Console.WriteLine("Выберите работника, заработную плату которого вы хотите понизить");
+                        Console.WriteLine("Выберите работника, заработную плату которого вы хотите понизить 1/2/3/4");
                         int otvet2 = Convert.ToInt32(Console.ReadLine());
                         Console.Clear();
                         switch (otvet2)

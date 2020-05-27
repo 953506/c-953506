@@ -136,7 +136,7 @@ namespace LR8
 
     class Salary
     {
-        public delegate void SalaryHandler(string message);
+        public delegate void SalaryHandler(string message);//объявление делегата
         public event SalaryHandler Notify;  // Определение события
         public int Balance1;
         public void Balance(int balance)
@@ -188,8 +188,10 @@ namespace LR8
 
     class Program
     {
-        delegate void Welcome();//делегат
+        //делегаты
+        delegate void Welcome();
         delegate void MessageHandler(string message);
+        
         private static void Show()
         {
             Console.WriteLine("Здравствуйте, директор!");
@@ -288,7 +290,7 @@ namespace LR8
                                 {
                                     salary.Balance(balance);
                                     Console.WriteLine($"На сколько вы хотите повысить зарплату 1-го ратотника?");
-                                    int put = Convert.ToInt32(Console.ReadLine());// Добавляем обработчик для события Notify
+                                    int put = Convert.ToInt32(Console.ReadLine());
                                     salary.Put(put);
                                     Console.WriteLine($"Изменено, теперь у 1-го работника зарплата: {salary.Balance1}");
                                     break; 
@@ -297,7 +299,7 @@ namespace LR8
                                 {
                                     salary.Balance(balance);
                                     Console.WriteLine($"На сколько вы хотите повысить зарплату 2-го ратотника?");
-                                    int put = Convert.ToInt32(Console.ReadLine());// Добавляем обработчик для события Notify
+                                    int put = Convert.ToInt32(Console.ReadLine());
                                     salary.Put(put);
                                     Console.WriteLine($"Изменено, теперь у 2-го работника зарплата: {salary.Balance1}");
                                     break;
@@ -306,7 +308,7 @@ namespace LR8
                                 {
                                     salary.Balance(balance);
                                     Console.WriteLine($"На сколько вы хотите повысить зарплату 3-го ратотника?");
-                                    int put = Convert.ToInt32(Console.ReadLine());// Добавляем обработчик для события Notify
+                                    int put = Convert.ToInt32(Console.ReadLine());
                                     salary.Put(put);
                                     Console.WriteLine($"Изменено, теперь у 3-го работника зарплата: {salary.Balance1}");
                                     break;
@@ -315,7 +317,7 @@ namespace LR8
                                 {
                                     salary.Balance(balance);
                                     Console.WriteLine($"На сколько вы хотите повысить зарплату 4-го ратотника?");
-                                    int put = Convert.ToInt32(Console.ReadLine());// Добавляем обработчик для события Notify
+                                    int put = Convert.ToInt32(Console.ReadLine());
                                     salary.Put(put);
                                     Console.WriteLine($"Изменено, теперь у 4-го работника зарплата: {salary.Balance1}");
                                     break;
@@ -334,7 +336,7 @@ namespace LR8
                                 {
                                     salary.Balance(balance);
                                     Console.WriteLine($"На сколько вы хотите понизить зарплату 1-го ратотника?");
-                                    int take = Convert.ToInt32(Console.ReadLine());// Добавляем обработчик для события Notify
+                                    int take = Convert.ToInt32(Console.ReadLine());
                                     salary.Take(take);
                                     Console.WriteLine($"Изменено, теперь у 1-го работника зарплата: {salary.Balance1}");
                                     break;
@@ -343,7 +345,7 @@ namespace LR8
                                 {
                                     salary.Balance(balance);
                                     Console.WriteLine($"На сколько вы хотите понизить зарплату 2-го ратотника?");
-                                    int take = Convert.ToInt32(Console.ReadLine());// Добавляем обработчик для события Notify
+                                    int take = Convert.ToInt32(Console.ReadLine());
                                     salary.Take(take);
                                     Console.WriteLine($"Изменено, теперь у 2-го работника зарплата: {salary.Balance1}");
                                     break;
@@ -352,7 +354,7 @@ namespace LR8
                                 {
                                     salary.Balance(balance);
                                     Console.WriteLine($"На сколько вы хотите понизить зарплату 3-го ратотника?");
-                                    int take = Convert.ToInt32(Console.ReadLine());// Добавляем обработчик для события Notify
+                                    int take = Convert.ToInt32(Console.ReadLine());
                                     salary.Take(take);
                                     Console.WriteLine($"Изменено, теперь у 3-го работника зарплата: {salary.Balance1}");
                                     break;
@@ -361,7 +363,7 @@ namespace LR8
                                 {
                                     salary.Balance(balance);
                                     Console.WriteLine($"На сколько вы хотите понизить зарплату 4-го ратотника?");
-                                    int take = Convert.ToInt32(Console.ReadLine());// Добавляем обработчик для события Notify
+                                    int take = Convert.ToInt32(Console.ReadLine());
                                     salary.Take(take);
                                     Console.WriteLine($"Изменено, теперь у 4-го работника зарплата: {salary.Balance1}");
                                     break; 

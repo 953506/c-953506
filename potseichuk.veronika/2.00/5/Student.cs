@@ -57,12 +57,17 @@ namespace Lab5
         }
         public void SetRating()
         {
+            float sum = SumRating();
+            this.Rating = sum / numexams * 10;
+        }
+        private float SumRating()
+        {
             float sum = 0;
             for (int i = 0; i < numexams; i++)
             {
                 sum += examsNotes[i].Note;
             }
-            this.Rating = sum / numexams * 10;
+            return sum;
         }
         public void SetNotes()
         {

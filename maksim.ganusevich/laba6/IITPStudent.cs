@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace programming_paradigms
+namespace laba6
 {
-    class IiTPStudent: StudentBSUIR
+    class IiTPStudent : StudentBSUIR
     {
         private bool _isFitu;
 
-        public IiTPStudent() : base() 
+        public IiTPStudent() : base()
         {
             StudentNumber = "*5350***";
             GroupNumber = "*5350*";
@@ -16,7 +14,7 @@ namespace programming_paradigms
             Specialty = "IiTP";
         }
 
-        public IiTPStudent(string name, string surname) : base(name, surname) 
+        public IiTPStudent(string name, string surname) : base(name, surname)
         {
             StudentNumber = "*5350***";
             GroupNumber = "*5350*";
@@ -24,28 +22,28 @@ namespace programming_paradigms
             Specialty = "IiTP";
         }
 
-        public IiTPStudent(string name, string surname, string nationality, Gender gender, int day, int month, int year):
-            base(name, surname, nationality, gender, day, month, year) 
+        public IiTPStudent(string name, string surname, string nationality, Gender gender, int day, int month, int year) :
+            base(name, surname, nationality, gender, day, month, year)
         {
             StudentNumber = "*5350***";
             GroupNumber = "*5350*";
             Faculty = BsuirFaculty.FKSiS;
             Specialty = "IiTP";
         }
-        
-        public IiTPStudent (string name, string surname, string nationality, Gender gender, int day, int month, int year,
+
+        public IiTPStudent(string name, string surname, string nationality, Gender gender, int day, int month, int year,
             BsuirFaculty faculty, string specialty, StudentStatus status, string curator, string groupNumber, string studentNumber,
             ushort language, ushort mathematic, ushort physics, ushort sertificate, ushort yearOfEntering, ushort grade,
             bool isWinnerOlympiad, bool isSetteled, bool isBuget)
             : base(name, surname, nationality, gender, day, month, year, faculty, specialty, status, curator, groupNumber, studentNumber,
-            language, mathematic, physics, sertificate, yearOfEntering, grade, isWinnerOlympiad, isSetteled, isBuget) 
+            language, mathematic, physics, sertificate, yearOfEntering, grade, isWinnerOlympiad, isSetteled, isBuget)
         {
-            if(faculty!=BsuirFaculty.FKSiS || specialty != "IiTP") 
+            if (faculty != BsuirFaculty.FKSiS || specialty != "IiTP")
             {
                 Console.WriteLine("Неверная специальность или факультет");
                 Faculty = BsuirFaculty.FKSiS;
                 Specialty = "IiTP";
-            }   
+            }
         }
 
         public sealed override void Death(int dayOfDeath, int monthOfDeath, int yearOfDeath)
@@ -73,6 +71,7 @@ namespace programming_paradigms
                     }
                 }
 
+                if(StudentNumber!=null)
                 for (int i = 1; i < 5; i++)
                 {
                     const string check = "5350";
@@ -85,10 +84,10 @@ namespace programming_paradigms
             }
             else
                 if (Faculty != BsuirFaculty.FITU)
-                    Console.WriteLine("Не тот факультет");
+                Console.WriteLine("Не тот факультет");
         }
 
-        public void GoToFity() 
+        public void GoToFity()
         {
             Console.WriteLine("Береж или Волорова?");
             Faculty = BsuirFaculty.FITU;

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace programming_paradigms
+namespace laba6
 {
-    class StudentBSUIR : Human
+    class StudentBSUIR : Human, IStudent, IComparable
     {
         public enum StudentStatus
         {
@@ -25,19 +25,16 @@ namespace programming_paradigms
             unknown
         }
 
-        public struct CentralizeTesting
-        {
-            public ushort language, mathematic, physics, sertificate;
-        }
+        
 
         public BsuirFaculty Faculty { get; set; }
         public string Specialty { get; set; }
-        public StudentStatus Status { get; set; }
+        public string Status { get; set; }
         public bool IsWinnerOlympiad { get; set; }
         protected ushort _yearOfEntering, _grade;
         protected string _groupNumber, _studentNumber;
         public float AverageRating { get; protected set; }
-        protected CentralizeTesting _testing;
+        protected IStudent.CentralizeTesting _testing;
         public string Curator { get; set; }
         public bool IsSetteled { get; set; }
         public bool IsBuget { get; set; }
@@ -45,13 +42,14 @@ namespace programming_paradigms
         private List<DateTime> _dateExpelled;
         private List<DateTime> _dateReturn;
         private List<List<sbyte>> _sessionResult;
-        
+
         public StudentBSUIR() : base() { }
         public StudentBSUIR(string name, string surname) : base(name, surname) { }
 
         public StudentBSUIR(string name, string surname, string nationality, Gender gender, int day, int month, int year) :
-            base(name, surname, nationality, gender, day, month, year) { }
-        
+            base(name, surname, nationality, gender, day, month, year)
+        { }
+
         public StudentBSUIR(string name, string surname, string nationality, Gender gender, int day, int month, int year,
             BsuirFaculty faculty, string specialty, StudentStatus status, string curator, string groupNumber, string studentNumber,
             ushort language, ushort mathematic, ushort physics, ushort sertificate, ushort yearOfEntering, ushort grade,
@@ -60,12 +58,12 @@ namespace programming_paradigms
         {
             Faculty = faculty;
             Specialty = specialty;
-            Status = status;
+            Status = status.ToString();
             Curator = curator;
             if (groupNumber.Length == 6)
                 _groupNumber = groupNumber;
             if (studentNumber.Length == 8)
-                _groupNumber = groupNumber;
+                _studentNumber= studentNumber;
             if (language <= 100)
                 _testing.language = language;
             if (mathematic <= 100)
@@ -81,6 +79,14 @@ namespace programming_paradigms
             IsBuget = isBuget;
             IsSetteled = isSetteled;
             IsWinnerOlympiad = isWinnerOlympiad;
+        }
+        public int CompareTo(object o)
+        {
+            if (o == null) return 1;
+            if (o is StudentBSUIR p)
+                return Surname.CompareTo(p.Surname);
+            else
+                throw new Exception("Невозможно сравнить два объекта");
         }
 
         public ushort YearOfEntering
@@ -323,12 +329,12 @@ namespace programming_paradigms
         public override void Death(int dayOfDeath, int monthOfDeath, int yearOfDeath)
         {
             base.Death(dayOfDeath, monthOfDeath, yearOfDeath);
-            Status = StudentStatus.unknown;
+            Status = StudentStatus.unknown.ToString();
             _dateExpelled.Add(_dateOfDeath);
         }
 
         public sealed override string this[int index]
-        { 
+        {
             get
             {
                 return index switch
@@ -343,16 +349,16 @@ namespace programming_paradigms
                     16 => Convert.ToString(_grade),
                     _ => base[index]
                 };
-            }      
+            }
         }
-        
+
         public void SetStudentsData(BsuirFaculty faculty, string specialty, StudentStatus status, string curator, string groupNumber, string studentNumber,
             ushort language, ushort mathematic, ushort physics, ushort sertificate, ushort yearOfEntering, ushort grade,
-            bool isWinnerOlympiad, bool isSetteled, bool isBuget) 
+            bool isWinnerOlympiad, bool isSetteled, bool isBuget)
         {
             Faculty = faculty;
             Specialty = specialty;
-            Status = status;
+            Status = status.ToString();
             Curator = curator;
             if (groupNumber.Length == 6)
                 _groupNumber = groupNumber;
@@ -380,25 +386,26 @@ namespace programming_paradigms
             for (int i = 0; i < 17; i++)
                 if (this[i] == null)
                     Console.WriteLine("Есть пустые значения");
-            if (Status == StudentStatus.unknown)
+            if (Status == StudentStatus.unknown.ToString())
                 Console.WriteLine("Статус неизвестен");
             if (Faculty == BsuirFaculty.unknown)
                 Console.WriteLine("Факультет неизвестен");
             if (IsWinnerOlympiad == true && !(IsSetteled == false || IsBuget == false))
                 Console.WriteLine("Олимпиадник не на бюжете или без общежития");
             var value = Testing.Item1 + Testing.Item2 + Testing.Item3 + Testing.Item4;
-            if (value<200&&!IsWinnerOlympiad)
+            if (value < 200 && !IsWinnerOlympiad)
                 Console.WriteLine("Это точно студент БГУИРа?");
             if (value < 300 && !IsWinnerOlympiad)
                 Console.WriteLine("Это точно студент бюджетник");
-            if (_yearOfEntering % 10 == GroupNumber[0])
-                for (int i = 0; i < 5; i++)
+            if(GroupNumber!=null)
+                if ((char)(_yearOfEntering % 10) == GroupNumber[0])
+                 for (int i = 0; i < 5; i++)
                     if (GroupNumber[i] != StudentNumber[i])
                         Console.WriteLine("Неправильние значения номера студенческого и группы");
                     else continue;
             else Console.WriteLine("Неправильние значения номера группы или года поступления");
-            if(AverageRating<4&& AverageRating!=0)
+            if (AverageRating < 4 && AverageRating != 0)
                 Console.WriteLine("Рекомендую его отчислить");
         }
     }
-}  
+}

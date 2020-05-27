@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace programming_paradigms
+namespace laba6
 {
-    class AIStudent: StudentBSUIR
+    class AIStudent : StudentBSUIR 
     {
-        public AIStudent(): base() 
+        public AIStudent() : base()
         {
             Console.WriteLine("ИИ - топ спецуха \nНа ксисе нет ни сетей, ни системотехники\n");
             Faculty = BsuirFaculty.FITU;
             Specialty = "II";
         }
-        public AIStudent(string name, string surname) : base(name, surname) 
+        public AIStudent(string name, string surname) : base(name, surname)
         {
             Console.WriteLine("ИИ - топ спецуха \nНа ксисе нет ни сетей, ни системотехники\n");
             Faculty = BsuirFaculty.FITU;

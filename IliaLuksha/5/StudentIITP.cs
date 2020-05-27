@@ -15,7 +15,7 @@ namespace ConsoleApp1
             _faculty = "ФКСиС";
             _specialty = "Информатика и технологии программирования";
             _course = 1;
-            _group = 2;
+            _group = 953506;
     }
         public new int Group
         {
@@ -89,7 +89,7 @@ namespace ConsoleApp1
             }
 
         }
-        public new void Cout()
+        public override void Cout()
                 {
                     Console.WriteLine("Information about Student");
                     Console.WriteLine($"Name:{_name}, Surname:{_surname}, Patronymic:{_patronymic}");

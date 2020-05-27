@@ -42,7 +42,7 @@ namespace Lab5
             examsNotes[0].Subject = "Foreign language";
             examsNotes[1].Subject = "Higher math";
             examsNotes[2].Subject = "Physical culture";
-            examsNotes[3].Subject = "Математическая логикаMath logic";
+            examsNotes[3].Subject = "Math logic";
 
             SetNotes();
             SetRating();
@@ -57,12 +57,17 @@ namespace Lab5
         }
         public void SetRating()
         {
+            float sum = SumRating();
+            this.Rating = sum / numexams * 10;
+        }
+        private float SumRating()
+        {
             float sum = 0;
             for (int i = 0; i < numexams; i++)
             {
                 sum += examsNotes[i].Note;
             }
-            this.Rating = sum / numexams * 10;
+            return sum;
         }
         public void SetNotes()
         {

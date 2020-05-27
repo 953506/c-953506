@@ -384,7 +384,7 @@ namespace ConsoleApp1
             }
         }
         //метод
-        public new void  Cout()
+        public virtual void Cout()
         {
             Console.WriteLine("Information about Student");
             Console.WriteLine($"Name:{_name}, Surname:{_surname}, Patronymic:{_patronymic}");

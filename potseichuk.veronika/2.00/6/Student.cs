@@ -35,7 +35,6 @@ namespace Lab6
             }
         }
 
-
         public Student(string name, string lastname, int age, int stage) : base(name, lastname, age)
         {
             this.Stage = stage;
@@ -58,13 +57,19 @@ namespace Lab6
         }
         public void SetRating()
         {
+            float sum = SumRating();
+            this.Rating = sum / numexams * 10;
+        }
+        private float SumRating()
+        {
             float sum = 0;
             for (int i = 0; i < numexams; i++)
             {
                 sum += examsNotes[i].Note;
             }
-            this.Rating = sum / numexams * 10;
+            return sum;
         }
+
         public void SetNotes()
         {
             for (int i = 0; i < numexams; i++)
@@ -119,5 +124,4 @@ namespace Lab6
             }
         }
     }
-
 }

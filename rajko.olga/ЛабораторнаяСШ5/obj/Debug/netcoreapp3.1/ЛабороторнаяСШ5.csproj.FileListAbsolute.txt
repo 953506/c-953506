@@ -1,0 +1,11 @@
+C:\Users\roroj\source\repos\ЛабороторнаяСШ5\bin\Debug\netcoreapp3.1\ЛабороторнаяСШ5.exe
+C:\Users\roroj\source\repos\ЛабороторнаяСШ5\bin\Debug\netcoreapp3.1\ЛабороторнаяСШ5.deps.json
+C:\Users\roroj\source\repos\ЛабороторнаяСШ5\bin\Debug\netcoreapp3.1\ЛабороторнаяСШ5.runtimeconfig.json
+C:\Users\roroj\source\repos\ЛабороторнаяСШ5\bin\Debug\netcoreapp3.1\ЛабороторнаяСШ5.runtimeconfig.dev.json
+C:\Users\roroj\source\repos\ЛабороторнаяСШ5\bin\Debug\netcoreapp3.1\ЛабороторнаяСШ5.dll
+C:\Users\roroj\source\repos\ЛабороторнаяСШ5\bin\Debug\netcoreapp3.1\ЛабороторнаяСШ5.pdb
+C:\Users\roroj\source\repos\ЛабороторнаяСШ5\obj\Debug\netcoreapp3.1\ЛабороторнаяСШ5.csprojAssemblyReference.cache
+C:\Users\roroj\source\repos\ЛабороторнаяСШ5\obj\Debug\netcoreapp3.1\ЛабороторнаяСШ5.AssemblyInfoInputs.cache
+C:\Users\roroj\source\repos\ЛабороторнаяСШ5\obj\Debug\netcoreapp3.1\ЛабороторнаяСШ5.AssemblyInfo.cs
+C:\Users\roroj\source\repos\ЛабороторнаяСШ5\obj\Debug\netcoreapp3.1\ЛабороторнаяСШ5.dll
+C:\Users\roroj\source\repos\ЛабороторнаяСШ5\obj\Debug\netcoreapp3.1\ЛабороторнаяСШ5.pdb

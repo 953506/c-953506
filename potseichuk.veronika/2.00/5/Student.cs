@@ -42,7 +42,7 @@ namespace Lab5
             examsNotes[0].Subject = "Foreign language";
             examsNotes[1].Subject = "Higher math";
             examsNotes[2].Subject = "Physical culture";
-            examsNotes[3].Subject = "Математическая логикаMath logic";
+            examsNotes[3].Subject = "Math logic";
 
             SetNotes();
             SetRating();

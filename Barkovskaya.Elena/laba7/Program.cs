@@ -4,7 +4,6 @@ using System.Text;
 
 namespace lab7
 {
-
     class Program
     {
         class RationalNumber : IEquatable<RationalNumber>

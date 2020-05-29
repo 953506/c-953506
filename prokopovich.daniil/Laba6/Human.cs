@@ -2,7 +2,7 @@
 
 namespace Lab6
 {
-    abstract class Human : IPlayable
+    abstract class Human : IPlayable, IEquatable<Human>
     {
         //Структура
         protected struct FIO
@@ -157,6 +157,16 @@ namespace Lab6
             else
                 Console.WriteLine($"{fio.name} sings : WHAT IS LOVE! BABY DONT HURT ME!");
             Console.ReadKey();
+        }
+
+        public bool Equals(Human other)
+        {
+            if (other == null)
+                return false;
+            if (this.Name == other.Name && this.Surname == other.Surname)
+                return true;
+            else
+                return false;
         }
 
         //Заглушки для IPlayable в наследуемых классах

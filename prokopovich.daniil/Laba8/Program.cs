@@ -1,245 +1,131 @@
 ﻿using System;
+using System.ComponentModel.Design;
 
 namespace Lab8
 {
     class Program
     {
-        //Делегат и событие, связанные с выводом сообщения
-        public delegate void Messager(string message);
-        public static event Messager Notify;
+        //Создаем два делегата с разной сигнатурой, используем их в конце программы.
+        public delegate void ProficiencyChecker(Sportsman first, Sportsman second);
+        public delegate void LetsDoeIt(Sportsman game);
+
+        public static event ProficiencyChecker Check;
+        public static event LetsDoeIt LetsPlay;
         
         static void Main(string[] args)
         {
-            //Анонимный метод для работы с делегатом
-            Messager messager =  message => Console.WriteLine(message);
-            char choice;
-            string name = "", surname = "", gender = "", selectedClass = "none";
-            int birth_year;
-            Human sportsman = new Sportsman();
-
-            do
+            //Инициализация двух объектов: футболиста и баскетболиста.
+            Footballer Beckham = new Footballer("David", "Beckham", "male");
+            Beckham.Salary = 250000;
+            
+            Basketballer Jordan = new Basketballer("Michael", "Jordan", "male");
+            Jordan.Salary = 300000;
+            
+            eSportsman Ishutin = new eSportsman("Danil", "Ishutin", "male");
+            Ishutin.Salary = 100000;
+            
+            //Применение метода Play интерфейса IPlayable, реализованного по своему в каждом классе.
+            Console.WriteLine("What quiz do you want to play: enter 1 for football and 2 for basketball.");
+            int choice = 0;
+            try
             {
-                if (selectedClass == "none")
-                {
-                    Console.WriteLine("1 - Create Sportsman\n2 - Create Footballer\n3 - Create Basketballer\n4 - Create eSportsman\nq - Exit");
-                }
+                choice = int.Parse(Console.ReadLine());
+                if (choice < 1 || choice > 3)
+                    throw new Exception("What did you just enter?!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            if(choice == 1)
+                Beckham.Play();
+            else if(choice == 2)
+                Jordan.Play();
+            else if(choice == 3)
+                Ishutin.Play();
+            
+            //Создаем второго футболиста и применяем IComparable.
+            Footballer Pogba = new Footballer("Paul", "Pogba", "male");
+            Pogba.Salary = 100000;
+
+            try
+            {
+                if(Beckham.CompareTo(Pogba) > 0)
+                    Console.WriteLine("Beckham's salary is higher!");
+                else if(Beckham.CompareTo(Pogba) < 0)
+                    Console.WriteLine("Beckham's salary is higher!");
                 else
-                {
-                    Console.WriteLine("1 - Show info\n2 - Die\n3 - Change name\n4 - Change surname\n5 - Set disease\n6 - Sing\n7 - Set category\n");
-
-                    if (sportsman is Footballer)
-                    {
-                        Console.WriteLine("8 - Bounce a ball");
-                    }
-
-                    if (sportsman is Basketballer)
-                    {
-                        Console.WriteLine("8 - Score a three-pointer");
-                    }
-
-                    if (sportsman is eSportsman)
-                    {
-                        Console.WriteLine("8 - Chop watermelon");
-                    }
-                    Console.WriteLine("9 - Play a quiz");
-                    Console.WriteLine("As bonus: B - to compare your sportsman to another one.");
-                    Console.WriteLine("Other - Start menu");
-                }
-                choice = Console.ReadKey().KeyChar;
-                Console.Clear();
-
-                if (selectedClass == "none")
-                {
-                    if (choice == '1' || choice == '2' || choice == '3' || choice == '4' || choice == '5')
-                    {
-                        Console.WriteLine("Enter name and surname");
-                        name = Console.ReadLine();
-                        surname = Console.ReadLine();
-                        Console.WriteLine("Enter gender (male/female, other - skip)");
-                        gender = Console.ReadLine();
-                        Console.WriteLine("Enter birth year");
-                        
-                        //Обработка исключения с неправильным вводом данных
-                        try
-                        {
-                            birth_year = Convert.ToInt32(Console.ReadLine());
-                            if (birth_year < 1900 || birth_year > 2020)
-                                throw new Exception("The hell you're trying to enter?) KEKW");
-                        }
-                        catch
-                        {
-                            Console.WriteLine("Wrong input!");
-                            birth_year = 2020;
-                        }
-
-                        Human.birth_year = birth_year;
-                    }
-                    Console.Clear();
-
-                    if (Human.birth_year < 2003)
-                    {
-                        selectedClass = "Sportsman";
-                    }
-                    else
-                    {
-                        Notify($"{sportsman.Name} is too young for being a professional sportsman.");
-                        Console.ReadKey();
-                        Console.Clear();
-                    }
-
-                    switch (choice)
-                    {
-                        case '1':
-                            sportsman = new Sportsman(name, surname, gender);
-                            break;
-                        case '2':
-                            sportsman = new Footballer(name, surname, gender);
-                            selectedClass = "Footballer";
-                            break;
-                        case '3':
-                            sportsman = new Basketballer(name, surname, gender);
-                            selectedClass = "Basketballer";
-                            break;
-                        case '4':
-                            sportsman = new eSportsman(name, surname, gender);
-                            selectedClass = "eSportsman";
-                            break;
-                    }
-                }
+                    Console.WriteLine("Both salaries are equal!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
+            //Создаем футболиста-клона с помощью реализации ICloneable и проверяем его и первого футболиста на идентичность.
+            Footballer AnotherBeckham = Beckham.Clone() as Footballer;
+            if(AnotherBeckham == null)
+                Console.WriteLine("Oops, I did it again!");
+            else
+            {
+                if (Equals(Beckham, AnotherBeckham))
+                    Console.WriteLine("These two are similar!");
                 else
-                {
-                    switch (choice)
-                    {
-                        case '1':
-                            sportsman.ShowInfo();
-                            Console.ReadKey();
-                            break;
-                        case '2':
-                            if (sportsman.IsDead)
-                                sportsman.Resurrect();
-                            else sportsman.Die();
-                            break;
-                        case '3':
-                            Console.Write("name = ");
-                            sportsman.Name = Console.ReadLine();
-                            break;
-                        case '4':
-                            Console.Write("surname = ");
-                            sportsman.Surname = Console.ReadLine();
-                            break;
-                        case '5':
-                            Console.Write("disease = ");
-                            sportsman.Disease = Console.ReadLine();
-                            break;
-                        case '6':
-                            sportsman.Sing();
-                            break;
-                        case '7':
-                            Console.WriteLine("Possible categories : Footballer, Basketballer, eSportsman");
-                            Console.Write("category = ");
-                            sportsman.Category = Console.ReadLine();
-                            break;
-                        case '8':
-                            if (sportsman is Footballer)
-                            {
-                                sportsman.Bounce();
-                                break;
-                            }
+                    Console.WriteLine("Well, no one is perfect!");
+            }
+            
+            //Использование созданных делегатов. Одним пользуемся напрямую, вторым через анонимный метод.
+            Console.WriteLine("Time to play some games!");
+            ProficiencyChecker checker = Proficiency;
+            checker(Beckham, Pogba);
+            
+            
+            LetsDoeIt gamer = delegate(Sportsman game) { Game(game); };
+            gamer(Ishutin);
 
-                            if (sportsman is Basketballer)
-                            {
-                                sportsman.Score();
-                                break;
-                            }
+        }
 
-                            if (sportsman is eSportsman)
-                            {
-                                sportsman.ChopWatermelon();
-                                break;
-                            }
+        public static void Proficiency(Sportsman first, Sportsman second)
+        {
+            if (first is Footballer && second is Footballer)
+                Console.WriteLine("Both are footballers");
+            else if(first is Basketballer && second is Basketballer)
+                Console.WriteLine("Both are basketballers");
+            else if(first is eSportsman && second is eSportsman)
+                Console.WriteLine("Both are eSportsmen");
+            else 
+                throw new Exception("Cannot compare these two sportsmen!");
+            
+            if(Equals(first, second))
+                Console.WriteLine("Why did you put two similar people over hear???");
+            else
+                Console.WriteLine("Let's check, what are the names of these amazing people!");
 
-                            if (sportsman is Sportsman)
-                            {
-                                selectedClass = "none";
-                            }
-                            break;
+            if (first.Name == second.Name)
+                Console.WriteLine("They have similar names! Grats!\n");
+                
+            Console.WriteLine($"{first.Name} - {second.Name}");
+            Console.WriteLine($"{first.Surname} - {second.Surname}");
+            Console.WriteLine($"{first.Salary} - {second.Salary}");
+            if(Check != null)
+                Check(first, second);
+        }
 
-                        case '9':
-                        {
-                            sportsman.Play();
-                            break;
-                        }
-
-                        case 'B':
-                        {
-                            Notify("Define the type of abstract sportsman: 1 for footballer, 2 for basketball player and  3 for e-sports player.");
-                            int which = int.Parse(Console.ReadLine());
-                            switch (which)
-                            {
-                                case 1:
-                                {
-                                    Console.WriteLine("Let's tale Paul Pogba.");
-                                    Footballer Pogba = new Footballer("Paul", "Pogba", "male");
-                                    Footballer Paul = Pogba.Clone() as Footballer;
-                                    Pogba.Salary = 120000;
-                                    if (sportsman.Gender == "male")
-                                        Console.WriteLine("You're both men.");
-                                    if (sportsman.Name == "Paul")
-                                        Console.WriteLine("Grats! You're Paul as well!");
-                                    if (sportsman.Salary > Pogba.Salary)
-                                        Console.WriteLine("Grats! You earn more than Paul Pogba himself!");
-                                    else
-                                        Console.WriteLine(
-                                            "Pogba's salary is higher. Well, money doesn't mean that much.");
-                                    break;
-                                }
-
-                                case 2:
-                                {
-                                    Console.WriteLine("Let's take Michael Jordan");
-                                    Basketballer Jordan = new Basketballer("Michael", "Jordan", "male");
-                                    Basketballer Michael = Jordan.Clone() as Basketballer;
-                                    Jordan.Salary = 250000;
-                                    if (sportsman.Gender == "male")
-                                        Console.WriteLine("You're both men.");
-                                    if (sportsman.Name == "Michael")
-                                        Console.WriteLine("Grats! You're Michael as well!");
-                                    if (sportsman.Salary > Jordan.Salary)
-                                        Console.WriteLine("Wow. You earn more than the legend! Do you really deserve that much?)");
-                                    else
-                                        Console.WriteLine(
-                                            "Jordan earns more than you. You have the cap to grow.");
-                                    break;
-                                }
-
-                                case 3:
-                                {
-                                    Console.WriteLine("Let's take Johan Sundstein");
-                                    eSportsman Sundstein = new eSportsman("Johan", "Sundstein", "male");
-                                    eSportsman Johan = Sundstein.Clone() as eSportsman;
-                                    Sundstein.Salary = 550000;
-                                    if (sportsman.Gender == "male")
-                                        Console.WriteLine("You're both men.");
-                                    if (sportsman.Name == "Johan")
-                                        Console.WriteLine("Grats! You're Johan as well!");
-                                    if (sportsman.Salary > Sundstein.Salary)
-                                        Console.WriteLine("You earn more than a two-time TI champion? Wow!");
-                                    else
-                                        Console.WriteLine(
-                                            "So, Johan defenitely has more money that you. Why not become a legend as well?");
-                                    break;
-                                }
-                            }
-                            break;
-                        }
-
-                        default:
-                            selectedClass = "none";
-                            break;
-                    }
-                    Console.Clear();
-                }
-            } while (choice != 'q');
+        public static void Game(Sportsman gameType)
+        {
+            int result = gameType.Play();
+            if(result > 0 && result < 20)
+                Console.WriteLine("You're definitely not interested in sports!");
+            else if(result > 20 && result < 50)
+                Console.WriteLine("Could be better!");
+            else if(result >= 50)
+                Console.WriteLine("Noice!");
+            else
+                throw new Exception("KEKW!");
+            if(LetsPlay!= null)
+                LetsPlay(gameType);
         }
     }
 }

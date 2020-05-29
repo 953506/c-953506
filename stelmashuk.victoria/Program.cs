@@ -139,7 +139,6 @@ namespace LR8
     {
         public delegate void SalaryHandler(string message);// объявление делегата
         public event SalaryHandler Notify;  // определение события
-        
         public int Balance1;
 
         public void Balance(int balance)
@@ -207,7 +206,7 @@ namespace LR8
             Console.WriteLine("До свидания, директор!");
         }
 
-        
+
         static void Main(string[] args)
         {
             Show show = Welcome; // создаем переменную делегата и присваиваем этой переменной адрес метода
@@ -244,12 +243,13 @@ namespace LR8
             {
                 Console.WriteLine(mes);
             };
-            MenuHandler handler = message => Console.WriteLine(message);// использование Лямбда-выражения
-            handler("\t\t\t\t\t\tМеню");
-            handler("\t\t\tвведите 1, если хотите сравнить параметры мужчин");
-            handler("\t\t\tвведите 2, если хотите сравнить параметры женщин");
-            handler("\t\t\tвведите 3, если хотите повысить зарплату работникам команды");
-            handler("\t\t\tвведите 4, если хотите понизить зарплату работникам команды");
+            MenuHandler menu = message => Console.WriteLine(message);// использование Лямбда-выражения
+            menu("\t\t\t\t\t\tМеню");
+            menu("\t\t\tвведите 1, если хотите сравнить параметры мужчин");
+            menu("\t\t\tвведите 2, если хотите сравнить параметры женщин");
+            menu("\t\t\tвведите 3, если хотите повысить зарплату работникам команды");
+            menu("\t\t\tвведите 4, если хотите понизить зарплату работникам команды");
+            menu("\t\t\tвведите 5, если хотите остсортировать данных людей по возросту");
             int otvet1 = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
             switch (otvet1)
@@ -290,10 +290,20 @@ namespace LR8
                         Console.WriteLine($"Изменено, теперь у каждого работника зарплата: {salary.Balance1}");
                         break;
                     }
+                case 5:
+                    {
+                        Person[] people = new Person[] { person1, person2, person3, person4 };
+                        Array.Sort(people);
+                        foreach (Person p in people)
+                        {
+                            Console.WriteLine(p._name + "(" + p.provero4ka.Age + ")");
+                        }
+                        break;
+                    }
             }
             show -= Welcome;// убираем обработчик
             show += Goodbye;// добавляем обработчик
             show(); // снова вызываем метод
         }
     }
-}
+}  

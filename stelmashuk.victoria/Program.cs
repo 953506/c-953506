@@ -139,6 +139,7 @@ namespace LR8
     {
         public delegate void SalaryHandler(string message);// объявление делегата
         public event SalaryHandler Notify;  // определение события
+        
         public int Balance1;
 
         public void Balance(int balance)
@@ -206,7 +207,7 @@ namespace LR8
             Console.WriteLine("До свидания, директор!");
         }
 
-
+        
         static void Main(string[] args)
         {
             Show show = Welcome; // создаем переменную делегата и присваиваем этой переменной адрес метода

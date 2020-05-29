@@ -114,6 +114,7 @@ namespace Laba5
                 }
             } 
         }          
+        public virtual int Kurs { get; set; }
         //методы
         public void WriteBalli()
         {
@@ -165,7 +166,8 @@ namespace Laba5
                 _army = true; 
             }
         }
-       
-
+        public virtual void SemPredm() { }
+        public virtual void Vivod() { }
+        public virtual void Vivod(string status) { }
     }
 }

@@ -26,7 +26,7 @@ namespace Laba5
             }
             while (ch);
             Console.Clear();
-            if (changes==true)
+            if (changes == true)
             { 
                 school.WriteBalli();
             }
@@ -34,36 +34,36 @@ namespace Laba5
             bool cicle = true;
             if (school.poit)
             {
-                Poit studentpoit = new Poit();
+                school = new Poit();
                 while (cicle)
                 {
                     Console.Clear();
-                    studentpoit.Menu();
+                    school.Menu();
                     key = Console.ReadKey().KeyChar;
                     Console.Clear();
                     switch (key)
                     {
                         case '1':
-                            studentpoit.Vivod();
+                            school.Vivod();
                             Console.ReadKey();
                             break;
                         case '2':
                             Console.WriteLine("Write new status:");
-                            studentpoit.Vivod(Console.ReadLine());
+                            school.Vivod(Console.ReadLine());
                             Console.ReadKey();
                             break;
                         case '3':
-                            studentpoit.SemPredm();
+                            school.SemPredm();
                             Console.ReadKey();
                             break;
                         case '4':
                             Console.WriteLine("Write new course:");
-                            studentpoit.Kurs = int.Parse(Console.ReadLine());
+                            school.Kurs = int.Parse(Console.ReadLine());
                             break;
                         case '5':
-                            Console.Write(studentpoit["name"] + " " + studentpoit["surname"] + " " + studentpoit["patronymic"]);
-                            Console.WriteLine("\nHeight:" + studentpoit.Height);
-                            Console.WriteLine("Weight:" + studentpoit.Weight);
+                            Console.Write(school["name"] + " " + school["surname"] + " " + school["patronymic"]);
+                            Console.WriteLine("\nHeight:" + school.Height);
+                            Console.WriteLine("Weight:" + school.Weight);
                             Console.ReadKey();
                             break;
                         case '0':
@@ -74,37 +74,37 @@ namespace Laba5
             }
             if (school.iitp)
             {
-                Iitp studentiitp = new Iitp();
-                studentiitp.Vivod();
+               school = new Iitp();
+                school.Vivod();
                 while (cicle)
                 {
                     Console.Clear();
-                    studentiitp.Menu();
+                    school.Menu();
                     key = Console.ReadKey().KeyChar;
                     Console.Clear();
                     switch (key)
                     {
                         case '1':
-                            studentiitp.Vivod();
+                            school.Vivod();
                             Console.ReadKey();
                             break;
                         case '2':
                             Console.WriteLine("Write new status:");
-                            studentiitp.Vivod(Console.ReadLine()); //polimorf realize
+                            school.Vivod(Console.ReadLine()); //polimorf realize
                             Console.ReadKey();
                             break;
                         case '3':
-                            studentiitp.SemPredm();
+                            school.SemPredm();
                             Console.ReadKey();
                             break;
                         case '4':
                             Console.WriteLine("Write new course:");
-                            studentiitp.Kurs = int.Parse(Console.ReadLine());
+                            school.Kurs = int.Parse(Console.ReadLine());
                             break;
                         case '5':
-                            Console.Write(studentiitp["name"] + " " + studentiitp["surname"] + " " + studentiitp["patronymic"]);
-                            Console.WriteLine("\nHeight:" + studentiitp.Height);
-                            Console.WriteLine("Weight:" + studentiitp.Weight);
+                            Console.Write(school["name"] + " " + school["surname"] + " " + school["patronymic"]);
+                            Console.WriteLine("\nHeight:" + school.Height);
+                            Console.WriteLine("Weight:" + school.Weight);
                             Console.ReadKey();
                             break;
                         case '0':
@@ -115,37 +115,37 @@ namespace Laba5
             }    
             if (school.vmsis)
             { 
-                Vmsis studentvmsis = new Vmsis();
-                studentvmsis.Vivod();
+                school = new Vmsis();
+                school.Vivod();
                 while (cicle)
                 {
                     Console.Clear();
-                    studentvmsis.Menu();
+                    school.Menu();
                     key = Console.ReadKey().KeyChar;
                     Console.Clear();
                     switch (key)
                     { 
                         case '1': 
-                            studentvmsis.Vivod(); 
+                            school.Vivod(); 
                             Console.ReadKey(); 
                             break;
                         case '2': 
                             Console.WriteLine("Write new status:"); 
-                            studentvmsis.Vivod(Console.ReadLine());
+                            school.Vivod(Console.ReadLine());
                             Console.ReadKey();
                             break;
                         case '3': 
-                            studentvmsis.SemPredm(); 
+                            school.SemPredm(); 
                             Console.ReadKey(); 
                             break;
                         case '4':
                             Console.WriteLine("Write new course:");
-                            studentvmsis.Kurs = int.Parse(Console.ReadLine());
+                            school.Kurs = int.Parse(Console.ReadLine());
                             break;
                         case '5':
-                            Console.Write(studentvmsis["name"] + " " + studentvmsis["surname"] + " " + studentvmsis["patronymic"]);
-                            Console.WriteLine("\nHeight:" + studentvmsis.Height);
-                            Console.WriteLine("\nWeight:" + studentvmsis.Weight);
+                            Console.Write(school["name"] + " " + school["surname"] + " " + school["patronymic"]);
+                            Console.WriteLine("\nHeight:" + school.Height);
+                            Console.WriteLine("\nWeight:" + school.Weight);
                             Console.ReadKey();
                             break;
                         case '0': 

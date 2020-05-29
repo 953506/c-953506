@@ -158,7 +158,7 @@ namespace Laba5
             }
 
         }
-        public static void Menu()
+        public virtual void Menu()
         {
             Console.WriteLine("1)Show information");
             Console.WriteLine("2)Change age");

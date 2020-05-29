@@ -29,7 +29,7 @@ namespace Laba5
             Thirst = 9,
             Fourth = 8
         }
-        public int Kurs
+        public override int Kurs
         {
             set
             {
@@ -45,9 +45,7 @@ namespace Laba5
             }
 
         }
-
-
-        public void SemPredm()
+        public override void SemPredm()
         {
             switch (_course)
             {
@@ -59,8 +57,7 @@ namespace Laba5
             }
 
         }
-
-        public void Vivod()
+        public override void Vivod()
         {
             Console.WriteLine($"FIO:{_surname} {_name } {_patronymic}");
             Console.WriteLine($"Age: {_age}");
@@ -69,7 +66,7 @@ namespace Laba5
             Console.WriteLine($"Your ct balli:{Balli}");
             Console.WriteLine($"Current army status:{_army}");
         }
-        public void Vivod(string status)
+        public override void Vivod(string status)
         {
             Status = status;
             Console.WriteLine($"FIO:{_surname} {_name } {_patronymic}");
@@ -78,7 +75,7 @@ namespace Laba5
             Console.WriteLine($"Your course:{_course}");
             Console.WriteLine($"Current army status:{_army}");
         }
-        public new void Menu()
+        public override void Menu()
         {
             Console.WriteLine("1) Show inforamiton");
             Console.WriteLine("2) Show info with new status");

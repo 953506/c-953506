@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace programming_paradigms
+namespace laba6
 {
-    class ASOIStudent: StudentBSUIR
+    class ASOIStudent : StudentBSUIR
     {
-        public enum AllocationASOI 
+        public enum AllocationASOI
         {
             Интеграл,
             Тестировщик,
@@ -19,7 +19,7 @@ namespace programming_paradigms
             Faculty = BsuirFaculty.FITU;
             Specialty = "ASOI";
         }
-        public ASOIStudent(string name, string surname) : base(name, surname) 
+        public ASOIStudent(string name, string surname) : base(name, surname)
         {
             Console.WriteLine("Асои - топ спецуха(за свои деньги) \nНа ксисе нет ни сетей, ни системотехники\n");
             Faculty = BsuirFaculty.FITU;
@@ -65,7 +65,7 @@ namespace programming_paradigms
                 Faculty = BsuirFaculty.FITU;
                 Specialty = "ASOI";
             }
-            if(Allocation!=AllocationASOI.Интеграл.ToString()|| Allocation != AllocationASOI.Тестировщик.ToString())
+            if (Allocation != AllocationASOI.Интеграл.ToString() || Allocation != AllocationASOI.Тестировщик.ToString())
             {
                 Console.WriteLine("Неверное распределение у студента");
             }

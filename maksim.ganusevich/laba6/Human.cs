@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace programming_paradigms
+namespace laba6
 {
     class Human
     {
@@ -36,7 +36,7 @@ namespace programming_paradigms
             _isLife = true;
         }
 
-        public Human(string name, string surname, string nationality, Gender gender, int day, int month, int year):this(name, surname)
+        public Human(string name, string surname, string nationality, Gender gender, int day, int month, int year) : this(name, surname)
         {
             Nationality = nationality;
             Sex = gender;
@@ -44,7 +44,7 @@ namespace programming_paradigms
             _age = DateTime.Now - _dateOfBirth;
         }
         public Human(string name, string surname, string nationality, Gender gender, int day, int month, int year, int dayOfDeath, int monthOfDeath, int yearOfDeath)
-            :this(name, surname, nationality, gender, day, month, year)
+            : this(name, surname, nationality, gender, day, month, year)
         {
             _dateOfDeath = new DateTime(yearOfDeath, monthOfDeath, dayOfDeath);
             _age = _dateOfDeath - _dateOfBirth;

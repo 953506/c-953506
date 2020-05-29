@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace LR8
 {
-    //интерфейсы
+    // интерфейсы
     interface IFoo
     {
         void GetInfo();
@@ -19,6 +19,7 @@ namespace LR8
         void WeightComparison(T o1, T o2);
     }
 
+    // структура
     public struct Provero4ka
     {
         private int _age;
@@ -76,7 +77,7 @@ namespace LR8
 
     class PersonComparison : IComparison<Person>
     {
-        public void AgeComparison(Person o1, Person o2)
+        public void AgeComparison(Person o1, Person o2)// неявная реализация метода
         {
             if (o1.provero4ka.Age > o2.provero4ka.Age)
             {
@@ -95,7 +96,7 @@ namespace LR8
             }
         }
 
-        public void HeightComparison(Person o1, Person o2)
+        public void HeightComparison(Person o1, Person o2)// неявная реализация метода
         {
             if (o1.provero4ka.Height > o2.provero4ka.Height)
             {
@@ -114,7 +115,7 @@ namespace LR8
             }
         }
 
-        public void WeightComparison(Person o1, Person o2)
+        public void WeightComparison(Person o1, Person o2)// неявная реализация метода
         {
             if (o1.provero4ka.Weight > o2.provero4ka.Weight)
             {
@@ -136,23 +137,26 @@ namespace LR8
 
     class Salary
     {
-        public delegate void SalaryHandler(string message);//объявление делегата
-        public event SalaryHandler Notify;  // Определение события
+        public delegate void SalaryHandler(string message);// объявление делегата
+        public event SalaryHandler Notify;  // определение события
         public int Balance1;
+
         public void Balance(int balance)
         {
             Balance1 = balance;
-            Notify?.Invoke($"зарплата: {balance}");   // Вызов события 
+            Notify?.Invoke($"зарплата: {balance}");   // вызов события 
         }
+
         public void Put(int balance)
         {
             Balance1 += balance;
-            Notify?.Invoke($"добавено: {balance}");   // Вызов события 
+            Notify?.Invoke($"добавено: {balance}");   // вызов события 
         }
+
         public void Take(int balance)
         {
             Balance1 -= balance;
-            Notify?.Invoke($"изъято: {balance}");   // Вызов события
+            Notify?.Invoke($"изъято: {balance}");   // вызов события
         }
     }
 
@@ -161,7 +165,7 @@ namespace LR8
         public string _name;
         public Provero4ka provero4ka;
 
-        void IFoo.GetInfo()
+        void IFoo.GetInfo()// явная реализация
         {
             Console.WriteLine($"{_name} \nВозраст: {provero4ka.Age} \nЗарплата: {Balance1} ");
         }
@@ -182,53 +186,52 @@ namespace LR8
             if (otherPerson != null)
                 return this.provero4ka.Age.CompareTo(otherPerson.provero4ka.Age);
             else
-                throw new ArgumentException("Невозможно сравнить два объекта");//вызов исключения
+                throw new ArgumentException("Невозможно сравнить два объекта");// вызов исключения
         }
     }
 
     class Program
     {
         //делегаты
-        delegate void Welcome();
-        delegate void MessageHandler(string message);
-        
-        private static void Show()
+        delegate void Show();
+        delegate void MenuHandler(string message);
+
+        private static void Welcome()
         {
             Console.WriteLine("Здравствуйте, директор!");
         }
 
-        private static void AddSecond()
+        private static void Goodbye()
         {
             Console.WriteLine("До свидания, директор!");
         }
 
+
         static void Main(string[] args)
         {
-            Welcome show = Show;
-            show();
+            Show show = Welcome; // создаем переменную делегата и присваиваем этой переменной адрес метода
+            show(); // вызываем метод
             int balance = 2000;
             int age = 0;
             string name = "";
-
             try
             {
-                Console.Write("Введите ваше имя: ");
+                Console.WriteLine("Введите ваше имя: ");
                 name = Console.ReadLine();
-                Console.Write("Введите ваш возраст: ");
+                Console.WriteLine("Введите ваш возраст: ");
                 age = int.Parse(Console.ReadLine());
             }
             catch (FormatException)//обработка исключения
             {
                 Console.WriteLine("\nОшибка: В поле \"возраст\" вы ввели не число");
             }
-
-            Console.WriteLine("Ваши отличившиеся работники: ");
+            Console.WriteLine("Ваша отличившаяся команда: ");
             Person person1 = new Person("Григорий", 37, 179, 67, balance);
             Person person2 = new Person("Алексей", 21, 175, 70, balance);
             Person person3 = new Person("Иоанна", 56, 165, 60, balance);
             Person person4 = new Person("Фиона", 24, 180, 58, balance);
             IFoo foo = person1;// переменная интерфейса
-            foo.GetInfo();//получили доступ к элементам интерфейса
+            foo.GetInfo();// получили доступ к элементам интерфейса
             IFoo foo2 = person2;
             foo2.GetInfo();
             IFoo foo3 = person3;
@@ -236,17 +239,16 @@ namespace LR8
             IFoo foo4 = person4;
             foo4.GetInfo();
             Salary salary = new Salary();
-            salary.Notify += delegate (string mes)// Установка в качестве обработчика анонимного метода
+            salary.Notify += delegate (string mes)// установка в качестве обработчика события анонимного метода
             {
                 Console.WriteLine(mes);
             };
-            MessageHandler handler = message => Console.WriteLine(message);//использование Лямбда-выражения
+            MenuHandler handler = message => Console.WriteLine(message);// использование Лямбда-выражения
             handler("\t\t\t\t\t\tМеню");
-            handler("\t\t\tВведите 1, если хотите просмотреть информацию о людях");
-            handler("\t\t\tвведите 2, если хотите сравнить параметры мужчин");
-            handler("\t\t\tвведите 3, если хотите сравнить параметры женщин");
-            handler("\t\t\tвведите 4, если хотите повысить зарплату работника");
-            handler("\t\t\tвведите 5, если хотите понизить зарплату работника");
+            handler("\t\t\tвведите 1, если хотите сравнить параметры мужчин");
+            handler("\t\t\tвведите 2, если хотите сравнить параметры женщин");
+            handler("\t\t\tвведите 3, если хотите повысить зарплату работникам команды");
+            handler("\t\t\tвведите 4, если хотите понизить зарплату работникам команды");
             int otvet1 = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
             switch (otvet1)
@@ -271,114 +273,26 @@ namespace LR8
                     }
                 case 3:
                     {
-                        Person[] people = new Person[] { person1, person2, person3, person4 };
-                        Array.Sort(people);
-                        foreach (Person p in people)
-                        {
-                            Console.WriteLine(p._name + "(" + p.provero4ka.Age + ")");
-                        }
+                        salary.Balance(balance);
+                        Console.WriteLine($"На сколько вы хотите повысить зарплату работникам команды?");
+                        int put = Convert.ToInt32(Console.ReadLine());
+                        salary.Put(put);
+                        Console.WriteLine($"Изменено, теперь у каждого работника зарплата: {salary.Balance1}");
                         break;
                     }
                 case 4:
                     {
-                        Console.WriteLine("Выберите работника, заработную плату которого вы хотите повысить 1/2/3/4");
-                        int otvet2 = Convert.ToInt32(Console.ReadLine());
-                        Console.Clear();
-                        switch (otvet2)
-                        {
-                            case 1: 
-                                {
-                                    salary.Balance(balance);
-                                    Console.WriteLine($"На сколько вы хотите повысить зарплату 1-го ратотника?");
-                                    int put = Convert.ToInt32(Console.ReadLine());
-                                    salary.Put(put);
-                                    Console.WriteLine($"Изменено, теперь у 1-го работника зарплата: {salary.Balance1}");
-                                    break; 
-                                }
-                            case 2:
-                                {
-                                    salary.Balance(balance);
-                                    Console.WriteLine($"На сколько вы хотите повысить зарплату 2-го ратотника?");
-                                    int put = Convert.ToInt32(Console.ReadLine());
-                                    salary.Put(put);
-                                    Console.WriteLine($"Изменено, теперь у 2-го работника зарплата: {salary.Balance1}");
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    salary.Balance(balance);
-                                    Console.WriteLine($"На сколько вы хотите повысить зарплату 3-го ратотника?");
-                                    int put = Convert.ToInt32(Console.ReadLine());
-                                    salary.Put(put);
-                                    Console.WriteLine($"Изменено, теперь у 3-го работника зарплата: {salary.Balance1}");
-                                    break;
-                                }
-                            case 4:
-                                {
-                                    salary.Balance(balance);
-                                    Console.WriteLine($"На сколько вы хотите повысить зарплату 4-го ратотника?");
-                                    int put = Convert.ToInt32(Console.ReadLine());
-                                    salary.Put(put);
-                                    Console.WriteLine($"Изменено, теперь у 4-го работника зарплата: {salary.Balance1}");
-                                    break;
-                                }
-                        }
-                        break;
-                    }
-                case 5:
-                    {
-                        Console.WriteLine("Выберите работника, заработную плату которого вы хотите понизить 1/2/3/4");
-                        int otvet2 = Convert.ToInt32(Console.ReadLine());
-                        Console.Clear();
-                        switch (otvet2)
-                        {
-                            case 1:
-                                {
-                                    salary.Balance(balance);
-                                    Console.WriteLine($"На сколько вы хотите понизить зарплату 1-го ратотника?");
-                                    int take = Convert.ToInt32(Console.ReadLine());
-                                    salary.Take(take);
-                                    Console.WriteLine($"Изменено, теперь у 1-го работника зарплата: {salary.Balance1}");
-                                    break;
-                                }
-                            case 2:
-                                {
-                                    salary.Balance(balance);
-                                    Console.WriteLine($"На сколько вы хотите понизить зарплату 2-го ратотника?");
-                                    int take = Convert.ToInt32(Console.ReadLine());
-                                    salary.Take(take);
-                                    Console.WriteLine($"Изменено, теперь у 2-го работника зарплата: {salary.Balance1}");
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    salary.Balance(balance);
-                                    Console.WriteLine($"На сколько вы хотите понизить зарплату 3-го ратотника?");
-                                    int take = Convert.ToInt32(Console.ReadLine());
-                                    salary.Take(take);
-                                    Console.WriteLine($"Изменено, теперь у 3-го работника зарплата: {salary.Balance1}");
-                                    break;
-                                }
-                            case 4:
-                                {
-                                    salary.Balance(balance);
-                                    Console.WriteLine($"На сколько вы хотите понизить зарплату 4-го ратотника?");
-                                    int take = Convert.ToInt32(Console.ReadLine());
-                                    salary.Take(take);
-                                    Console.WriteLine($"Изменено, теперь у 4-го работника зарплата: {salary.Balance1}");
-                                    break; 
-                                }
-                        }
-                        break;
-                    }
-                case 6:
-                    {
+                        salary.Balance(balance);
+                        Console.WriteLine($"На сколько вы хотите понизить зарплату работникам команды?");
+                        int take = Convert.ToInt32(Console.ReadLine());
+                        salary.Take(take);
+                        Console.WriteLine($"Изменено, теперь у каждого работника зарплата: {salary.Balance1}");
                         break;
                     }
             }
-            show -= Show;
-            show += AddSecond;
-            show();
+            show -= Welcome;// убираем обработчик
+            show += Goodbye;// добавляем обработчик
+            show(); // снова вызываем метод
         }
     }
 }

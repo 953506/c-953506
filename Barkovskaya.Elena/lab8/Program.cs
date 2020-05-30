@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 namespace labr8
 {
-  
-
     class BusComparer : IComparer<Bus>
     {
         public int Compare(Bus a, Bus b)
@@ -65,9 +63,7 @@ namespace labr8
                 return Bus1.MaxSpeed * miles * fuel;
             };
             Console.WriteLine(milesCalculator(Convert.ToInt32(Console.ReadLine()), Bus1.FuelConsumption));
-
         }
-
         private static void DisplayMessage(string message)
         {
             Console.WriteLine(message);

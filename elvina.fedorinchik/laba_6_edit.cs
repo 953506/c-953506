@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace laba_6_edit    // подправила :)
 {

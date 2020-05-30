@@ -190,7 +190,6 @@ namespace laba_5_edit      // подправила :)
                 Console.WriteLine($"Type of engine is {cars[i].TypeOfEngine}");
                 cars[i].technicalProperties.ShowTechinicalProp(cars[i].Mark);
                 Console.WriteLine($"Price: {cars[i].Price}\n");
-
             }
         }
     }

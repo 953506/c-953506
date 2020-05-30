@@ -7,7 +7,7 @@ namespace Lab6
     {
         static void Main(string[] args)
         {
-            //Инициализация двух объектов: футболиста и баскетболиста.
+            //Инициализация трёх объектов: футболиста, баскетболиста и киберспортсмена.
             Footballer Beckham = new Footballer("David", "Beckham", "male");
             Beckham.Salary = 250000;
             
@@ -18,7 +18,7 @@ namespace Lab6
             Ishutin.Salary = 100000;
             
             //Применение метода Play интерфейса IPlayable, реализованного по своему в каждом классе.
-            Console.WriteLine("What quiz do you want to play: enter 1 for football and 2 for basketball.");
+            Console.WriteLine("What quiz do you want to play: enter 1 for football and 2 for basketball and 3 for esportsman.");
             int choice = int.Parse(Console.ReadLine());
             if(choice == 1)
                 Beckham.Play();

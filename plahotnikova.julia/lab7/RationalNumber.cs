@@ -35,7 +35,7 @@ namespace Lab7
             }
             else
             {
-                _numerator = 1;
+                _numerator = 0;
                 _denominator = 1;
             }
         }

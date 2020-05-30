@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace laba_6_edit    // подправила :)
 {
-    interface IComparer<T>  //интерфейс сравнения
+    interface IComparison<T>  //интерфейс сравнения
     {
         void Compare(T o1, T o2);
     }
@@ -65,7 +65,7 @@ namespace laba_6_edit    // подправила :)
     }
 
 
-    class CarComparer : IComparer<Car>
+    class CarComparer : IComparison<Car>
     {
         public void Compare(Car o1, Car o2)  // неявная реализация метода
         {

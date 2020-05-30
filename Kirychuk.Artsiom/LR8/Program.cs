@@ -2,9 +2,7 @@
 using System.Collections;
 
 namespace laba6
-{
-
-    
+{    
      
     class Program
     {

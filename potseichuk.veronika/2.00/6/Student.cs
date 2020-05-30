@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -39,10 +39,10 @@ namespace Lab6
         {
             this.Stage = stage;
 
-            examsNotes[0].Subject = "Иностранный язык";
-            examsNotes[1].Subject = "ВышМат";
-            examsNotes[2].Subject = "Физкультура";
-            examsNotes[3].Subject = "Математическая логика";
+            examsNotes[0].Subject = "Foreign language";
+            examsNotes[1].Subject = "Higher math";
+            examsNotes[2].Subject = "Physical culture";
+            examsNotes[3].Subject = "Math logic";
 
             SetNotes();
             SetRating();
@@ -51,9 +51,9 @@ namespace Lab6
         public override void Display()
         {
             base.Display();
-            Console.WriteLine("Cтудент {0} курса", Stage);
+            Console.WriteLine("Student {0} stage",  Stage);
             ShowNotes();
-            Console.WriteLine("Рейтинг (в %): {0}", Rating);
+            Console.WriteLine("Rating (in %): {0}", Rating);
         }
         public void SetRating()
         {
@@ -93,7 +93,7 @@ namespace Lab6
         public override void Complain()
         {
             base.Complain();
-            Console.WriteLine("Скоро сессия(");
+            Console.WriteLine("Session is soon(");
         }
     }
 

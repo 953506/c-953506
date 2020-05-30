@@ -19,17 +19,25 @@ namespace Lab7
 
         public RationalNumber(string str)
         {
-            char ch = '/';
-            string[] num = str.Split(ch);
-            int[] c = new int[num.Length];
-
-            for (int i = 0; i < num.Length; i++)
+            if (str != "")
             {
-                c[i] = Convert.ToInt32(num[i]);
-            }
+                char ch = '/';
+                string[] num = str.Split(ch);
+                int[] c = new int[num.Length];
 
-            _numerator = c[0];
-            _denominator = c[1];
+                for (int i = 0; i < num.Length; i++)
+                {
+                    c[i] = Convert.ToInt32(num[i]);
+                }
+
+                _numerator = c[0];
+                _denominator = c[1];
+            }
+            else
+            {
+                _numerator = 1;
+                _denominator = 1;
+            }
         }
 
         public static RationalNumber operator +(RationalNumber frst, RationalNumber sec)

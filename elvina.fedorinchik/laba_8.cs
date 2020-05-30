@@ -90,16 +90,16 @@ namespace laba_8
             Notify?.Invoke($"Your car costs {pricelist}");  
         }
 
-        public void Sell(int pricelist)
+        public void increase(int pricelist)
         {
             newprice += pricelist;
-            Notify?.Invoke($"Price increase by {pricelist}");        
+            Notify?.Increase($"Price increase by {pricelist}");        
         }
 
-        public void Buy(int pricelist)
+        public void reduce(int pricelist)
         {
             newprice -= pricelist;
-            Notify?.Invoke($"Price reduction by {pricelist}");       
+            Notify?.Reduce($"Price reduction by {pricelist}");       
         }
     }
 

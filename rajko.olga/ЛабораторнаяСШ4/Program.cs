@@ -2,7 +2,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Pudge
+namespace ЛабораторнаяСШ4
 {
     class Program
     {

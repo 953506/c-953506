@@ -18,7 +18,6 @@ namespace Lab6
         protected uint salary;
         public static int birth_year;
         
-
         //Конструкторы
         public Human()
         {

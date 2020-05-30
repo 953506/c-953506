@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+
 namespace Lab7
 {
     class Fraction : IComparable, IEquatable<Fraction>
@@ -19,7 +20,6 @@ namespace Lab7
         ~Fraction() { }
 
         //Методы
-        
         //Перевод в другой тип данных
         public static bool TryParse(string str, out Fraction fraction)
         {

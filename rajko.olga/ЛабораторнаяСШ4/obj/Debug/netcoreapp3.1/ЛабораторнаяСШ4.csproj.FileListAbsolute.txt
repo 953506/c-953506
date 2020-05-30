@@ -1,0 +1,16 @@
+C:\Users\roroj\source\repos\ЛабораторнаяСШ4\obj\Debug\netcoreapp3.1\ЛабораторнаяСШ4.csprojAssemblyReference.cache
+C:\Users\roroj\source\repos\ЛабораторнаяСШ4\obj\Debug\netcoreapp3.1\ЛабораторнаяСШ4.AssemblyInfoInputs.cache
+C:\Users\roroj\source\repos\ЛабораторнаяСШ4\obj\Debug\netcoreapp3.1\ЛабораторнаяСШ4.AssemblyInfo.cs
+C:\Users\roroj\source\repos\ЛабораторнаяСШ4\obj\Debug\netcoreapp3.1\Interop.SystemMonitor.dll
+C:\Users\roroj\source\repos\ЛабораторнаяСШ4\obj\Debug\netcoreapp3.1\Interop.Aec32BitAppServer.dll
+C:\Users\roroj\source\repos\ЛабораторнаяСШ4\obj\Debug\netcoreapp3.1\ЛабораторнаяСШ4.csproj.ResolveComReference.cache
+C:\Users\roroj\source\repos\ЛабораторнаяСШ4\bin\Debug\netcoreapp3.1\ЛабораторнаяСШ4.exe
+C:\Users\roroj\source\repos\ЛабораторнаяСШ4\bin\Debug\netcoreapp3.1\ЛабораторнаяСШ4.deps.json
+C:\Users\roroj\source\repos\ЛабораторнаяСШ4\bin\Debug\netcoreapp3.1\ЛабораторнаяСШ4.runtimeconfig.json
+C:\Users\roroj\source\repos\ЛабораторнаяСШ4\bin\Debug\netcoreapp3.1\ЛабораторнаяСШ4.runtimeconfig.dev.json
+C:\Users\roroj\source\repos\ЛабораторнаяСШ4\bin\Debug\netcoreapp3.1\ЛабораторнаяСШ4.dll
+C:\Users\roroj\source\repos\ЛабораторнаяСШ4\bin\Debug\netcoreapp3.1\ЛабораторнаяСШ4.pdb
+C:\Users\roroj\source\repos\ЛабораторнаяСШ4\bin\Debug\netcoreapp3.1\Interop.SystemMonitor.dll
+C:\Users\roroj\source\repos\ЛабораторнаяСШ4\bin\Debug\netcoreapp3.1\Interop.Aec32BitAppServer.dll
+C:\Users\roroj\source\repos\ЛабораторнаяСШ4\obj\Debug\netcoreapp3.1\ЛабораторнаяСШ4.dll
+C:\Users\roroj\source\repos\ЛабораторнаяСШ4\obj\Debug\netcoreapp3.1\ЛабораторнаяСШ4.pdb

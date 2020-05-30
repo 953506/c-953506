@@ -1,13 +1,13 @@
 using System;
 
-namespace laba_5_edit      //подправила :)
+namespace laba_5_edit      // подправила :)
 {
     abstract class Transport
     {
         protected static int ID = 0;
     }
 
-    public struct TechnicalProperties       //проверочка
+    public struct TechnicalProperties       // структура проверочки всяких технических свойств
     {
         private int _maxSpeed;
         public int MaxSpeed
@@ -195,7 +195,7 @@ namespace laba_5_edit      //подправила :)
         }
     }
 
-    public enum Marks
+    public enum Marks    // перечисление
     {
         mercedez,
         bugatti,

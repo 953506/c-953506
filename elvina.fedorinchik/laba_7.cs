@@ -11,11 +11,11 @@ namespace laba_7
             M = m;
             fusion();
         }
-        int nn;
-        uint mm;
+        int _n;
+        uint _m;
 
-        public int N { get => nn; set => nn = value; }
-        public uint M { get => mm; set => mm = value; }
+        public int N { get => _n; set => _n = value; }
+        public uint M { get => _m; set => _m = value; }
 
         public static RationalNumber operator +(RationalNumber a, RationalNumber b)
         {

@@ -1,13 +1,13 @@
 using System;
 
-namespace laba_6_edit
+namespace laba_6_edit    // подправила :)
 {
-    interface IComparer<T>
+    interface IComparer<T>  //интерфейс сравнения
     {
         void Compare(T o1, T o2);
     }
 
-    interface IRider
+    interface IRider     // мой интерфейс катания на машинке
     {
         void Ride();
     }
@@ -65,7 +65,7 @@ namespace laba_6_edit
 
     class CarComparer : IComparer<Car>
     {
-        public void Compare(Car o1, Car o2)
+        public void Compare(Car o1, Car o2)  // неявная реализация метода
         {
             if (o1.technicalProperties.MaxSpeed > o2.technicalProperties.MaxSpeed)
             {

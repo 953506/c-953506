@@ -1,430 +1,194 @@
 using System;
-using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.Text;
 
-namespace laba_7
+namespace lab7
 {
-    class RationalNumber
+    class RationalNumber : IEquatable<RationalNumber>
     {
-        public RationalNumber(int n, uint m)
-        {
-            N = n;
-            M = m;
-            fusion();
-        }
-        int _n;
-        uint _m;
+        private int _numerator;
+        private int _denominator;
 
-        public int N { get => _n; set => _n = value; }
-        public uint M { get => _m; set => _m = value; }
+        public RationalNumber(int numerator, int denominator)
+        {
+            _numerator = numerator;
+            _denominator = denominator;
+        }
+
+        public RationalNumber(string form)                           
+        {
+            char[] numerator = new char[25];
+            char[] denominator = new char[25];
+            int i = 0;
+            for (int j = 0; i < form.Length; i++, j++)
+            {
+                if (form[i] == '/')
+                {
+                    numerator[j] = '\0';
+                    i++;
+                    break;
+                }
+                numerator[j] = form[i];
+            }
+            for (int j = 0; i < form.Length; i++, j++)
+            {
+                denominator[j] = form[i];
+            }
+            string str1 = new string(numerator);
+            string str2 = new string(denominator);
+            _numerator = Convert.ToInt32(str1);
+            _denominator = Convert.ToInt32(str2);
+        }
+
+        public bool Equals(RationalNumber another)
+        {
+            if (another is null)
+                return false;
+            return _numerator * another._denominator == another._numerator * _denominator;
+        }
 
         public static RationalNumber operator +(RationalNumber a, RationalNumber b)
         {
-            uint denom = a.M * b.M;
-            int nom = (int)(a.N * (denom / a.M) + b.N * (denom / b.M));
-            RationalNumber r = new RationalNumber(nom, denom);
-            r.fusion();
-            return r;
-        }
-
-        public static int operator +(int a, RationalNumber b)
-        {
-            uint denom = b.M;
-            int nom = (int)(a * (denom) + b.N);
-            RationalNumber r = new RationalNumber(nom, denom);
-            r.fusion();
-            return (int)(r.N / r.M);
-        }
-
-        public static int operator +(RationalNumber b, int a)
-        {
-            uint denom = b.M;
-            int nom = (int)(a * (denom) + b.N);
-            RationalNumber r = new RationalNumber(nom, denom);
-            return (int)(r.N / r.M);
+            if (a._denominator == b._denominator)
+            {
+                return new RationalNumber(a._numerator + b._numerator, a._denominator);
+            }
+            else
+            {
+                int denominator = a._denominator * b._denominator;
+                int numerator = a._numerator * b._denominator + b._numerator * a._denominator;
+                return new RationalNumber(numerator, denominator);
+            }
         }
 
         public static RationalNumber operator -(RationalNumber a, RationalNumber b)
         {
-            uint denom = a.M * b.M;
-            int nom = (int)(a.N * (denom / a.M) - b.N * (denom / b.M));
-            return new RationalNumber(nom, denom);
-
-
-        }
-
-        public static RationalNumber operator -(int a, RationalNumber b)
-        {
-            uint denom = b.M;
-            int nom = (int)(a * (denom) - b.N);
-            return new RationalNumber(nom, denom);
-
-        }
-
-        public static RationalNumber operator -(RationalNumber b, int a)
-        {
-            uint denom = b.M;
-            int nom = (int)(-(a * denom) + b.N);
-            return new RationalNumber(nom, denom);
-
+            if (a._denominator == b._denominator)
+            {
+                return new RationalNumber(a._numerator - b._numerator, a._denominator);
+            }
+            else
+            {
+                return new RationalNumber((a._numerator * b._denominator) - (b._numerator * a._denominator), a._denominator * b._denominator);
+            }
         }
 
         public static RationalNumber operator *(RationalNumber a, RationalNumber b)
         {
-            return new RationalNumber(a.N * b.N, a.M * b.M);
+            return new RationalNumber(a._numerator * b._numerator, a._denominator * b._denominator);
         }
 
-        public static RationalNumber operator *(int a, RationalNumber b)
-        {
-            return new RationalNumber(a * b.N, b.M);
-        }
-
-        public static RationalNumber operator *(RationalNumber a, int b)
-        {
-            return new RationalNumber(a.N * b, a.M);
-        }
-        
         public static RationalNumber operator /(RationalNumber a, RationalNumber b)
         {
-            if (b.M >= 0)
-            {
-                if (b.N >= 0)
-                {
-                    return a * new RationalNumber((int)b.M, (uint)b.N);
-                }
-                else
-                {
-                    return a * new RationalNumber(-(int)b.M, (uint)-b.N);
-                }
-            }
-            else
-            {
-                return a * new RationalNumber(-(int)(b.M), (uint)-b.N);
-            }
-        }
-
-        public static RationalNumber operator /(int a, RationalNumber b)
-        {
-            if (b.N >= 0)
-            {
-                return a * new RationalNumber((int)b.M, (uint)b.N);
-            }
-            else
-            {
-                return a * new RationalNumber(-(int)b.M, (uint)-b.N);
-            }
-        }
-
-        public static RationalNumber operator /(RationalNumber a, int b)
-        {
-            if (b < 0)
-                return new RationalNumber(-a.N, (uint)(a.M * (-b)));
-            else
-            {
-                return new RationalNumber(a.N, (uint)(a.M * b));
-            }
-
-        }
-
-        public static bool operator ==(RationalNumber a, RationalNumber b)
-        {
-            if (a.N == b.N && a.M == b.M)
-                return false;
-            else
-            {
-                return true;
-            }
-        }
-
-        public static bool operator ==(int a, RationalNumber b)
-        {
-            if (a / 1.0 == (float)b.N / b.M)
-                return true;
-            else
-            {
-                return false;
-            }
-        }
-
-        public static bool operator ==(RationalNumber b, int a)
-        {
-            if (a / 1.0 == (float)b.N / b.M)
-                return true;
-            else
-            {
-                return false;
-            }
-        }
-
-        public static bool operator !=(RationalNumber a, RationalNumber b)
-        {
-            if (a.N != b.N || a.M != b.M)
-                return true;
-            else
-            {
-                return false;
-            }
-        }
-
-        public static bool operator !=(int a, RationalNumber b)
-        {
-            if (a / 1.0 != (float)b.N / b.M)
-                return true;
-            else
-            {
-                return false;
-            }
-        }
-
-        public static bool operator !=(RationalNumber b, int a)
-        {
-            if (a / 1.0 != (float)b.N / b.M)
-                return true;
-            else
-            {
-                return false;
-            }
-        }
-
-        public static bool operator ==(float a, RationalNumber b)
-        {
-            if (a / 1.0 == (float)b.N / b.M)
-                return true;
-            else
-            {
-                return false;
-            }
-        }
-
-        public static bool operator ==(RationalNumber b, float a)
-        {
-            if (a / 1.0 == (float)b.N / b.M)
-                return true;
-            else
-            {
-                return false;
-            }
-        }
-
-        public static bool operator !=(float a, RationalNumber b)
-        {
-            if (a / 1.0 != (float)b.N / b.M)
-                return true;
-            else
-            {
-                return false;
-            }
-        }
-
-        public static bool operator !=(RationalNumber b, float a)
-        {
-            if (a / 1.0 != (float)b.N / b.M)
-                return true;
-            else
-            {
-                return false;
-            }
+            return new RationalNumber(a._numerator * b._denominator, a._denominator * b._numerator);
         }
 
         public static bool operator >(RationalNumber a, RationalNumber b)
         {
-            if ((double)(a.N / a.M) > (double)(b.N / b.M))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public static bool operator >(RationalNumber a, int b)
-        {
-            if ((double)(a.N / a.M) > (double)b)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public static bool operator >(int a, RationalNumber b)
-        {
-            if ((double)a > (double)(b.N / b.M))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (double)a > (double)b;
         }
 
         public static bool operator <(RationalNumber a, RationalNumber b)
         {
-            if ((double)(a.N / a.M) < (double)(b.N / b.M))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (double)a < (double)b;
         }
 
-        public static bool operator <(RationalNumber a, int b)
+        public static bool operator >=(RationalNumber a, RationalNumber b)
         {
-            if ((double)(a.N / a.M) < (double)b)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (double)a >= (double)b;
         }
 
-        public static bool operator <(int a, RationalNumber b)
+        public static bool operator <=(RationalNumber a, RationalNumber b)
         {
-            if ((double)a < (double)(b.N / b.M))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (double)a <= (double)b;
         }
 
-        public static explicit operator int(RationalNumber a)
+        public static bool operator ==(RationalNumber a, RationalNumber b)
         {
-            return (int)(a.N / a.M);
+            return a.Equals((object)b);
         }
 
-        public static explicit operator float(RationalNumber a)
+        public static bool operator !=(RationalNumber a, RationalNumber b)
         {
-            return (float)a.N / a.M;
+            return !a.Equals((object)b);
+        }
+
+
+        public static explicit operator double(RationalNumber num)
+        {
+            return (double)num._numerator / num._denominator;
+        }
+
+        public static explicit operator int(RationalNumber num)
+        {
+            return num._numerator / num._denominator;
         }
 
         public override string ToString()
         {
-            return Convert.ToString(N) + "/" + Convert.ToString(M);
-        }
-
-        public void fusion()
-        {
-            int a = N > M ? (int)M : N;
-            for (int i = 2; i <= a / 2; i++)
-            {
-                if (N % i == 0 && M % i == 0)
-                {
-                    N /= i;
-                    M /= (uint)i;
-                }
-            }
-            if (a != 0)
-                if (N % a == 0 && M % (uint)a == 0)
-                {
-                    N /= a;
-                    M /= (uint)a;
-                }
-        }
-
-        public static RationalNumber GetForomString(string s)
-        {
-            Regex regex = new Regex(@"^(\d)*");
-            MatchCollection numbers = regex.Matches(s);
-            Regex regex1 = new Regex(@"(\d)*$");
-            RationalNumber ans = new RationalNumber(0, 0);
-            ans.N = Convert.ToInt32(numbers[0].ToString());
-            numbers = regex1.Matches(s);
-            ans.M = (uint)Convert.ToInt32(numbers[0].ToString());
-            return ans;
+            return $"{_numerator} / {_denominator}";
         }
     }
-
 
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter an expression");
-            string expression = Console.ReadLine();
-            Regex regex = new Regex(@"^(\d)*/\d* [/|*|+|-] (\d)*$");
-            MatchCollection coll = regex.Matches(expression);
-            if (coll.Count != 0)
+            RationalNumber number1, number2;
+            int numerator1, denominator1;
+            Console.WriteLine("Heeey!");
+            Console.WriteLine("Enter the numerator of the first fraction:");
+            numerator1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the denominator of the first fraction:");
+            denominator1 = Convert.ToInt32(Console.ReadLine());
+            number1 = new RationalNumber(numerator1, denominator1);
+            Console.WriteLine("Enter the second fractional number:");
+            string form = Console.ReadLine();
+            number2 = new RationalNumber(form);
+            while (true)
             {
-                regex = new Regex(@"^\d*/\d*");
-                coll = regex.Matches(expression);
-                string rn = coll[0].ToString();
-                regex = new Regex(@"\d*$");
-                string n = regex.Matches(expression)[0].ToString();
-                switch (expression[rn.Length + 1])
+                Console.WriteLine();
+                Console.WriteLine("What do you want to do?");
+                Console.WriteLine("1. Addition.");
+                Console.WriteLine("2. Subtraction.");
+                Console.WriteLine("3. Multiplication.");
+                Console.WriteLine("4. Division.");
+                Console.WriteLine("5. Print a larger number.");
+                Console.WriteLine("6. Print a smaller number.");
+                Console.WriteLine("7. Are these numbers equal?");
+                Console.WriteLine("8. Convert to int.");
+                Console.WriteLine("9. Convert to double.");
+                Console.WriteLine("10. It's all. Bye!");
+                int otvet = Convert.ToInt32(Console.ReadLine());
+                Console.Clear();
+                switch (otvet)
                 {
-                    case '+':
-                        Console.WriteLine($"Answer is {(float)RationalNumber.GetForomString(rn) + Convert.ToInt32(n)}");
+                    case 1: Console.WriteLine($"{(number1 + number2).ToString()}"); break;
+                    case 2: Console.WriteLine($"{(number1 - number2).ToString()}"); break;
+                    case 3: Console.WriteLine($"{(number1 * number2).ToString()}"); break;
+                    case 4: Console.WriteLine($"{(number1 / number2).ToString()}"); break;
+                    case 5:
+                        if (number1 > number2)
+                            Console.WriteLine($"{number1.ToString()}");
+                        else
+                            Console.WriteLine($"{number2.ToString()}");
                         break;
-                    case '-':
-                        Console.WriteLine($"Answer is {(float)RationalNumber.GetForomString(rn) - Convert.ToInt32(n)}");
+                    case 6:
+                        if (number1 < number2)
+                            Console.WriteLine($"{number1.ToString()}");
+                        else
+                            Console.WriteLine($"{number2.ToString()}");
                         break;
-                    case '/':
-                        Console.WriteLine($"Answer is {(float)(RationalNumber.GetForomString(rn) / Convert.ToInt32(n))}");
+                    case 7:
+                        if (number1 == number2)
+                            Console.WriteLine("The numbers are equal.");
+                        else
+                            Console.WriteLine("The numbers are not equal.");
                         break;
-                    case '*':
-                        Console.WriteLine($"Answer is {(float)(RationalNumber.GetForomString(rn) * Convert.ToInt32(n))}");
-                        break;
-                }
-            }
-
-            regex = new Regex(@"^(\d)*/(\d)* [/|*|+|-] (\d)*/(\d)*$");
-            coll = regex.Matches(expression);
-            if (coll.Count != 0)
-            {
-                regex = new Regex(@"^\d*/\d*");
-                coll = regex.Matches(expression);
-                string rn = coll[0].ToString();
-                regex = new Regex(@"\d*/\d*$");
-                string n = regex.Matches(expression)[0].ToString();
-                switch (expression[rn.Length + 1])
-                {
-                    case '+':
-                        Console.WriteLine($"Answer is {RationalNumber.GetForomString(rn) + RationalNumber.GetForomString(n)}");
-                        break;
-                    case '-':
-                        Console.WriteLine($"Answer is {(RationalNumber.GetForomString(rn) - RationalNumber.GetForomString(n)).ToString()}");
-                        break;
-                    case '/':
-                        Console.WriteLine($"Answer is {(RationalNumber.GetForomString(rn) / RationalNumber.GetForomString(n)).ToString()}");
-                        break;
-                    case '*':
-                        Console.WriteLine($"Answer is {(RationalNumber.GetForomString(rn) * RationalNumber.GetForomString(n)).ToString()}");
-                        break;
-                }
-            }
-
-            regex = new Regex(@"^(\d)* [/|*|+|-] (\d)*/(\d)*$");
-            coll = regex.Matches(expression);
-            if (coll.Count != 0)
-            {
-                regex = new Regex(@"^\d*");
-                coll = regex.Matches(expression);
-                string rn = coll[0].ToString();
-                regex = new Regex(@"\d*/\d*$");
-                string n = regex.Matches(expression)[0].ToString();
-                switch (expression[rn.Length + 1])
-                {
-                    case '+':
-                        Console.WriteLine($"Answer is {(float)RationalNumber.GetForomString(n) + Convert.ToInt32(rn)}");
-                        break;
-                    case '-':
-                        Console.WriteLine($"Answer is {(float)RationalNumber.GetForomString(n) - Convert.ToInt32(rn)}");
-                        break;
-                    case '/':
-                        Console.WriteLine($"Answer is {(float)(RationalNumber.GetForomString(n) / Convert.ToInt32(rn))}");
-                        break;
-                    case '*':
-                        Console.WriteLine($"Answer is {(float)(RationalNumber.GetForomString(n) * Convert.ToInt32(rn))}");
+                    case 8: Console.WriteLine($"{(int)number1}    {(int)number2}"); break;
+                    case 9: Console.WriteLine($"{(double)number1}    {(double)number2}"); break;
+                    case 10: return;
+                    default:
                         break;
                 }
             }

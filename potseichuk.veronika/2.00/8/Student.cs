@@ -1,15 +1,17 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Lab6
+namespace Lab8
 {
-    class Student : Human, IComparable<Student>
+    class Student : Human, IComparable<Student>, IComplainable
     {
         private const int numexams = 4;
         public Exams[] examsNotes = new Exams[numexams];
         private int _stage;
         private float _rating;
+        public delegate void MyDelegate();
+        public event MyDelegate MyEvent;
 
         public float Rating
         {
@@ -19,6 +21,7 @@ namespace Lab6
             }
             set
             {
+                if (value > 90) MyEvent();
                 _rating = value;
             }
         }
@@ -45,7 +48,6 @@ namespace Lab6
             examsNotes[3].Subject = "Math logic";
 
             SetNotes();
-            SetRating();
         }
 
         public override void Display()
@@ -69,7 +71,6 @@ namespace Lab6
             }
             return sum;
         }
-
         public void SetNotes()
         {
             for (int i = 0; i < numexams; i++)
@@ -90,10 +91,11 @@ namespace Lab6
             return this.Rating.CompareTo(two.Rating);
         }
 
-        public override void Complain()
+        public virtual void Complain() {}
+        public static Student CreatStudent (string type, string name, string lastname, int age, int stage)
         {
-            base.Complain();
-            Console.WriteLine("Session is soon(");
+            if (type == "y") return new StudentBudjet(name, lastname, age, stage);
+            return new StudentPlatnik(name, lastname, age, stage);
         }
     }
 

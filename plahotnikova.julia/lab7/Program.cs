@@ -18,8 +18,15 @@ namespace Lab7
             denominator1 = Convert.ToInt32(Console.ReadLine());
             number1 = new RationalNumber(numerator1, denominator1);
             Console.WriteLine("Введите второе число (a/b): ");
+            String pattern = @"^\d+\/\d+$";
             string str = Console.ReadLine();
-            number2 = new RationalNumber(str);
+            if (Regex.IsMatch(str, pattern, RegexOptions.IgnoreCase))
+                number2 = new RationalNumber(str);
+            else
+            {
+                Console.WriteLine("Вы ввели некорректное число!");
+                number2 = new RationalNumber("");
+            }
             while (true)
             {
                 Console.WriteLine("Выберите действие:" +

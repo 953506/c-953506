@@ -29,12 +29,12 @@ namespace Lab8
         public override void Display()
         {
             base.Display();
-            Console.WriteLine("Степендия составляет {0} рублей.", Stepuha);
+            Console.WriteLine("Scholarship is {0} rubles.", Stepuha);
         }
 
         public override void Complain()
         {
-            Console.WriteLine("Степендия маденькая(((");
+            Console.WriteLine("Small scholarship(((");
         }
     }
 

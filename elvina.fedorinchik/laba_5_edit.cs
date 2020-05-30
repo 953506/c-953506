@@ -1,13 +1,13 @@
 using System;
 
-namespace laba_5_edit
+namespace laba_5_edit      //подправила :)
 {
     abstract class Transport
     {
         protected static int ID = 0;
     }
 
-    public struct TechnicalProperties
+    public struct TechnicalProperties       //проверочка
     {
         private int _maxSpeed;
         public int MaxSpeed
@@ -64,7 +64,7 @@ namespace laba_5_edit
         }
         public TechnicalProperties technicalProperties;
         private Marks _mark;
-        public abstract void Ride();
+        public abstract void Ride();  //абстрактный метод моего катания на машинке (потом переопределяется в производных классах)
         public string NameOfModel { get; protected set; }
         public string TypeOfEngine { get; protected set; }
         public int Price { get; protected set; }
@@ -94,8 +94,8 @@ namespace laba_5_edit
             if (typeofengine != "electrical")
                 Console.WriteLine("Wrong type od engine. It will be seted to electrical");
             TypeOfEngine = "electrical";
-        }
-        public override void Ride()
+        } 
+        public override void Ride()      //производный член указывающий, что метод предназначен для участия в абстрактном вызове
         {
             Console.WriteLine(". . .");
         }
@@ -114,7 +114,7 @@ namespace laba_5_edit
             Price = price;
             TypeOfEngine = typeofengine;
         }
-        public override void Ride()
+        public override void Ride()     // -//- полиморфизм
         {
             Console.WriteLine("r r r");
         }
@@ -137,7 +137,7 @@ namespace laba_5_edit
             }
             TypeOfEngine = "combsution";
         }
-        public override void Ride()
+        public override void Ride()     // -//- полиморфизм
         {
             Console.WriteLine("RRRRRRRRRRRRRRRRRRRRRRR");
         }
@@ -256,7 +256,7 @@ namespace laba_5_edit
                     engineCapacity = (float)Convert.ToDouble(Console.ReadLine());
                 }
 
-                switch (choice)
+                switch (choice)      // пример наследования 
                 {
                     case 1:
                         collection[i] = new MercedezBenz(nameofmodel, maxSpeed, price, typeofengine, engineCapacity, Marks.mercedez);

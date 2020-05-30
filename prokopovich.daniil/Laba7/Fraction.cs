@@ -64,7 +64,6 @@ namespace Lab7
         }
         
         //Нахождение НОДа
-
         private int GetGSD(int num1, int num2)
         {
             if (num1 % num2 == 0) 

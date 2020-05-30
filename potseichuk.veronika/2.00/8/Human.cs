@@ -56,7 +56,7 @@ namespace Lab8
 
         public virtual void Display()
         {
-            Console.WriteLine("{0} {1} (возраст {2} лет)", this["lastname"], this["name"], Age);
+            Console.WriteLine("{0} {1} (age {2} years)", this["lastname"], this["name"], Age);
         }
     }
 }

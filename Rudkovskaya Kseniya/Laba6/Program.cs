@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Laba5
+namespace Laba6
 {
     /* Интерфейсы */
     interface IBeg
@@ -227,6 +227,7 @@ namespace Laba5
     {
         static void Main(string[] args)
         {
+            IBeg.Welcome();
             Random x = new Random();
             int[] nothing = { 1, 1, 1 };
             Entrance chel1 = new Entrance("", 18, nothing);

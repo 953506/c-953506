@@ -36,10 +36,6 @@ namespace labr8
             }catch (Exception e){
                 Console.WriteLine(e);
             }
-            finally
-            {
-                FuelConsumption = 1;
-            }
         }
         public void TakeJob(uint choice)
         {

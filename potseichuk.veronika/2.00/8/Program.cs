@@ -15,10 +15,11 @@ namespace Lab8
             do
             {
                 Console.Clear();
-                Console.WriteLine("1. Добавить студента");
-                Console.WriteLine("2. Вывести информацию о студенте");
-                Console.WriteLine("3. Список введённых студентов");
-                Console.WriteLine("4. Выход");
+                Console.Clear();
+                Console.WriteLine("1. Add student");
+                Console.WriteLine("2. Display student information");
+                Console.WriteLine("3. List of entered student");
+                Console.WriteLine("4. Exit..");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -44,21 +45,21 @@ namespace Lab8
             int stage;
             string budjet;
 
-            Console.Write("Введите имя студента: ");
+            Console.Write("Enter student name: ");
             name = Console.ReadLine();
-            Console.Write("Введите фамилию студента: ");
+            Console.Write("Enter student lastname: ");
             lastname = Console.ReadLine();
-            Console.Write("Введите возраст студента: ");
+            Console.Write("Enter student age: ");
             age = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Введите курс студента: ");
+            Console.Write("Enter student stage: ");
             stage = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Студент учится на бюджетной основе? (y/n)");
+            Console.WriteLine("Does the student study a budgetary basic? (y/n)");
             budjet = Console.ReadLine();
 
             var student = Student.CreatStudent(budjet, name, lastname, age, stage);
             student.MyEvent += () =>
             {
-                Console.WriteLine("Ничего себе балл!");
+                Console.WriteLine("Wow score!");
                 Console.ReadKey();
             };
             student.SetRating();
@@ -72,7 +73,7 @@ namespace Lab8
             do
             {
                 Console.Clear();
-                Console.Write("Введите фамилию студента, информацию о котором, хотите получить: ");
+                Console.Write("Enter the lastname of the student whose information you want to receive: ");
                 string choice = Console.ReadLine();
                 foreach (var S in BSUIRst)
                 {
@@ -82,7 +83,7 @@ namespace Lab8
                         del = S.Display;
                         del += () =>
                         {
-                            Console.WriteLine("\nО чём думает?\n");
+                        Console.WriteLine("What is he thinking about?");
                         };
                         del += S.Complain;
                         del();
@@ -95,7 +96,7 @@ namespace Lab8
         static void NumberSt()
         {
             Console.Clear();
-            Console.WriteLine("Количество введенных студентов: {0}", BSUIRst.Count);
+            Console.WriteLine("Number of the student entered: {0}", BSUIRst.Count);
             foreach (Student S in BSUIRst)
             {
                 Console.WriteLine("{0}.", BSUIRst.IndexOf(S) + 1);
@@ -103,7 +104,7 @@ namespace Lab8
                 Console.WriteLine("\n");
             }
 
-            Console.WriteLine("Sravnit studentov? (y/n)");
+            Console.WriteLine("Compare students? (y/n)");
             if (Console.ReadLine() == "y") CompareSt();
             Console.ReadKey();
         }
@@ -111,21 +112,21 @@ namespace Lab8
         static void CompareSt()
         {
             int choice1, choice2, result;
-            Console.WriteLine("Vvedite index...");
+            Console.WriteLine("Enter indexes...");
             choice1 = Convert.ToInt32(Console.ReadLine());
             choice2 = Convert.ToInt32(Console.ReadLine());
 
             result = BSUIRst[choice1 - 1].CompareTo(BSUIRst[choice2 - 1]);
-            switch (result)
+            switch(result)
             {
-                case (-1):
-                    Console.WriteLine("Рейтинг студента {0} ниже рейтинга студента {1}. ", choice1, choice2);
+                case (-1): 
+                    Console.WriteLine("Student rating {0} below student rating {1}. ", choice1, choice2); 
                     break;
-                case (0):
-                    Console.WriteLine("Рейтинг студента {0} равен рейтингу студента {1}. ", choice1, choice2);
+                case (0): 
+                    Console.WriteLine("Student rating {0} is equal to student rating {1}. ", choice1, choice2); 
                     break;
-                case (1):
-                    Console.WriteLine("Рейтинг студента {0} выше рейтинга студента {1}. ", choice1, choice2);
+                case (1): 
+                    Console.WriteLine("Student rating {0} higher than student rating {1}. ", choice1, choice2); 
                     break;
             }
             Console.ReadKey();

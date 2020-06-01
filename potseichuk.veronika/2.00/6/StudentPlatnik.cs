@@ -20,8 +20,8 @@ namespace Lab6
 
         private void SetCost()
         {
-            if (base.Rating > 8) Cost = 1000;
-            else if (base.Rating > 6 && base.Rating < 9) Cost = 1200;
+            if (base.Rating > 80) Cost = 1000;
+            else if (base.Rating > 60 && base.Rating < 81) Cost = 1200;
             else Cost = 1500;
         }
 

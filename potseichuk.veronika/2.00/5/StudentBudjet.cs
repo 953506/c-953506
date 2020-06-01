@@ -20,9 +20,9 @@ namespace Lab5
 
         private void SetStepuha()
         {
-            if (base.Rating > 8) Stepuha = 150;
-            else if (base.Rating > 6 && base.Rating < 9) Stepuha = 100;
-            else if (base.Rating == 6) Stepuha = 80;
+            if (base.Rating > 80) Stepuha = 150;
+            else if (base.Rating > 60 && base.Rating < 90) Stepuha = 100;
+            else if (base.Rating == 60) Stepuha = 80;
             else Stepuha = 0;
         }
 

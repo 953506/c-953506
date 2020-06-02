@@ -154,8 +154,8 @@ namespace LabRab_7
 
         public static rational_number StringToRational(string str)
         {
-            string pattern1 = @"^\d{1,9}\s*\/\s*\d{1,9}$";
-            string pattern2 = @"^\d{1,9}\s*\.\s*\d{1,9}$";
+            string pattern1 = @"^-?\d{1,9}\s*\/\s*\d{1,9}$";
+            string pattern2 = @"^-?\d{1,9}\s*\.\s*\d{1,9}$";
             if (Regex.IsMatch(str, pattern1))
             {
 

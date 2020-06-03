@@ -16,49 +16,32 @@ namespace _1
         }
 
         public RationalNumber(string num)
-
         {
-
             char[] numer = new char[25];
-
             char[] denom = new char[25];
-
             int i = 0;
-
+            
             for (int j = 0; i < num.Length; i++, j++)
-
             {
-
                 if (num[i] == '/' || num[i] == ':')
-
                 {
-
                     numer[j] = '\0';
-
                     i++;
-
                     break;
-
                 }
 
                 numer[j] = num[i];
-
             }
-
+            
             for (int j = 0; i < num.Length; i++, j++)
-
             {
-
                 denom[j] = num[i];
-
             }
 
             string str1 = new string(numer);
-
             string str2 = new string(denom);
 
             _numerator = Convert.ToInt32(str1);
-
             _denominator = Convert.ToInt32(str2);
         }
 

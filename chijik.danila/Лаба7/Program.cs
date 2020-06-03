@@ -65,7 +65,7 @@ using static System.Console;
                         exit = true;
                         break;
                     default:
-                        {WriteLine("Что-то не так.");}
+                        WriteLine("Что-то не так.");
                         break;
                 }
             } while (!exit);

@@ -1,0 +1,11 @@
+C:\Users\roroj\source\repos\ЛабораторнаяСШ8\bin\Debug\netcoreapp3.1\ЛабораторнаяСШ8.exe
+C:\Users\roroj\source\repos\ЛабораторнаяСШ8\bin\Debug\netcoreapp3.1\ЛабораторнаяСШ8.deps.json
+C:\Users\roroj\source\repos\ЛабораторнаяСШ8\bin\Debug\netcoreapp3.1\ЛабораторнаяСШ8.runtimeconfig.json
+C:\Users\roroj\source\repos\ЛабораторнаяСШ8\bin\Debug\netcoreapp3.1\ЛабораторнаяСШ8.runtimeconfig.dev.json
+C:\Users\roroj\source\repos\ЛабораторнаяСШ8\bin\Debug\netcoreapp3.1\ЛабораторнаяСШ8.dll
+C:\Users\roroj\source\repos\ЛабораторнаяСШ8\bin\Debug\netcoreapp3.1\ЛабораторнаяСШ8.pdb
+C:\Users\roroj\source\repos\ЛабораторнаяСШ8\obj\Debug\netcoreapp3.1\ЛабораторнаяСШ8.csprojAssemblyReference.cache
+C:\Users\roroj\source\repos\ЛабораторнаяСШ8\obj\Debug\netcoreapp3.1\ЛабораторнаяСШ8.AssemblyInfoInputs.cache
+C:\Users\roroj\source\repos\ЛабораторнаяСШ8\obj\Debug\netcoreapp3.1\ЛабораторнаяСШ8.AssemblyInfo.cs
+C:\Users\roroj\source\repos\ЛабораторнаяСШ8\obj\Debug\netcoreapp3.1\ЛабораторнаяСШ8.dll
+C:\Users\roroj\source\repos\ЛабораторнаяСШ8\obj\Debug\netcoreapp3.1\ЛабораторнаяСШ8.pdb

@@ -1,227 +1,136 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace _1
+namespace lab7
 {
-
-    public class RationalNumber : IComparable, IEquatable<RationalNumber>
+    class RationalNumber : IEquatable<RationalNumber>
     {
-        //whole/natural;(n/m)
-        private readonly int _whole;
-        private readonly int _natural;
+        private int _numerator;
+        private int _denominator;
 
-        public RationalNumber(int whole, int natural)
+        public RationalNumber(int numerator, int denominator)
         {
-            _whole = whole;
-            _natural = natural;
+            _numerator = numerator;
+            _denominator = denominator;
         }
 
-        public RationalNumber(string num)
+        public RationalNumber(string form) //реализация перевода из строкового значения 
         {
-            char[] numer = new char[25];
-            char[] denom = new char[25];
+            char[] numerator = new char[25];
+            char[] denominator = new char[25];
             int i = 0;
-            
-            for (int j = 0; i < num.Length; i++, j++)
+            for (int j = 0; i < form.Length; i++, j++)
             {
-                if (num[i] == '/' || num[i] == ':')
+                if (form[i] == '/')
                 {
-                    numer[j] = '\0';
+                    numerator[j] = '\0';
                     i++;
                     break;
                 }
-
-                numer[j] = num[i];
+                numerator[j] = form[i];
             }
-            
-            for (int j = 0; i < num.Length; i++, j++)
+            for (int j = 0; i < form.Length; i++, j++)
             {
-                denom[j] = num[i];
+                denominator[j] = form[i];
             }
-
-            string str1 = new string(numer);
-            string str2 = new string(denom);
-
+            string str1 = new string(numerator);
+            string str2 = new string(denominator);
             _numerator = Convert.ToInt32(str1);
             _denominator = Convert.ToInt32(str2);
         }
 
-
-
-            ~RationalNumber() { }
-
-        public static RationalNumber operator +(RationalNumber o1, RationalNumber o2)
+        //Реализация интерфейса
+        public bool Equals(RationalNumber another)
         {
-            RationalNumber result;
-
-            if (o1._natural == o2._natural)
-                result = new RationalNumber(o1._whole + o2._whole, o1._natural);
-            else
-                result = new RationalNumber((o1._whole * o2._natural) + (o2._whole * o1._natural), o1._natural * o2._natural);
-
-            return result;
-        }
-
-        public static RationalNumber operator -(RationalNumber o1, RationalNumber o2)
-        {
-            RationalNumber result;
-
-            if (o1._natural == o2._natural)
-                result = new RationalNumber(o1._whole - o2._whole, o1._natural);
-            else
-                result = new RationalNumber((o1._whole * o2._natural) - (o1._natural * o2._whole), o1._natural * o2._natural);
-            return result;
-        }
-
-        public static RationalNumber operator *(RationalNumber o1, RationalNumber o2)
-        {
-            RationalNumber result = new RationalNumber(o1._whole * o2._whole, o1._natural * o2._natural);
-            return result;
-        }
-
-        public static RationalNumber operator /(RationalNumber o1, RationalNumber o2)
-        {
-            RationalNumber result = new RationalNumber(o1._whole * o2._natural, o1._natural * o2._whole);
-            return result;
-        }
-
-
-        public static bool operator >(RationalNumber o1, RationalNumber o2)
-        {
-            if (o1._whole == o2._whole && o1._natural == o2._natural)
+            if (another is null)
                 return false;
-            else if (o1._natural == o2._natural & o1._whole > o2._whole)
-                return true;
-            else if (o1._whole == o2._whole & o1._natural < o2._natural)
-                return true;
-            else if (o1._whole != o2._whole & o1._natural != o2._natural)
-            {
-                RationalNumber resultOne = new RationalNumber(o1._whole * o2._natural, o1._natural * o2._natural);
-                RationalNumber resultTwo = new RationalNumber(o2._whole * o1._natural, o1._natural * o2._natural);
+            return _numerator * another._denominator == another._numerator * _denominator;
+        }
 
-                if (resultOne._whole > resultTwo._whole)
-                    return true;
-                else
-                    return false;
+        //Математические операции
+        public static RationalNumber operator +(RationalNumber a, RationalNumber b)
+        {
+            if (a._denominator == b._denominator)
+            {
+                return new RationalNumber(a._numerator + b._numerator, a._denominator);
             }
             else
-                return false;
+            {
+                int denominator = a._denominator * b._denominator;
+                int numerator = a._numerator * b._denominator + b._numerator * a._denominator;
+                return new RationalNumber(numerator, denominator);
+            }
         }
 
-        public static bool operator <(RationalNumber o1, RationalNumber o2)
+        public static RationalNumber operator -(RationalNumber a, RationalNumber b)
         {
-            if (o1._whole == o2._whole & o1._natural == o2._natural)
-                return false;
-            else if (o1._natural == o2._natural && o1._whole < o2._whole)
-                return true;
-            else if (o1._whole == o2._whole & o1._whole > o2._natural)
-                return true;
-            else if (o1._whole != o2._whole & o1._natural != o2._natural)
+            if (a._denominator == b._denominator)
             {
-                RationalNumber resultOne = new RationalNumber(o1._whole * o2._natural, o1._natural * o2._natural);
-                RationalNumber resultTwo = new RationalNumber(o2._whole * o1._natural, o1._natural * o2._natural);
-
-                if (resultOne._whole < resultTwo._whole)
-                    return true;
-                else
-                    return false;
+                return new RationalNumber(a._numerator - b._numerator, a._denominator);
             }
             else
-                return false;
-        }
-
-        public static bool operator >=(RationalNumber o1, RationalNumber o2)
-        {
-            if (o1._whole == o2._whole && o1._natural == o2._natural)
-                return true;
-            else if (o1._natural == o2._natural & o1._whole > o2._whole)
-                return true;
-            else if (o1._whole == o2._whole & o1._natural < o2._natural)
-                return true;
-            else if (o1._whole != o2._whole & o1._whole != o2._whole)
             {
-                RationalNumber resultOne = new RationalNumber(o1._whole * o2._natural, o1._natural * o2._natural);
-                RationalNumber resultTwo = new RationalNumber(o2._natural * o1._natural, o1._natural * o2._natural);
-
-                if (resultOne._whole > resultTwo._whole)
-                    return true;
-                else
-                    return false;
+                return new RationalNumber((a._numerator * b._denominator) - (b._numerator * a._denominator), a._denominator * b._denominator);
             }
-            else
-                return false;
         }
 
-        public static bool operator <=(RationalNumber o1, RationalNumber o2)
+        public static RationalNumber operator *(RationalNumber a, RationalNumber b)
         {
-            if (o1._whole == o2._whole & o1._natural == o2._natural)
-                return true;
-            else if (o1._natural == o2._natural && o1._whole < o2._whole)
-                return true;
-            else if (o1._whole == o2._whole & o1._natural > o2._natural)
-                return true;
-            else if (o1._whole != o2._whole & o1._natural != o2._natural)
-            {
-                RationalNumber resultOne = new RationalNumber(o1._whole * o2._natural, o1._natural * o2._natural);
-                RationalNumber resultTwo = new RationalNumber(o2._whole * o1._natural, o1._natural * o2._natural);
-
-                if (resultOne._whole < resultTwo._whole)
-                    return true;
-                else
-                    return false;
-            }
-            else
-                return false;
+            return new RationalNumber(a._numerator * b._numerator, a._denominator * b._denominator);
         }
 
-        //Convertion to string
+        public static RationalNumber operator /(RationalNumber a, RationalNumber b)
+        {
+            return new RationalNumber(a._numerator * b._denominator, a._denominator * b._numerator);
+        }
+
+        //Операции сравнения
+        public static bool operator >(RationalNumber a, RationalNumber b)
+        {
+            return (double)a > (double)b;
+        }
+
+        public static bool operator <(RationalNumber a, RationalNumber b)
+        {
+            return (double)a < (double)b;
+        }
+
+        public static bool operator >=(RationalNumber a, RationalNumber b)
+        {
+            return (double)a >= (double)b;
+        }
+
+        public static bool operator <=(RationalNumber a, RationalNumber b)
+        {
+            return (double)a <= (double)b;
+        }
+
+        public static bool operator ==(RationalNumber a, RationalNumber b)
+        {
+            return a.Equals((object)b);
+        }
+
+        public static bool operator !=(RationalNumber a, RationalNumber b)
+        {
+            return !a.Equals((object)b);
+        }
+
+        //Операции преобразования типов
+        public static explicit operator double(RationalNumber num)
+        {
+            return (double)num._numerator / num._denominator;
+        }
+
+        public static explicit operator int(RationalNumber num)
+        {
+            return num._numerator / num._denominator;
+        }
+
+        // Преобразование в строку
         public override string ToString()
         {
-            return $"{_whole} / {_natural}";
-        }
-
-        //Equality checks
-        public bool Equals(RationalNumber other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return _whole == other._whole && _natural == other._natural;
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((RationalNumber)obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return _whole.GetHashCode();
-        }
-
-        public int CompareTo(object obj)
-        {
-            if (obj is RationalNumber p)
-            {
-                if (this > p)
-                    return 1;
-                else if (this < p)
-                    return -1;
-                else return 0;
-
-            }
-            else
-                throw new Exception("Unable to compare these two objects!");
-        }
-
-        public static implicit operator int(RationalNumber fraction)
-        {
-            return (fraction._whole / fraction._whole);
-        }
-
-        public static implicit operator double(RationalNumber fraction)
-        {
-            return (double)fraction._whole / fraction._natural;
+            return $"{_numerator} / {_denominator}";
         }
     }
 
@@ -229,41 +138,64 @@ namespace _1
     {
         static void Main(string[] args)
         {
-            RationalNumber a, b;
-
-            Console.WriteLine("Enter two number: ");
-            var forNum = int.Parse(Console.ReadLine());
-            var forDenum = int.Parse(Console.ReadLine());
-            a = new RationalNumber(forNum, forDenum);
-
-            Console.WriteLine("Now the same for the second fraction: ");
-            forNum = int.Parse(Console.ReadLine());
-            forDenum = int.Parse(Console.ReadLine());
-            b = new RationalNumber(forNum, forDenum);
-
-            Console.WriteLine("Result (a + b): {0}\n", (a + b).ToString());
-            Console.WriteLine("Result (a - b): {0}\n", (a - b).ToString());
-            Console.WriteLine("Result (a * b): {0}\n", (a * b).ToString());
-            Console.WriteLine("Result (a / b): {0}\n", (a / b).ToString());
-            Console.WriteLine(a.Equals(b));
-
-            Console.WriteLine("Сomparison");
-
-            if (a > b)
+            RationalNumber number1, number2;
+            int numerator1, denominator1;
+            Console.WriteLine("Здравствуйте!");
+            Console.WriteLine("Введите числитель первой рациональной дроби:");
+            numerator1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите знаменатель первой рациональной дроби:");
+            denominator1 = Convert.ToInt32(Console.ReadLine());
+            number1 = new RationalNumber(numerator1, denominator1);
+            Console.WriteLine("Введите второе число в формате a/b");
+            string form = Console.ReadLine();
+            number2 = new RationalNumber(form);
+            while (true)
             {
-                Console.WriteLine("This one ({0}) is bigger.", a.ToString());
+                Console.WriteLine();
+                Console.WriteLine("Выберите действие:");
+                Console.WriteLine("1.Сложение");
+                Console.WriteLine("2.Вычетание");
+                Console.WriteLine("3.Умнажение");
+                Console.WriteLine("4.Деление");
+                Console.WriteLine("5.Вывести большее число");
+                Console.WriteLine("6.Вывести меньшее число");
+                Console.WriteLine("7.Проверить числа на равенство");
+                Console.WriteLine("8.Преобразовать в int");
+                Console.WriteLine("9.Преобразовать в double");
+                Console.WriteLine("10.Завешить работу");
+                int otvet = Convert.ToInt32(Console.ReadLine());
+                Console.Clear();
+                switch (otvet)
+                {
+                    case 1: Console.WriteLine($"{(number1 + number2).ToString()}"); break;
+                    case 2: Console.WriteLine($"{(number1 - number2).ToString()}"); break;
+                    case 3: Console.WriteLine($"{(number1 * number2).ToString()}"); break;
+                    case 4: Console.WriteLine($"{(number1 / number2).ToString()}"); break;
+                    case 5:
+                        if (number1 > number2)
+                            Console.WriteLine($"{number1.ToString()}");
+                        else
+                            Console.WriteLine($"{number2.ToString()}");
+                        break;
+                    case 6:
+                        if (number1 < number2)
+                            Console.WriteLine($"{number1.ToString()}");
+                        else
+                            Console.WriteLine($"{number2.ToString()}");
+                        break;
+                    case 7:
+                        if (number1 == number2)
+                            Console.WriteLine("Числа равны");
+                        else
+                            Console.WriteLine("Числа не равны");
+                        break;
+                    case 8: Console.WriteLine($"{(int)number1}    {(int)number2}"); break;
+                    case 9: Console.WriteLine($"{(double)number1}    {(double)number2}"); break;
+                    case 10: return;
+                    default:
+                        break;
+                }
             }
-            else if (a < b)
-            { 
-                Console.WriteLine("This one ({0}) is bigger.", b.ToString()); 
-            }
-            else
-            { 
-                Console.WriteLine("Both are equal."); 
-            }
-                                       
-            Console.ReadKey();
-
         }
     }
 }

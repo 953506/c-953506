@@ -1,23 +1,25 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
+using System.Collections;
 
-namespace laba_8
+namespace LR8
 {
-    interface IComparer<T>
+    interface IFoo
     {
-        void Compare(T o1, T o2);
+        void GetInfo();
     }
 
-    interface IRider
+    interface IComparison<T>      
     {
-        void Ride();
+        void SpeedComparison(T o1, T o2);
     }
 
-    public struct TechnicalProperties     //проверочка технических свойств 
+    public struct TechnicalProperties    //структура проверки технических свойств
     {
-        private int _maxSpeed;
-        public int MaxSpeed
+        private int _speed;
+        public int Speed
         {
-            get { return _maxSpeed; }
+            get { return _speed; }
             set
             {
                 if (value < 0 || value > 453)
@@ -27,373 +29,197 @@ namespace laba_8
                 }
                 else
                 {
-                    _maxSpeed = value;
+                    _speed = value;
                 }
             }
         }
 
-        private float _enginCapacity;
-        public float EngineCapacity        
+        class PriceList
         {
-            get => _enginCapacity;
-            set
+            public delegate void PriceHandler(string message);  //объявление делегата
+            public event PriceHandler Notify;                   //определение события
+            public int newprice;
+
+            public void Price(int price)
             {
-                if (value < 0)
-                {
-                    Console.WriteLine("Wrong data");
-                    Environment.Exit(-1);
-                }
-                _enginCapacity = value;
+                newprice = price;
+                Notify?.Invoke($"Your car costs {price}");       //вызов события
+            }
+
+            public void Increase(int price)
+            {
+                newprice += price;
+                Notify?.Invoke($"добавено: {price}");            //вызов события
+            }
+
+            public void Reduce(int price)
+            {
+                newprice -= price;
+                Notify?.Invoke($"изъято: {price}");              //вызов события
             }
         }
 
-        public void ShowTechinicalProp(Marks mark)
-        {
-            if (mark != Marks.tesla)
-            {
-                Console.WriteLine($"Engine capacity: {EngineCapacity}");
-                Console.WriteLine($"Max speed: {MaxSpeed}");
-            }
-        }
-    }
 
-
-    class CarComparer : IComparer<Car>
-    {
-        public void Compare(Car o1, Car o2)     //неявная реализация метода
+        class Car : PriceList, IFoo, IComparable
         {
-            if (o1.technicalProperties.MaxSpeed > o2.technicalProperties.MaxSpeed)
+            public string _mark;
+            public TechnicalProperties technicalproperties;
+
+            void IFoo.GetInfo()
             {
-                Console.WriteLine($"{o1.NameOfModel} is faster than {o2.NameOfModel}");
+                Console.WriteLine($"{_mark} \nSpeed: {technicalproperties.Speed} \nPrice: {newprice} ");
             }
-            else
+
+            public Car(string mark, int speed, int price)
             {
-                if (o2.technicalProperties.MaxSpeed > o1.technicalProperties.MaxSpeed)
-                    Console.WriteLine($"{o2.NameOfModel} is faster than {o1.NameOfModel}");
+                _mark = mark;
+                technicalproperties.Speed = speed;
+                newprice = price;
+            }
+
+            public int CompareTo(object obj)
+            {
+                if (obj == null) return 1;
+                Car otherCar = obj as Car;
+                if (otherCar != null)
+                    return this.technicalproperties.Speed.CompareTo(otherCar.technicalproperties.Speed);
                 else
+                    throw new ArgumentException("You can not compare these cars.");            //вызов исключения
+            }
+        }
+
+        class CarComparison : IComparison<Car>
+        {
+            public void SpeedComparison(Car o1, Car o2)
+            {
+                if (o1.technicalproperties.Speed > o2.technicalproperties.Speed)
                 {
-                    Console.WriteLine($"{o1.NameOfModel}'s speed equals {o2.NameOfModel}");
-                }
-            }
-        }
-    }
-
-    class Price
-    {
-        public delegate void Price(string message);   
-        public event Price Notify;                       
-        public int newprice;
-
-        public void PriceList(int pricelist)
-        {
-            newprice = pricelist;
-            Notify?.Invoke($"Your car costs {pricelist}");  
-        }
-
-        public void increase(int pricelist)
-        {
-            newprice += pricelist;
-            Notify?.Increase($"Price increase by {pricelist}");        
-        }
-
-        public void reduce(int pricelist)
-        {
-            newprice -= pricelist;
-            Notify?.Reduce($"Price reduction by {pricelist}");       
-        }
-    }
-
-
-    abstract class Car : CarPrice, IRider
-    {
-        public Car(Marks mark)
-        {
-            this.Mark = mark;
-        }
-
-        public TechnicalProperties technicalProperties;
-        private Marks _mark;
-        public abstract void Ride();
-        public string NameOfModel { get; protected set; }
-        public string TypeOfEngine { get; protected set; }
-        public int Price { get; protected set; }
-        public Marks Mark
-        {
-            get
-            {
-                return _mark;
-            }
-            protected set
-            {
-                _mark = value;
-            }
-        }
-    }
-
-
-    class Tesla : Car
-    {
-        public Tesla(string nameofmodel, int maxspeed, int price, string typeofengine, Marks mark)
-            : base(mark)
-        {
-            Console.WriteLine("Elon says hello to you");
-            NameOfModel = nameofmodel;
-            technicalProperties.MaxSpeed = maxspeed;
-            Price = price;
-            if (typeofengine != "electrical")
-                Console.WriteLine("Wrong type of engine. It will be seted to electrical");
-            TypeOfEngine = "electrical";
-        }
-
-        public override void Ride()
-        {
-            Console.WriteLine(". . .");
-        }
-    }
-
-
-    class MercedezBenz : Car
-    {
-        public MercedezBenz(string nameofmodel, int maxspeed, int price, string typeofengine, float engineCapacity, Marks mark)
-            : base(mark)
-        {
-            technicalProperties.EngineCapacity = engineCapacity;
-            Console.WriteLine("Creative technilogy");
-            NameOfModel = nameofmodel;
-            technicalProperties.MaxSpeed = maxspeed;
-            Price = price;
-            TypeOfEngine = typeofengine;
-        }
-        public override void Ride()
-        {
-            Console.WriteLine("r r r");
-        }
-    }
-
-
-    class Bugatti : Car
-    {
-        public Bugatti(string nameofmodel, int maxspeed, int price, string typeofengine, float engineCapacity, Marks mark)
-            : base(mark)
-        {
-            technicalProperties.EngineCapacity = engineCapacity;
-            Console.WriteLine("One of the fastest cars in the world");
-            NameOfModel = nameofmodel;
-            technicalProperties.MaxSpeed = maxspeed;
-            Price = price;
-
-            if (typeofengine != "combsution")
-            {
-                Console.WriteLine("Type of engine of Bugatti can be only combustion");
-            }
-            TypeOfEngine = "combsution";
-        }
-        public override void Ride()
-        {
-            Console.WriteLine("RRRRRRRRRRRRRRRRRRRRRRR");
-        }
-    }
-
-
-    class Collection
-    {
-        Car[] cars;
-        private int _quantity;
-        public Collection(int count)
-        {
-            cars = new Car[count];
-            Quantity = count;
-        }
-        public Car this[int index]
-        {
-            get
-            {
-                return cars[index];
-            }
-            set
-            {
-                cars[index] = value;
-            }
-        }
-
-        public int Quantity { get => _quantity; private set => _quantity = value; }
-
-        public void showInfo()
-        {
-            Console.WriteLine("\nGeneral info\n");
-            for (int i = 0; i < Quantity; i++)
-            {
-                Console.WriteLine($"Car #{i + 1}");
-                switch (cars[i].Mark)
-                {
-                    case Marks.bugatti:
-                        Console.Write("Bugatti ");
-                        break;
-                    case Marks.mercedez:
-                        Console.Write("Mercedez-Benz ");
-                        break;
-                    case Marks.tesla:
-                        Console.Write("Tesla ");
-                        break;
-                }
-                Console.WriteLine($"{cars[i].NameOfModel}");
-                Console.WriteLine($"Type of engine is {cars[i].TypeOfEngine}");
-                cars[i].technicalProperties.ShowTechinicalProp(cars[i].Mark);
-                Console.WriteLine($"Price: {cars[i].Price}\n");
-                Console.WriteLine("\nDo you want to change the price of a car? \n1. yes i want to raise; \n2. yes, i want to reduce;\n3. nope, thanks.");
-
-                string selection = Console.ReadLine();
-                switch (selection)
-                {
-                    case "1":
-                        carprice.PriceList(pricelist);
-                        Console.WriteLine($"How much do you want to increase the price of the car? ");
-                        int increase = Convert.ToInt32(Console.ReadLine());
-                        carprice.Increase(increase);
-                        Console.WriteLine($": {carprice.newprice}");
-                        break;
-                    case "2":
-                        carprice.PriceList(pricelist);
-                        Console.WriteLine($"How much do you want to reduce the price of the car? ");
-                        int reduce = Convert.ToInt32(Console.ReadLine());
-                        carprice.Increase(reduce);
-                        Console.WriteLine($": {carprice.newprice}");
-                        break;
-                    case "3";
-                        break;
-                    default:
-                        Console.WriteLine("Please, enter 'yes' or 'no'.");
-                        break;
-                }
-            }
-        }
-    }
-
-    public enum Marks
-    {
-        mercedez,
-        bugatti,
-        tesla
-    }
-
-    class Program
-    {
-        delegate void Show();
-        delegate void MenuHandler(string message);
-
-        private static void Hi()
-        {
-            Console.WriteLine("Hi driver!");
-        }
-
-        private static void Bye()
-        {
-            Console.WriteLine("Bye driver!");
-        }
-
-        public static void RideOnACar(Car car)
-        {
-            IRider rider = car;
-            rider.Ride();
-        }
-
-        static void Main(string[] args)
-        {
-            Show show = Hi;
-            show();
-            int age = 0;
-            string name = "";
-            try
-            {
-                Console.WriteLine("What is your name? ");
-                name = Console.ReadLine();
-                Console.WriteLine("How old are you? ");
-                age = int.Parse(Console.ReadLine());
-            }
-            catch (FormatException)     
-            {
-                Console.WriteLine("\nWrong data. You did not enter a number in the \"age\" field.");
-            }
-
-            Console.WriteLine("Create a cars collection!");
-            Console.WriteLine("\nHow much cars do you want to collect? Enter a number");
-            int _quantity = Convert.ToInt32(Console.ReadLine());
-            Collection collection = new Collection(_quantity);
-
-            for (int i = 0; i < _quantity; i++)
-            {
-                Console.WriteLine($"\nChoose a mark of the car #{i + 1}");
-                Console.WriteLine("\n1 - Mercedez\n2 - Bugatti\n3 - Tesla\n");
-
-                int choice = Convert.ToInt32(Console.ReadLine());
-                if (choice > 3 || choice < 1)
-                {
-                    Console.WriteLine("Wrong data.");
-                    Environment.Exit(-1);
-                }
-
-                Console.WriteLine("Enter the name of model:");
-                string nameofmodel = Console.ReadLine();
-                Console.WriteLine("Enter the max speed of your car:");
-                int maxSpeed = Convert.ToInt32((Console.ReadLine()));
-                Console.WriteLine("Enter the price of your car:");
-                int price = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Enter the type of engine:");
-                string typeofengine = Console.ReadLine();
-
-                float engineCapacity = 0;
-                if (choice != 3)
-                {
-                    Console.WriteLine("Enter the engine capacity:");
-                    engineCapacity = (float)Convert.ToDouble(Console.ReadLine());
-                }
-                switch (choice)
-                {
-                    case 1:
-                        collection[i] = new MercedezBenz(nameofmodel, maxSpeed, price, typeofengine, engineCapacity, Marks.mercedez);
-                        break;
-                    case 2:
-                        collection[i] = new Bugatti(nameofmodel, maxSpeed, price, typeofengine, engineCapacity, Marks.bugatti);
-                        break;
-                    case 3:
-                        collection[i] = new Tesla(nameofmodel, maxSpeed, price, typeofengine, Marks.tesla);
-                        break;
-                }
-            }
-
-            collection.showInfo();
-            Console.WriteLine("Press any key . . . \n");
-            Console.ReadKey();
-            Console.WriteLine("Choose a car which you wanna ride (enter the number):");
-
-            int c = Convert.ToInt32(Console.ReadLine());
-            if (c < 1 || c > collection.Quantity)
-            {
-                Environment.Exit(-1);
-            }
-            else
-            {
-                RideOnACar(collection[c - 1]);
-            }
-            if (collection.Quantity >= 2)
-            {
-                Console.WriteLine("Enter 2 cars which you want to compare:");
-
-                c = Convert.ToInt32(Console.ReadLine());
-                int c1 = Convert.ToInt32(Console.ReadLine());
-                if (c < 1 || c > collection.Quantity || c1 < 1 || c1 > collection.Quantity)
-                {
-                    Environment.Exit(-1);
+                    Console.WriteLine($"{o1._mark} faster than {o2._mark}");
                 }
                 else
                 {
-                    CarComparer carComparer = new CarComparer();
-                    carComparer.Compare(collection[c - 1], collection[c1 - 1]);
+                    if (o2.technicalproperties.Speed > o1.technicalproperties.Speed)
+                    {
+                        Console.WriteLine($"{o2._mark} faster than {o1._mark}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{o1._mark} is as fast as {o2._mark}");
+                    }
                 }
             }
-            show -= Hi;
-            show += Bye;
-            show();
+
+
+            class Program
+            {
+                delegate void Show();
+                delegate void MenuHandler(string message);
+
+                private static void Hi()
+                {
+                    Console.WriteLine("Hi, driver!");
+                }
+
+                private static void Bye()
+                {
+                    Console.WriteLine("Bye, driver!");
+                }
+
+
+                static void Main(string[] args)
+                {
+                    Show show = Hi;    //переменная делегата с адресом метода
+                    show();
+                    int price = 1000;
+                    int age = 0;
+                    string name = "";
+                    try
+                    {
+                        Console.WriteLine("What is your name?");
+                        name = Console.ReadLine();
+                        Console.WriteLine("How old are you?");
+                        age = int.Parse(Console.ReadLine());
+                    }
+                    catch (FormatException)     //обработка исключения
+                    {
+                        Console.WriteLine("\nError: in the field \"age\" you did not enter a number!");
+                    }
+                    Console.WriteLine("Your garage:");
+                    Car car1 = new Car("Mercedes-Benz W124", 306, price);
+                    Car car2 = new Car("Mercedes-Benz W", 224, price);
+                    Car car3 = new Car("Tesla Model X", 250, price);
+                    Car car4 = new Car("TeslaModel S", 200, price);
+                    IFoo foo = car1;
+                    foo.GetInfo();
+                    IFoo foo2 = car2;
+                    foo2.GetInfo();
+                    IFoo foo3 = car3;
+                    foo3.GetInfo();
+                    IFoo foo4 = car4;
+                    foo4.GetInfo();
+                    PriceList pricelist = new PriceList();
+                    pricelist.Notify += delegate (string mes)  //анонимный метод в качестве обработчика события
+                    {
+                        Console.WriteLine(mes);
+                    };
+                    MenuHandler menu = message => Console.WriteLine(message);    //лямбда-выражения
+                    menu("\t\t\t\t\t\tMenu");
+                    menu("\t\t\t1. Enter 1 if you want to compare the speed of Mercedes.");
+                    menu("\t\t\t2. Enter 2 if you want to compare the speed of Tesla.");
+                    menu("\t\t\t3. Enter 3 if you want to increase the price of your car collection.");
+                    menu("\t\t\t4. Enter 4 if you want to sort cars by maximum speed.");
+                    int otvet1 = Convert.ToInt32(Console.ReadLine());
+                    Console.Clear();
+                    switch (otvet1)
+                    {
+                        case 1:
+                            {
+                                CarComparison carComparison = new CarComparison();
+                                Console.WriteLine("Compare the speed of Mercedes: ");
+                                carComparison.SpeedComparison(car1, car2);
+                                break;
+                            }
+                        case 2:
+                            {
+                                CarComparison carComparison = new CarComparison();
+                                Console.WriteLine("Compare the speed of Tesla: ");
+                                carComparison.SpeedComparison(car3, car4);
+                                break;
+                            }
+                        case 3:
+                            {
+                                pricelist.Price(price);
+                                Console.WriteLine($"How much do you want to raise the price?");
+                                int increase = Convert.ToInt32(Console.ReadLine());
+                                pricelist.Increase(increase);
+                                Console.WriteLine($"Done, now  all your cars cost: {pricelist.newprice}");
+                                break;
+                            }
+                        case 4:
+                            {
+                                pricelist.Price(price);
+                                Console.WriteLine($"На сколько вы хотите понизить зарплату работникам команды?");
+                                int reduce = Convert.ToInt32(Console.ReadLine());
+                                pricelist.Reduce(reduce);
+                                Console.WriteLine($"Done, now  all your cars cost: {pricelist.newprice}");
+                                break;
+                            }
+                        case 5:
+                            {
+                                Car[] cars = new Car[] { car1, car2, car3, car4 };
+                                Array.Sort(cars);
+                                foreach (Car c in cars)
+                                {
+                                    Console.WriteLine(c._mark + "(" + c.technicalproperties.Speed + ")");
+                                }
+                                break;
+                            }
+                    }
+                    show -= Hi;  //-обработчик
+                    show += Bye; //+обработчик 
+                    show();      //вызов метода
+                }
+            }
         }
     }
 }

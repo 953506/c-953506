@@ -7,9 +7,10 @@ namespace laba_5_edit
         protected static int ID = 0;
     }
 
-    public struct TechnicalProperties       // структура проверочки всяких технических свойств
+    public struct TechnicalProperties    // структура для проверочки всяких технических свойств
     {
         private int _maxSpeed;
+        
         public int MaxSpeed
         {
             get 
@@ -31,6 +32,7 @@ namespace laba_5_edit
         }
 
         private float _enginCapacity;
+        
         public float EngineCapacity
         {
             get => _enginCapacity;
@@ -56,18 +58,20 @@ namespace laba_5_edit
     }
 
 
-    abstract class Car : Transport
+    abstract class Car : Transport //класс Car - производный класс от базового класса Transport
     {
-        public Car(Marks mark)
+        public Car(Marks mark) //конструктор
         {
             this.Mark = mark;
         }
-        public TechnicalProperties technicalProperties;
-        private Marks _mark;
+        
+        public TechnicalProperties technicalProperties; //объект структуры
+        private Marks _mark; // переменная перечисляемого типа Marks
         public abstract void Ride();  //абстрактный метод моего катания на машинке (потом переопределяется в производных классах)
         public string NameOfModel { get; protected set; }
         public string TypeOfEngine { get; protected set; }
         public int Price { get; protected set; }
+        
         public Marks Mark 
         { 
             get 
@@ -82,9 +86,9 @@ namespace laba_5_edit
     }
     
     
-    class Tesla : Car
+    class Tesla : Car //класс Tesla - производный класс от базового класса Car
     {
-        public Tesla(string nameofmodel, int maxspeed, int price, string typeofengine, Marks mark)
+        public Tesla(string nameofmodel, int maxspeed, int price, string typeofengine, Marks mark) // ключевое слово base используется для вызова конструктора базового класса
             : base(mark)
         {
             Console.WriteLine("Elon says hello to you");
@@ -102,9 +106,9 @@ namespace laba_5_edit
     }
 
 
-    class MercedezBenz : Car
+    class MercedezBenz : Car //класс MercedezBenz - производный класс от базового класса Car
     {
-        public MercedezBenz(string nameofmodel, int maxspeed, int price, string typeofengine, float engineCapacity, Marks mark)
+        public MercedezBenz(string nameofmodel, int maxspeed, int price, string typeofengine, float engineCapacity, Marks mark) // ключевое слово base используется для вызова конструктора базового класса
             : base(mark)
         {
             technicalProperties.EngineCapacity = engineCapacity;
@@ -121,9 +125,9 @@ namespace laba_5_edit
     }
 
 
-    class Bugatti : Car
+    class Bugatti : Car //класс Bugatti - производный класс от базового класса Car
     {
-        public Bugatti(string nameofmodel, int maxspeed, int price, string typeofengine, float engineCapacity, Marks mark)
+        public Bugatti(string nameofmodel, int maxspeed, int price, string typeofengine, float engineCapacity, Marks mark) // ключевое слово base используется для вызова конструктора базового класса
             : base(mark)
         {
             technicalProperties.EngineCapacity = engineCapacity;
@@ -154,7 +158,7 @@ namespace laba_5_edit
             Quantity = count;
         }
 
-        public Car this[int index]
+        public Car this[int index]  //индексатор
         {
             get
             {
@@ -204,7 +208,7 @@ namespace laba_5_edit
 
     class Program
     {
-        public static void RideOnACar(Car car)
+        public static void RideOnACar(Car car) // статический метод
         {
             switch (car.Mark)
             {

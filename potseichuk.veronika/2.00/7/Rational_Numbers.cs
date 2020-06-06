@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace lab_7
 {
-    class Rational_number : IComparable<Rational_number>, IEquatable<Rational_number>
+    class RationalNumber : IComparable<RationalNumber>, IEquatable<RationalNumber>
     {
         private long _n;
         private long _m;
@@ -25,14 +25,14 @@ namespace lab_7
             else return FindGCD(b, (int)Math.Abs(a - b));
         }
 
-        public Rational_number(long _n, long _m)
+        public RationalNumber(long _n, long _m)
         {
             long GCD = FindGCD(_n, _m);
             this._n = _n / GCD;
             this._m = _m / GCD;
         }
 
-        public int CompareTo(Rational_number num_2)
+        public int CompareTo(RationalNumber num_2)
         {
             if ((double)this > (double)num_2)
                 return 1;
@@ -44,8 +44,8 @@ namespace lab_7
 
         public int CompareTo(object other)
         {
-            if (other is Rational_number)
-                return CompareTo((Rational_number)other);
+            if (other is RationalNumber)
+                return CompareTo((RationalNumber)other);
             else
                 throw new InvalidOperationException("CompareTo: not a rational number");
         }
@@ -58,12 +58,12 @@ namespace lab_7
             }
             if (other is Rational_number)
             {
-                return Equals((Rational_number)other);
+                return Equals((RationalNumber)other);
             }
             return false;
         }
         
-        public bool Equals(Rational_number other)
+        public bool Equals(RationalNumber other)
         {
             if (other == null)
                 return false;
@@ -76,66 +76,66 @@ namespace lab_7
             return (int)(_n * 17 + _m);
         }
 
-        public static Rational_number operator +(Rational_number num_1, Rational_number num_2)
+        public static RationalNumber operator +(RationalNumber num_1, RationalNumber num_2)
         {
             long mm_GCD = FindGCD(num_1._m, num_2._m);
             long new_n = num_1._n * (num_2._m / mm_GCD) + num_2._n * (num_1._m / mm_GCD);
             long new_m = num_1._m * (num_2._m / mm_GCD);
             long nm_GCD = FindGCD(new_n, new_m);
-            return new Rational_number(new_n / nm_GCD, new_m / nm_GCD);
+            return new RationalNumber(new_n / nm_GCD, new_m / nm_GCD);
         }
 
-        public static Rational_number operator -(Rational_number num_1, Rational_number num_2)
+        public static RationalNumber operator -(RationalNumber num_1, RationalNumber num_2)
         {
             long mm_GCD = FindGCD(num_1._m, num_2._m);
             long new_n = num_1._n * (num_2._m / mm_GCD) - num_2._n * (num_1._m / mm_GCD);
             long new_m = num_1._m * (num_2._m / mm_GCD);
             long nm_GCD = FindGCD(new_n, new_m);
-            return new Rational_number(new_n / nm_GCD, new_m / nm_GCD);
+            return new RationalNumber(new_n / nm_GCD, new_m / nm_GCD);
         }
 
-        public static Rational_number operator *(Rational_number num_1, Rational_number num_2)
+        public static RationalNumber operator *(RationalNumber num_1, RationalNumber num_2)
         {
             long new_n = num_1._n * num_2._n;
             long new_m = num_1._m * num_2._m;
             long nm_GCD = FindGCD(new_n, new_m);
-            return new Rational_number(new_n / nm_GCD, new_m / nm_GCD);
+            return new RationalNumber(new_n / nm_GCD, new_m / nm_GCD);
         }
 
-        public static Rational_number operator /(Rational_number num_1, Rational_number num_2)
+        public static RationalNumber operator /(RationalNumber num_1, RationalNumber num_2)
         {
             long new_n = num_1._n * num_2._m;
             long new_m = num_1._m * num_2._n;
             long nm_GCD = FindGCD(new_n, new_m);
-            return new Rational_number(new_n / nm_GCD, new_m / nm_GCD);
+            return new RationalNumber(new_n / nm_GCD, new_m / nm_GCD);
         }
 
-        public static bool operator <(Rational_number num_1, Rational_number num_2)
+        public static bool operator <(RationalNumber num_1, RationalNumber num_2)
         {
             return num_1.CompareTo(num_2) < 0;
         }
 
-        public static bool operator >(Rational_number num_1, Rational_number num_2)
+        public static bool operator >(RationalNumber num_1, RationalNumber num_2)
         {
             return num_1.CompareTo(num_2) > 0;
         }
 
-        public static bool operator <=(Rational_number num_1, Rational_number num_2)
+        public static bool operator <=(RationalNumber num_1, RationalNumber num_2)
         {
             return num_1.CompareTo(num_2) <= 0;
         }
 
-        public static bool operator >=(Rational_number num_1, Rational_number num_2) 
+        public static bool operator >=(RationalNumber num_1, RationalNumber num_2) 
         {
             return num_1.CompareTo(num_2) >= 0;
         }
 
-        public static explicit operator long(Rational_number num)
+        public static explicit operator long(RationalNumber num)
         {
             return num._n / num._m;
         }
 
-        public static explicit operator double(Rational_number num)
+        public static explicit operator double(RationalNumber num)
         {
             return (double)num._n / num._m;
         }
@@ -152,7 +152,7 @@ namespace lab_7
             return str;
         }
 
-        public static Rational_number StringToRational(string str) 
+        public static RationalNumber StringToRational(string str) 
         {
             string pattern1 = @"^-?\d{1,9}\s*\/\s*\d{1,9}$";
             string pattern2 = @"^-?\d{1,9}\s*\.\s*\d{1,9}$";
@@ -168,7 +168,7 @@ namespace lab_7
                 }
                 else
                 {
-                    return new Rational_number(_n, _m);
+                    return new RationalNumber(_n, _m);
                 }
             }
             else if (Regex.IsMatch(str, pattern2))
@@ -183,7 +183,7 @@ namespace lab_7
                 }
                 else
                 {
-                    return new Rational_number(_n, _m);
+                    return new RationalNumber(_n, _m);
                 }
             }
             else

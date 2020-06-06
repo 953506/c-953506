@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace LabRab_7
+namespace lab_7
 {
-    class rational_number : IComparable<rational_number>, IEquatable<rational_number>
+    class Rational_number : IComparable<Rational_number>, IEquatable<Rational_number>
     {
         private long n;
         private long m;
@@ -25,14 +25,14 @@ namespace LabRab_7
             else return FindGCD(b, (int)Math.Abs(a - b));
         }
 
-        public rational_number(long _n, long _m)
-        {     
+        public Rational_number(long _n, long _m)
+        {
             long GCD = FindGCD(_n, _m);
             n = _n / GCD;
             m = _m / GCD;
         }
 
-        public int CompareTo(rational_number num_2)
+        public int CompareTo(Rational_number num_2)
         {
             if ((double)this > (double)num_2)
                 return 1;
@@ -44,26 +44,26 @@ namespace LabRab_7
 
         public int CompareTo(object other)
         {
-            if (other is rational_number)
-                return CompareTo((rational_number)other);
+            if (other is Rational_number)
+                return CompareTo((Rational_number)other);
             else
                 throw new InvalidOperationException("CompareTo: not a rational number");
         }
 
         public override bool Equals(object other)
         {
-            if(other == null)
+            if (other == null)
             {
                 return false;
             }
-            if(other is rational_number)
+            if (other is Rational_number)
             {
-                return Equals((rational_number)other);
+                return Equals((Rational_number)other);
             }
             return false;
         }
-
-        public bool Equals(rational_number other)
+        
+        public bool Equals(Rational_number other)
         {
             if (other == null)
                 return false;
@@ -73,69 +73,69 @@ namespace LabRab_7
 
         public override int GetHashCode()
         {
-            return (int)(n*17 + m);
+            return (int)(n * 17 + m);
         }
 
-        public static rational_number operator +(rational_number num_1, rational_number num_2)
+        public static Rational_number operator +(Rational_number num_1, Rational_number num_2)
         {
             long mm_GCD = FindGCD(num_1.m, num_2.m);
             long new_n = num_1.n * (num_2.m / mm_GCD) + num_2.n * (num_1.m / mm_GCD);
             long new_m = num_1.m * (num_2.m / mm_GCD);
             long nm_GCD = FindGCD(new_n, new_m);
-            return new rational_number(new_n / nm_GCD, new_m / nm_GCD);
+            return new Rational_number(new_n / nm_GCD, new_m / nm_GCD);
         }
 
-        public static rational_number operator -(rational_number num_1, rational_number num_2)
+        public static Rational_number operator -(Rational_number num_1, Rational_number num_2)
         {
             long mm_GCD = FindGCD(num_1.m, num_2.m);
             long new_n = num_1.n * (num_2.m / mm_GCD) - num_2.n * (num_1.m / mm_GCD);
             long new_m = num_1.m * (num_2.m / mm_GCD);
             long nm_GCD = FindGCD(new_n, new_m);
-            return new rational_number(new_n / nm_GCD, new_m / nm_GCD);
+            return new Rational_number(new_n / nm_GCD, new_m / nm_GCD);
         }
 
-        public static rational_number operator *(rational_number num_1, rational_number num_2)
+        public static Rational_number operator *(Rational_number num_1, Rational_number num_2)
         {
             long new_n = num_1.n * num_2.n;
             long new_m = num_1.m * num_2.m;
             long nm_GCD = FindGCD(new_n, new_m);
-            return new rational_number(new_n / nm_GCD, new_m / nm_GCD);
+            return new Rational_number(new_n / nm_GCD, new_m / nm_GCD);
         }
 
-        public static rational_number operator /(rational_number num_1, rational_number num_2)
+        public static Rational_number operator /(Rational_number num_1, Rational_number num_2)
         {
             long new_n = num_1.n * num_2.m;
             long new_m = num_1.m * num_2.n;
             long nm_GCD = FindGCD(new_n, new_m);
-            return new rational_number(new_n / nm_GCD, new_m / nm_GCD);
+            return new Rational_number(new_n / nm_GCD, new_m / nm_GCD);
         }
 
-        public static bool operator <(rational_number num_1, rational_number num_2)
+        public static bool operator <(Rational_number num_1, Rational_number num_2)
         {
             return num_1.CompareTo(num_2) < 0;
         }
 
-        public static bool operator >(rational_number num_1, rational_number num_2)
+        public static bool operator >(Rational_number num_1, Rational_number num_2)
         {
             return num_1.CompareTo(num_2) > 0;
         }
 
-        public static bool operator <=(rational_number num_1, rational_number num_2)
+        public static bool operator <=(Rational_number num_1, Rational_number num_2)
         {
             return num_1.CompareTo(num_2) <= 0;
         }
 
-        public static bool operator >=(rational_number num_1, rational_number num_2)
+        public static bool operator >=(Rational_number num_1, Rational_number num_2)
         {
             return num_1.CompareTo(num_2) >= 0;
         }
 
-        public static explicit operator long(rational_number num)
+        public static explicit operator long(Rational_number num) 
         {
             return num.n / num.m;
         }
 
-        public static explicit operator double(rational_number num)
+        public static explicit operator double(Rational_number num)
         {
             return (double)num.n / num.m;
         }
@@ -152,15 +152,14 @@ namespace LabRab_7
             return str;
         }
 
-        public static rational_number StringToRational(string str)
+        public static Rational_number StringToRational(string str) 
         {
-            string pattern1 = @"^-?\d{1,9}\s*\/\s*\d{1,9}$";
+            string pattern1 = @"^-?\d{1,9}\s*\/\s*\d{1,9}$"; 
             string pattern2 = @"^-?\d{1,9}\s*\.\s*\d{1,9}$";
-            if (Regex.IsMatch(str, pattern1))
+            if (Regex.IsMatch(str, pattern1)) 
             {
-
-                string[] numbers = str.Split(new char[] { ' ', '/' }, StringSplitOptions.RemoveEmptyEntries);
-                long n = long.Parse(numbers[0]);
+                string[] numbers = str.Split(new char[] { ' ', '/' }, StringSplitOptions.RemoveEmptyEntries); 
+                long n = long.Parse(numbers[0]); 
                 long m = long.Parse(numbers[1]);
                 if (m == 0)
                 {
@@ -169,14 +168,14 @@ namespace LabRab_7
                 }
                 else
                 {
-                    return new rational_number(n, m);
+                    return new Rational_number(n, m);
                 }
             }
             else if (Regex.IsMatch(str, pattern2))
             {
-                string[] numbers = str.Split(new char[] { ' ', '.' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] numbers = str.Split(new char[] { ' ', '.' }, StringSplitOptions.RemoveEmptyEntries); 
                 long n = long.Parse(numbers[0] + numbers[1]);
-                long m = (long)Math.Pow(10, numbers[1].Length);
+                long m = (long)Math.Pow(10, numbers[1].Length); 
                 if (m == 0)
                 {
                     Console.WriteLine("The denominator cannot be equal to zero");
@@ -184,7 +183,7 @@ namespace LabRab_7
                 }
                 else
                 {
-                    return new rational_number(n, m);
+                    return new Rational_number(n, m);
                 }
             }
             else

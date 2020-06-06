@@ -9,9 +9,9 @@ namespace lab_7
 {
     class Rational_number : IComparable<Rational_number>, IEquatable<Rational_number>
     {
-        private long n;
-        private long m;
-        private static long FindGCD(long a, long b)
+        private long _n;
+        private long _m;
+        private static long FindGCD(long a, long b) 
         {
             a = Math.Abs(a);
             b = Math.Abs(b);
@@ -28,8 +28,8 @@ namespace lab_7
         public Rational_number(long _n, long _m)
         {
             long GCD = FindGCD(_n, _m);
-            n = _n / GCD;
-            m = _m / GCD;
+            this._n = _n / GCD;
+            this._m = _m / GCD;
         }
 
         public int CompareTo(Rational_number num_2)
@@ -68,44 +68,44 @@ namespace lab_7
             if (other == null)
                 return false;
             else
-                return (n == other.n && m == other.m);
+                return (this._n == other._n && this._m == other._m);
         }
 
         public override int GetHashCode()
         {
-            return (int)(n * 17 + m);
+            return (int)(_n * 17 + _m);
         }
 
         public static Rational_number operator +(Rational_number num_1, Rational_number num_2)
         {
-            long mm_GCD = FindGCD(num_1.m, num_2.m);
-            long new_n = num_1.n * (num_2.m / mm_GCD) + num_2.n * (num_1.m / mm_GCD);
-            long new_m = num_1.m * (num_2.m / mm_GCD);
+            long mm_GCD = FindGCD(num_1._m, num_2._m);
+            long new_n = num_1._n * (num_2._m / mm_GCD) + num_2._n * (num_1._m / mm_GCD);
+            long new_m = num_1._m * (num_2._m / mm_GCD);
             long nm_GCD = FindGCD(new_n, new_m);
             return new Rational_number(new_n / nm_GCD, new_m / nm_GCD);
         }
 
         public static Rational_number operator -(Rational_number num_1, Rational_number num_2)
         {
-            long mm_GCD = FindGCD(num_1.m, num_2.m);
-            long new_n = num_1.n * (num_2.m / mm_GCD) - num_2.n * (num_1.m / mm_GCD);
-            long new_m = num_1.m * (num_2.m / mm_GCD);
+            long mm_GCD = FindGCD(num_1._m, num_2._m);
+            long new_n = num_1._n * (num_2._m / mm_GCD) - num_2._n * (num_1._m / mm_GCD);
+            long new_m = num_1._m * (num_2._m / mm_GCD);
             long nm_GCD = FindGCD(new_n, new_m);
             return new Rational_number(new_n / nm_GCD, new_m / nm_GCD);
         }
 
         public static Rational_number operator *(Rational_number num_1, Rational_number num_2)
         {
-            long new_n = num_1.n * num_2.n;
-            long new_m = num_1.m * num_2.m;
+            long new_n = num_1._n * num_2._n;
+            long new_m = num_1._m * num_2._m;
             long nm_GCD = FindGCD(new_n, new_m);
             return new Rational_number(new_n / nm_GCD, new_m / nm_GCD);
         }
 
         public static Rational_number operator /(Rational_number num_1, Rational_number num_2)
         {
-            long new_n = num_1.n * num_2.m;
-            long new_m = num_1.m * num_2.n;
+            long new_n = num_1._n * num_2._m;
+            long new_m = num_1._m * num_2._n;
             long nm_GCD = FindGCD(new_n, new_m);
             return new Rational_number(new_n / nm_GCD, new_m / nm_GCD);
         }
@@ -125,65 +125,65 @@ namespace lab_7
             return num_1.CompareTo(num_2) <= 0;
         }
 
-        public static bool operator >=(Rational_number num_1, Rational_number num_2)
+        public static bool operator >=(Rational_number num_1, Rational_number num_2) 
         {
             return num_1.CompareTo(num_2) >= 0;
         }
 
-        public static explicit operator long(Rational_number num) 
+        public static explicit operator long(Rational_number num)
         {
-            return num.n / num.m;
+            return num._n / num._m;
         }
 
         public static explicit operator double(Rational_number num)
         {
-            return (double)num.n / num.m;
+            return (double)num._n / num._m;
         }
 
         public string RationalToString()
         {
-            string str = $"{n}/{m}";
+            string str = $"{_n}/{_m}";
             return str;
         }
 
         public string RationalToStringDouble()
         {
-            string str = $"{n / m}";
+            string str = $"{_n / _m}";
             return str;
         }
 
         public static Rational_number StringToRational(string str) 
         {
-            string pattern1 = @"^-?\d{1,9}\s*\/\s*\d{1,9}$"; 
+            string pattern1 = @"^-?\d{1,9}\s*\/\s*\d{1,9}$";
             string pattern2 = @"^-?\d{1,9}\s*\.\s*\d{1,9}$";
-            if (Regex.IsMatch(str, pattern1)) 
+            if (Regex.IsMatch(str, pattern1))
             {
-                string[] numbers = str.Split(new char[] { ' ', '/' }, StringSplitOptions.RemoveEmptyEntries); 
-                long n = long.Parse(numbers[0]); 
-                long m = long.Parse(numbers[1]);
-                if (m == 0)
+                string[] numbers = str.Split(new char[] { ' ', '/' }, StringSplitOptions.RemoveEmptyEntries);
+                long _n = long.Parse(numbers[0]); 
+                long _m = long.Parse(numbers[1]);
+                if (_m == 0)
                 {
                     Console.WriteLine("The denominator cannot be equal to zero");
                     return null;
                 }
                 else
                 {
-                    return new Rational_number(n, m);
+                    return new Rational_number(_n, _m);
                 }
             }
             else if (Regex.IsMatch(str, pattern2))
             {
-                string[] numbers = str.Split(new char[] { ' ', '.' }, StringSplitOptions.RemoveEmptyEntries); 
-                long n = long.Parse(numbers[0] + numbers[1]);
-                long m = (long)Math.Pow(10, numbers[1].Length); 
-                if (m == 0)
+                string[] numbers = str.Split(new char[] { ' ', '.' }, StringSplitOptions.RemoveEmptyEntries);
+                long _n = long.Parse(numbers[0] + numbers[1]);
+                long _m = (long)Math.Pow(10, numbers[1].Length);
+                if (_m == 0)
                 {
                     Console.WriteLine("The denominator cannot be equal to zero");
                     return null;
                 }
                 else
                 {
-                    return new Rational_number(n, m);
+                    return new Rational_number(_n, _m);
                 }
             }
             else

@@ -56,7 +56,7 @@ namespace lab_7
             {
                 return false;
             }
-            if (other is Rational_number)
+            if (other is RationalNumber)
             {
                 return Equals((RationalNumber)other);
             }

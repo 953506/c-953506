@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
 
-namespace LabRab_7
+namespace lab_7
 {
     class Program
     {
         static void Calculate()
         {
             Console.Write("Input first number: ");
-            rational_number num1 = rational_number.StringToRational(Console.ReadLine());
+            Rational_number num1 = Rational_number.StringToRational(Console.ReadLine());
             Console.Write("Input second number: ");
-            rational_number num2 = rational_number.StringToRational(Console.ReadLine());
-            if(num1 == null || num2 == null)
+            Rational_number num2 = Rational_number.StringToRational(Console.ReadLine());
+            if (num1 == null || num2 == null)
             {
                 Console.WriteLine("Input error");
                 Console.ReadKey();
@@ -24,14 +24,14 @@ namespace LabRab_7
             }
             else
             {
-                rational_number a = num1 + num2;
+                Rational_number a = num1 + num2;
                 Console.WriteLine($"Addiction: {(int)(num1 + num2)} or {(double)(num1 + num2)} or {(num1 + num2).RationalToString()}");
                 Console.WriteLine($"Subtraction: {(int)(num1 - num2)} or {(double)(num1 - num2)} or {(num1 - num2).RationalToString()}");
                 Console.WriteLine($"Multiplication: {(int)(num1 * num2)} or {(double)(num1 * num2)} or {(num1 * num2).RationalToString()}");
                 Console.WriteLine($"Division: {(int)(num1 / num2)} or {(double)(num1 / num2)} or {(num1 / num2).RationalToString()}");
                 Console.WriteLine($"Comparison:");
-                Console.WriteLine($"{num1.RationalToString()} < {num2.RationalToString()} --- {num1 < num2}");
-                Console.WriteLine($"{num1.RationalToString()} > {num2.RationalToString()} --- {num1 > num2}");
+                Console.WriteLine($"{num1.RationalToString()} <  {num2.RationalToString()} --- {num1 < num2}");
+                Console.WriteLine($"{num1.RationalToString()} >  {num2.RationalToString()} --- {num1 > num2}");
                 Console.WriteLine($"{num1.RationalToString()} <= {num2.RationalToString()} --- {num1 <= num2}");
                 Console.WriteLine($"{num1.RationalToString()} >= {num2.RationalToString()} --- {num1 >= num2}");
                 Console.WriteLine($"{num1.RationalToString()} == {num2.RationalToString()} --- {num1.Equals(num2)}");

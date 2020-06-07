@@ -85,6 +85,7 @@ namespace ЛабораторнаяСШ5
             }
         }
     }
+    
     public class Human
     {
         protected string name;
@@ -126,7 +127,113 @@ namespace ЛабораторнаяСШ5
         }
 
     }
-   
+    
+    class BGTU : Human
+    {
+        public BGTU(string name, string sname, int age, int gpa, int math, int phis, int rus) : base(name, sname)
+        {
+            proverka.Age = age;
+            proverka.Math = math;
+            proverka.Phis = phis;
+            proverka.Rus = rus;
+            proverka.Gpa = gpa;
+        }
+        public override void Univer(int sum, Choise educ)
+        {
+            if (educ == Choise.Free)
+            {
+                if (sum >= 200)
+                    Console.WriteLine("Congratulations, you're on a free");
+                else Console.WriteLine("Sorry, maybe you want in other university");
+            }
+            else if (educ == Choise.Paid)
+            {
+                if (sum >= 180)
+                    Console.WriteLine("Congratulations, you're on a paid");
+                else Console.WriteLine("Sorry, maybe you want in other university");
+            }
+        }
+    }
+    
+     class BSU : Human
+    {
+        public BSU(string name, string sname, int age, int gpa, int math, int phis, int rus) : base(name, sname)
+        {
+            proverka.Age = age;
+            proverka.Math = math;
+            proverka.Phis = phis;
+            proverka.Rus = rus;
+            proverka.Gpa = gpa;
+        }
+        public override void Univer(int sum, Choise educ)
+        {
+            if (educ == Choise.Free)
+            {
+                if (sum >= 294)
+                    Console.WriteLine("Congratulations, you're on a free");
+                else Console.WriteLine("Sorry, maybe you want in other university");
+            }
+            else if (educ == Choise.Paid)
+            {
+                if (sum >= 231)
+                    Console.WriteLine("Congratulations, you're on a paid");
+                else Console.WriteLine("Sorry, maybe you want in other university");
+            }
+        }
+    }
+    
+    class BSUIR : Human
+    {
+        public BSUIR(string name, string sname, int age, int gpa, int math, int phis, int rus) : base(name, sname)
+        {
+            proverka.Age = age;
+            proverka.Math = math;
+            proverka.Phis = phis;
+            proverka.Rus = rus;
+            proverka.Gpa = gpa;
+        }
+        public override void Univer(int sum, Choise educ)
+        {
+            if (educ == Choise.Free)
+            {
+                if (sum >= 295)
+                    Console.WriteLine("Congratulations, you're on a free");
+                else Console.WriteLine("Sorry, maybe you want in other university");
+            }
+            else if (educ == Choise.Paid)
+            {
+                if (sum >= 236)
+                    Console.WriteLine("Congratulations, you're on a paid");
+                else Console.WriteLine("Sorry, maybe you want in other university");
+            }
+        }
+    }
+   class BNTU : Human
+    {
+        public BNTU(string name, string sname, int age, int gpa, int math, int phis, int rus) : base(name, sname)
+        {
+            proverka.Age = age;
+            proverka.Math = math;
+            proverka.Phis = phis;
+            proverka.Rus = rus;
+            proverka.Gpa = gpa;
+        }
+        public override void Univer(int sum, Choise educ)
+        {
+            if (educ == Choise.Free)
+            {
+                if (sum >= 196)
+                    Console.WriteLine("Congratulations, you're on a free");
+                else Console.WriteLine("Sorry, maybe you want in other university");
+            }
+            else if (educ == Choise.Paid)
+            {
+                if (sum >= 138)
+                    Console.WriteLine("Congratulations, you're on a paid");
+                else Console.WriteLine("Sorry, maybe you want in other university");
+            }
+        }
+    }
     class Program
     {
         static void Main(string[] args)
@@ -209,6 +316,4 @@ namespace ЛабораторнаяСШ5
             }
         }
     }
-
 }
-n

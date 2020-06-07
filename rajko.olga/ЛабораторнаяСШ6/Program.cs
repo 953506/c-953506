@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -166,15 +166,8 @@ namespace ЛабораторнаяСШ6
     }
     class HumanComparer : IComparer<Human>
     {
-        public int Compare(Human p1, Human p2)
-        {
-            if (p1.name.Length > p2.name.Length)
-                return 1;
-            else if (p1.name.Length < p2.name.Length)
-                return -1;
-            else
-                return 0;
-        }
+        public int Compare(Human p1, Human p2) =>
+        p1.name.Length.CompareTo(p2.name.Length);
     }
 
     class Program

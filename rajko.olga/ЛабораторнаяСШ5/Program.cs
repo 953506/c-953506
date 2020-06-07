@@ -86,7 +86,19 @@ namespace ЛабораторнаяСШ5
         }
     }
     
-    public class Human
+     public class Id
+    {
+        protected static int ID = 0;
+
+        public bool SName { get;  set; }
+        public bool Name { get;  set; }
+
+        internal void Univer(int sum1, Human.Choise educ)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class Human : Id
     {
         protected string name;
         protected string sname;
@@ -96,9 +108,6 @@ namespace ЛабораторнаяСШ5
             Paid = 0,
             Free = 1,
         }
-
-        public string SName { get { return sname; } }
-        public string Name { get {  return name; } }
         public Human(string name, string sname)
         {
             this.name = name;
@@ -242,7 +251,7 @@ namespace ЛабораторнаяСШ5
             string n = Console.ReadLine();
             int N = int.Parse(n);
             Console.WriteLine("Enter data by an example:");
-            Human entrans = new Human("Ivan", "Ivanov");
+            Id entrans = new Human("Ivan", "Ivanov");
             Console.WriteLine(entrans.Name);
             Console.WriteLine(entrans.SName);
             Console.WriteLine("Age: 17");

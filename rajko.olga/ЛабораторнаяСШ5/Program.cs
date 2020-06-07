@@ -90,8 +90,24 @@ namespace ЛабораторнаяСШ5
     {
         protected static int ID = 0;
 
-        public bool SName { get;  set; }
-        public bool Name { get;  set; }
+        protected string name;
+        protected string sname;
+        public string SName
+        {
+            get { return sname; }
+            set
+            {
+                value = "Ivanov";
+            }
+        }
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                value = "Ivan";
+            }
+        }
 
         internal void Univer(int sum1, Human.Choise educ)
         {

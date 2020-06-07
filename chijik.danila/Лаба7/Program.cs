@@ -19,19 +19,19 @@ using static System.Console;
             RationalNumber a, b;
             int numerator, denominator;
             WriteLine("Введите числитель первой дроби");
-            numerator = Convert.ToInt32(Console.ReadLine());
+            numerator = Convert.ToInt32(ReadLine());
             WriteLine("Введите знаменатель первой дроби");
-            denominator = Convert.ToInt32(Console.ReadLine());
+            denominator = Convert.ToInt32(ReadLine());
             a = new RationalNumber(numerator, denominator);
             WriteLine("Введите число в формате a/b");
-            string form = Console.ReadLine();
+            string form = ReadLine();
             b = new RationalNumber(form);
             int ch;
             bool exit = false;
             do
             {
                 Menu();
-                ch = Convert.ToInt32(Console.ReadLine());
+                ch = Convert.ToInt32(ReadLine());
                 Clear();
                 switch (ch)
                 {
@@ -48,18 +48,18 @@ using static System.Console;
                         WriteLine($"{a / b} или {(double)(a / b)}");
                         break;
                     case 5:
-                        if (a > b) {WriteLine($"{a} или {(double)(a)} больше");}
-                        else if (a < b) {WriteLine($"{b} или {(double)(b)} больше");}
-                        else {WriteLine("Числа не равны");}
+                        if (a > b) { WriteLine($"{a} или {(double)(a)} больше"); }
+                        else if (a < b) { WriteLine($"{b} или {(double)(b)} больше"); }
+                        else WriteLine("Числа не равны");
                         break;
                     case 6:
-                        if (a < b) {WriteLine($"{a} или {(double)(a)} меньше");}
-                        else if {(a > b) WriteLine($"{b} или {(double)(b)} меньше");}
-                        else {WriteLine("Числа не равны");}
+                        if (a < b) { WriteLine($"{a} или {(double)(a)} меньше"); }
+                        else if (a > b) { WriteLine($"{b} или {(double)(b)} меньше"); }
+                        else WriteLine("Числа не равны");
                         break;
                     case 7:
-                        if (a == b) {WriteLine("Числа равны");}
-                        else {WriteLine("Числа не равны");}
+                        if (a == b) { WriteLine("Числа равны"); }
+                        else WriteLine("Числа не равны");
                         break;
                     case 8:
                         exit = true;

@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,12 +12,14 @@ namespace ЛабораторнаяСШ7
 
         public RationalNumber(int numerator, int denominator)
         {
+            // TODO: check arguments
+
             _numerator = numerator;
             _denominator = denominator;
         }
-
+        
         public RationalNumber(string form) //реализация перевода из строкового значения 
-        {
+        { // 1 ; 1/5
             char[] numerator = new char[25];
             char[] denominator = new char[25];
             int i = 0;
@@ -41,6 +43,11 @@ namespace ЛабораторнаяСШ7
             _denominator = Convert.ToInt32(str2);
         }
 
+        // Преобразование в строку
+        public override string ToString()
+        {
+            return $"{_numerator} / {_denominator}";
+        }
         //Реализация интерфейса
         public bool Equals(RationalNumber another)
         {
@@ -48,6 +55,24 @@ namespace ЛабораторнаяСШ7
                 return false;
             return _numerator * another._denominator == another._numerator * _denominator;
         }
+
+        public override bool Equals(object obj)
+        {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public override int GetHashCode()
+        {
+             return (int)(_numerator  + _denominator);
+        }
+
 
         //Математические операции
         public static RationalNumber operator +(RationalNumber a, RationalNumber b)
@@ -107,15 +132,10 @@ namespace ЛабораторнаяСШ7
             return (double)a <= (double)b;
         }
 
-        public static bool operator ==(RationalNumber a, RationalNumber b)
-        {
-            return a.Equals((object)b);
-        }
+        public static bool operator ==(RationalNumber a, RationalNumber b) =>
+            a is null ? b is null : a.Equals(b);
 
-        public static bool operator !=(RationalNumber a, RationalNumber b)
-        {
-            return !a.Equals((object)b);
-        }
+        public static bool operator !=(RationalNumber a, RationalNumber b) => !(a == b);
 
         //Операции преобразования типов
         public static explicit operator double(RationalNumber num)
@@ -127,32 +147,24 @@ namespace ЛабораторнаяСШ7
         {
             return num._numerator / num._denominator;
         }
-
-        // Преобразование в строку
-        public override string ToString()
-        {
-            return $"{_numerator} / {_denominator}";
-        }
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            RationalNumber number1, number2;
+            RationalNumber num1, num2;
             int numerator1, denominator1;
-            Console.WriteLine("Hello!");
             Console.WriteLine("Enter the numerator of the first rational fraction:");
             numerator1 = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter the denominator for the first rational fraction:");
             denominator1 = Convert.ToInt32(Console.ReadLine());
-            number1 = new RationalNumber(numerator1, denominator1);
+            num1 = new RationalNumber(numerator1, denominator1);
             Console.WriteLine("Enter the second number in format a/b:");
             string form = Console.ReadLine();
-            number2 = new RationalNumber(form);
+            num2 = new RationalNumber(form);
             while (true)
             {
-                Console.WriteLine();
                 Console.WriteLine("Select action:");
                 Console.WriteLine("1. Addition.");
                 Console.WriteLine("2. Subtraction.");
@@ -164,34 +176,34 @@ namespace ЛабораторнаяСШ7
                 Console.WriteLine("8. Convert to int.");
                 Console.WriteLine("9. Convert to double.");
                 Console.WriteLine("10.Finish the work.");
-                int otvet = Convert.ToInt32(Console.ReadLine());
+                int n = Convert.ToInt32(Console.ReadLine());
                 Console.Clear();
-                switch (otvet)
+                switch (n)
                 {
-                    case 1: Console.WriteLine($"{(number1 + number2).ToString()}"); break;
-                    case 2: Console.WriteLine($"{(number1 - number2).ToString()}"); break;
-                    case 3: Console.WriteLine($"{(number1 * number2).ToString()}"); break;
-                    case 4: Console.WriteLine($"{(number1 / number2).ToString()}"); break;
+                    case 1: Console.WriteLine($"{(num1 + num2).ToString()}"); break;
+                    case 2: Console.WriteLine($"{(num1 - num2).ToString()}"); break;
+                    case 3: Console.WriteLine($"{(num1 * num2).ToString()}"); break;
+                    case 4: Console.WriteLine($"{(num1 / num2).ToString()}"); break;
                     case 5:
-                        if (number1 > number2)
-                            Console.WriteLine($"{number1.ToString()}");
+                        if (num1 > num2)
+                            Console.WriteLine($"{num1.ToString()}");
                         else
-                            Console.WriteLine($"{number2.ToString()}");
+                            Console.WriteLine($"{num2.ToString()}");
                         break;
                     case 6:
-                        if (number1 < number2)
-                            Console.WriteLine($"{number1.ToString()}");
+                        if (num1 < num2)
+                            Console.WriteLine($"{num1.ToString()}");
                         else
-                            Console.WriteLine($"{number2.ToString()}");
+                            Console.WriteLine($"{num2.ToString()}");
                         break;
                     case 7:
-                        if (number1 == number2)
+                        if (num1 == num2)
                             Console.WriteLine("The numbers are equal");
                         else
                             Console.WriteLine("The numbers aren't equal");
                         break;
-                    case 8: Console.WriteLine($"{(int)number1}    {(int)number2}"); break;
-                    case 9: Console.WriteLine($"{(double)number1}    {(double)number2}"); break;
+                    case 8: Console.WriteLine($"{(int)num1}  {(int)num2}"); break;
+                    case 9: Console.WriteLine($"{(double)num1}  {(double)num2}"); break;
                     case 10: return;
                     default: break;
                 }

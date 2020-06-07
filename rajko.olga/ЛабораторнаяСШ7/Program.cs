@@ -12,14 +12,12 @@ namespace ЛабораторнаяСШ7
 
         public RationalNumber(int numerator, int denominator)
         {
-            // TODO: check arguments
-
             _numerator = numerator;
             _denominator = denominator;
         }
         
         public RationalNumber(string form) //реализация перевода из строкового значения 
-        { // 1 ; 1/5
+        { 
             char[] numerator = new char[25];
             char[] denominator = new char[25];
             int i = 0;

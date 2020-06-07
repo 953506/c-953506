@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -107,7 +107,7 @@ namespace ЛабораторнаяСШ8
                 }
                 else
                 {
-                    Console.WriteLine($"{o1.name} same course {o2.name}");
+                   Console.WriteLine($"{o1.name} same course {o2.name}");
                 }
             }
         }
@@ -134,15 +134,8 @@ namespace ЛабораторнаяСШ8
 
     class HumanComparer : IComparer<Human>
     {
-        public int Compare(Human p1, Human p2)
-        {
-            if (p1.name.Length > p2.name.Length)
-                return 1;
-            else if (p1.name.Length < p2.name.Length)
-                return -1;
-            else
-                return 0;
-        }
+        public int Compare(Human p1, Human p2) =>
+        p1.name.Length.CompareTo(p2.name.Length);
     }
     class Grant
     {
@@ -212,7 +205,6 @@ namespace ЛабораторнаяСШ8
         {
             Console.WriteLine("Bye, come later");
         }
-
         static void Main(string[] args)
         {
             Show show = Welcome;//создаем переменную делегата и присваем ей адрес метода

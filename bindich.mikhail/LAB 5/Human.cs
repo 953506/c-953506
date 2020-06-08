@@ -99,7 +99,7 @@ namespace _5
             return Guid.NewGuid().ToString();
         }
         
-        public void doWork()
+        public virtual void doWork()
         {
 
         }

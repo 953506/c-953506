@@ -17,7 +17,7 @@ namespace _5
             speciality = "";
         }
 
-        new public void doWork()
+        public override void doWork()
         {
             int tmp = goToWork();
             if (tmp == 0)

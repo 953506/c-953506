@@ -110,26 +110,25 @@ namespace ЛабораторнаяСШ7
         }
 
         //Операции сравнения
-        public static bool operator >(RationalNumber a, RationalNumber b)
+       public static bool operator >(RationalNumber a, RationalNumber b)
         {
-            return (double)a > (double)b;
+            return a > b;
         }
 
         public static bool operator <(RationalNumber a, RationalNumber b)
         {
-            return (double)a < (double)b;
+            return a < b;
         }
 
         public static bool operator >=(RationalNumber a, RationalNumber b)
         {
-            return (double)a >= (double)b;
+            return a >= b; // !!!!!
         }
 
         public static bool operator <=(RationalNumber a, RationalNumber b)
         {
-            return (double)a <= (double)b;
+            return a <= b;
         }
-
         public static bool operator ==(RationalNumber a, RationalNumber b) =>
             a is null ? b is null : a.Equals(b);
 

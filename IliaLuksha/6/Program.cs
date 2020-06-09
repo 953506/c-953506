@@ -8,6 +8,10 @@ namespace ConsoleApp1
 {
     class Program
     {
+        public class Num<T>
+        {
+            public T Field;
+        }
         static int Exist()
         {
             Console.WriteLine("Do you want to exist: ");
@@ -27,6 +31,8 @@ namespace ConsoleApp1
         }
         static void Main(string[] args)
         {
+            Num<string> g = new Num<string>();
+            g.Field = "Error";
             int num = 2;
             Plane example1 = new Plane();
             Car example2 = new Car();
@@ -86,6 +92,7 @@ namespace ConsoleApp1
                                                 }
                                             default:
                                                 {
+                                                    Console.WriteLine(g.Field);
                                                     Console.WriteLine("You can Enter only  numbers from 1 to 5");
                                                     Environment.Exit(0);
                                                     break;
@@ -108,6 +115,7 @@ namespace ConsoleApp1
                                             case '2': break;
                                             default:
                                                 {
+                                                    Console.WriteLine(g.Field);
                                                     Console.WriteLine("You can Enter only 1 or 2");
                                                     Environment.Exit(0);
                                                     break;
@@ -137,6 +145,7 @@ namespace ConsoleApp1
                                                 }
                                             default:
                                                 {
+                                                    Console.WriteLine(g.Field);
                                                     Console.WriteLine("Functoin error");
                                                     Environment.Exit(0);
                                                     break;
@@ -147,6 +156,7 @@ namespace ConsoleApp1
                                     }
                                 default:
                                     {
+                                        Console.WriteLine(g.Field);
                                         Console.WriteLine("You can Enter only 1, 2 or 3");
                                         Environment.Exit(0);
                                         break;
@@ -206,6 +216,7 @@ namespace ConsoleApp1
                                                 }
                                             default:
                                                 {
+                                                    Console.WriteLine(g.Field);
                                                     Console.WriteLine("You can Enter only  numbers from 1 to 5");
                                                     Environment.Exit(0);
                                                     break;
@@ -228,6 +239,7 @@ namespace ConsoleApp1
                                             case '2': break;
                                             default:
                                                 {
+                                                    Console.WriteLine(g.Field);
                                                     Console.WriteLine("You can Enter only 1 or 2");
                                                     Environment.Exit(0);
                                                     break;
@@ -251,6 +263,7 @@ namespace ConsoleApp1
                                             case '2': break;
                                             default:
                                                 {
+                                                    Console.WriteLine(g.Field);
                                                     Console.WriteLine("You can Enter only 1 or 2");
                                                     Environment.Exit(0);
                                                     break;
@@ -280,6 +293,7 @@ namespace ConsoleApp1
                                                 }
                                             default:
                                                 {
+                                                    Console.WriteLine(g.Field);
                                                     Console.WriteLine("Functoin error");
                                                     Environment.Exit(0);
                                                     break;
@@ -290,6 +304,7 @@ namespace ConsoleApp1
                                     }
                                 default:
                                     {
+                                        Console.WriteLine(g.Field);
                                         Console.WriteLine("You can Enter only 1 2 3 or 4");
                                         Environment.Exit(0);
                                         break;
@@ -301,6 +316,7 @@ namespace ConsoleApp1
                     }
                 default:
                     {
+                        Console.WriteLine(g.Field);
                         Console.WriteLine("Change enter is not correct");
                         Environment.Exit(0);
                         break;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    interface Interface1    
+    interface Informatoin    
     {
         string Name { get; set; }
         int Age { get; set; }

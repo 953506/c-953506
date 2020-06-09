@@ -1,0 +1,7 @@
+C:\Users\TommyWiseau\Desktop\Shavel Yan\Лаб8\ConsoleApp7\ConsoleApp7\bin\Debug\ConsoleApp7.exe.config
+C:\Users\TommyWiseau\Desktop\Shavel Yan\Лаб8\ConsoleApp7\ConsoleApp7\bin\Debug\ConsoleApp7.exe
+C:\Users\TommyWiseau\Desktop\Shavel Yan\Лаб8\ConsoleApp7\ConsoleApp7\bin\Debug\ConsoleApp7.pdb
+C:\Users\TommyWiseau\Desktop\Shavel Yan\Лаб8\ConsoleApp7\ConsoleApp7\obj\Debug\ConsoleApp7.csprojAssemblyReference.cache
+C:\Users\TommyWiseau\Desktop\Shavel Yan\Лаб8\ConsoleApp7\ConsoleApp7\obj\Debug\ConsoleApp7.csproj.CoreCompileInputs.cache
+C:\Users\TommyWiseau\Desktop\Shavel Yan\Лаб8\ConsoleApp7\ConsoleApp7\obj\Debug\ConsoleApp7.exe
+C:\Users\TommyWiseau\Desktop\Shavel Yan\Лаб8\ConsoleApp7\ConsoleApp7\obj\Debug\ConsoleApp7.pdb

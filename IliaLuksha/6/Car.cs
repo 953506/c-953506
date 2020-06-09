@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Car:Transport, Interface1
+    class Car:Transport, Informatoin
     {
         private int _TankVolume;
         public Car()
@@ -19,7 +19,6 @@ namespace ConsoleApp1
             _power = 1500;
         }
         public string Name { get; set; }
-
         public int Age
         {
             get
@@ -77,7 +76,6 @@ namespace ConsoleApp1
                 }
             }
         }
-
         public void PowerFactor() 
         {
             double ras = 0;

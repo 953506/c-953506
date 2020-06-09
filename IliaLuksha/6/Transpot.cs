@@ -55,7 +55,6 @@ namespace ConsoleApp1
         }
         public int Weight { private set; get; }
         string Name { get; set; }
-
         public string Characteristic
         {
             get
@@ -80,7 +79,6 @@ namespace ConsoleApp1
                 }
             }
         }
-
         public string Category
         {
             get
@@ -134,7 +132,6 @@ namespace ConsoleApp1
                 }
             }
         }
-
         public int NumberOfPassengers
         {
             get

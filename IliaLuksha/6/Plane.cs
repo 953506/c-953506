@@ -49,7 +49,6 @@ namespace ConsoleApp1
                 }
             }
         }
-
         public int Power
         {
             get

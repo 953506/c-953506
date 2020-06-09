@@ -50,31 +50,11 @@ namespace _6
             Employee e = o as Employee;
             if (e != null)
             {
-                if (this.firstName.CompareTo(e.firstName) == 0 && this.lastName.CompareTo(e.lastName) == 0)
-                {
-                    Console.WriteLine("Equal");
-                    return 0;
-                }
-                if (this.firstName.CompareTo(e.firstName) == 0)
-                {
-                    Console.WriteLine("Names are equal");
-                    return 1;
-                }
-                if (this.lastName.CompareTo(e.lastName) == 0)
-                {
-                    Console.WriteLine("Names are equal");
-                    return 2;
-                }
-                else
-                {
-                    Console.WriteLine("Not equal");
-                    return -1;
-                }
+                return this.lastName.CompareTo(e.lastName);
             }
             else
             {
-                Console.WriteLine("Can't compare two objects");
-                return -2;
+                throw new Exception("Can't compare two objects");
             }
         }
 

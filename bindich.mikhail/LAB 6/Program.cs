@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace _6
 {
@@ -9,10 +10,20 @@ namespace _6
             Student stud = new Student("", "");
             stud.studentPrintInfo();
 
-            Employee emp = new Employee("Dave", "Murray");
-            Employee emp2 = new Employee("Joe", "Rogan");
 
-            Console.WriteLine(emp.CompareTo(emp2));
+            //Console.WriteLine(emp.CompareTo(emp2));
+
+            List<Human> humans = new List<Human>();
+            humans.Add(new Employee("Dave", "Murray"));
+            humans.Add(new Employee("FName", "LName"));
+            humans.Add(new Employee("Joe", "Rogan"));
+
+            humans.Sort();
+
+            foreach (Human human in humans)
+            {
+                Console.WriteLine($"{human.firstName} {human.lastName}");
+            }
         }
     }
 }

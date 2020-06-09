@@ -75,7 +75,7 @@ namespace _6
             this.height = height;
         }
 
-        // Это метод
+        // Это методы
         public float bodyMassIndex()
         {
             return bodyMassIndex(this.height, this.weight);

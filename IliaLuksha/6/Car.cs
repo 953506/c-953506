@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Car:Transport, Interface1
+    class Car:Transport, Informatoin
     {
         private int _TankVolume;
         public Car()

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Plane:Transport, Interface1
+    class Plane:Transport, Informatoin
     {
         private int _length;
         public string Name {get; set;}

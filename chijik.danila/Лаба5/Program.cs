@@ -20,5 +20,10 @@ using static System.Console;
             WriteLine($"1. Type: {friendsCar.Name}.\n2. Color: {friendsCar.Color}\n3. Year of production: {friendsCar.YearMade}");
             WriteLine($"4. Model: {friendsCar.CurrentModel}\n5. Car Type: {friendsCar.CurrentType}\n6. Comfort level: {friendsCar.ComfortLevel}\n\n");
             WriteLine($"The price is {friendsCar.Price}\n\n");
+            
+            Car yourCar1 = new Car1("Auto", "Black", "high", 2019, 4, 80, Car1.Model.M3, Car.CarType.Sedan);
+            yourCar1.TestDrive();
+            Car yourCar2 = new Car2("Auto", "Black", "high", 2019, 4, 80, Car1.Model.M3, Car.CarType.Sedan);
+            yourCar2.TestDrive();
         }
     }

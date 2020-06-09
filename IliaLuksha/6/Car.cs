@@ -19,7 +19,6 @@ namespace ConsoleApp1
             _power = 1500;
         }
         public string Name { get; set; }
-
         public int Age
         {
             get
@@ -77,7 +76,6 @@ namespace ConsoleApp1
                 }
             }
         }
-
         public void PowerFactor() 
         {
             double ras = 0;

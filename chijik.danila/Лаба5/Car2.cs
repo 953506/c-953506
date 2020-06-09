@@ -39,6 +39,7 @@
 
         public override void TestDrive()
         {
-            Console.WriteLine("Test drive went very well!");
+            base.TestDrive();
+            Console.WriteLine("Mercedes!");
         }
     }

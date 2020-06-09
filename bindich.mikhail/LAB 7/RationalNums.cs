@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml.Schema;
 
 namespace _7
@@ -37,11 +38,19 @@ namespace _7
         //Метод по переводу строки в число
         private void converter(string input)
         {
-            if (input.Contains(' '))
+            Regex regex1 = new Regex(@"^\d+[\/:]\d+$");
+            Regex regex2 = new Regex(@"^\d+(,\d+){0,1}$");
+            if (!regex1.IsMatch(input) && !regex2.IsMatch(input))
             {
-                string[] arr = input.Split(' ');
+                throw new Exception("Wrong string format");
+            }
+
+            char[] delimeters = { '/', ':' }; 
+            if (input.Contains(delimeters[0]) || input.Contains(delimeters[1]))
+            {
+                string[] arr = input.Split(delimeters);
                 numerator = Convert.ToInt32(arr[0]);
-                denominator = Convert.ToInt32(arr[2]);
+                denominator = Convert.ToInt32(arr[1]);
             }
             else
             {

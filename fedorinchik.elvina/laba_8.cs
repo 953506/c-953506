@@ -108,7 +108,7 @@ namespace laba_8
                     }
                 }
             }
-
+         }
 
             class Program
             {

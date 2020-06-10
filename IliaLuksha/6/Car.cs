@@ -18,7 +18,9 @@ namespace ConsoleApp1
             _age = 56;
             _power = 1500;
         }
+        
         public string Name { get; set; }
+        
         public int Age
         {
             get
@@ -38,6 +40,7 @@ namespace ConsoleApp1
                 }
             }
         }
+        
         public int TankVolume
         {
             get
@@ -57,6 +60,7 @@ namespace ConsoleApp1
                 }
             }
         }
+        
         public int Power
         {
             get
@@ -76,6 +80,7 @@ namespace ConsoleApp1
                 }
             }
         }
+        
         public void PowerFactor() 
         {
             double ras = 0;
@@ -105,6 +110,7 @@ namespace ConsoleApp1
             }
             Console.WriteLine($"The power factor of the motor is {ras}");
         }
+        
         public void Cout()
         {
             Console.WriteLine($"Weight in tons = {_weight}; Category is {_category}; Characteristic is {_characteristic}");

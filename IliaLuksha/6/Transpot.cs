@@ -23,6 +23,7 @@ namespace ConsoleApp1
              _characteristic = "Automobile";
             _NumberOfPassengers = 3;
         }
+        
         public Transport(int weight):this()
         {
             _weight = weight;
@@ -30,6 +31,7 @@ namespace ConsoleApp1
             _characteristic = "Automobile";
             _NumberOfPassengers = 3;
         }
+        
         public Transport(int weight, string category) : this(weight)
         {
             _weight = weight;
@@ -37,6 +39,7 @@ namespace ConsoleApp1
             _characteristic = "Automobile";
             _NumberOfPassengers = 3;
         }
+        
         public Transport(string category) : this()
         {
             _weight = 2;
@@ -44,6 +47,7 @@ namespace ConsoleApp1
             _characteristic = "Automobile";
             _NumberOfPassengers = 3;
         }
+        
         public int CompareTo(Transport obj)
         {  
             if(this._weight > obj._weight)
@@ -53,8 +57,10 @@ namespace ConsoleApp1
             else
                 return 0;
         }
+        
         public int Weight { private set; get; }
         string Name { get; set; }
+        
         public string Characteristic
         {
             get
@@ -79,6 +85,7 @@ namespace ConsoleApp1
                 }
             }
         }
+        
         public string Category
         {
             get
@@ -101,6 +108,7 @@ namespace ConsoleApp1
                 }
             }
         }
+        
         public string this[string index]
         {
             get
@@ -132,6 +140,7 @@ namespace ConsoleApp1
                 }
             }
         }
+        
         public int NumberOfPassengers
         {
             get
@@ -149,6 +158,7 @@ namespace ConsoleApp1
                     _NumberOfPassengers = value; 
                 }
             }
-        }
+         }
+         
     }
 }

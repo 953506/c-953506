@@ -30,6 +30,7 @@ namespace ConsoleApp1
                 }
             }
         }
+        
         public int Age
         {
             get
@@ -49,6 +50,7 @@ namespace ConsoleApp1
                 }
             }
         }
+        
         public int Power
         {
             get
@@ -68,6 +70,7 @@ namespace ConsoleApp1
                 }
             }
         }
+        
         public void Cout()
         {
             Console.WriteLine($"Weight in tons = {_weight}; Category is {_category}; Characteristic is {_characteristic}");

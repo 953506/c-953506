@@ -12,6 +12,7 @@ namespace ConsoleApp1
         {
             public T Field;
         }
+        
         static int Exist()
         {
             Console.WriteLine("Do you want to exist: ");
@@ -29,6 +30,7 @@ namespace ConsoleApp1
                     }
             }
         }
+        
         static void Main(string[] args)
         {
             Num<string> g = new Num<string>();

@@ -21,7 +21,9 @@ namespace ConsoleApp1
             else
                 throw new Exception("Numbers are not integer!");
         }
+        
         public int Name { get; set; }
+        
         public int CompareTo(object obj)
         {
             if (obj is Number p)
@@ -35,6 +37,7 @@ namespace ConsoleApp1
             else
                 throw new Exception("Unable to compare these two objects!");
         }
+        
         public bool Equals(Number other)
         {
             if (other == null)
@@ -44,6 +47,7 @@ namespace ConsoleApp1
             else
                 return false;
         }
+        
         public override bool Equals(Object obj)
         {
             if (obj == null)
@@ -57,6 +61,7 @@ namespace ConsoleApp1
             else
                 return Equals(exObj);
         }
+        
         public override int GetHashCode()
         {
             if (this.Name == 0)
@@ -78,6 +83,7 @@ namespace ConsoleApp1
 
             return security1.Equals(security2);
         }
+        
         public static bool operator !=(Number security1, Number security2) => !(security1 == security2);
 
         public static Number operator +(Number o1, Number o2)
@@ -91,6 +97,7 @@ namespace ConsoleApp1
 
             return result;
         }
+        
         public static Number operator -(Number o1, Number o2)
         {
             Number result;
@@ -135,6 +142,7 @@ namespace ConsoleApp1
             else
                 return false;
         }
+        
         public static bool operator <(Number o1, Number o2)
         {
             if (o1._n == o2._n & o1._m == o2._m)
@@ -178,6 +186,7 @@ namespace ConsoleApp1
             else
                 return false;
         }
+        
         public static bool operator <=(Number o1, Number o2)
         {
             if (o1._n == o2._n & o1._m == o2._m)
@@ -199,6 +208,7 @@ namespace ConsoleApp1
             else
                 return false;
         }
+        
         public override string ToString()
         {
             return $"{_n} / {_m}";

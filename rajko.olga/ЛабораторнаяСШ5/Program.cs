@@ -24,6 +24,7 @@ namespace ЛабораторнаяСШ5
                 }
             }
         }
+        
         public int Math
         {
             get { return math; }
@@ -39,6 +40,7 @@ namespace ЛабораторнаяСШ5
                 }
             }
         }
+        
         public int Phis
         {
             get {return phis; }
@@ -54,6 +56,7 @@ namespace ЛабораторнаяСШ5
                 }
             }
         }
+        
         public int Rus
         {
             get {return rus; }
@@ -69,6 +72,7 @@ namespace ЛабораторнаяСШ5
                 }
             }
         }
+        
         public int Gpa
         {
             get { return gpa; }
@@ -100,6 +104,7 @@ namespace ЛабораторнаяСШ5
                 value = "Ivanov";
             }
         }
+         
         public string Name
         {
             get { return name; }
@@ -114,6 +119,7 @@ namespace ЛабораторнаяСШ5
             throw new NotImplementedException();
         }
     }
+    
     public class Human : Id
     {
         protected string name;
@@ -124,17 +130,20 @@ namespace ЛабораторнаяСШ5
             Paid = 0,
             Free = 1,
         }
+        
         public Human(string name, string sname)
         {
             this.name = name;
             this.sname = sname;
         }
+        
         public static int VivodSum(int rus, int math, int phis, int gpa)
         {
             int sum = rus + math + phis + gpa;
             Console.WriteLine("Sum: " + sum);
             return sum;
         }
+        
         public virtual void Univer(int sum, Choise educ)
         {
             if (educ == Choise.Free)
@@ -163,6 +172,7 @@ namespace ЛабораторнаяСШ5
             proverka.Rus = rus;
             proverka.Gpa = gpa;
         }
+        
         public override void Univer(int sum, Choise educ)
         {
             if (educ == Choise.Free)
@@ -190,6 +200,7 @@ namespace ЛабораторнаяСШ5
             proverka.Rus = rus;
             proverka.Gpa = gpa;
         }
+        
         public override void Univer(int sum, Choise educ)
         {
             if (educ == Choise.Free)
@@ -217,6 +228,7 @@ namespace ЛабораторнаяСШ5
             proverka.Rus = rus;
             proverka.Gpa = gpa;
         }
+        
         public override void Univer(int sum, Choise educ)
         {
             if (educ == Choise.Free)
@@ -243,6 +255,7 @@ namespace ЛабораторнаяСШ5
             proverka.Rus = rus;
             proverka.Gpa = gpa;
         }
+        
         public override void Univer(int sum, Choise educ)
         {
             if (educ == Choise.Free)

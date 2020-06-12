@@ -103,6 +103,21 @@ namespace LABA7
                     return false;
                 return _n * a._m == a._n * _m;
             }
+            
+            public override bool Equals(object obj)
+            {
+                if (obj == null)
+                {
+                    return false;
+                }
+                RationalNumber objtest = obj as RationalNumber;
+                if (objtest == null)
+                {
+                    return false;
+                }
+                else
+                    return Equals(objtest);
+            }
 
             public int CompareTo(object o)
             {

@@ -17,7 +17,8 @@ using static System.Console;
         static void Main(string[] args)
         {
             RationalNumber a, b;
-            int numerator, denominator;
+            int numerator, denominator, ch;
+            bool exit = false;
             WriteLine("Введите числитель первой дроби");
             numerator = Convert.ToInt32(ReadLine());
             WriteLine("Введите знаменатель первой дроби");
@@ -26,8 +27,6 @@ using static System.Console;
             WriteLine("Введите число в формате a/b");
             string form = ReadLine();
             b = new RationalNumber(form);
-            int ch;
-            bool exit = false;
             do
             {
                 Menu();

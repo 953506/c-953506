@@ -4,11 +4,13 @@
     {
         private readonly int _numerator;
         private readonly int _denominator;
+        
         public RationalNumber(int numerator, int denominator)
         {
             _numerator = numerator;
             _denominator = denominator;
         }
+        
         public RationalNumber(string num)
         {
             char[] numer = new char[25];
@@ -33,62 +35,73 @@
             _numerator = Convert.ToInt32(str1);
             _denominator = Convert.ToInt32(str2);
         }
+        
         public static RationalNumber operator +(RationalNumber a, RationalNumber b)
         {
             RationalNumber res;
             res = new RationalNumber(a._numerator * b._denominator + b._numerator * a._denominator, a._denominator * b._denominator);
             return res;
         }
+        
         public static RationalNumber operator -(RationalNumber a, RationalNumber b)
         {
             RationalNumber res;
             res = new RationalNumber(a._numerator * b._denominator - b._numerator * a._denominator, a._denominator * b._denominator);
             return res;
         }
+        
         public static RationalNumber operator *(RationalNumber a, RationalNumber b)
         {
             RationalNumber res;
             res = new RationalNumber(a._numerator * b._numerator, a._denominator * b._denominator);
             return res;
         }
+        
         public static RationalNumber operator /(RationalNumber a, RationalNumber b)
         {
             RationalNumber res;
             res = new RationalNumber(a._numerator * b._denominator, a._denominator * b._numerator);
             return res;
         }
+        
         public static bool operator <(RationalNumber a, RationalNumber b)
         {
             if (a.CompareTo(b) == -1)
                 return true;
             else return false;
         }
+        
         public static bool operator >(RationalNumber a, RationalNumber b)
         {
             if (a.CompareTo(b) == 1)
                 return true;
             else return false;
         }
+        
         public static bool operator >=(RationalNumber a, RationalNumber b)
         {
             if (a.CompareTo(b) == 1 || a.CompareTo(b) == 0)
                 return true;
             else return false;
         }
+        
         public static bool operator <=(RationalNumber a, RationalNumber b)
         {
             if (a.CompareTo(b) == -1 || a.CompareTo(b) == 0)
                 return true;
             else return false;
         }
+        
         public static bool operator ==(RationalNumber a, RationalNumber b)
         {
             return a.Equals(b);
         }
+        
         public static bool operator !=(RationalNumber a, RationalNumber b)
         {
             return a.Equals(b);
         }
+        
         public int CompareTo(object o)
         {
             RationalNumber num = o as RationalNumber;
@@ -103,12 +116,14 @@
             else
                 throw new Exception("Не могу сравнить эти два объекта");
         }
+        
         public bool Equals(RationalNumber a)
         {
             if (a is null)
                 return false;
             return _numerator * a._denominator == a._numerator * _denominator;
         }
+        
         public override bool Equals(Object obj)
         {
             if (obj == null)
@@ -119,17 +134,21 @@
             else
                 return Equals(num);
         }
+        
         public static explicit operator double(RationalNumber a)
         {
             return (double)a._numerator / a._denominator;
         }
+        
         public static implicit operator int(RationalNumber a)
         {
             return a._numerator / a._denominator;
         }
+        
         public override string ToString()
         {
             return ($"{_numerator}/{_denominator}");
         }
+        
         ~RationalNumber() { }
     }

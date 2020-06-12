@@ -1,7 +1,9 @@
 ﻿using System;
 using static System.Console;
+
     class Program
     {
+        
         static void Menu()
         {
             WriteLine("Выберите действие:\n" +
@@ -14,24 +16,29 @@ using static System.Console;
                               "7)Показать, равны ли числа\n" +
                               "8)Выход");
         }
+        
         static void Main(string[] args)
         {
             RationalNumber a, b;
             int numerator, denominator, ch;
             bool exit = false;
+            
             WriteLine("Введите числитель первой дроби");
-            numerator = Convert.ToInt32(ReadLine());
+            numerator = Int32.Parse(ReadLine());
             WriteLine("Введите знаменатель первой дроби");
-            denominator = Convert.ToInt32(ReadLine());
+            denominator = Int32.Parse(ReadLine());
             a = new RationalNumber(numerator, denominator);
+            
             WriteLine("Введите число в формате a/b");
             string form = ReadLine();
             b = new RationalNumber(form);
+            
             do
             {
                 Menu();
-                ch = Convert.ToInt32(ReadLine());
+                ch = Int32.Parse(ReadLine());
                 Clear();
+                
                 switch (ch)
                 {
                     case 1:

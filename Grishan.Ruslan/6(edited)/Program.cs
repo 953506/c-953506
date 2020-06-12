@@ -13,11 +13,12 @@ namespace intrfc6
         
         class Tc : IComparable<IStuff>
         {
-            public int AllMoney { get; set; }
             public Tc(string name)
             {
                 Console.WriteLine(name);
-            }
+            }            
+            
+            public int AllMoney { get; set; }            
             public int Doxod { get; set; }
             public IMagazine Magazine { get; set; }
             public IStuff Stuff { get; set; }

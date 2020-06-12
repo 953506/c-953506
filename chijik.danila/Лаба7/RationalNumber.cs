@@ -35,8 +35,8 @@
             
             string str1 = new string(numer);
             string str2 = new string(denom);
-            _numerator = Convert.ToInt32(str1);
-            _denominator = Convert.ToInt32(str2);
+            _numerator = Int32.Parse(str1);
+            _denominator = Int32.Parse(str2);
         }
         
         public static RationalNumber operator +(RationalNumber a, RationalNumber b)

@@ -10,6 +10,7 @@ namespace intrfc6
             public T Field1;
             public T Field2;
         }
+        
         class Tc : IComparable<IStuff>
         {
             public int AllMoney { get; set; }

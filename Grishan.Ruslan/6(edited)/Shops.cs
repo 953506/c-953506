@@ -12,7 +12,6 @@ namespace intrfc6
         public int Rasxod { get; set; }
 
         public void Working()
-
         {
             if (work == true)
 

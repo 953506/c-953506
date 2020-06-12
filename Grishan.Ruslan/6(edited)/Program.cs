@@ -93,6 +93,7 @@ namespace intrfc6
                 AllMoney += Doxod;
             }
         }
+        
         static void Main(string[] args)
         {
             Message<string> g = new Message<string>();

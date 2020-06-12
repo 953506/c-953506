@@ -20,12 +20,14 @@ using static System.Console;
         {
             RationalNumber a, b;
             int numerator, denominator, ch;
-            bool exit = false; 
+            bool exit = false;
+            
             WriteLine("Введите числитель первой дроби");
             numerator = int.Parse(ReadLine());
             WriteLine("Введите знаменатель первой дроби");
             denominator = int.Parse(ReadLine());
             a = new RationalNumber(numerator, denominator);
+            
             WriteLine("Введите число в формате a/b");
             string form = ReadLine();
             b = new RationalNumber(form);
@@ -33,7 +35,7 @@ using static System.Console;
             do
             {
                 Menu();
-                ch = Convert.ToInt32(ReadLine());
+                ch = int.Parse(ReadLine());
                 Clear();
                 switch (ch)
                 {
@@ -70,6 +72,7 @@ using static System.Console;
                         WriteLine("Что-то не так.");
                         break;
                 }
-            } while (!exit);
+            } 
+            while (!exit);
         }
     }

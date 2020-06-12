@@ -152,29 +152,6 @@ namespace _7
             return false;
         }
 
-        //static public RationalNums operator = (RationalNums r1, RationalNums r2)
-        //{
-        //    int denom = nok(r1.denominator, r2.denominator);
-        //    double num1 = r1.numerator * denom / r1.denominator;
-        //    double num2 = r2.numerator * denom / r2.denominator;
-        //    if (num1 > num2)
-        //    {
-        //        string res = r1.numerator.ToString() + delimeter + r1.denominator.ToString() + " > " + r2.numerator.ToString() + delimeter + r2.denominator.ToString();
-        //        return res;
-        //    }
-        //    if (num1 < num2)
-        //    {
-        //        string res = r1.numerator.ToString() + delimeter + r1.denominator.ToString() + " < " + r2.numerator.ToString() + delimeter + r2.denominator.ToString();
-        //        return res;
-        //    }
-        //    else
-        //    {
-        //        string res = r1.numerator.ToString() + delimeter + r1.denominator.ToString() + " = " + r2.numerator.ToString() + delimeter + r2.denominator.ToString();
-        //        return res;
-        //    }
-
-        //}
-
         //Реализация метода интерфейса IComparable
         public int CompareTo(object o)
         {

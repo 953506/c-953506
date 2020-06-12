@@ -42,34 +42,39 @@ namespace _7
             Regex regex2 = new Regex(@"^\d+(,\d+){0,1}$");
             if (!regex1.IsMatch(input) && !regex2.IsMatch(input))
             {
-                throw new Exception("Wrong string format");
-            }
-
-            char[] delimeters = { '/', ':' }; 
-            if (input.Contains(delimeters[0]) || input.Contains(delimeters[1]))
-            {
-                string[] arr = input.Split(delimeters);
-                numerator = Convert.ToInt32(arr[0]);
-                denominator = Convert.ToInt32(arr[1]);
+                Console.WriteLine("Wrong string format");
+                numerator = 0;
+                denominator = 1;
+                //break;
             }
             else
             {
-                double tmp = Convert.ToDouble(input);
-                double i = 0;
-                while (true)
+                char[] delimeters = { '/', ':' };
+                if (input.Contains(delimeters[0]) || input.Contains(delimeters[1]))
                 {
-                    if (tmp % 1 != 0)
-                    {
-                        tmp *= 10;
-                        i++;
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    string[] arr = input.Split(delimeters);
+                    numerator = Convert.ToInt32(arr[0].Trim());
+                    denominator = Convert.ToInt32(arr[1].Trim());
                 }
-                numerator = tmp;
-                denominator = Convert.ToInt32(Math.Pow(10, i));
+                else
+                {
+                    double tmp = Convert.ToDouble(input);
+                    double i = 0;
+                    while (true)
+                    {
+                        if (tmp % 1 != 0)
+                        {
+                            tmp *= 10;
+                            i++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    numerator = tmp;
+                    denominator = Convert.ToInt32(Math.Pow(10, i));
+                }
             }
         }
 

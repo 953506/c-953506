@@ -68,7 +68,7 @@ namespace ЛабораторнаяСШ7
 
         public override int GetHashCode()
         {
-             return (int)(_numerator  + _denominator);
+             return (int)(_numerator * 17  + _denominator);
         }
 
 

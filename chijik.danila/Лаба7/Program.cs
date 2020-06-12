@@ -36,7 +36,7 @@ using static System.Console;
             do
             {
                 Menu();
-                ch = int.Parse(ReadLine());
+                ch = Int32.Parse(ReadLine());
                 Clear();
                 switch (ch)
                 {

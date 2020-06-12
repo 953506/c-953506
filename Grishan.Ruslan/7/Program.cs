@@ -65,7 +65,6 @@ namespace LABA7
                 RationalNumber result = new RationalNumber(num, dem);
                 return result;
             }
-
             // сокращение
             static private int NOD(int n, int m)
             {
@@ -141,7 +140,6 @@ namespace LABA7
                     return -1;
                 return 0;
             }
-
             //операторы сравнеия
             public static bool operator >(RationalNumber a, RationalNumber b)
             {

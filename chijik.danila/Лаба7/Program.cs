@@ -38,6 +38,7 @@ using static System.Console;
                 Menu();
                 ch = Int32.Parse(ReadLine());
                 Clear();
+                
                 switch (ch)
                 {
                     case 1:
@@ -73,7 +74,6 @@ using static System.Console;
                         WriteLine("Что-то не так.");
                         break;
                 }
-            } 
-            while (!exit);
+            } while (!exit);
         }
     }

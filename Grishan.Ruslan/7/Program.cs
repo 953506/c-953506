@@ -30,6 +30,7 @@ namespace LABA7
                         throw new Exception("Число должно быть натуральным!");
                 }
             }
+            
             //операторы действий
             public static RationalNumber operator +(RationalNumber a, RationalNumber b)
             {
@@ -65,6 +66,7 @@ namespace LABA7
                 RationalNumber result = new RationalNumber(num, dem);
                 return result;
             }
+            
             // сокращение
             static private int NOD(int n, int m)
             {
@@ -95,6 +97,7 @@ namespace LABA7
                     M = m / nod;
                 }
             }
+            
             // сравнение
             public bool Equals(RationalNumber a)
             {
@@ -140,6 +143,7 @@ namespace LABA7
                     return -1;
                 return 0;
             }
+            
             //операторы сравнеия
             public static bool operator >(RationalNumber a, RationalNumber b)
             {
@@ -191,7 +195,7 @@ namespace LABA7
                     return false;
             }
 
-            // вывод
+            // преобразования типов
             public override string ToString()
             {
                 return string.Format($"{_n}/{_m}");

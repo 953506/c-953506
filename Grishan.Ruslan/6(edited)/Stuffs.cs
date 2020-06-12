@@ -43,6 +43,7 @@ namespace intrfc6
             work = false;
             Money();
         }
+        
         private void Money()
         {
             if (work == true)
@@ -66,6 +67,7 @@ namespace intrfc6
             work = true;
             Money();
         }
+        
         private void Money()
         {
             if (work == true)
@@ -89,6 +91,7 @@ namespace intrfc6
             work = true;
             Money();
         }
+        
         private void Money()
         {
             if (work == true)

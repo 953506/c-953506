@@ -88,6 +88,7 @@ namespace LABA7
                 } while (m != 0); 
                 return (n);
             }
+            
             void Reduction(int n, int m)
             {
                 int nod = NOD(n, m);

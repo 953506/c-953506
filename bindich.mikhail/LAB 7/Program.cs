@@ -19,13 +19,21 @@ namespace _7
             RationalNums.delimeter = Console.ReadLine();
 
             res = a1 * a2;
-            Console.WriteLine($"{res.numerator}/{res.denominator}"); 
+            Console.WriteLine($"{res.numerator}{RationalNums.delimeter}{res.denominator}"); 
             res = a1 / a2;
-            Console.WriteLine($"{res.numerator}/{res.denominator}");
+            Console.WriteLine($"{res.numerator}{RationalNums.delimeter}{res.denominator}");
             res = a1 + a2;
-            Console.WriteLine($"{res.numerator}/{res.denominator}");
+            Console.WriteLine($"{res.numerator}{RationalNums.delimeter}{res.denominator}");
             res = a1 - a2;
-            Console.WriteLine($"{res.numerator}/{res.denominator}");
+            Console.WriteLine($"{res.numerator}{RationalNums.delimeter}{res.denominator}");
+            if (a1 == a2)
+            {
+                Console.WriteLine("Numbers are equal");
+            }
+            else
+            {
+                Console.WriteLine("Numbers are not equal");
+            }
 
             RationalNums a3 = new RationalNums(1, 4);
             double x = (double)a3;

@@ -129,6 +129,29 @@ namespace _7
             return res;
         }
 
+        static public bool operator ==(RationalNums r1, RationalNums r2)
+        {
+            int denom = nok(r1.denominator, r2.denominator);
+            r1.numerator *= denom / r1.denominator;
+            r2.numerator *= denom / r2.denominator;
+            if (r1.numerator == r2.numerator)
+            {
+                return true;
+            }
+            else return false;
+        }
+        static public bool operator !=(RationalNums r1, RationalNums r2)
+        {
+            int denom = nok(r1.denominator, r2.denominator);
+            r1.numerator *= denom / r1.denominator;
+            r2.numerator *= denom / r2.denominator;
+            if (r1.numerator != r2.numerator)
+            {
+                return true;
+            }
+            return false;
+        }
+
         //static public RationalNums operator = (RationalNums r1, RationalNums r2)
         //{
         //    int denom = nok(r1.denominator, r2.denominator);

@@ -2,6 +2,7 @@
 using static System.Console;
     class Program
     {
+        
         static void Menu()
         {
             WriteLine("Выберите действие:\n" +
@@ -14,11 +15,12 @@ using static System.Console;
                               "7)Показать, равны ли числа\n" +
                               "8)Выход");
         }
+        
         static void Main(string[] args)
         {
             RationalNumber a, b;
             int numerator, denominator, ch;
-            bool exit = false;
+            bool exit = false; 
             WriteLine("Введите числитель первой дроби");
             numerator = Convert.ToInt32(ReadLine());
             WriteLine("Введите знаменатель первой дроби");
@@ -27,6 +29,7 @@ using static System.Console;
             WriteLine("Введите число в формате a/b");
             string form = ReadLine();
             b = new RationalNumber(form);
+            
             do
             {
                 Menu();

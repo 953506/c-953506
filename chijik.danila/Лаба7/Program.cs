@@ -1,5 +1,6 @@
 ﻿using System;
 using static System.Console;
+
     class Program
     {
         
@@ -23,9 +24,9 @@ using static System.Console;
             bool exit = false;
             
             WriteLine("Введите числитель первой дроби");
-            numerator = int.Parse(ReadLine());
+            numerator = Int32.Parse(ReadLine());
             WriteLine("Введите знаменатель первой дроби");
-            denominator = int.Parse(ReadLine());
+            denominator = Int32.Parse(ReadLine());
             a = new RationalNumber(numerator, denominator);
             
             WriteLine("Введите число в формате a/b");

@@ -184,7 +184,7 @@ namespace LABA7
                 return string.Format($"{_n}/{_m}");
             }
 
-            public static explicit operator double(RationalNumber a)
+            public static implicit operator double(RationalNumber a)
             {
                 return (double)a._n / a._m;
             }

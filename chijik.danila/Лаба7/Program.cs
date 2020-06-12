@@ -24,7 +24,7 @@ using static System.Console;
             WriteLine("Введите знаменатель первой дроби");
             denominator = Convert.ToInt32(ReadLine());
             a = new RationalNumber(numerator, denominator);
-            WriteLine("Введите число в формате a/b");
+            WriteLine("Введите вторую дробь в формате a/b");
             string form = ReadLine();
             b = new RationalNumber(form);
             do

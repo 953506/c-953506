@@ -10,9 +10,6 @@ namespace _6
             Student stud = new Student("", "");
             stud.studentPrintInfo();
 
-
-            //Console.WriteLine(emp.CompareTo(emp2));
-
             List<Human> humans = new List<Human>();
             humans.Add(new Employee("Dave", "Murray"));
             humans.Add(new Employee("FName", "LName"));

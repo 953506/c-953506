@@ -93,64 +93,64 @@ namespace _7
         }
 
         //Методы математических операций
-        static public string plus(double numerator1, int denominator1, double numerator2, int denominator2)
+        static public RationalNums operator + (RationalNums r1, RationalNums r2)
         {
-            int denom = nok(denominator1, denominator2);
-            numerator1 *= denom / denominator1;
-            numerator2 *= denom / denominator2;
-            double num = numerator1 + numerator2;
+            int denom = nok(r1.denominator, r2.denominator);
+            r1.numerator *= denom / r1.denominator;
+            r2.numerator *= denom / r2.denominator;
+            double num = r1.numerator + r2.numerator;
             string res = num.ToString() + delimeter + denom.ToString();
             return res;
         }
 
-        static public string minus(double numerator1, int denominator1, double numerator2, int denominator2)
+        static public RationalNums operator - (RationalNums r1, RationalNums r2)
         {
-            int denom = nok(denominator1, denominator2);
-            numerator1 *= denom / denominator1;
-            numerator2 *= denom / denominator2;
-            double num = numerator1 - numerator2;
+            int denom = nok(r1.denominator, r2.denominator);
+            r1.numerator *= denom / r1.denominator;
+            r2.numerator *= denom / r2.denominator;
+            double num = r1.numerator - r2.numerator;
             string res = num.ToString() + delimeter + denom.ToString();
             return res;
         }
 
-        static public string multiply(double numerator1, int denominator1, double numerator2, int denominator2)
+        static public RationalNums operator * (RationalNums r1, RationalNums r2)
         {
-            double resNumerator = numerator1 * numerator2;
-            int resDenominator = denominator1 * denominator2;
+            double resNumerator = r1.numerator * r2.numerator;
+            int resDenominator = r1.denominator * r2.denominator;
             string res = resNumerator.ToString() + delimeter + resDenominator.ToString();
             return res;
         }
 
-        static public string divide(double numerator1, int denominator1, double numerator2, int denominator2)
+        static public RationalNums operator /(RationalNums r1, RationalNums r2)
         {
-            double resNumerator = numerator1 * denominator2;
-            double resDenominator = numerator2 * denominator1;
+            double resNumerator = r1.numerator * r2.denominator;
+            double resDenominator = r2.numerator * r1.denominator;
             string res = resNumerator.ToString() + delimeter + resDenominator.ToString();
             return res;
         }
 
-        static public string compare(double numerator1, int denominator1, double numerator2, int denominator2)
-        {
-            int denom = nok(denominator1, denominator2);
-            double num1 = numerator1 * denom / denominator1;
-            double num2 = numerator2 * denom / denominator2;
-            if (num1 > num2)
-            {
-                string res = numerator1.ToString() + delimeter + denominator1.ToString() + " > " + numerator2.ToString() + delimeter + denominator2.ToString();
-                return res;
-            }
-            if (num1 < num2)
-            {
-                string res = numerator1.ToString() + delimeter + denominator1.ToString() + " < " + numerator2.ToString() + delimeter + denominator2.ToString();
-                return res;
-            }
-            else
-            {
-                string res = numerator1.ToString() + delimeter + denominator1.ToString() + " = " + numerator2.ToString() + delimeter + denominator2.ToString();
-                return res;
-            }
+        //static public RationalNums operator = (RationalNums r1, RationalNums r2)
+        //{
+        //    int denom = nok(r1.denominator, r2.denominator);
+        //    double num1 = r1.numerator * denom / r1.denominator;
+        //    double num2 = r2.numerator * denom / r2.denominator;
+        //    if (num1 > num2)
+        //    {
+        //        string res = r1.numerator.ToString() + delimeter + r1.denominator.ToString() + " > " + r2.numerator.ToString() + delimeter + r2.denominator.ToString();
+        //        return res;
+        //    }
+        //    if (num1 < num2)
+        //    {
+        //        string res = r1.numerator.ToString() + delimeter + r1.denominator.ToString() + " < " + r2.numerator.ToString() + delimeter + r2.denominator.ToString();
+        //        return res;
+        //    }
+        //    else
+        //    {
+        //        string res = r1.numerator.ToString() + delimeter + r1.denominator.ToString() + " = " + r2.numerator.ToString() + delimeter + r2.denominator.ToString();
+        //        return res;
+        //    }
 
-        }
+        //}
 
         //Реализация метода интерфейса IComparable
         public int CompareTo(object o)

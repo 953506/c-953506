@@ -13,16 +13,19 @@ namespace _7
             Console.WriteLine("Enter second number, formats are same:");
             string input2 = Console.ReadLine();
             RationalNums a2 = new RationalNums(input2);
+            RationalNums res;
 
             Console.WriteLine("Enter type of delimeter you want to use");
             RationalNums.delimeter = Console.ReadLine();
 
-            Console.WriteLine(RationalNums.multiply(a1.numerator, a1.denominator, a2.numerator, a2.denominator));
-            Console.WriteLine(RationalNums.divide(a1.numerator, a1.denominator, a2.numerator, a2.denominator));
-            Console.WriteLine(RationalNums.plus(a1.numerator, a1.denominator, a2.numerator, a2.denominator));
-            Console.WriteLine(RationalNums.minus(a1.numerator, a1.denominator, a2.numerator, a2.denominator));
-            Console.WriteLine(RationalNums.compare(a1.numerator, a1.denominator, a2.numerator, a2.denominator));
-            Console.WriteLine($"\nIComparable realization: { a1.CompareTo(a2)}\n");
+            res = a1 * a2;
+            Console.WriteLine($"{res.numerator}/{res.denominator}"); 
+            res = a1 / a2;
+            Console.WriteLine($"{res.numerator}/{res.denominator}");
+            res = a1 + a2;
+            Console.WriteLine($"{res.numerator}/{res.denominator}");
+            res = a1 - a2;
+            Console.WriteLine($"{res.numerator}/{res.denominator}");
 
             RationalNums a3 = new RationalNums(1, 4);
             double x = (double)a3;

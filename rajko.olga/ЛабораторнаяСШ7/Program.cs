@@ -37,8 +37,8 @@ namespace ЛабораторнаяСШ7
             }
             string str1 = new string(numerator);
             string str2 = new string(denominator);
-            _numerator = Convert.ToInt32(str1);
-            _denominator = Convert.ToInt32(str2);
+            _numerator = Convert.Int32.TryParse(str1);
+            _denominator = Convert.Int32.TryParse(str2);
         }
 
         // Преобразование в строку
@@ -122,7 +122,7 @@ namespace ЛабораторнаяСШ7
 
         public static bool operator >=(RationalNumber a, RationalNumber b)
         {
-            return a >= b; // !!!!!
+            return a >= b; 
         }
 
         public static bool operator <=(RationalNumber a, RationalNumber b)
@@ -134,7 +134,7 @@ namespace ЛабораторнаяСШ7
 
         public static bool operator !=(RationalNumber a, RationalNumber b) => !(a == b);
 
-        //Операции преобразования типов
+        //Операции явного преобразования типов
         public static explicit operator double(RationalNumber num)
         {
             return (double)num._numerator / num._denominator;
